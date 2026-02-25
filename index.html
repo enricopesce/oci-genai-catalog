@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCI Generative AI — Model Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --red-light: #E74C3C;
+    --dark: #0D0F12;
+    --panel: #151820;
+    --panel2: #1C2030;
+    --border: #252A3A;
+    --text: #E8EAF0;
+    --muted: #8C93AE;
+    --on-surface: #fff;
+    --hover-row: rgba(255,255,255,0.03);
+    --tag-bg: rgba(255,255,255,0.06);
+    --tag-border: rgba(255,255,255,0.1);
+    --rec-divider: rgba(255,255,255,0.04);
+    --cohere: #4E6FE0;
+    --google: #34A853;
+    --meta: #1877F2;
+    --openai: #74AA9C;
+    --xai: #9B59B6;
+    --embed: #E67E22;
+  }
+
+  /* LIGHT THEME */
+  html.light {
+    --dark: #F2F4FA;
+    --panel: #FFFFFF;
+    --panel2: #E8EBF5;
+    --border: #CDD2E8;
+    --text: #1D2135;
+    --muted: #5C6480;
+    --on-surface: #1D2135;
+    --hover-row: rgba(0,0,0,0.025);
+    --tag-bg: rgba(0,0,0,0.04);
+    --tag-border: rgba(0,0,0,0.12);
+    --rec-divider: rgba(0,0,0,0.05);
+  }
+  html.light .tier-flagship { color: #8B6900; }
+  html.light .tier-balanced { color: #1A7A38; }
+  html.light .tier-fast     { color: #2B4BB5; }
+  html.light .tier-spec     { color: #6B2E9E; }
+  html.light .yes           { color: #1A7A38; }
+  html.light .no            { color: #9AA0B8; }
+  html.light .ctx-huge      { color: #C0392B; }
+  html.light .ctx-xl        { color: #8B4A0A; }
+  html.light .ctx-lg        { color: #7A5900; }
+  html.light .ctx-md        { color: #1A7A38; }
+  html.light .status-active     { color: #1A7A38; }
+  html.light .status-retired    { color: #C0392B; }
+  html.light .status-deprecated { color: #8B4A0A; }
+  html.light .tag-green { background: rgba(52,168,83,0.1);   color: #1A7A38; border-color: rgba(52,168,83,0.3); }
+  html.light .tag-blue  { background: rgba(78,111,224,0.1);  color: #2B4BB5; border-color: rgba(78,111,224,0.3); }
+  html.light .tag-red   { background: rgba(192,57,43,0.1);   color: #C0392B; border-color: rgba(192,57,43,0.3); }
+  html.light .tag-orange{ background: rgba(230,126,34,0.1);  color: #8B4A0A; border-color: rgba(230,126,34,0.3); }
+  html.light .badge-cohere { color: #2B4BB5; }
+  html.light .badge-google { color: #1A6B35; }
+  html.light .badge-meta   { color: #1055B5; }
+  html.light .badge-openai { color: #2A706A; }
+  html.light .badge-xai    { color: #6B2E9E; }
+  html.light .badge-embed  { color: #8B4A0A; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--panel);
+    border-bottom: 2px solid var(--red);
+    padding: 32px 48px 24px;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: flex-end; gap: 24px;
+  }
+  .oracle-badge {
+    background: var(--red);
+    color: #fff;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--on-surface);
+  }
+  header p {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-left: auto;
+  }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .theme-toggle:hover { background: var(--border); }
+
+  /* LAYOUT */
+  .container { padding: 40px 48px; max-width: 1800px; margin: 0 auto; }
+
+  /* INTRO STATS */
+  .stat-bar { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+  .stat {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    padding: 16px 20px;
+    flex: 1; min-width: 140px;
+  }
+  .stat-num { font-size: 28px; font-weight: 700; font-family: 'IBM Plex Mono', monospace; color: var(--on-surface); }
+  .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+
+  /* SECTION TITLES */
+  .section-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red-light);
+    padding: 8px 0 16px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after { content:''; flex:1; height:1px; background: var(--border); }
+
+  /* TABLE WRAPPER */
+  .table-wrap { overflow-x: auto; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th {
+    background: var(--panel2);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:hover { background: var(--hover-row); }
+  tbody td { padding: 12px 14px; vertical-align: top; color: var(--text); }
+
+  /* MODEL NAME CELL */
+  .model-cell { white-space: nowrap; }
+  .model-name { font-weight: 600; font-size: 14px; color: var(--on-surface); display: block; }
+  .model-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* PROVIDER BADGE */
+  .badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .badge-cohere { background: rgba(78,111,224,0.2);  color: #7C9DFF; border: 1px solid rgba(78,111,224,0.4); }
+  .badge-google { background: rgba(52,168,83,0.2);   color: #5DD880; border: 1px solid rgba(52,168,83,0.4); }
+  .badge-meta   { background: rgba(24,119,242,0.2);  color: #6AAEFF; border: 1px solid rgba(24,119,242,0.4); }
+  .badge-openai { background: rgba(116,170,156,0.2); color: #8CD4C4; border: 1px solid rgba(116,170,156,0.4); }
+  .badge-xai    { background: rgba(155,89,182,0.2);  color: #C993FF; border: 1px solid rgba(155,89,182,0.4); }
+  .badge-embed  { background: rgba(230,126,34,0.2);  color: #FFAE6D; border: 1px solid rgba(230,126,34,0.4); }
+
+  /* PILL TAGS */
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 2px;
+    font-size: 11px;
+    padding: 1px 6px;
+    margin: 1px 2px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .tag-green { background: rgba(52,168,83,0.12);  color: #5DD880; border-color: rgba(52,168,83,0.3); }
+  .tag-blue  { background: rgba(78,111,224,0.12); color: #7C9DFF; border-color: rgba(78,111,224,0.3); }
+  .tag-red   { background: rgba(192,57,43,0.15);  color: #FF7B6D; border-color: rgba(192,57,43,0.3); }
+  .tag-orange{ background: rgba(230,126,34,0.12); color: #FFAE6D; border-color: rgba(230,126,34,0.3); }
+
+  /* TIER INDICATORS */
+  .tier { font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+  .tier-flagship { color: #FFD700; }
+  .tier-balanced { color: #5DD880; }
+  .tier-fast     { color: #7C9DFF; }
+  .tier-lite     { color: var(--muted); }
+  .tier-spec     { color: #C993FF; }
+
+  /* YES / NO */
+  .yes { color: #5DD880; font-size: 14px; }
+  .no  { color: #555;    font-size: 14px; }
+
+  /* CONTEXT CHIP */
+  .ctx { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .ctx-huge { color: #FF7B6D; }
+  .ctx-xl   { color: #FFAE6D; }
+  .ctx-lg   { color: #FFD700; }
+  .ctx-md   { color: #5DD880; }
+  .ctx-sm   { color: var(--muted); }
+
+  /* PARAM DISPLAY */
+  .params { font-family: 'IBM Plex Mono', monospace; font-size: 12px; white-space: nowrap; }
+  .params-active { color: var(--muted); font-size: 11px; }
+
+  /* STATUS */
+  .status-active     { color: #5DD880; font-size: 12px; }
+  .status-retired    { color: #FF7B6D; font-size: 12px; }
+  .status-deprecated { color: #FFAE6D; font-size: 12px; }
+
+  /* BEST-FOR */
+  .best-for { font-size: 13px; color: var(--muted); max-width: 260px; }
+
+  /* LEGEND */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px;
+    padding: 20px 24px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+
+  /* FOOTNOTES */
+  .footnotes { margin-top: 24px; font-size: 12px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; }
+  .footnotes p { margin-top: 6px; }
+
+  /* MATRIX SECTION */
+  .matrix-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .matrix-card { background: var(--panel); border: 1px solid var(--border); padding: 20px; }
+  .matrix-card h3 {
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .rec-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rec-divider);
+    font-size: 13px;
+  }
+  .rec-item:last-child { border-bottom: none; }
+  .rec-icon  { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .rec-title { font-weight: 600; color: var(--on-surface); font-size: 13px; }
+  .rec-desc  { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+  @media (max-width: 900px) {
+    header { padding: 20px 20px 16px; flex-wrap: wrap; }
+    .container { padding: 24px 16px; }
+    .matrix-row { grid-template-columns: 1fr; }
+    header p { width: 100%; margin-left: 0; margin-top: 8px; }
+    .theme-toggle { margin-left: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="oracle-badge">OCI · GENERATIVE AI</div>
+    <h1>Model Comparison Reference</h1>
+  </div>
+  <p>Source: OCI Official Documentation &nbsp;|&nbsp; February 2026 &nbsp;|&nbsp; 30+ models across 5 providers</p>
+  <button class="theme-toggle" id="themeToggle">☀ Light Mode</button>
+</header>
+
+<div class="container">
+
+  <!-- STAT BAR -->
+  <div class="stat-bar">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Model Providers</div></div>
+    <div class="stat"><div class="stat-num">22</div><div class="stat-label">Chat Models (Active)</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Embedding Models</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-label">Rerank Model</div></div>
+    <div class="stat"><div class="stat-num">2M</div><div class="stat-label">Max Context Tokens (Grok 4.1 Fast)</div></div>
+    <div class="stat"><div class="stat-num">256K</div><div class="stat-label">Cohere & Grok 4 Context</div></div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  CHAT MODELS                                              -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <div class="section-title">Chat Models — Cohere Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Model ID</th>
+        <th>Tier</th>
+        <th>Parameters</th>
+        <th>Context Window</th>
+        <th>Multimodal</th>
+        <th>Fine-tunable</th>
+        <th>Tool Use / Agents</th>
+        <th>Reasoning</th>
+        <th>RAG Optimized</th>
+        <th>Status</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-cohere">Cohere</span><br>
+          <span class="model-name">Command A Reasoning</span>
+        </td>
+        <td><span class="model-id">cohere.command-a-reasoning</span></td>
+        <td><span class="tier tier-flagship">★ Flagship Reasoning</span></td>
+        <td><span class="params">111B</span></td>
+        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓ Advanced</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA (Aug 2025)</span></td>
+        <td class="best-for">Complex Q&amp;A, multi-step reasoning, document analysis, structured arguments</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-cohere">Cohere</span><br>
+          <span class="model-name">Command A Vision</span>
+        </td>
+        <td><span class="model-id">cohere.command-a-vision</span></td>
+        <td><span class="tier tier-flagship">★ Flagship Multimodal</span></td>
+        <td><span class="params">~111B</span></td>
+        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="yes">✓ Images, Charts, Docs</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA (Jul 2025)</span></td>
+        <td class="best-for">Visual data analysis, document understanding, mixed text+image enterprise workflows</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-cohere">Cohere</span><br>
+          <span class="model-name">Command A</span>
+        </td>
+        <td><span class="model-id">cohere.command-a-03-2025</span></td>
+        <td><span class="tier tier-balanced">◉ Flagship Chat</span></td>
+        <td><span class="params">~111B</span></td>
+        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓ Advanced</span></td>
+        <td><span class="no">—</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA (Mar 2025)</span></td>
+        <td class="best-for">Agentic enterprise tasks, RAG, multilingual, high-throughput production</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-cohere">Cohere</span><br>
+          <span class="model-name">Command R+ 08-2024</span>
+        </td>
+        <td><span class="model-id">cohere.command-r-plus-08-2024</span></td>
+        <td><span class="tier tier-balanced">◉ Advanced</span></td>
+        <td><span class="params">~104B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓ T-Few / Vanilla</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="no">—</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● Active</span></td>
+        <td class="best-for">Complex specialized tasks, Q&amp;A, sentiment, fine-tuning workloads</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-cohere">Cohere</span><br>
+          <span class="model-name">Command R 08-2024</span>
+        </td>
+        <td><span class="model-id">cohere.command-r-08-2024</span></td>
+        <td><span class="tier tier-fast">▷ Standard</span></td>
+        <td><span class="params">35B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓ T-Few / Vanilla</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="no">—</span></td>
+        <td><span class="yes">✓ Optimized</span></td>
+        <td><span class="status-active">● Active</span></td>
+        <td class="best-for">RAG pipelines, info retrieval, cost-efficient enterprise chat</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="section-title">Chat Models — Google Gemini Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Model ID</th>
+        <th>Tier</th>
+        <th>Context Window</th>
+        <th>Multimodal</th>
+        <th>Thinking / Reasoning</th>
+        <th>Speed Profile</th>
+        <th>Fine-tunable on OCI</th>
+        <th>Status</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-google">Google</span><br>
+          <span class="model-name">Gemini 2.5 Pro</span>
+        </td>
+        <td><span class="model-id">google.gemini-2.5-pro</span></td>
+        <td><span class="tier tier-flagship">★ Flagship</span></td>
+        <td><span class="ctx ctx-huge">1M+</span></td>
+        <td><span class="yes">✓ Text, Image, Code, Audio, Video</span></td>
+        <td><span class="yes">✓ Advanced Reasoning</span></td>
+        <td><span class="tag">Deep / Accurate</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Most complex multimodal problems, large dataset analysis, SOTA reasoning tasks</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-google">Google</span><br>
+          <span class="model-name">Gemini 2.5 Flash</span>
+        </td>
+        <td><span class="model-id">google.gemini-2.5-flash</span></td>
+        <td><span class="tier tier-balanced">◉ Balanced</span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="yes">✓ Text, Image, Code</span></td>
+        <td><span class="yes">✓ Thinking features</span></td>
+        <td><span class="tag tag-green">Fast + Smart</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Balanced workloads needing speed + intelligence, complex applications</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-google">Google</span><br>
+          <span class="model-name">Gemini 2.5 Flash-Lite</span>
+        </td>
+        <td><span class="model-id">google.gemini-2.5-flash-lite</span></td>
+        <td><span class="tier tier-lite">○ Budget / Fast</span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="yes">✓ Text, Image</span></td>
+        <td><span class="yes">✓ Reasoning (lightweight)</span></td>
+        <td><span class="tag tag-blue">Lowest Latency</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">High-volume, simpler tasks; cost-sensitive production workloads</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="section-title">Chat Models — Meta Llama Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Model ID</th>
+        <th>Tier</th>
+        <th>Architecture</th>
+        <th>Total Params</th>
+        <th>Active Params (MoE)</th>
+        <th>Context Window</th>
+        <th>Multimodal</th>
+        <th>Fine-tunable (LoRA)</th>
+        <th>Tool Use</th>
+        <th>Status</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-meta">Meta</span><br>
+          <span class="model-name">Llama 4 Maverick</span>
+        </td>
+        <td><span class="model-id">meta.llama-4-maverick-17b-128e-instruct-fp8</span></td>
+        <td><span class="tier tier-flagship">★ Flagship MoE</span></td>
+        <td><span class="tag">MoE · 128 Experts</span></td>
+        <td><span class="params">~400B</span></td>
+        <td><span class="params">17B <span class="params-active">active</span></span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA (2025)</span></td>
+        <td class="best-for">Multimodal understanding, multilingual, coding, agentic systems, large-scale inference</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-meta">Meta</span><br>
+          <span class="model-name">Llama 4 Scout</span>
+        </td>
+        <td><span class="model-id">meta.llama-4-scout-17b-16e-instruct</span></td>
+        <td><span class="tier tier-balanced">◉ Efficient MoE</span></td>
+        <td><span class="tag">MoE · 16 Experts</span></td>
+        <td><span class="params">~109B</span></td>
+        <td><span class="params">17B <span class="params-active">active</span></span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA (2025)</span></td>
+        <td class="best-for">Smaller GPU deployments, efficient multimodal, multilingual, coding</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-meta">Meta</span><br>
+          <span class="model-name">Llama 3.3 70B</span>
+        </td>
+        <td><span class="model-id">meta.llama-3.3-70b-instruct</span></td>
+        <td><span class="tier tier-balanced">◉ Best Text 70B</span></td>
+        <td><span class="tag">Dense</span></td>
+        <td><span class="params">70B</span></td>
+        <td><span class="params">70B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="no">✗ Text only</span></td>
+        <td><span class="yes">✓ LoRA</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Best text-only 70B tasks; outperforms 3.1 70B and 3.2 90B on text benchmarks</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-meta">Meta</span><br>
+          <span class="model-name">Llama 3.2 90B Vision</span>
+        </td>
+        <td><span class="model-id">meta.llama-3.2-90b-vision-instruct</span></td>
+        <td><span class="tier tier-balanced">◉ Vision Flagship</span></td>
+        <td><span class="tag">Dense + Vision</span></td>
+        <td><span class="params">90B</span></td>
+        <td><span class="params">90B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● Active</span></td>
+        <td class="best-for">Multimodal understanding with large model capacity, image reasoning</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-meta">Meta</span><br>
+          <span class="model-name">Llama 3.2 11B Vision</span>
+        </td>
+        <td><span class="model-id">meta.llama-3.2-11b-vision-instruct</span></td>
+        <td><span class="tier tier-fast">▷ Compact Vision</span></td>
+        <td><span class="tag">Dense + Vision</span></td>
+        <td><span class="params">11B</span></td>
+        <td><span class="params">11B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● Active (Dedicated only)</span></td>
+        <td class="best-for">Cost-efficient multimodal; resource-constrained deployments</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-meta">Meta</span><br>
+          <span class="model-name">Llama 3.1 405B</span>
+        </td>
+        <td><span class="model-id">meta.llama-3.1-405b-instruct</span></td>
+        <td><span class="tier tier-flagship">★ Largest Open</span></td>
+        <td><span class="tag">Dense</span></td>
+        <td><span class="params">405B</span></td>
+        <td><span class="params">405B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="no">✗ Text only</span></td>
+        <td><span class="yes">✓ LoRA</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● Active</span></td>
+        <td class="best-for">Highest text quality open model; fine-tuning research, complex generation</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="section-title">Chat Models — OpenAI gpt-oss Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Model ID</th>
+        <th>Tier</th>
+        <th>Parameters</th>
+        <th>Context Window</th>
+        <th>Reasoning / Agentic</th>
+        <th>Tool Use</th>
+        <th>Open Source</th>
+        <th>Fine-tunable on OCI</th>
+        <th>Status</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-openai">OpenAI</span><br>
+          <span class="model-name">gpt-oss-120b</span>
+        </td>
+        <td><span class="model-id">openai.gpt-oss-120b</span></td>
+        <td><span class="tier tier-flagship">★ Flagship OSS</span></td>
+        <td><span class="params">120B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="yes">✓ Advanced Reasoning + Agentic</span></td>
+        <td><span class="yes">✓ Advanced Tool Use</span></td>
+        <td><span class="yes">✓ Open weights</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Reasoning, agentic tasks; outperforms similar-size open models; OpenAI-compatible API</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-openai">OpenAI</span><br>
+          <span class="model-name">gpt-oss-20b</span>
+        </td>
+        <td><span class="model-id">openai.gpt-oss-20b</span></td>
+        <td><span class="tier tier-fast">▷ Efficient OSS</span></td>
+        <td><span class="params">20B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="yes">✓ Reasoning + Agentic</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓ Open weights</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Efficient consumer-hardware-optimized reasoning; agentic tasks at lower cost</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="section-title">Chat Models — xAI Grok Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Model ID</th>
+        <th>Tier</th>
+        <th>Context Window</th>
+        <th>Thinking / Chain-of-Thought</th>
+        <th>Coding Focus</th>
+        <th>Speed Profile</th>
+        <th>Domain Knowledge</th>
+        <th>Agentic</th>
+        <th>Status</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-xai">xAI</span><br>
+          <span class="model-name">Grok 4</span>
+        </td>
+        <td><span class="model-id">xai.grok-4</span></td>
+        <td><span class="tier tier-flagship">★ Flagship</span></td>
+        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="tag">Standard</span></td>
+        <td><span class="yes">✓ Finance, Health, Law, Science</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Enterprise data extraction, coding, summarization with deep domain knowledge</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-xai">xAI</span><br>
+          <span class="model-name">Grok 4 Fast</span>
+        </td>
+        <td><span class="model-id">xai.grok-4-fast</span></td>
+        <td><span class="tier tier-fast">▷ Fast Flagship</span></td>
+        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="tag tag-green">Speed Optimized</span></td>
+        <td><span class="yes">✓ Finance, Health, Law, Science</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Same capability as Grok 4 at higher throughput; cost-speed-optimized production</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-xai">xAI</span><br>
+          <span class="model-name">Grok 4.1 Fast</span>
+        </td>
+        <td><span class="model-id">xai.grok-4-1-fast</span></td>
+        <td><span class="tier tier-flagship">★ Agentic Flagship</span></td>
+        <td><span class="ctx ctx-huge">2M !</span></td>
+        <td><span class="yes">✓ Advanced</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="tag tag-green">High Speed</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓ Parallel Tool Calling</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Complex agentic systems, customer support, research — 3x fewer hallucinations vs Grok 4</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-xai">xAI</span><br>
+          <span class="model-name">Grok 3</span>
+        </td>
+        <td><span class="model-id">xai.grok-3</span></td>
+        <td><span class="tier tier-balanced">◉ Standard</span></td>
+        <td><span class="ctx ctx-lg">131K</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="tag">Standard</span></td>
+        <td><span class="yes">✓ Finance, Health, Law, Science</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">General enterprise tasks, data extraction, text summarization</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-xai">xAI</span><br>
+          <span class="model-name">Grok 3 Fast</span>
+        </td>
+        <td><span class="model-id">xai.grok-3-fast</span></td>
+        <td><span class="tier tier-fast">▷ Standard Fast</span></td>
+        <td><span class="ctx ctx-lg">131K</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="tag tag-green">Speed Optimized</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">High-throughput enterprise tasks at Grok 3 quality level</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-xai">xAI</span><br>
+          <span class="model-name">Grok 3 Mini</span>
+        </td>
+        <td><span class="model-id">xai.grok-3-mini</span></td>
+        <td><span class="tier tier-lite">○ Lightweight Thinker</span></td>
+        <td><span class="ctx ctx-lg">131K</span></td>
+        <td><span class="yes">✓ Traces exposed</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="tag">Standard</span></td>
+        <td><span class="no">—</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Logic-based tasks not requiring deep domain knowledge; transparent thinking traces</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-xai">xAI</span><br>
+          <span class="model-name">Grok 3 Mini Fast</span>
+        </td>
+        <td><span class="model-id">xai.grok-3-mini-fast</span></td>
+        <td><span class="tier tier-lite">○ Lightweight Fast</span></td>
+        <td><span class="ctx ctx-lg">131K</span></td>
+        <td><span class="yes">✓ Traces exposed</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="tag tag-green">Fastest</span></td>
+        <td><span class="no">—</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="status-active">● GA</span></td>
+        <td class="best-for">Low-latency logic tasks at minimum cost</td>
+      </tr>
+      <tr>
+        <td class="model-cell">
+          <span class="badge badge-xai">xAI</span><br>
+          <span class="model-name">Grok Code Fast 1</span>
+        </td>
+        <td><span class="model-id">xai.grok-code-fast-1</span></td>
+        <td><span class="tier tier-spec">◆ Coding Specialist</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="yes">✓ Summarized traces</span></td>
+        <td><span class="yes">✓ Specialized</span></td>
+        <td><span class="tag tag-green">Very Fast</span></td>
+        <td><span class="no">—</span></td>
+        <td><span class="yes">✓ Agentic Coding</span></td>
+        <td><span class="status-active">● GA (Aug 2025)</span></td>
+        <td class="best-for">TypeScript, Python, Java, Rust, C++, Go; zero-to-one projects, bug fixes, agentic coding loops</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  EMBEDDING MODELS                                         -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <div class="section-title">Embedding Models</div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Model ID</th>
+        <th>Generation</th>
+        <th>Multimodal (Image)</th>
+        <th>Language Scope</th>
+        <th>Size Variant</th>
+        <th>Use Case</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed 4</span></td>
+        <td><span class="model-id">cohere.embed-v4.0</span></td>
+        <td><span class="tag tag-green">Gen 4 · Latest</span></td>
+        <td><span class="yes">✓ Text + Image (base64)</span></td>
+        <td><span class="tag">Multilingual</span></td>
+        <td>Full</td>
+        <td class="best-for">Latest multimodal embeddings; text & image semantic search</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed English Image 3</span></td>
+        <td><span class="model-id">cohere.embed-english-image-v3.0</span></td>
+        <td><span class="tag">Gen 3</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
+        <td><span class="tag">English</span></td>
+        <td>Full</td>
+        <td class="best-for">English-only text+image semantic search</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed English Light Image 3</span></td>
+        <td><span class="model-id">cohere.embed-english-light-image-v3.0</span></td>
+        <td><span class="tag">Gen 3</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
+        <td><span class="tag">English</span></td>
+        <td>Light</td>
+        <td class="best-for">Cost-efficient English text+image embeddings</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed Multilingual Image 3</span></td>
+        <td><span class="model-id">cohere.embed-multilingual-image-v3.0</span></td>
+        <td><span class="tag">Gen 3</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
+        <td><span class="tag tag-green">Multilingual</span></td>
+        <td>Full</td>
+        <td class="best-for">Global multilingual text+image semantic search</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed Multilingual Light Image 3</span></td>
+        <td><span class="model-id">cohere.embed-multilingual-light-image-v3.0</span></td>
+        <td><span class="tag">Gen 3</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
+        <td><span class="tag tag-green">Multilingual</span></td>
+        <td>Light</td>
+        <td class="best-for">Budget multilingual text+image embeddings</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed English 3</span></td>
+        <td><span class="model-id">cohere.embed-english-v3.0</span></td>
+        <td><span class="tag">Gen 3</span></td>
+        <td><span class="no">✗ Text only</span></td>
+        <td><span class="tag">English</span></td>
+        <td>Full</td>
+        <td class="best-for">Pure text English semantic search, classification, clustering</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed English Light 3</span></td>
+        <td><span class="model-id">cohere.embed-english-light-v3.0</span></td>
+        <td><span class="tag">Gen 3</span></td>
+        <td><span class="no">✗ Text only</span></td>
+        <td><span class="tag">English</span></td>
+        <td>Light</td>
+        <td class="best-for">Cost-efficient English text embeddings at scale</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed Multilingual 3</span></td>
+        <td><span class="model-id">cohere.embed-multilingual-v3.0</span></td>
+        <td><span class="tag">Gen 3</span></td>
+        <td><span class="no">✗ Text only</span></td>
+        <td><span class="tag tag-green">Multilingual</span></td>
+        <td>Full</td>
+        <td class="best-for">Global enterprise text semantic search in 100+ languages</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Embed Multilingual Light 3</span></td>
+        <td><span class="model-id">cohere.embed-multilingual-light-v3.0</span></td>
+        <td><span class="tag">Gen 3</span></td>
+        <td><span class="no">✗ Text only</span></td>
+        <td><span class="tag tag-green">Multilingual</span></td>
+        <td>Light</td>
+        <td class="best-for">Affordable multilingual text embeddings at volume</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- RERANK -->
+  <div class="section-title">Rerank Model</div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Model ID</th>
+        <th>Input</th>
+        <th>Output</th>
+        <th>Use Case</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Rerank 3.5</span></td>
+        <td><span class="model-id">cohere.rerank.v3-5</span></td>
+        <td>Query + List of texts</td>
+        <td>Ordered array with relevance scores</td>
+        <td class="best-for">RAG pipelines, document ranking, search result reordering, precision improvement</td>
+        <td><span class="status-active">● Active</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  USE-CASE DECISION MATRIX                                  -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <div class="section-title">Use-Case Selection Guide</div>
+  <div class="matrix-row">
+    <div class="matrix-card">
+      <h3>🔍 RAG / Document Search</h3>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Cohere Command A Reasoning</div><div class="rec-desc">256K context, built for RAG, advanced reasoning over documents</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Cohere Command R 08-2024</div><div class="rec-desc">RAG-optimized, 128K context, fine-tunable, cost-efficient</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">Google Gemini 2.5 Pro</div><div class="rec-desc">1M+ context — handle entire documents in one pass</div></div></div>
+    </div>
+    <div class="matrix-card">
+      <h3>🤖 Agentic / Tool-Use Workflows</h3>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">xAI Grok 4.1 Fast</div><div class="rec-desc">2M context, parallel tool calls, 3x lower hallucinations</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Cohere Command A</div><div class="rec-desc">256K context, best throughput for Cohere agentic tasks</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">OpenAI gpt-oss-120b</div><div class="rec-desc">Advanced tool use, reasoning, OpenAI-compatible API</div></div></div>
+    </div>
+    <div class="matrix-card">
+      <h3>💻 Code Generation</h3>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">xAI Grok Code Fast 1</div><div class="rec-desc">Specialized coding model — plan, write, test, debug loop</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Meta Llama 4 Maverick</div><div class="rec-desc">MoE, strong coding + tool-calling capabilities</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">Google Gemini 2.5 Pro</div><div class="rec-desc">Top-tier code reasoning, debugging, complex architecture</div></div></div>
+    </div>
+  </div>
+  <div class="matrix-row">
+    <div class="matrix-card">
+      <h3>🌍 Multimodal (Text + Image)</h3>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Google Gemini 2.5 Pro</div><div class="rec-desc">Best multimodal — text, image, code, audio, video</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Cohere Command A Vision</div><div class="rec-desc">Enterprise-focused image, chart, document understanding</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">Meta Llama 4 Maverick</div><div class="rec-desc">Open-weight multimodal with MoE efficiency</div></div></div>
+    </div>
+    <div class="matrix-card">
+      <h3>⚡ High-Volume / Low-Latency</h3>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Google Gemini 2.5 Flash-Lite</div><div class="rec-desc">Fastest + cheapest in Gemini family; 1M context</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">xAI Grok 3 Mini Fast</div><div class="rec-desc">Lightweight thinker, lowest latency xAI model</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">OpenAI gpt-oss-20b</div><div class="rec-desc">Consumer-grade hardware optimized, fast reasoning</div></div></div>
+    </div>
+    <div class="matrix-card">
+      <h3>🏢 Enterprise Fine-Tuning</h3>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Cohere Command R+ 08-2024</div><div class="rec-desc">T-Few + Vanilla fine-tuning on dedicated AI clusters</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Meta Llama 3.1 405B</div><div class="rec-desc">LoRA fine-tuning on largest open model</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">Meta Llama 3.3 70B</div><div class="rec-desc">LoRA fine-tuning, best 70B text performance</div></div></div>
+    </div>
+  </div>
+
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8EAF0;font-weight:600;width:100%;margin-bottom:4px;">LEGEND</div>
+    <div class="legend-item"><span class="tier tier-flagship">★</span> Flagship / Best-in-class</div>
+    <div class="legend-item"><span class="tier tier-balanced">◉</span> Balanced / Advanced</div>
+    <div class="legend-item"><span class="tier tier-fast">▷</span> Speed / Efficiency tier</div>
+    <div class="legend-item"><span class="tier tier-lite">○</span> Lightweight / Budget</div>
+    <div class="legend-item"><span class="tier tier-spec">◆</span> Specialized</div>
+    <div class="legend-item"><span class="ctx ctx-huge">2M/1M+</span> Context ≥ 1M tokens</div>
+    <div class="legend-item"><span class="ctx ctx-xl">256K</span> Context = 256K tokens</div>
+    <div class="legend-item"><span class="ctx ctx-lg">128K</span> Context = 128K tokens</div>
+    <div class="legend-item"><span class="yes">✓</span> Feature supported</div>
+    <div class="legend-item"><span class="no">✗</span> Not supported</div>
+    <div class="legend-item"><span class="tag">MoE</span> Mixture of Experts (sparse activation)</div>
+  </div>
+
+  <div class="footnotes">
+    <p>¹ Parameter counts for some models (especially proprietary) are approximate or undisclosed by the provider; listed values are best estimates from public documentation.</p>
+    <p>² Fine-tuning on OCI uses dedicated AI clusters (GPU resources belonging exclusively to your tenancy). Cohere supports T-Few &amp; Vanilla strategies; Meta Llama supports LoRA.</p>
+    <p>³ Retired/deprecated models (Command R legacy, Llama 3 70B, Llama 3.1 70B) are omitted from the main tables.</p>
+    <p>⁴ Model Import feature (GA 2025) lets you bring your own LLMs from Hugging Face or OCI Object Storage.</p>
+    <p>⁵ Data source: OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/ — February 2026.</p>
+  </div>
+
+</div>
+
+<script>
+  const btn = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    html.classList.add('light');
+    btn.textContent = '☾ Dark Mode';
+  }
+  btn.addEventListener('click', () => {
+    const isLight = html.classList.toggle('light');
+    btn.textContent = isLight ? '☾ Dark Mode' : '☀ Light Mode';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>
