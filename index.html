@@ -414,6 +414,75 @@
     .matrix-row { grid-template-columns: 1fr; }
     header p { width: 100%; margin-left: 0; margin-top: 8px; }
     .theme-toggle { margin-left: auto; }
+    .stat-bar { gap: 10px; margin-bottom: 24px; }
+    .chip-bar { margin-bottom: 20px; gap: 5px; }
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 14px; }
+    header {
+      padding: 14px 16px 12px;
+      gap: 10px;
+      position: static;  /* don't eat screen space on small phones */
+    }
+    header h1 { font-size: 18px; }
+    .oracle-badge { font-size: 11px; padding: 3px 8px; }
+    header p { font-size: 11px; }
+    .container { padding: 16px 12px; }
+    .section-title { font-size: 11px; margin-top: 28px; }
+
+    /* Stat bar */
+    .stat-bar { gap: 8px; margin-bottom: 18px; }
+    .stat { padding: 10px 14px; min-width: 120px; }
+    .stat-num { font-size: 22px; }
+    .stat-label { font-size: 11px; }
+
+    /* Chip filters */
+    .chip-bar { margin-bottom: 16px; }
+    .chip { font-size: 10px; padding: 3px 8px; }
+    .chip-label { font-size: 9px; padding-left: 6px; }
+
+    /* Tables */
+    .table-wrap {
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    /* Scroll hint: subtle right-fade overlay */
+    .table-wrap::after {
+      content: '';
+      position: sticky;
+      right: 0;
+      top: 0;
+      width: 32px;
+      height: 100%;
+      background: linear-gradient(to right, transparent, var(--dark));
+      pointer-events: none;
+      float: right;
+      margin-left: -32px;
+    }
+    table { font-size: 12px; }
+    thead th { padding: 7px 8px; font-size: 9px; }
+    tbody td { padding: 8px 8px; }
+    .model-name { font-size: 12px; }
+    .model-id { font-size: 10px; }
+    .badge { font-size: 9px; padding: 1px 5px; }
+    .best-for { font-size: 11px; max-width: 160px; }
+    .ctx { font-size: 11px; }
+    .tier { font-size: 11px; }
+    .tag { font-size: 10px; padding: 1px 4px; }
+
+    /* Legend */
+    .legend { gap: 10px; padding: 14px 16px; }
+    .legend-item { font-size: 11px; }
+
+    /* Footnotes */
+    .footnotes { font-size: 11px; }
+
+    /* Matrix cards */
+    .matrix-card { padding: 14px; }
+    .rec-item { font-size: 12px; }
+    .rec-desc { font-size: 11px; }
   }
 </style>
 </head>
