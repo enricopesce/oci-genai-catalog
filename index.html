@@ -359,11 +359,11 @@
   <!-- STAT BAR -->
   <div class="stat-bar">
     <div class="stat"><div class="stat-num">5</div><div class="stat-label">Model Providers</div></div>
-    <div class="stat"><div class="stat-num">22</div><div class="stat-label">Chat Models (Active)</div></div>
+    <div class="stat"><div class="stat-num">24</div><div class="stat-label">Chat Models (Active)</div></div>
     <div class="stat"><div class="stat-num">9</div><div class="stat-label">Embedding Models</div></div>
     <div class="stat"><div class="stat-num">1</div><div class="stat-label">Rerank Model</div></div>
-    <div class="stat"><div class="stat-num">2M</div><div class="stat-label">Max Context Tokens (Grok 4.1 Fast)</div></div>
-    <div class="stat"><div class="stat-num">256K</div><div class="stat-label">Cohere & Grok 4 Context</div></div>
+    <div class="stat"><div class="stat-num">2M</div><div class="stat-label">Max Context (Grok 4 Fast &amp; 4.1 Fast)</div></div>
+    <div class="stat"><div class="stat-num">256K</div><div class="stat-label">Max Context (Cohere Command A)</div></div>
   </div>
 
 
@@ -415,8 +415,8 @@
         </td>
         <td><span class="model-id">cohere.command-a-vision</span></td>
         <td><span class="tier tier-flagship">★ Flagship Multimodal</span></td>
-        <td><span class="params">~111B</span></td>
-        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="params">~112B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
         <td><span class="yes">✓ Images, Charts, Docs</span></td>
         <td><span class="no">✗</span></td>
         <td><span class="yes">✓</span></td>
@@ -452,12 +452,12 @@
         <td><span class="params">~104B</span></td>
         <td><span class="ctx ctx-lg">128K</span></td>
         <td><span class="no">✗</span></td>
-        <td><span class="yes">✓ T-Few / Vanilla</span></td>
+        <td><span class="no">✗</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="no">—</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="status-active">● Active</span></td>
-        <td class="best-for">Complex specialized tasks, Q&amp;A, sentiment, fine-tuning workloads</td>
+        <td class="best-for">Complex specialized tasks, Q&amp;A, sentiment, multilingual RAG</td>
       </tr>
       <tr>
         <td class="model-cell">
@@ -537,7 +537,7 @@
         <td><span class="tier tier-lite">○ Budget / Fast</span></td>
         <td><span class="ctx ctx-huge">1M</span></td>
         <td><span class="yes">✓ Text, Image</span></td>
-        <td><span class="yes">✓ Reasoning (lightweight)</span></td>
+        <td><span class="no">✗</span></td>
         <td><span class="tag tag-blue">Lowest Latency</span></td>
         <td><span class="no">✗</span></td>
         <td><span class="status-active">● GA</span></td>
@@ -577,7 +577,7 @@
         <td><span class="tag">MoE · 128 Experts</span></td>
         <td><span class="params">~400B</span></td>
         <td><span class="params">17B <span class="params-active">active</span></span></td>
-        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="ctx ctx-xl">512K</span></td>
         <td><span class="yes">✓ Text + Image</span></td>
         <td><span class="no">✗</span></td>
         <td><span class="yes">✓</span></td>
@@ -594,7 +594,7 @@
         <td><span class="tag">MoE · 16 Experts</span></td>
         <td><span class="params">~109B</span></td>
         <td><span class="params">17B <span class="params-active">active</span></span></td>
-        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="ctx ctx-xl">192K</span></td>
         <td><span class="yes">✓ Text + Image</span></td>
         <td><span class="no">✗</span></td>
         <td><span class="yes">✓</span></td>
@@ -664,10 +664,10 @@
         <td><span class="params">405B</span></td>
         <td><span class="ctx ctx-lg">128K</span></td>
         <td><span class="no">✗ Text only</span></td>
-        <td><span class="yes">✓ LoRA</span></td>
+        <td><span class="no">✗</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="status-active">● Active</span></td>
-        <td class="best-for">Highest text quality open model; fine-tuning research, complex generation</td>
+        <td class="best-for">Highest text quality open model; complex reasoning, advanced generation</td>
       </tr>
     </tbody>
   </table>
@@ -737,6 +737,7 @@
         <th>Model ID</th>
         <th>Tier</th>
         <th>Context Window</th>
+        <th>Multimodal</th>
         <th>Thinking / Chain-of-Thought</th>
         <th>Coding Focus</th>
         <th>Speed Profile</th>
@@ -754,7 +755,8 @@
         </td>
         <td><span class="model-id">xai.grok-4</span></td>
         <td><span class="tier tier-flagship">★ Flagship</span></td>
-        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="tag">Standard</span></td>
@@ -768,25 +770,33 @@
           <span class="badge badge-xai">xAI</span><br>
           <span class="model-name">Grok 4 Fast</span>
         </td>
-        <td><span class="model-id">xai.grok-4-fast</span></td>
+        <td>
+          <span class="model-id">xai.grok-4-fast-reasoning</span><br>
+          <span class="model-id">xai.grok-4-fast-non-reasoning</span>
+        </td>
         <td><span class="tier tier-fast">▷ Fast Flagship</span></td>
-        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="ctx ctx-huge">2M</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="tag tag-green">Speed Optimized</span></td>
         <td><span class="yes">✓ Finance, Health, Law, Science</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="status-active">● GA</span></td>
-        <td class="best-for">Same capability as Grok 4 at higher throughput; cost-speed-optimized production</td>
+        <td class="best-for">Same capability as Grok 4 with 2M context; cost-speed-optimized production</td>
       </tr>
       <tr>
         <td class="model-cell">
           <span class="badge badge-xai">xAI</span><br>
           <span class="model-name">Grok 4.1 Fast</span>
         </td>
-        <td><span class="model-id">xai.grok-4-1-fast</span></td>
+        <td>
+          <span class="model-id">xai.grok-4-1-fast-reasoning</span><br>
+          <span class="model-id">xai.grok-4-1-fast-non-reasoning</span>
+        </td>
         <td><span class="tier tier-flagship">★ Agentic Flagship</span></td>
         <td><span class="ctx ctx-huge">2M !</span></td>
+        <td><span class="yes">✓ Text + Image</span></td>
         <td><span class="yes">✓ Advanced</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="tag tag-green">High Speed</span></td>
@@ -803,7 +813,8 @@
         <td><span class="model-id">xai.grok-3</span></td>
         <td><span class="tier tier-balanced">◉ Standard</span></td>
         <td><span class="ctx ctx-lg">131K</span></td>
-        <td><span class="yes">✓</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="no">✗</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="tag">Standard</span></td>
         <td><span class="yes">✓ Finance, Health, Law, Science</span></td>
@@ -819,7 +830,8 @@
         <td><span class="model-id">xai.grok-3-fast</span></td>
         <td><span class="tier tier-fast">▷ Standard Fast</span></td>
         <td><span class="ctx ctx-lg">131K</span></td>
-        <td><span class="yes">✓</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="no">✗</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="tag tag-green">Speed Optimized</span></td>
         <td><span class="yes">✓</span></td>
@@ -835,6 +847,7 @@
         <td><span class="model-id">xai.grok-3-mini</span></td>
         <td><span class="tier tier-lite">○ Lightweight Thinker</span></td>
         <td><span class="ctx ctx-lg">131K</span></td>
+        <td><span class="no">✗</span></td>
         <td><span class="yes">✓ Traces exposed</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="tag">Standard</span></td>
@@ -851,6 +864,7 @@
         <td><span class="model-id">xai.grok-3-mini-fast</span></td>
         <td><span class="tier tier-lite">○ Lightweight Fast</span></td>
         <td><span class="ctx ctx-lg">131K</span></td>
+        <td><span class="no">✗</span></td>
         <td><span class="yes">✓ Traces exposed</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="tag tag-green">Fastest</span></td>
@@ -866,7 +880,8 @@
         </td>
         <td><span class="model-id">xai.grok-code-fast-1</span></td>
         <td><span class="tier tier-spec">◆ Coding Specialist</span></td>
-        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="ctx ctx-xl">256K</span></td>
+        <td><span class="no">✗</span></td>
         <td><span class="yes">✓ Summarized traces</span></td>
         <td><span class="yes">✓ Specialized</span></td>
         <td><span class="tag tag-green">Very Fast</span></td>
@@ -1062,9 +1077,8 @@
     </div>
     <div class="matrix-card">
       <h3>🏢 Enterprise Fine-Tuning</h3>
-      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Cohere Command R+ 08-2024</div><div class="rec-desc">T-Few + Vanilla fine-tuning on dedicated AI clusters</div></div></div>
-      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Meta Llama 3.1 405B</div><div class="rec-desc">LoRA fine-tuning on largest open model</div></div></div>
-      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">Meta Llama 3.3 70B</div><div class="rec-desc">LoRA fine-tuning, best 70B text performance</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Cohere Command R 08-2024</div><div class="rec-desc">T-Few + Vanilla fine-tuning on dedicated AI clusters</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Meta Llama 3.3 70B</div><div class="rec-desc">LoRA fine-tuning, best 70B text performance</div></div></div>
     </div>
   </div>
 
@@ -1078,7 +1092,7 @@
     <div class="legend-item"><span class="tier tier-lite">○</span> Lightweight / Budget</div>
     <div class="legend-item"><span class="tier tier-spec">◆</span> Specialized</div>
     <div class="legend-item"><span class="ctx ctx-huge">2M/1M+</span> Context ≥ 1M tokens</div>
-    <div class="legend-item"><span class="ctx ctx-xl">256K</span> Context = 256K tokens</div>
+    <div class="legend-item"><span class="ctx ctx-xl">256K</span> Context = 128K–256K tokens</div>
     <div class="legend-item"><span class="ctx ctx-lg">128K</span> Context = 128K tokens</div>
     <div class="legend-item"><span class="yes">✓</span> Feature supported</div>
     <div class="legend-item"><span class="no">✗</span> Not supported</div>
@@ -1090,6 +1104,7 @@
     <p>² Fine-tuning on OCI uses dedicated AI clusters (GPU resources belonging exclusively to your tenancy). Cohere supports T-Few &amp; Vanilla strategies; Meta Llama supports LoRA.</p>
     <p>³ Retired/deprecated models (Command R legacy, Llama 3 70B, Llama 3.1 70B) are omitted from the main tables.</p>
     <p>⁴ Model Import feature (GA 2025) lets you bring your own LLMs from Hugging Face or OCI Object Storage.</p>
+    <p>⁶ Grok 4 Fast and Grok 4.1 Fast each expose two OCI model IDs: a <code>-reasoning</code> variant (thinking tokens, chain-of-thought) and a <code>-non-reasoning</code> variant (instant responses, no thinking tokens).</p>
     <p>⁵ Data source: OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/ — February 2026.</p>
   </div>
 
