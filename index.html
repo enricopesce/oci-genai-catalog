@@ -334,6 +334,80 @@
   .rec-title { font-weight: 600; color: var(--on-surface); font-size: 13px; }
   .rec-desc  { color: var(--muted); font-size: 12px; margin-top: 2px; }
 
+  /* FILTER CHIPS */
+  .chip-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+  .chip-group {
+    display: contents;
+  }
+  .chip-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0 4px 0 10px;
+    white-space: nowrap;
+  }
+  .chip-label:first-child { padding-left: 0; }
+  .chip {
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .chip:hover {
+    background: var(--panel2);
+    border-color: var(--muted);
+    color: var(--text);
+  }
+  .chip.active {
+    background: rgba(192,57,43,0.15);
+    border-color: var(--red);
+    color: var(--red-light);
+  }
+  .chip-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .chip-clear {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: none;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .chip-clear:hover { color: var(--text); border-color: var(--muted); }
+
+  .no-results {
+    display: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    padding: 32px 0;
+    text-align: center;
+  }
+
   @media (max-width: 900px) {
     header { padding: 20px 20px 16px; flex-wrap: wrap; }
     .container { padding: 24px 16px; }
@@ -355,6 +429,30 @@
 </header>
 
 <div class="container">
+
+  <!-- FILTER CHIPS -->
+  <div class="chip-bar">
+    <span class="chip-label">Provider</span>
+    <button class="chip" data-q="cohere"    data-group="provider">Cohere</button>
+    <button class="chip" data-q="google"    data-group="provider">Google</button>
+    <button class="chip" data-q="meta"      data-group="provider">Meta</button>
+    <button class="chip" data-q="openai"    data-group="provider">OpenAI</button>
+    <button class="chip" data-q="xai"       data-group="provider">xAI</button>
+    <span class="chip-label">Capability</span>
+    <button class="chip" data-q="image"     data-group="capability">Multimodal</button>
+    <button class="chip" data-q="reasoning" data-group="capability">Reasoning</button>
+    <button class="chip" data-q="rag"       data-group="capability">RAG Optimized</button>
+    <button class="chip" data-q="code"      data-group="capability">Coding</button>
+    <button class="chip" data-q="embed"     data-group="capability">Embedding</button>
+    <span class="chip-label">Context</span>
+    <button class="chip" data-q="2m"        data-group="context">2M Tokens</button>
+    <button class="chip" data-q="1m"        data-group="context">1M Tokens</button>
+    <button class="chip" data-q="256k"      data-group="context">256K</button>
+    <button class="chip" data-q="128k"      data-group="context">128K</button>
+    <span class="chip-count" id="chipCount"></span>
+    <button class="chip-clear" id="chipClear">✕ Clear</button>
+  </div>
+  <div class="no-results" id="noResults">No models match the selected filters.</div>
 
   <!-- STAT BAR -->
   <div class="stat-bar">
@@ -1111,6 +1209,7 @@
 </div>
 
 <script>
+  // Theme toggle
   const btn = document.getElementById('themeToggle');
   const html = document.documentElement;
   if (localStorage.getItem('theme') === 'light') {
@@ -1121,6 +1220,79 @@
     const isLight = html.classList.toggle('light');
     btn.textContent = isLight ? '☾ Dark Mode' : '☀ Light Mode';
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+
+  // Model filter — chip multi-select (OR logic)
+  // Pre-compute rows and their sections once at load time
+  var sections = [];
+  document.querySelectorAll('.table-wrap').forEach(function(wrap) {
+    var rows = [];
+    wrap.querySelectorAll('tbody tr').forEach(function(tr) {
+      rows.push({ el: tr, text: tr.textContent.toLowerCase() });
+    });
+    var title = wrap.previousElementSibling;
+    sections.push({
+      wrap: wrap,
+      title: (title && title.classList.contains('section-title')) ? title : null,
+      rows: rows
+    });
+  });
+
+  function applyFilter() {
+    var activeChips = document.querySelectorAll('.chip.active');
+
+    document.getElementById('chipClear').style.display = activeChips.length ? 'inline-block' : 'none';
+
+    if (activeChips.length === 0) {
+      sections.forEach(function(s) {
+        s.rows.forEach(function(r) { r.el.style.display = ''; });
+        s.wrap.style.display = '';
+        if (s.title) s.title.style.display = '';
+      });
+      document.getElementById('chipCount').textContent = '';
+      document.getElementById('noResults').style.display = 'none';
+      return;
+    }
+
+    var groups = {};
+    document.querySelectorAll('.chip.active').forEach(function(c) {
+      var g = c.dataset.group;
+      if (!groups[g]) groups[g] = [];
+      groups[g].push(c.dataset.q);
+    });
+    var groupKeys = Object.keys(groups);
+
+    var total = 0;
+    sections.forEach(function(s) {
+      var visible = 0;
+      s.rows.forEach(function(r) {
+        var match = groupKeys.every(function(g) {
+          return groups[g].some(function(q) {
+            return r.text.indexOf(q) !== -1;
+          });
+        });
+        r.el.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      total += visible;
+      s.wrap.style.display = visible > 0 ? '' : 'none';
+      if (s.title) s.title.style.display = visible > 0 ? '' : 'none';
+    });
+
+    document.getElementById('chipCount').textContent = total + ' model' + (total !== 1 ? 's' : '') + ' found';
+    document.getElementById('noResults').style.display = total === 0 ? 'block' : 'none';
+  }
+
+  document.querySelectorAll('.chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('active');
+      applyFilter();
+    });
+  });
+
+  document.getElementById('chipClear').addEventListener('click', function() {
+    document.querySelectorAll('.chip.active').forEach(function(c) { c.classList.remove('active'); });
+    applyFilter();
   });
 </script>
 </body>
