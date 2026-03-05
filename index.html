@@ -33,7 +33,7 @@
   "name": "OCI Generative AI Models — Complete Reference 2026",
   "description": "Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models including chat, embedding, and rerank models from 5 providers.",
   "url": "https://enricopesce.github.io/oci-llm-comparison/",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-03-05",
   "author": { "@type": "Person", "name": "enricopesce" },
   "about": {
     "@type": "Thing",
@@ -491,13 +491,68 @@
 <header>
   <div>
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
-    <h1>Model Reference</h1>
+    <h1>Model Reference 2026</h1>
   </div>
-  <p>Source: OCI Official Documentation &nbsp;|&nbsp; February 2026 &nbsp;|&nbsp; 30+ models across 5 providers</p>
+  <p>Source: OCI Official Documentation &nbsp;|&nbsp; March 2026 &nbsp;|&nbsp; 30+ models</p>
+  
+  <nav class="view-switcher" style="display: flex; background: var(--panel2); border: 1px solid var(--border); padding: 4px; border-radius: 4px; margin-left: 20px;">
+    <button class="view-btn active" id="btnReference" style="background: var(--border); color: var(--on-surface); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Technical Tables</button>
+    <button class="view-btn" id="btnWizard" style="background: none; color: var(--muted); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Guided Selection</button>
+  </nav>
+
   <button class="theme-toggle" id="themeToggle">☀ Light Mode</button>
 </header>
 
 <div class="container">
+
+  <!-- WIZARD VIEW -->
+  <div id="wizardView" style="display: none; max-width: 1000px; margin: 0 auto; padding-bottom: 40px;">
+    <div style="background: var(--panel); border: 1px solid var(--border); padding: 40px; display: flex; gap: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+      <div style="flex: 1;">
+        <div class="wiz-step active" data-step="1">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--red-light); margin-bottom: 24px; text-transform: uppercase;">Step 1: Primary Task</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <button class="wiz-opt" data-val="rag" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Retrieval Augmented Generation (RAG)</button>
+            <button class="wiz-opt" data-val="code" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Software Coding & Agents</button>
+            <button class="wiz-opt" data-val="vision" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Multimodal (Image/Video)</button>
+            <button class="wiz-opt" data-val="chat" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Enterprise Assistant / Chat</button>
+            <button class="wiz-opt" data-val="embed" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Semantic Search / Embedding</button>
+          </div>
+        </div>
+        <div class="wiz-step" data-step="2" style="display:none;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--red-light); margin-bottom: 24px; text-transform: uppercase;">Step 2: Priority</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <button class="wiz-opt" data-val="flagship" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Highest Logic (Flagship)</button>
+            <button class="wiz-opt" data-val="balanced" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Balanced Efficiency</button>
+            <button class="wiz-opt" data-val="fast" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Low Latency / Lite</button>
+          </div>
+        </div>
+        <div class="wiz-step" data-step="3" style="display:none;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--red-light); margin-bottom: 24px; text-transform: uppercase;">Step 3: Context Window</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <button class="wiz-opt" data-val="128k" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Standard (128K Tokens)</button>
+            <button class="wiz-opt" data-val="huge" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Massive (1M - 2M Tokens)</button>
+          </div>
+        </div>
+        <div class="wiz-step" data-step="4" style="display:none;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--red-light); margin-bottom: 24px; text-transform: uppercase;">Step 4: Infrastructure</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <button class="wiz-opt" data-val="any" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Managed Service</button>
+            <button class="wiz-opt" data-val="open" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Open Weights Required</button>
+          </div>
+        </div>
+      </div>
+      <div id="wizResultsBox" style="display: none; flex: 0 0 350px; border-left: 1px solid var(--border); padding-left: 40px;">
+        <div style="background: var(--dark); border: 1px solid var(--border); padding: 24px; border-top: 2px solid var(--red);">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.1em;">Recommended Models</div>
+          <div id="resList"></div>
+          <button id="wizReset" style="width:100%; margin-top:20px; font-size:12px; background: var(--panel2); color: var(--text); border: 1px solid var(--border); padding: 10px; cursor: pointer; border-radius: 2px;">✕ Start Over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="referenceView">
 
   <!-- FILTER CHIPS -->
   <div class="chip-bar">
@@ -587,8 +642,8 @@
         <td><span class="yes">✓</span></td>
         <td><span class="yes">✓</span></td>
         <td><span class="yes">✓</span></td>
-        <td><span class="status-active">● GA (Jul 2025)</span></td>
-        <td class="best-for">Visual data analysis, document understanding, mixed text+image enterprise workflows</td>
+        <td><span class="status-active">● GA Jan 21, 2026</span></td>
+        <td class="best-for">Enterprise document understanding with charts & images</td>
       </tr>
       <tr>
         <td class="model-cell">
@@ -1257,7 +1312,7 @@
     <div class="legend-item"><span class="tier tier-lite">○</span> Lightweight / Budget</div>
     <div class="legend-item"><span class="tier tier-spec">◆</span> Specialized</div>
     <div class="legend-item"><span class="ctx ctx-huge">2M/1M+</span> Context ≥ 1M tokens</div>
-    <div class="legend-item"><span class="ctx ctx-xl">256K</span> Context = 128K–256K tokens</div>
+    <div class="legend-item"><span class="ctx ctx-xl">256K</span> Context = 192K–512K tokens</div>
     <div class="legend-item"><span class="ctx ctx-lg">128K</span> Context = 128K tokens</div>
     <div class="legend-item"><span class="yes">✓</span> Feature supported</div>
     <div class="legend-item"><span class="no">✗</span> Not supported</div>
@@ -1278,7 +1333,8 @@
     <a href="https://github.com/enricopesce" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none;">@ enricopesce</a>
   </div>
 
-</div>
+</div><!-- /#referenceView -->
+</div><!-- /.container -->
 
 <script>
   // Theme toggle
@@ -1366,6 +1422,217 @@
     document.querySelectorAll('.chip.active').forEach(function(c) { c.classList.remove('active'); });
     applyFilter();
   });
+
+  // ── VIEW SWITCHER ─────────────────────────────────────────────────
+  var btnRef  = document.getElementById('btnReference');
+  var btnWiz  = document.getElementById('btnWizard');
+  var refView = document.getElementById('referenceView');
+  var wizView = document.getElementById('wizardView');
+
+  function showView(v) {
+    var toWiz = v === 'wizard';
+    wizView.style.display  = toWiz ? '' : 'none';
+    refView.style.display  = toWiz ? 'none' : '';
+    btnWiz.style.background = toWiz ? 'var(--border)' : 'none';
+    btnWiz.style.color      = toWiz ? 'var(--on-surface)' : 'var(--muted)';
+    btnRef.style.background = toWiz ? 'none' : 'var(--border)';
+    btnRef.style.color      = toWiz ? 'var(--muted)' : 'var(--on-surface)';
+  }
+
+  btnRef.addEventListener('click', function() { showView('reference'); });
+  btnWiz.addEventListener('click', function() { showView('wizard'); });
+
+  // ── WIZARD MODEL DATABASE ─────────────────────────────────────────
+  var WIZ_MODELS = [
+    { name:'Cohere Command A Reasoning', id:'cohere.command-a-reasoning',    badge:'badge-cohere',
+      tasks:['rag','chat'], tier:['flagship'], ctx:'large',    open:false,
+      why:'256K context · RAG-optimized · advanced document reasoning' },
+    { name:'Cohere Command A Vision',    id:'cohere.command-a-vision',        badge:'badge-cohere',
+      tasks:['vision','chat'],             tier:['flagship'], ctx:'standard', open:false,
+      why:'Enterprise multimodal — images, charts, documents' },
+    { name:'Cohere Command A',           id:'cohere.command-a-03-2025',       badge:'badge-cohere',
+      tasks:['rag','chat'],               tier:['flagship','balanced'], ctx:'large', open:false,
+      why:'256K context · flagship chat · high-throughput production' },
+    { name:'Cohere Command R+ 08-2024',  id:'cohere.command-r-plus-08-2024',  badge:'badge-cohere',
+      tasks:['rag','chat'],               tier:['balanced'], ctx:'standard', open:false,
+      why:'128K context · advanced RAG · multilingual Q&A' },
+    { name:'Cohere Command R 08-2024',   id:'cohere.command-r-08-2024',       badge:'badge-cohere',
+      tasks:['rag'],                      tier:['fast','balanced'], ctx:'standard', open:false,
+      why:'RAG-optimized · fine-tunable · cost-efficient production' },
+    { name:'Gemini 2.5 Pro',             id:'google.gemini-2.5-pro',          badge:'badge-google',
+      tasks:['rag','code','vision','chat'],tier:['flagship'], ctx:'huge', open:false,
+      why:'1M+ context · SOTA reasoning · text + image + audio + video' },
+    { name:'Gemini 2.5 Flash',           id:'google.gemini-2.5-flash',        badge:'badge-google',
+      tasks:['rag','code','vision','chat'],tier:['balanced'], ctx:'huge', open:false,
+      why:'1M context · fast + smart · thinking features included' },
+    { name:'Gemini 2.5 Flash-Lite',      id:'google.gemini-2.5-flash-lite',   badge:'badge-google',
+      tasks:['chat','vision'],            tier:['fast'], ctx:'huge', open:false,
+      why:'Lowest-latency Gemini · 1M context · cost-optimized volume' },
+    { name:'Llama 4 Maverick',           id:'meta.llama-4-maverick-17b-128e-instruct-fp8', badge:'badge-meta',
+      tasks:['code','vision','chat'],     tier:['flagship'], ctx:'large', open:true,
+      why:'Open MoE flagship · text + image · 512K context · multilingual' },
+    { name:'Llama 4 Scout',              id:'meta.llama-4-scout-17b-16e-instruct', badge:'badge-meta',
+      tasks:['code','vision','chat'],     tier:['balanced'], ctx:'standard', open:true,
+      why:'Efficient open MoE · multimodal · 192K context' },
+    { name:'Llama 3.3 70B',             id:'meta.llama-3.3-70b-instruct',    badge:'badge-meta',
+      tasks:['chat','code'],              tier:['balanced'], ctx:'standard', open:true,
+      why:'Best open 70B text model · LoRA fine-tunable' },
+    { name:'Llama 3.2 90B Vision',      id:'meta.llama-3.2-90b-vision-instruct', badge:'badge-meta',
+      tasks:['vision'],                   tier:['balanced'], ctx:'standard', open:true,
+      why:'Open-weight vision flagship · 90B capacity' },
+    { name:'Llama 3.2 11B Vision',      id:'meta.llama-3.2-11b-vision-instruct', badge:'badge-meta',
+      tasks:['vision'],                   tier:['fast'], ctx:'standard', open:true,
+      why:'Compact open vision · resource-constrained deployments' },
+    { name:'Llama 3.1 405B',            id:'meta.llama-3.1-405b-instruct',   badge:'badge-meta',
+      tasks:['chat','code'],              tier:['flagship'], ctx:'standard', open:true,
+      why:'Largest open model · highest text quality' },
+    { name:'gpt-oss-120b',              id:'openai.gpt-oss-120b',            badge:'badge-openai',
+      tasks:['code','chat','rag'],        tier:['flagship'], ctx:'standard', open:true,
+      why:'Advanced reasoning + agentic · OpenAI-compatible API' },
+    { name:'gpt-oss-20b',               id:'openai.gpt-oss-20b',             badge:'badge-openai',
+      tasks:['code','chat'],              tier:['fast'], ctx:'standard', open:true,
+      why:'Consumer-hardware optimized · efficient agentic reasoning' },
+    { name:'Grok 4',                    id:'xai.grok-4',                     badge:'badge-xai',
+      tasks:['chat','code'],              tier:['flagship'], ctx:'standard', open:false,
+      why:'Deep domain knowledge: finance · health · law · science' },
+    { name:'Grok 4.1 Fast',             id:'xai.grok-4-1-fast-reasoning',    badge:'badge-xai',
+      tasks:['chat','code','rag'],        tier:['flagship'], ctx:'huge', open:false,
+      why:'2M context · agentic flagship · parallel tool calls · 3× fewer hallucinations' },
+    { name:'Grok 4 Fast',               id:'xai.grok-4-fast-reasoning',      badge:'badge-xai',
+      tasks:['chat','code','rag'],        tier:['balanced','fast'], ctx:'huge', open:false,
+      why:'2M context · Grok 4 quality · speed + cost optimized' },
+    { name:'Grok 3',                    id:'xai.grok-3',                     badge:'badge-xai',
+      tasks:['chat'],                     tier:['balanced'], ctx:'standard', open:false,
+      why:'General enterprise tasks · data extraction · summarization' },
+    { name:'Grok 3 Fast',               id:'xai.grok-3-fast',                badge:'badge-xai',
+      tasks:['chat'],                     tier:['fast'], ctx:'standard', open:false,
+      why:'High-throughput production at Grok 3 quality' },
+    { name:'Grok 3 Mini Fast',          id:'xai.grok-3-mini-fast',           badge:'badge-xai',
+      tasks:['chat'],                     tier:['fast'], ctx:'standard', open:false,
+      why:'Lowest-latency xAI · logic tasks · transparent reasoning traces' },
+    { name:'Grok Code Fast 1',          id:'xai.grok-code-fast-1',           badge:'badge-xai',
+      tasks:['code'],                     tier:['flagship','fast'], ctx:'large', open:false,
+      why:'Specialized coder · 256K context · plan-write-test-debug loops' }
+  ];
+
+  var WIZ_EMBED = [
+    { name:'Cohere Embed 4',                  id:'cohere.embed-v4.0',                   badge:'badge-embed',
+      why:'Gen 4: text + image · multilingual · latest generation' },
+    { name:'Cohere Rerank 3.5',               id:'cohere.rerank.v3-5',                  badge:'badge-embed',
+      why:'Pair with embeddings to rerank RAG results by relevance score' },
+    { name:'Cohere Embed English Image 3',    id:'cohere.embed-english-image-v3.0',     badge:'badge-embed',
+      why:'Gen 3 text+image semantic search for English workloads' }
+  ];
+
+  var WIZ_PROVIDER = {
+    'badge-cohere':'Cohere', 'badge-google':'Google', 'badge-meta':'Meta',
+    'badge-openai':'OpenAI', 'badge-xai':'xAI', 'badge-embed':'Cohere'
+  };
+
+  // ── WIZARD SCORING ────────────────────────────────────────────────
+  function wizScore(m, priority, context) {
+    var s = 0;
+    if (m.tier.indexOf(priority) !== -1) {
+      s += 10;
+    } else if (priority === 'flagship' && m.tier.indexOf('balanced') !== -1) {
+      s += 3;
+    }
+    if (context === 'huge') {
+      s += m.ctx === 'huge' ? 8 : m.ctx === 'large' ? 3 : 0;
+    } else {
+      s += m.ctx === 'standard' ? 5 : m.ctx === 'large' ? 3 : 1;
+    }
+    return s;
+  }
+
+  function wizGetRecs(task, priority, context, infra) {
+    if (task === 'embed') return WIZ_EMBED;
+    return WIZ_MODELS
+      .filter(function(m) {
+        return m.tasks.indexOf(task) !== -1 && (infra !== 'open' || m.open);
+      })
+      .map(function(m) { return { m: m, s: wizScore(m, priority, context) }; })
+      .sort(function(a, b) { return b.s - a.s; })
+      .slice(0, 3)
+      .map(function(x) { return x.m; });
+  }
+
+  // ── WIZARD RESULTS RENDERER ───────────────────────────────────────
+  function wizShowResults() {
+    var recs = wizGetRecs(
+      wizAnswers[1],
+      wizAnswers[2] || 'balanced',
+      wizAnswers[3] || '128k',
+      wizAnswers[4] || 'any'
+    );
+    var medals = ['🥇', '🥈', '🥉'];
+    var html = '';
+    if (recs.length === 0) {
+      html = '<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px 0;">No open-weight models match — try "Managed Service".</div>';
+    }
+    recs.forEach(function(r, i) {
+      html +=
+        '<div style="padding:12px 0;border-bottom:1px solid var(--rec-divider);">' +
+          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">' +
+            '<span style="font-size:16px;">' + medals[i] + '</span>' +
+            '<span class="badge ' + r.badge + '">' + (WIZ_PROVIDER[r.badge] || '') + '</span>' +
+          '</div>' +
+          '<div style="font-weight:600;color:var(--on-surface);font-size:13px;">' + r.name + '</div>' +
+          '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:var(--muted);margin-top:2px;">' + r.id + '</div>' +
+          '<div style="color:var(--muted);font-size:12px;margin-top:5px;">' + r.why + '</div>' +
+        '</div>';
+    });
+    document.getElementById('resList').innerHTML = html;
+    document.getElementById('wizResultsBox').style.display = 'flex';
+  }
+
+  // ── WIZARD STEP NAVIGATION ────────────────────────────────────────
+  var wizAnswers = {};
+
+  function wizGoToStep(n) {
+    document.querySelectorAll('.wiz-step').forEach(function(s) {
+      s.style.display = parseInt(s.dataset.step) === n ? '' : 'none';
+    });
+  }
+
+  function wizReset() {
+    wizAnswers = {};
+    document.getElementById('wizResultsBox').style.display = 'none';
+    document.querySelectorAll('.wiz-opt').forEach(function(b) {
+      b.style.background  = 'var(--panel2)';
+      b.style.border      = '1px solid var(--border)';
+      b.style.color       = 'var(--text)';
+    });
+    wizGoToStep(1);
+  }
+
+  document.querySelectorAll('.wiz-opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var step = parseInt(btn.closest('.wiz-step').dataset.step);
+      wizAnswers[step] = btn.dataset.val;
+
+      // Highlight selected, clear siblings
+      btn.closest('.wiz-step').querySelectorAll('.wiz-opt').forEach(function(b) {
+        b.style.background = 'var(--panel2)';
+        b.style.border     = '1px solid var(--border)';
+        b.style.color      = 'var(--text)';
+      });
+      btn.style.background = 'rgba(192,57,43,0.1)';
+      btn.style.border     = '1px solid var(--red)';
+      btn.style.color      = 'var(--red-light)';
+
+      // Flow: embed skips to results; step 4 shows results; else advance
+      if (step === 1 && btn.dataset.val === 'embed') {
+        setTimeout(wizShowResults, 200);
+      } else if (step === 4) {
+        setTimeout(wizShowResults, 200);
+      } else if (step < 4) {
+        setTimeout(function() { wizGoToStep(step + 1); }, 200);
+      }
+    });
+  });
+
+  document.getElementById('wizReset').addEventListener('click', wizReset);
 </script>
 </body>
 </html>
