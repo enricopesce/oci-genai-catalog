@@ -567,9 +567,7 @@
     <button class="chip" data-q="reasoning" data-group="capability">Reasoning</button>
     <button class="chip" data-q="rag"       data-group="capability">RAG Optimized</button>
     <button class="chip" data-q="code"      data-group="capability">Coding</button>
-    <button class="chip" data-q="embed"         data-group="capability">Embedding</button>
-    <button class="chip" data-q="fine-tunable" data-group="capability">Fine-tunable</button>
-    <button class="chip" data-q="multilingual" data-group="capability">Multilingual</button>
+    <button class="chip" data-q="embed"     data-group="capability">Embedding</button>
     <span class="chip-label">Context</span>
     <button class="chip" data-q="2m"        data-group="context">2M Tokens</button>
     <button class="chip" data-q="1m"        data-group="context">1M Tokens</button>
@@ -1412,6 +1410,11 @@
       var visible = 0;
       s.rows.forEach(function(r) {
         var match = groupKeys.every(function(g) {
+          if (g === 'capability') {
+            return groups[g].every(function(q) {
+              return r.text.indexOf(q) !== -1 || r.tags.indexOf(q) !== -1;
+            });
+          }
           return groups[g].some(function(q) {
             return r.text.indexOf(q) !== -1 || r.tags.indexOf(q) !== -1;
           });
