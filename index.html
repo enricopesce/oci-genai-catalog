@@ -567,7 +567,9 @@
     <button class="chip" data-q="reasoning" data-group="capability">Reasoning</button>
     <button class="chip" data-q="rag"       data-group="capability">RAG Optimized</button>
     <button class="chip" data-q="code"      data-group="capability">Coding</button>
-    <button class="chip" data-q="embed"     data-group="capability">Embedding</button>
+    <button class="chip" data-q="embed"         data-group="capability">Embedding</button>
+    <button class="chip" data-q="fine-tunable" data-group="capability">Fine-tunable</button>
+    <button class="chip" data-q="multilingual" data-group="capability">Multilingual</button>
     <span class="chip-label">Context</span>
     <button class="chip" data-q="2m"        data-group="context">2M Tokens</button>
     <button class="chip" data-q="1m"        data-group="context">1M Tokens</button>
@@ -679,7 +681,7 @@
         <td><span class="status-active">● Active</span></td>
         <td class="best-for">Complex specialized tasks, Q&amp;A, sentiment, multilingual RAG</td>
       </tr>
-      <tr>
+      <tr data-tags="fine-tunable">
         <td class="model-cell">
           <span class="badge badge-cohere">Cohere</span><br>
           <span class="model-name">Command R 08-2024</span>
@@ -821,7 +823,7 @@
         <td><span class="status-active">● GA (2025)</span></td>
         <td class="best-for">Smaller GPU deployments, efficient multimodal, multilingual, coding</td>
       </tr>
-      <tr>
+      <tr data-tags="fine-tunable">
         <td class="model-cell">
           <span class="badge badge-meta">Meta</span><br>
           <span class="model-name">Llama 3.3 70B</span>
@@ -1303,6 +1305,21 @@
   </div>
 
 
+  <div class="matrix-row" style="grid-template-columns: 1fr 1fr;">
+    <div class="matrix-card">
+      <h3>🌐 Multilingual Applications</h3>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Cohere Command A</div><div class="rec-desc">Native multilingual support, 256K context, high-throughput production</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Meta Llama 4 Scout / Maverick</div><div class="rec-desc">Open-weight multilingual models with strong cross-language performance</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🔤</div><div><div class="rec-title">Cohere Embed Multilingual 3 / Embed 4</div><div class="rec-desc">Semantic search in 100+ languages; Gen 4 adds multimodal</div></div></div>
+    </div>
+    <div class="matrix-card">
+      <h3>📄 Long-context Document Analysis</h3>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">xAI Grok 4.1 Fast</div><div class="rec-desc">2M tokens — process full codebases or entire document archives in one pass</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Google Gemini 2.5 Pro</div><div class="rec-desc">1M+ context with multimodal; ideal for large PDFs, reports, mixed media</div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">xAI Grok 4 Fast</div><div class="rec-desc">2M context at optimized cost; great for batch document workloads</div></div></div>
+    </div>
+  </div>
+
   <!-- LEGEND -->
   <div class="legend">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8EAF0;font-weight:600;width:100%;margin-bottom:4px;">LEGEND</div>
@@ -1356,7 +1373,7 @@
   document.querySelectorAll('.table-wrap').forEach(function(wrap) {
     var rows = [];
     wrap.querySelectorAll('tbody tr').forEach(function(tr) {
-      rows.push({ el: tr, text: tr.textContent.toLowerCase() });
+      rows.push({ el: tr, text: tr.textContent.toLowerCase(), tags: (tr.dataset.tags || '').toLowerCase() });
     });
     var title = wrap.previousElementSibling;
     sections.push({
@@ -1396,7 +1413,7 @@
       s.rows.forEach(function(r) {
         var match = groupKeys.every(function(g) {
           return groups[g].some(function(q) {
-            return r.text.indexOf(q) !== -1;
+            return r.text.indexOf(q) !== -1 || r.tags.indexOf(q) !== -1;
           });
         });
         r.el.style.display = match ? '' : 'none';
