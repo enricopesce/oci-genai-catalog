@@ -1,0 +1,10 @@
+#!/bin/sh
+# Stamp the current git commit hash into index.html so every push
+# produces a new ETag and the service worker fetches fresh content.
+
+HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "dev")
+
+# Replace whatever is in content="..." for the build-version meta tag
+sed -i "s|<meta name=\"build-version\" content=\"[^\"]*\">|<meta name=\"build-version\" content=\"$HASH\">|" index.html
+
+git add index.html
