@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "dataDate": "March 2026",
+    "dataDate": "2026-03-13",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/",
     "version": "2026-03",
     "regionDefinitions": {
@@ -121,12 +121,10 @@
       "tags": [],
       "regions": {
         "us-ashburn-1":  "dedicated",
-        "us-chicago-1":  "both",
         "us-phoenix-1":  "dedicated",
-        "sa-saopaulo-1": "dedicated",
+        "sa-saopaulo-1": "both",
         "eu-frankfurt-1":"both",
         "eu-london-1":   "dedicated",
-        "me-riyadh-1":   "dedicated",
         "me-dubai-1":    "dedicated",
         "ap-hyderabad-1":"dedicated",
         "ap-osaka-1":    "dedicated"
@@ -554,6 +552,7 @@
         "us-chicago-1":  "both",
         "sa-saopaulo-1": "dedicated",
         "eu-london-1":   "dedicated",
+        "me-riyadh-1":   "dedicated",
         "ap-hyderabad-1":"dedicated",
         "ap-osaka-1":    "dedicated"
       },
@@ -608,7 +607,6 @@
         "sa-saopaulo-1": "both",
         "eu-frankfurt-1":"both",
         "eu-london-1":   "both",
-        "me-riyadh-1":   "dedicated",
         "me-dubai-1":    "dedicated",
         "ap-hyderabad-1":"dedicated",
         "ap-osaka-1":    "both"
@@ -898,11 +896,11 @@
       "parameters": null,
       "activeParameters": null,
       "architecture": null,
-      "contextWindowLabel": "128K",
-      "contextWindowK": 128,
-      "contextClass": "lg",
-      "multimodal": true,
-      "multimodalDetail": "Text + Image",
+      "contextWindowLabel": "—",
+      "contextWindowK": null,
+      "contextClass": "sm",
+      "multimodal": false,
+      "multimodalDetail": null,
       "multimodalNote": null,
       "fineTunable": false,
       "fineTunableDetail": null,
@@ -935,12 +933,12 @@
       "wizardTasks": ["chat", "code"],
       "wizardTier": ["flagship"],
       "wizardCtx": "standard",
-      "wizardWhy": "Deep domain knowledge: finance · health · law · science"
+      "wizardWhy": "Enterprise flagship · deep domain knowledge: finance · health · law · science"
     },
     {
       "name": "Grok 4 Fast",
-      "id": "xai.grok-4-fast-reasoning",
-      "altIds": ["xai.grok-4-fast-non-reasoning"],
+      "id": "xai.grok-4-fast",
+      "altIds": [],
       "provider": "xai",
       "callType": "external",
       "tier": "fast",
@@ -948,9 +946,9 @@
       "parameters": null,
       "activeParameters": null,
       "architecture": null,
-      "contextWindowLabel": "2M",
-      "contextWindowK": 2000,
-      "contextClass": "huge",
+      "contextWindowLabel": "—",
+      "contextWindowK": null,
+      "contextClass": "sm",
       "multimodal": true,
       "multimodalDetail": "Text + Image",
       "multimodalNote": null,
@@ -984,13 +982,13 @@
       },
       "wizardTasks": ["chat", "code", "rag"],
       "wizardTier": ["balanced", "fast"],
-      "wizardCtx": "huge",
-      "wizardWhy": "2M context · Grok 4 quality · speed + cost optimized"
+      "wizardCtx": "standard",
+      "wizardWhy": "Grok 4 quality · speed + cost optimized"
     },
     {
       "name": "Grok 4.1 Fast",
-      "id": "xai.grok-4-1-fast-reasoning",
-      "altIds": ["xai.grok-4-1-fast-non-reasoning"],
+      "id": "xai.grok-4-1-fast",
+      "altIds": [],
       "provider": "xai",
       "callType": "external",
       "tier": "flagship",
@@ -1441,8 +1439,7 @@
         "us-chicago-1":  "both",
         "sa-saopaulo-1": "both",
         "eu-frankfurt-1":"both",
-        "eu-london-1":   "both",
-        "ap-osaka-1":    "both"
+        "eu-london-1":   "both"
       },
       "wizardWhy": "English text semantic search · classification · clustering"
     },
@@ -1462,8 +1459,8 @@
       "status": "active",
       "statusLabel": "Active",
       "regions": {
-        "us-chicago-1": "both",
-        "me-dubai-1":   "dedicated"
+        "us-chicago-1":  "both",
+        "sa-saopaulo-1": "both"
       },
       "wizardWhy": "Cost-efficient English text embeddings at scale"
     },
@@ -1488,9 +1485,8 @@
         "us-phoenix-1":  "both",
         "sa-saopaulo-1": "both",
         "eu-frankfurt-1":"both",
-        "eu-london-1":   "dedicated",
-        "me-riyadh-1":   "dedicated",
-        "me-dubai-1":    "dedicated",
+        "eu-london-1":   "both",
+        "ap-hyderabad-1":"both",
         "ap-osaka-1":    "both"
       },
       "wizardWhy": "Global text semantic search in 100+ languages"
@@ -1511,7 +1507,8 @@
       "status": "active",
       "statusLabel": "Active",
       "regions": {
-        "us-chicago-1": "both"
+        "us-chicago-1":  "both",
+        "sa-saopaulo-1": "both"
       },
       "wizardWhy": "Affordable multilingual text embeddings at volume"
     }

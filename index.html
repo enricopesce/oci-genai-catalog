@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OCI Generative AI Models — Complete Reference 2026 | 30+ LLMs</title>
+<title>OCI GenAI Catalog | 30+ LLMs from Cohere, Google, Meta, OpenAI, xAI</title>
 <meta name="description" content="Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models. 30+ LLMs from Cohere, Google Gemini, Meta Llama, OpenAI gpt-oss, and xAI Grok — context windows, multimodal, tool use, fine-tuning, and more.">
 <meta name="keywords" content="OCI generative AI, Oracle Cloud AI, LLM comparison, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, AI model comparison">
 <meta name="author" content="enricopesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="2e4db46">
+<meta name="build-version" content="fb98a42">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-llm-comparison/">
@@ -16,7 +16,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://enricopesce.github.io/oci-llm-comparison/">
-<meta property="og:title" content="OCI Generative AI Models — Complete Reference 2026">
+<meta property="og:title" content="OCI GenAI Catalog — 30+ LLMs on Oracle Cloud">
 <meta property="og:description" content="Compare 30+ LLMs available on Oracle Cloud Infrastructure: Cohere, Google Gemini, Meta Llama 4, xAI Grok 4, OpenAI gpt-oss. Context windows, multimodal, fine-tuning, tool use and more.">
 <meta property="og:image" content="https://enricopesce.github.io/oci-llm-comparison/preview.png">
 <meta property="og:site_name" content="OCI LLM Reference">
@@ -24,7 +24,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="OCI Generative AI Models — Complete Reference 2026">
+<meta name="twitter:title" content="OCI GenAI Catalog — 30+ LLMs on Oracle Cloud">
 <meta name="twitter:description" content="Compare 30+ LLMs on Oracle Cloud: Cohere, Gemini, Llama 4, Grok 4, OpenAI gpt-oss. Context windows, multimodal, fine-tuning and more.">
 <meta name="twitter:image" content="https://enricopesce.github.io/oci-llm-comparison/preview.png">
 
@@ -33,10 +33,10 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "OCI Generative AI Models — Complete Reference 2026",
+  "name": "OCI GenAI Catalog",
   "description": "Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models including chat, embedding, and rerank models from 5 providers.",
   "url": "https://enricopesce.github.io/oci-llm-comparison/",
-  "dateModified": "2026-03-05",
+  "dateModified": "2026-03-13",
   "author": { "@type": "Person", "name": "enricopesce" },
   "about": {
     "@type": "Thing",
@@ -489,6 +489,51 @@
     .rec-item { font-size: 12px; }
     .rec-desc { font-size: 11px; }
   }
+
+  /* ── GUIDED SELECTION WIZARD ──────────────────────────────────── */
+  .wiz-step-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--red-light);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .wiz-opt {
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 16px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 2px;
+    display: block;
+    width: 100%;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .wiz-opt:hover { background: rgba(255,255,255,0.04); border-color: var(--muted); }
+  .wiz-opt.wiz-selected { background: rgba(192,57,43,0.1); border-color: var(--red); color: var(--red-light); }
+  .wiz-opt-icon  { font-size: 18px; margin-bottom: 6px; display: block; }
+  .wiz-opt-label { font-weight: 600; font-size: 13px; color: var(--on-surface); margin-bottom: 3px; display: block; }
+  .wiz-opt.wiz-selected .wiz-opt-label { color: var(--red-light); }
+  .wiz-opt-desc  { font-size: 11px; color: var(--muted); line-height: 1.45; display: block; }
+  .wiz-prog-dot  { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.15s; cursor: default; }
+  .wiz-prog-dot.wiz-prog-done   { color: var(--text); }
+  .wiz-prog-dot.wiz-prog-active { color: var(--red-light); font-weight: 600; }
+  .wiz-prog-sep  { color: var(--border); margin: 0 8px; font-size: 10px; }
+
+  @media (max-width: 900px) {
+    #wizardView > div { flex-direction: column !important; }
+    #wizResultsBox { border-left: none !important; border-top: 1px solid var(--border); padding-left: 0 !important; padding-top: 24px; flex: none !important; width: 100% !important; }
+  }
+  @media (max-width: 600px) {
+    #wizardView > div { padding: 20px !important; gap: 20px !important; }
+    .wiz-step-title { font-size: 10px; }
+    .wiz-opt { padding: 10px 12px; }
+    .wiz-opt-icon { font-size: 16px; }
+    .wiz-opt-label { font-size: 12px; }
+    .wiz-opt-desc { font-size: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -496,9 +541,9 @@
 <header>
   <div>
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
-    <h1>Model Reference 2026</h1>
+    <h1>OCI GenAI Catalog</h1>
   </div>
-  <p>Source: OCI Official Documentation &nbsp;|&nbsp; March 2026 &nbsp;|&nbsp; 30+ models</p>
+  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 13 Mar 2026 &nbsp;|&nbsp; 30+ models</p>
   
   <nav class="view-switcher" style="display: flex; background: var(--panel2); border: 1px solid var(--border); padding: 4px; border-radius: 4px; margin-left: 20px;">
     <button class="view-btn active" id="btnReference" style="background: var(--border); color: var(--on-surface); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Technical Tables</button>
@@ -511,47 +556,148 @@
 <div class="container">
 
   <!-- WIZARD VIEW -->
-  <div id="wizardView" style="display: none; max-width: 1000px; margin: 0 auto; padding-bottom: 40px;">
+  <div id="wizardView" style="display: none; max-width: 1100px; margin: 0 auto; padding-bottom: 40px;">
     <div style="background: var(--panel); border: 1px solid var(--border); padding: 40px; display: flex; gap: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-      <div style="flex: 1;">
-        <div class="wiz-step active" data-step="1">
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--red-light); margin-bottom: 24px; text-transform: uppercase;">Step 1: Primary Task</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <button class="wiz-opt" data-val="rag" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Retrieval Augmented Generation (RAG)</button>
-            <button class="wiz-opt" data-val="code" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Software Coding & Agents</button>
-            <button class="wiz-opt" data-val="vision" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Multimodal (Image/Video)</button>
-            <button class="wiz-opt" data-val="chat" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Enterprise Assistant / Chat</button>
-            <button class="wiz-opt" data-val="embed" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Semantic Search / Embedding</button>
+      <div style="flex: 1; min-width: 0;">
+
+        <!-- Progress bar -->
+        <div style="display:flex; align-items:center; margin-bottom:28px;">
+          <span class="wiz-prog-dot wiz-prog-active" data-step="1">Task</span>
+          <span class="wiz-prog-sep">›</span>
+          <span class="wiz-prog-dot" data-step="2">Tier</span>
+          <span class="wiz-prog-sep">›</span>
+          <span class="wiz-prog-dot" data-step="3">Deployment</span>
+          <span class="wiz-prog-sep">›</span>
+          <span class="wiz-prog-dot" data-step="4">Region</span>
+        </div>
+
+        <!-- Step 1: Task -->
+        <div class="wiz-step" data-step="1">
+          <div class="wiz-step-title">Step 1 — What are you building?</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <button class="wiz-opt" data-val="rag">
+              <span class="wiz-opt-icon">🔍</span>
+              <span class="wiz-opt-label">RAG / Document Q&amp;A</span>
+              <span class="wiz-opt-desc">Retrieval-augmented generation, search over large document corpora</span>
+            </button>
+            <button class="wiz-opt" data-val="code">
+              <span class="wiz-opt-icon">💻</span>
+              <span class="wiz-opt-label">Code &amp; Agents</span>
+              <span class="wiz-opt-desc">Code generation, debugging, agentic tool-use workflows</span>
+            </button>
+            <button class="wiz-opt" data-val="vision">
+              <span class="wiz-opt-icon">🖼</span>
+              <span class="wiz-opt-label">Multimodal / Vision</span>
+              <span class="wiz-opt-desc">Process images, charts and documents alongside text</span>
+            </button>
+            <button class="wiz-opt" data-val="chat">
+              <span class="wiz-opt-icon">🤖</span>
+              <span class="wiz-opt-label">Enterprise Chat &amp; Reasoning</span>
+              <span class="wiz-opt-desc">Conversational AI, summarization, complex reasoning tasks</span>
+            </button>
+            <button class="wiz-opt" data-val="embed">
+              <span class="wiz-opt-icon">🧲</span>
+              <span class="wiz-opt-label">Semantic Search / Embeddings</span>
+              <span class="wiz-opt-desc">Vector embeddings and reranking for search pipelines</span>
+            </button>
+            <button class="wiz-opt" data-val="finetune">
+              <span class="wiz-opt-icon">🎓</span>
+              <span class="wiz-opt-label">Fine-Tune a Custom Model</span>
+              <span class="wiz-opt-desc">Adapt a base model to domain data on dedicated GPU clusters</span>
+            </button>
           </div>
         </div>
+
+        <!-- Step 2: Tier -->
         <div class="wiz-step" data-step="2" style="display:none;">
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--red-light); margin-bottom: 24px; text-transform: uppercase;">Step 2: Priority</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <button class="wiz-opt" data-val="flagship" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Highest Logic (Flagship)</button>
-            <button class="wiz-opt" data-val="balanced" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Balanced Efficiency</button>
-            <button class="wiz-opt" data-val="fast" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Low Latency / Lite</button>
+          <div class="wiz-step-title">Step 2 — Quality vs Speed priority?</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+            <button class="wiz-opt" data-val="flagship">
+              <span class="wiz-opt-icon">★</span>
+              <span class="wiz-opt-label">Flagship</span>
+              <span class="wiz-opt-desc">Best possible quality; complex tasks, SOTA benchmarks</span>
+            </button>
+            <button class="wiz-opt" data-val="balanced">
+              <span class="wiz-opt-icon">◉</span>
+              <span class="wiz-opt-label">Balanced</span>
+              <span class="wiz-opt-desc">Strong quality at reasonable cost; most production workloads</span>
+            </button>
+            <button class="wiz-opt" data-val="fast">
+              <span class="wiz-opt-icon">▷</span>
+              <span class="wiz-opt-label">Fast / Lite</span>
+              <span class="wiz-opt-desc">Low latency, high volume, cost-sensitive tasks</span>
+            </button>
           </div>
         </div>
+
+        <!-- Step 3: Deployment mode -->
         <div class="wiz-step" data-step="3" style="display:none;">
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--red-light); margin-bottom: 24px; text-transform: uppercase;">Step 3: Context Window</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <button class="wiz-opt" data-val="128k" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Standard (128K Tokens)</button>
-            <button class="wiz-opt" data-val="huge" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Massive (1M - 2M Tokens)</button>
+          <div class="wiz-step-title">Step 3 — Deployment mode?</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+            <button class="wiz-opt" data-val="ondemand">
+              <span class="wiz-opt-icon">⚡</span>
+              <span class="wiz-opt-label">On-Demand</span>
+              <span class="wiz-opt-desc">Serverless, pay-per-token; no cluster provisioning needed</span>
+            </button>
+            <button class="wiz-opt" data-val="dedicated">
+              <span class="wiz-opt-icon">🔒</span>
+              <span class="wiz-opt-label">Dedicated Cluster</span>
+              <span class="wiz-opt-desc">Private GPU resources; required for fine-tuning and data compliance</span>
+            </button>
+            <button class="wiz-opt" data-val="any">
+              <span class="wiz-opt-icon">◎</span>
+              <span class="wiz-opt-label">No Preference</span>
+              <span class="wiz-opt-desc">Show all models regardless of deployment type</span>
+            </button>
           </div>
         </div>
+
+        <!-- Step 4: Region -->
         <div class="wiz-step" data-step="4" style="display:none;">
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--red-light); margin-bottom: 24px; text-transform: uppercase;">Step 4: Infrastructure</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <button class="wiz-opt" data-val="any" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Managed Service</button>
-            <button class="wiz-opt" data-val="open" style="background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 16px; text-align: left; cursor: pointer; border-radius: 2px;">Open Weights Required</button>
+          <div class="wiz-step-title">Step 4 — Target region?</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <button class="wiz-opt" data-val="americas">
+              <span class="wiz-opt-icon">🌎</span>
+              <span class="wiz-opt-label">Americas</span>
+              <span class="wiz-opt-desc">US East · US Midwest · US West · Brazil (São Paulo)</span>
+            </button>
+            <button class="wiz-opt" data-val="europe">
+              <span class="wiz-opt-icon">🌍</span>
+              <span class="wiz-opt-label">Europe</span>
+              <span class="wiz-opt-desc">Germany (Frankfurt) · UK South (London)</span>
+            </button>
+            <button class="wiz-opt" data-val="me">
+              <span class="wiz-opt-icon">🏜</span>
+              <span class="wiz-opt-label">Middle East</span>
+              <span class="wiz-opt-desc">Saudi Arabia (Riyadh) · UAE (Dubai)</span>
+            </button>
+            <button class="wiz-opt" data-val="apac">
+              <span class="wiz-opt-icon">🌏</span>
+              <span class="wiz-opt-label">Asia Pacific</span>
+              <span class="wiz-opt-desc">India (Hyderabad) · Japan (Osaka)</span>
+            </button>
+            <button class="wiz-opt" data-val="any" style="grid-column:1/-1;">
+              <span class="wiz-opt-icon">🌐</span>
+              <span class="wiz-opt-label">No Preference / Global</span>
+              <span class="wiz-opt-desc">Show all models regardless of regional availability</span>
+            </button>
           </div>
         </div>
+
+        <!-- Back button -->
+        <div id="wizBackRow" style="display:none; margin-top:16px;">
+          <button id="wizBack" style="background:none; border:1px solid var(--border); color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:11px; padding:6px 16px; cursor:pointer; border-radius:2px; transition:color 0.15s, border-color 0.15s;">← Back</button>
+        </div>
+
       </div>
-      <div id="wizResultsBox" style="display: none; flex: 0 0 350px; border-left: 1px solid var(--border); padding-left: 40px;">
-        <div style="background: var(--dark); border: 1px solid var(--border); padding: 24px; border-top: 2px solid var(--red);">
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.1em;">Recommended Models</div>
+
+      <!-- Results panel -->
+      <div id="wizResultsBox" style="display:none; flex:0 0 360px; border-left:1px solid var(--border); padding-left:40px;">
+        <div style="background:var(--dark); border:1px solid var(--border); padding:24px; border-top:2px solid var(--red);">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em;">Recommended Models</div>
+          <div id="wizSummary" style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--red-light); margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--border); line-height:1.6;"></div>
           <div id="resList"></div>
-          <button id="wizReset" style="width:100%; margin-top:20px; font-size:12px; background: var(--panel2); color: var(--text); border: 1px solid var(--border); padding: 10px; cursor: pointer; border-radius: 2px;">✕ Start Over</button>
+          <button id="wizReset" style="width:100%; margin-top:20px; font-size:12px; background:var(--panel2); color:var(--text); border:1px solid var(--border); padding:10px; cursor:pointer; border-radius:2px;">✕ Start Over</button>
         </div>
       </div>
     </div>
@@ -883,8 +1029,13 @@
     <p>² Fine-tuning on OCI uses dedicated AI clusters (GPU resources belonging exclusively to your tenancy). Cohere supports T-Few &amp; Vanilla strategies; Meta Llama supports LoRA.</p>
     <p>³ Retired/deprecated models (Command R legacy, Llama 3 70B, Llama 3.1 70B) are omitted from the main tables.</p>
     <p>⁴ Model Import feature (GA 2025) lets you bring your own LLMs from Hugging Face or OCI Object Storage.</p>
-    <p>⁶ Grok 4 Fast and Grok 4.1 Fast each expose two OCI model IDs: a <code>-reasoning</code> variant (thinking tokens, chain-of-thought) and a <code>-non-reasoning</code> variant (instant responses, no thinking tokens).</p>
-    <p>⁵ Data source: OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/ — March 2026.</p>
+    <p>⁶ Grok 4.1 Fast context window (2M tokens) is confirmed by OCI documentation. Grok 4 and Grok 4 Fast context windows are not disclosed in OCI official docs.</p>
+    <p>⁵ Data sources (OCI Official Documentation, last updated 13 March 2026):
+      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Pretrained Models</a> ·
+      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Models by Region</a> ·
+      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Inferencing Modes</a> ·
+      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Model Import</a>
+    </p>
   </div>
 
   <div style="margin-top:24px; padding:10px 16px; background:rgba(230,126,34,0.08); border:1px solid rgba(230,126,34,0.25); font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; line-height:1.6;">
@@ -892,6 +1043,7 @@
   </div>
   <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border); text-align:center; font-size:12px; color:var(--muted); font-family:'IBM Plex Mono',monospace;">
     <a href="https://github.com/enricopesce/oci-llm-comparison" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">⌥ GitHub Repository</a>
+    <a href="https://enricopesce.github.io/oci-llm-comparison/models.json" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">{ } models.json</a>
     <a href="https://github.com/enricopesce" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none;">@ enricopesce</a>
   </div>
 
@@ -1152,7 +1304,9 @@
     WIZ_MODELS = chat.map(function(m) {
       return { name: m.name, id: m.id, badge: 'badge-' + m.provider,
                tasks: m.wizardTasks, tier: m.wizardTier, ctx: m.wizardCtx,
-               open: m.openWeights, why: m.wizardWhy };
+               open: m.openWeights, finetune: !!(m.fineTunable),
+               regions: m.regions || {}, callType: m.callType || 'hosted',
+               why: m.wizardWhy };
     });
     var wizEmbedIds = ['cohere.embed-v4.0', 'cohere.rerank.v3-5', 'cohere.embed-english-image-v3.0'];
     var allEmbedRank = data.embeddingModels.concat(data.rerankModels);
@@ -1245,57 +1399,114 @@
       initFilters(); // still wire up chips even if data fails
     });
 
+  // ── WIZARD REGION MAP ─────────────────────────────────────────────
+  var WIZARD_REGION_MAP = {
+    'americas': ['us-ashburn-1', 'us-chicago-1', 'us-phoenix-1', 'sa-saopaulo-1'],
+    'europe':   ['eu-frankfurt-1', 'eu-london-1'],
+    'me':       ['me-riyadh-1', 'me-dubai-1'],
+    'apac':     ['ap-hyderabad-1', 'ap-osaka-1']
+  };
+
   // ── WIZARD SCORING ────────────────────────────────────────────────
-  function wizScore(m, priority, context) {
+  function wizScore(m, tier) {
     var s = 0;
-    if (m.tier.indexOf(priority) !== -1) {
-      s += 10;
-    } else if (priority === 'flagship' && m.tier.indexOf('balanced') !== -1) {
-      s += 3;
-    }
-    if (context === 'huge') {
-      s += m.ctx === 'huge' ? 8 : m.ctx === 'large' ? 3 : 0;
-    } else {
-      s += m.ctx === 'standard' ? 5 : m.ctx === 'large' ? 3 : 1;
-    }
+    if (m.tier.indexOf(tier) !== -1) s += 10;
+    else if (tier === 'flagship' && m.tier.indexOf('balanced') !== -1) s += 3;
+    s += m.ctx === 'huge' ? 4 : m.ctx === 'large' ? 2 : 1;
     return s;
   }
 
-  function wizGetRecs(task, priority, context, infra) {
+  function wizGetRecs(task, tier, deployment, region) {
     if (task === 'embed') return WIZ_EMBED;
     return WIZ_MODELS
       .filter(function(m) {
-        return m.tasks.indexOf(task) !== -1 && (infra !== 'open' || m.open);
+        // Task / fine-tune filter
+        if (task === 'finetune') {
+          if (!m.finetune) return false;
+        } else {
+          if (m.tasks.indexOf(task) === -1) return false;
+        }
+        // Deployment filter
+        if (deployment !== 'any') {
+          var hasMode = Object.keys(m.regions).some(function(r) {
+            var a = m.regions[r];
+            if (deployment === 'ondemand')  return a === 'both' || a === 'ondemand';
+            if (deployment === 'dedicated') return a === 'both' || a === 'dedicated';
+            return true;
+          });
+          if (!hasMode) return false;
+        }
+        // Region filter
+        if (region !== 'any') {
+          var ids = WIZARD_REGION_MAP[region] || [];
+          if (!ids.some(function(r) { return m.regions[r]; })) return false;
+        }
+        return true;
       })
-      .map(function(m) { return { m: m, s: wizScore(m, priority, context) }; })
+      .map(function(m) { return { m: m, s: wizScore(m, tier) }; })
       .sort(function(a, b) { return b.s - a.s; })
       .slice(0, 3)
       .map(function(x) { return x.m; });
   }
 
   // ── WIZARD RESULTS RENDERER ───────────────────────────────────────
+  var WIZ_TASK_LABELS   = { rag:'RAG', code:'Code & Agents', vision:'Vision', chat:'Enterprise Chat', embed:'Embeddings', finetune:'Fine-Tuning' };
+  var WIZ_TIER_LABELS   = { flagship:'Flagship', balanced:'Balanced', fast:'Fast/Lite' };
+  var WIZ_DEPLOY_LABELS = { ondemand:'On-Demand', dedicated:'Dedicated', any:'Any Mode' };
+  var WIZ_REGION_LABELS = { americas:'Americas', europe:'Europe', me:'Middle East', apac:'Asia Pacific', any:'Global' };
+
   function wizShowResults() {
-    var recs = wizGetRecs(
-      wizAnswers[1],
-      wizAnswers[2] || 'balanced',
-      wizAnswers[3] || '128k',
-      wizAnswers[4] || 'any'
-    );
+    var task       = wizAnswers[1];
+    var tier       = wizAnswers[2] || 'balanced';
+    var deployment = wizAnswers[3] || 'any';
+    var region     = wizAnswers[4] || 'any';
+    var recs = wizGetRecs(task, tier, deployment, region);
+
+    // Summary line
+    var parts = [];
+    if (WIZ_TASK_LABELS[task])   parts.push(WIZ_TASK_LABELS[task]);
+    if (tier && task !== 'embed' && task !== 'finetune') parts.push(WIZ_TIER_LABELS[tier] || tier);
+    parts.push(WIZ_DEPLOY_LABELS[deployment] || deployment);
+    parts.push(WIZ_REGION_LABELS[region] || region);
+    document.getElementById('wizSummary').textContent = parts.join(' · ');
+
     var medals = ['🥇', '🥈', '🥉'];
     var html = '';
     if (recs.length === 0) {
-      html = '<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px 0;">No open-weight models match — try "Managed Service".</div>';
+      html = '<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px 0;">' +
+               'No models match these filters.<br>' +
+               '<span style="font-size:11px;">Try relaxing the region or deployment mode.</span>' +
+             '</div>';
     }
     recs.forEach(function(r, i) {
+      // Region access tags for selected region
+      var regionTags = '';
+      var regionIds = region !== 'any' ? (WIZARD_REGION_MAP[region] || [])
+                                       : Object.keys(r.regions).slice(0, 4);
+      regionIds.forEach(function(rid) {
+        if (!r.regions[rid]) return;
+        var a   = r.regions[rid];
+        var cls = a === 'both' ? 'tag-green' : a === 'dedicated' ? 'tag-orange' : 'tag-blue';
+        var lbl = a === 'both' ? 'On-dem+Ded' : a === 'dedicated' ? 'Dedicated' : 'On-demand';
+        regionTags += '<span class="tag ' + cls + '" style="font-size:9px;" title="' + lbl + '">' +
+                        (REGION_SHORT[rid] || rid) + '</span> ';
+      });
+      // Deployment badge
+      var deployBadge = r.callType === 'external'
+        ? '<span class="tag tag-blue" style="font-size:9px;">External API</span>'
+        : (r.finetune ? '<span class="tag tag-orange" style="font-size:9px;">Fine-tunable</span>' : '');
+
       html +=
         '<div style="padding:12px 0;border-bottom:1px solid var(--rec-divider);">' +
           '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">' +
             '<span style="font-size:16px;">' + medals[i] + '</span>' +
             '<span class="badge ' + r.badge + '">' + (WIZ_PROVIDER[r.badge] || '') + '</span>' +
+            deployBadge +
           '</div>' +
           '<div style="font-weight:600;color:var(--on-surface);font-size:13px;">' + r.name + '</div>' +
           '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:var(--muted);margin-top:2px;">' + r.id + '</div>' +
           '<div style="color:var(--muted);font-size:12px;margin-top:5px;">' + r.why + '</div>' +
+          (regionTags ? '<div style="margin-top:6px;">' + regionTags + '</div>' : '') +
         '</div>';
     });
     document.getElementById('resList').innerHTML = html;
@@ -1304,48 +1515,68 @@
 
   // ── WIZARD STEP NAVIGATION ────────────────────────────────────────
   var wizAnswers = {};
+  var wizHistory = [];
 
   function wizGoToStep(n) {
     document.querySelectorAll('.wiz-step').forEach(function(s) {
       s.style.display = parseInt(s.dataset.step) === n ? '' : 'none';
     });
+    // Update progress dots
+    document.querySelectorAll('.wiz-prog-dot').forEach(function(d) {
+      var s = parseInt(d.dataset.step);
+      d.className = 'wiz-prog-dot' + (s < n ? ' wiz-prog-done' : s === n ? ' wiz-prog-active' : '');
+    });
+    document.getElementById('wizBackRow').style.display = wizHistory.length > 0 ? '' : 'none';
+  }
+
+  function wizAdvance(step, val) {
+    wizHistory.push(step);
+    wizAnswers[step] = val;
+    // Highlight selected button
+    document.querySelectorAll('.wiz-step[data-step="' + step + '"] .wiz-opt').forEach(function(b) {
+      b.classList.remove('wiz-selected');
+    });
+    document.querySelectorAll('.wiz-step[data-step="' + step + '"] .wiz-opt[data-val="' + val + '"]').forEach(function(b) {
+      b.classList.add('wiz-selected');
+    });
+    // Navigation flow
+    if (step === 1 && val === 'embed') {
+      setTimeout(wizShowResults, 200);
+    } else if (step === 1 && val === 'finetune') {
+      // Fine-tuning requires dedicated; skip tier (step 2) and deployment (step 3)
+      wizAnswers[2] = 'balanced';
+      wizAnswers[3] = 'dedicated';
+      setTimeout(function() { wizGoToStep(4); }, 200);
+    } else if (step === 4) {
+      setTimeout(wizShowResults, 200);
+    } else {
+      setTimeout(function() { wizGoToStep(step + 1); }, 200);
+    }
   }
 
   function wizReset() {
     wizAnswers = {};
+    wizHistory = [];
     document.getElementById('wizResultsBox').style.display = 'none';
-    document.querySelectorAll('.wiz-opt').forEach(function(b) {
-      b.style.background  = 'var(--panel2)';
-      b.style.border      = '1px solid var(--border)';
-      b.style.color       = 'var(--text)';
-    });
+    document.querySelectorAll('.wiz-opt').forEach(function(b) { b.classList.remove('wiz-selected'); });
     wizGoToStep(1);
   }
 
   document.querySelectorAll('.wiz-opt').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var step = parseInt(btn.closest('.wiz-step').dataset.step);
-      wizAnswers[step] = btn.dataset.val;
-
-      // Highlight selected, clear siblings
-      btn.closest('.wiz-step').querySelectorAll('.wiz-opt').forEach(function(b) {
-        b.style.background = 'var(--panel2)';
-        b.style.border     = '1px solid var(--border)';
-        b.style.color      = 'var(--text)';
-      });
-      btn.style.background = 'rgba(192,57,43,0.1)';
-      btn.style.border     = '1px solid var(--red)';
-      btn.style.color      = 'var(--red-light)';
-
-      // Flow: embed skips to results; step 4 shows results; else advance
-      if (step === 1 && btn.dataset.val === 'embed') {
-        setTimeout(wizShowResults, 200);
-      } else if (step === 4) {
-        setTimeout(wizShowResults, 200);
-      } else if (step < 4) {
-        setTimeout(function() { wizGoToStep(step + 1); }, 200);
-      }
+      wizAdvance(step, btn.dataset.val);
     });
+  });
+
+  document.getElementById('wizBack').addEventListener('click', function() {
+    if (!wizHistory.length) return;
+    var prevStep = wizHistory.pop();
+    delete wizAnswers[prevStep];
+    // Also clear any auto-set answers for skipped steps
+    if (prevStep === 1) { delete wizAnswers[2]; delete wizAnswers[3]; }
+    document.getElementById('wizResultsBox').style.display = 'none';
+    wizGoToStep(prevStep);
   });
 
   document.getElementById('wizReset').addEventListener('click', wizReset);
