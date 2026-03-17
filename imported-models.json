@@ -1,0 +1,148 @@
+{
+  "metadata": {
+    "dataDate": "2026-03-17",
+    "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm",
+    "version": "2026-03",
+    "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count."
+  },
+  "families": [
+    {
+      "id": "alibaba",
+      "name": "Alibaba Qwen Family",
+      "badge": "alibaba",
+      "label": "Alibaba",
+      "models": [
+        { "name": "QwQ-32B",                        "hfId": "Qwen/QwQ-32B",                             "type": "reasoning", "params": "32B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Qwen3-Embedding-0.6B",            "hfId": "Qwen/Qwen3-Embedding-0.6B",                "type": "embed",     "params": "0.6B", "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A10_X1",      "clusterClass": "tag-green" },
+        { "name": "Qwen3-Embedding-4B",              "hfId": "Qwen/Qwen3-Embedding-4B",                  "type": "embed",     "params": "4B",   "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A10_X2",      "clusterClass": "tag-green" },
+        { "name": "Qwen3-Embedding-8B",              "hfId": "Qwen/Qwen3-Embedding-8B",                  "type": "embed",     "params": "8B",   "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen3-0.6B",                      "hfId": "Qwen/Qwen3-0.6B",                          "type": "chat",      "params": "0.6B", "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen3-1.7B",                      "hfId": "Qwen/Qwen3-1.7B",                          "type": "chat",      "params": "1.7B", "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen3-4B",                        "hfId": "Qwen/Qwen3-4B",                            "type": "chat",      "params": "4B",   "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen3-8B",                        "hfId": "Qwen/Qwen3-8B",                            "type": "chat",      "params": "8B",   "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen3-14B",                       "hfId": "Qwen/Qwen3-14B",                           "type": "chat",      "params": "14B",  "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen3-32B",                       "hfId": "Qwen/Qwen3-32B",                           "type": "chat",      "params": "32B",  "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Qwen3-4B-Instruct-2507",          "hfId": "Qwen/Qwen3-4B-Instruct-2507",              "type": "chat",      "params": "4B",   "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen3-30B-A3B-Instruct-2507",     "hfId": "Qwen/Qwen3-30B-A3B-Instruct-2507",         "type": "chat",      "params": "30B",  "activeParams": "3B active", "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Qwen3-235B-A22B-Instruct-2507",   "hfId": "Qwen/Qwen3-235B-A22B-Instruct-2507",       "type": "chat",      "params": "235B", "activeParams": "22B active","contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "H100_X8",     "clusterClass": "tag-blue" },
+        { "name": "Qwen3-VL-30B-A3B-Instruct",       "hfId": "Qwen/Qwen3-VL-30B-A3B-Instruct",           "type": "vision",    "params": "30B",  "activeParams": "3B active", "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "H100_X2",     "clusterClass": "tag-blue" },
+        { "name": "Qwen3-VL-235B-A22B-Instruct",     "hfId": "Qwen/Qwen3-VL-235B-A22B-Instruct",         "type": "vision",    "params": "235B", "activeParams": "22B active","contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "H100_X8",     "clusterClass": "tag-blue" },
+        { "name": "Qwen2.5-Coder-32B-Instruct",      "hfId": "Qwen/Qwen2.5-Coder-32B-Instruct",          "type": "coder",     "params": "32B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Qwen2.5-0.5B-Instruct",           "hfId": "Qwen/Qwen2.5-0.5B-Instruct",               "type": "chat",      "params": "0.5B", "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2.5-1.5B-Instruct",           "hfId": "Qwen/Qwen2.5-1.5B-Instruct",               "type": "chat",      "params": "1.5B", "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2.5-3B-Instruct",             "hfId": "Qwen/Qwen2.5-3B-Instruct",                 "type": "chat",      "params": "3B",   "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2.5-7B-Instruct",             "hfId": "Qwen/Qwen2.5-7B-Instruct",                 "type": "chat",      "params": "7B",   "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2.5-14B-Instruct",            "hfId": "Qwen/Qwen2.5-14B-Instruct",                "type": "chat",      "params": "14B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2.5-32B-Instruct",            "hfId": "Qwen/Qwen2.5-32B-Instruct",                "type": "chat",      "params": "32B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Qwen2.5-72B-Instruct",            "hfId": "Qwen/Qwen2.5-72B-Instruct",                "type": "chat",      "params": "72B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X4", "clusterClass": "" },
+        { "name": "Qwen2.5-VL-3B-Instruct",          "hfId": "Qwen/Qwen2.5-VL-3B-Instruct",              "type": "vision",    "params": "3B",   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2.5-VL-7B-Instruct",          "hfId": "Qwen/Qwen2.5-VL-7B-Instruct",              "type": "vision",    "params": "7B",   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2.5-VL-32B-Instruct",         "hfId": "Qwen/Qwen2.5-VL-32B-Instruct",             "type": "vision",    "params": "32B",  "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Qwen2.5-VL-72B-Instruct",         "hfId": "Qwen/Qwen2.5-VL-72B-Instruct",             "type": "vision",    "params": "72B",  "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X4", "clusterClass": "" },
+        { "name": "Qwen2-0.5B-Instruct",             "hfId": "Qwen/Qwen2-0.5B-Instruct",                 "type": "chat",      "params": "0.5B", "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2-1.5B-Instruct",             "hfId": "Qwen/Qwen2-1.5B-Instruct",                 "type": "chat",      "params": "1.5B", "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2-7B-Instruct",               "hfId": "Qwen/Qwen2-7B-Instruct",                   "type": "chat",      "params": "7B",   "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2-72B-Instruct",              "hfId": "Qwen/Qwen2-72B-Instruct",                  "type": "chat",      "params": "72B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X4", "clusterClass": "" },
+        { "name": "Qwen2-VL-2B-Instruct",            "hfId": "Qwen/Qwen2-VL-2B-Instruct",                "type": "vision",    "params": "2B",   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2-VL-7B-Instruct",            "hfId": "Qwen/Qwen2-VL-7B-Instruct",                "type": "vision",    "params": "7B",   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen2-VL-72B-Instruct",           "hfId": "Qwen/Qwen2-VL-72B-Instruct",               "type": "vision",    "params": "72B",  "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X4", "clusterClass": "" }
+      ]
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek Family",
+      "badge": "deepseek",
+      "label": "DeepSeek",
+      "models": [
+        { "name": "DeepSeek-R1-Distill-Qwen-32B", "hfId": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B", "type": "reasoning", "params": "32B", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X2", "clusterClass": "" }
+      ]
+    },
+    {
+      "id": "gemma",
+      "name": "Google Gemma Family",
+      "badge": "gemma",
+      "label": "Gemma",
+      "models": [
+        { "name": "Gemma 3 270M", "hfId": "google/gemma-3-270m-it", "type": "chat",   "params": "270M", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Gemma 3 1B",   "hfId": "google/gemma-3-1b-it",   "type": "chat",   "params": "1B",   "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Gemma 3 4B",   "hfId": "google/gemma-3-4b-it",   "type": "vision", "params": "4B",   "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Gemma 3 12B",  "hfId": "google/gemma-3-12b-it",  "type": "vision", "params": "12B",  "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Gemma 3 27B",  "hfId": "google/gemma-3-27b-it",  "type": "vision", "params": "27B",  "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Gemma 2 2B",   "hfId": "google/gemma-2-2b-it",   "type": "chat",   "params": "2B",   "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Gemma 2 9B",   "hfId": "google/gemma-2-9b-it",   "type": "chat",   "params": "9B",   "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Gemma 2 27B",  "hfId": "google/gemma-2-27b-it",  "type": "chat",   "params": "27B",  "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm", "clusterShape": "A100_80G_X2", "clusterClass": "" }
+      ]
+    },
+    {
+      "id": "meta",
+      "name": "Meta Llama Family",
+      "badge": "meta",
+      "label": "Meta",
+      "models": [
+        { "name": "Llama 4 Maverick 17B",          "hfId": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8", "type": "vision", "params": "17B×128E", "activeParams": null, "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "H100_X8",     "clusterClass": "tag-blue" },
+        { "name": "Llama 4 Scout 17B",              "hfId": "meta-llama/Llama-4-Scout-17B-16E-Instruct",         "type": "vision", "params": "17B×16E",  "activeParams": null, "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "H100_X4",     "clusterClass": "tag-blue" },
+        { "name": "Llama 3.3 70B Instruct",        "hfId": "meta-llama/Llama-3.3-70B-Instruct",                 "type": "chat",   "params": "70B",       "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X4", "clusterClass": "" },
+        { "name": "Llama 3.2 3B Instruct",         "hfId": "meta-llama/Llama-3.2-3B-Instruct",                  "type": "chat",   "params": "3B",        "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Llama 3.2 1B Instruct",         "hfId": "meta-llama/Llama-3.2-1B-Instruct",                  "type": "chat",   "params": "1B",        "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Llama 3.1 8B Instruct",         "hfId": "meta-llama/Llama-3.1-8B-Instruct",                  "type": "chat",   "params": "8B",        "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Llama 3 8B Instruct",           "hfId": "meta-llama/Meta-Llama-3-8B-Instruct",               "type": "chat",   "params": "8B",        "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Llama 3 70B Instruct",          "hfId": "meta-llama/Meta-Llama-3-70B-Instruct",              "type": "chat",   "params": "70B",       "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm",   "clusterShape": "A100_80G_X4", "clusterClass": "" },
+        { "name": "Llama 2 70B Chat",              "hfId": "meta-llama/Llama-2-70b-chat-hf",                    "type": "chat",   "params": "70B",       "activeParams": null, "contextWindowLabel": "4K",   "contextClass": "sm",   "clusterShape": "A100_80G_X4", "clusterClass": "" },
+        { "name": "Llama 2 13B Chat",              "hfId": "meta-llama/Llama-2-13b-chat-hf",                    "type": "chat",   "params": "13B",       "activeParams": null, "contextWindowLabel": "4K",   "contextClass": "sm",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Llama 2 7B Chat",               "hfId": "meta-llama/Llama-2-7b-chat-hf",                     "type": "chat",   "params": "7B",        "activeParams": null, "contextWindowLabel": "4K",   "contextClass": "sm",   "clusterShape": "A100_80G_X1", "clusterClass": "" }
+      ]
+    },
+    {
+      "id": "phi",
+      "name": "Microsoft Phi Family",
+      "badge": "phi",
+      "label": "Microsoft",
+      "models": [
+        { "name": "Phi-4",             "hfId": "microsoft/phi-4",                       "type": "chat",   "params": "14B",  "activeParams": null, "contextWindowLabel": "16K",  "contextClass": "md", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Phi-3 Vision 128K", "hfId": "microsoft/Phi-3-vision-128k-instruct",  "type": "vision", "params": "4.2B", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "H100_X1",     "clusterClass": "tag-blue" },
+        { "name": "Phi-3 Medium 128K", "hfId": "microsoft/Phi-3-medium-128k-instruct",  "type": "chat",   "params": "14B",  "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Phi-3 Medium 4K",   "hfId": "microsoft/Phi-3-medium-4k-instruct",    "type": "chat",   "params": "14B",  "activeParams": null, "contextWindowLabel": "4K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Phi-3 Small 128K",  "hfId": "microsoft/Phi-3-small-128k-instruct",   "type": "chat",   "params": "7B",   "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Phi-3 Small 8K",    "hfId": "microsoft/Phi-3-small-8k-instruct",     "type": "chat",   "params": "7B",   "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Phi-3 Mini 128K",   "hfId": "microsoft/Phi-3-mini-128k-instruct",    "type": "chat",   "params": "3.8B", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Phi-3 Mini 4K",     "hfId": "microsoft/Phi-3-mini-4k-instruct",      "type": "chat",   "params": "3.8B", "activeParams": null, "contextWindowLabel": "4K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" }
+      ]
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral Family",
+      "badge": "mistral",
+      "label": "Mistral",
+      "models": [
+        { "name": "Mixtral 8x7B Instruct v0.1",  "hfId": "mistralai/Mixtral-8x7B-Instruct-v0.1",  "type": "chat",  "params": "8×7B MoE", "activeParams": null, "contextWindowLabel": "32K",  "contextClass": "md", "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Mistral Nemo Instruct 2407",   "hfId": "mistralai/Mistral-Nemo-Instruct-2407",   "type": "chat",  "params": "12B",       "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Mistral 7B Instruct v0.3",     "hfId": "mistralai/Mistral-7B-Instruct-v0.3",     "type": "chat",  "params": "7B",        "activeParams": null, "contextWindowLabel": "32K",  "contextClass": "md", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Mistral 7B Instruct v0.2",     "hfId": "mistralai/Mistral-7B-Instruct-v0.2",     "type": "chat",  "params": "7B",        "activeParams": null, "contextWindowLabel": "32K",  "contextClass": "md", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Mistral 7B Instruct v0.1",     "hfId": "mistralai/Mistral-7B-Instruct-v0.1",     "type": "chat",  "params": "7B",        "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "E5 Mistral 7B Instruct",       "hfId": "intfloat/e5-mistral-7b-instruct",        "type": "embed", "params": "7B",        "activeParams": null, "contextWindowLabel": "32K",  "contextClass": "md", "clusterShape": "A10_X1",      "clusterClass": "tag-green" }
+      ]
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA Nemotron Family",
+      "badge": "nvidia",
+      "label": "NVIDIA",
+      "models": [
+        { "name": "Nemotron 3 Super 120B",           "hfId": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16", "type": "chat", "params": "120B", "activeParams": "12B active", "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "H100_X8",     "clusterClass": "tag-blue" },
+        { "name": "Nemotron 3 Nano 30B (FP8)",       "hfId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",    "type": "chat", "params": "30B",  "activeParams": "3B active",  "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "H100_X4",     "clusterClass": "tag-blue" },
+        { "name": "Nemotron 3 Nano 30B (BF16)",      "hfId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",   "type": "chat", "params": "30B",  "activeParams": "3B active",  "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Llama 3.1 Nemotron 70B Instruct", "hfId": "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",   "type": "chat", "params": "70B",  "activeParams": null,         "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X4", "clusterClass": "" }
+      ]
+    },
+    {
+      "id": "openai-oss",
+      "name": "OpenAI GptOss Family",
+      "badge": "openai",
+      "label": "OpenAI",
+      "models": [
+        { "name": "GptOss 20B",  "hfId": "openai/gpt-oss-20b",  "type": "chat", "params": "20B",  "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "H100_X1", "clusterClass": "tag-blue" },
+        { "name": "GptOss 120B", "hfId": "openai/gpt-oss-120b", "type": "chat", "params": "120B", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "H100_X2", "clusterClass": "tag-blue" }
+      ]
+    }
+  ]
+}
