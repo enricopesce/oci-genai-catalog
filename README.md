@@ -1,8 +1,8 @@
-# OCI Generative AI — Model Comparison
+# OCI GenAI Catalog
 
-> **Live site → [enricopesce.github.io/oci-llm-comparison](https://enricopesce.github.io/oci-llm-comparison/)**
+> **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference comparing all models available on **Oracle Cloud Infrastructure (OCI) Generative AI**, updated February 2026.
+A single-page reference cataloguing all models available on **Oracle Cloud Infrastructure (OCI) Generative AI**, updated March 2026.
 
 ## What's inside
 
@@ -11,14 +11,16 @@ A single-page reference comparing all models available on **Oracle Cloud Infrast
 | **Chat models** | Cohere Command A family · Google Gemini 2.5 · Meta Llama 4 · OpenAI gpt-oss · xAI Grok 4 |
 | **Embedding models** | Cohere Embed v3 & v4 (text + multimodal) |
 | **Rerank model** | Cohere Rerank 3.5 |
-| **Selection guide** | Use-case decision matrix (RAG, agentic, coding, multimodal, fine-tuning) |
+| **Imported models** | 74 community/open-weight models via OCI Model Catalog |
+| **Selection wizard** | Guided 4-step model picker (use case → quality/speed → deployment → region) |
 
 **Columns covered:** Model ID · Tier · Context window · Multimodal · Tool use · Fine-tuning · Reasoning · Status · Best for
 
 ## Features
 
-- 30+ models across 5 providers
+- 5 native providers + 74 imported models across 11 providers
 - Dark / Light mode toggle (preference saved in `localStorage`)
+- Guided model selection wizard
 - Fully static — no JavaScript framework, no build step
 - Mobile responsive
 
@@ -26,7 +28,7 @@ A single-page reference comparing all models available on **Oracle Cloud Infrast
 
 All data sourced from the [OCI official documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/).
 
-## Providers
+## Native Providers
 
 | Provider | Models |
 |----------|--------|
@@ -35,3 +37,14 @@ All data sourced from the [OCI official documentation](https://docs.oracle.com/e
 | [Meta](https://ai.meta.com/llama/) | Llama 4 Maverick, Llama 4 Scout, Llama 3.3 70B, Llama 3.2 90B/11B Vision, Llama 3.1 405B |
 | [OpenAI](https://openai.com) | gpt-oss-120b, gpt-oss-20b |
 | [xAI](https://x.ai) | Grok 4, Grok 4 Fast, Grok 4.1 Fast, Grok 3, Grok 3 Fast, Grok 3 Mini, Grok Code Fast 1 |
+
+## Imported Models
+
+| Provider | Models |
+|----------|--------|
+| [Alibaba](https://qwen.readthedocs.io) | Qwen3, Qwen3-VL, Qwen2.5, QwQ families |
+| [DeepSeek](https://deepseek.com) | DeepSeek-R1-Distill-Qwen-32B |
+| [Google (Gemma)](https://ai.google.dev/gemma) | Gemma 3 (270M–27B), Gemma 2 (2B–27B) |
+| [Microsoft](https://microsoft.com) | Phi-4, Phi-3 family |
+| [Mistral](https://mistral.ai) | Mixtral 8x7B, Mistral Nemo, Mistral 7B, E5-Mistral |
+| [NVIDIA](https://nvidia.com) | Nemotron Super 120B, Nano 30B, Llama Nemotron 70B |
