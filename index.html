@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="enricopesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="ec05838">
+<meta name="build-version" content="3c75af5">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -36,7 +36,7 @@
   "name": "OCI GenAI Catalog",
   "description": "Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models including chat, embedding, and rerank models from 5 providers.",
   "url": "https://enricopesce.github.io/oci-genai-catalog/",
-  "dateModified": "2026-03-13",
+  "dateModified": "2026-03-17",
   "author": { "@type": "Person", "name": "enricopesce" },
   "about": {
     "@type": "Thing",
@@ -51,23 +51,24 @@
   :root {
     --red: #C0392B;
     --red-light: #E74C3C;
-    --dark: #0D0F12;
-    --panel: #151820;
-    --panel2: #1C2030;
-    --border: #252A3A;
+    --dark: #1A1D24;
+    --panel: #222630;
+    --panel2: #2A2F3D;
+    --border: #363C50;
     --text: #E8EAF0;
-    --muted: #8C93AE;
+    --muted: #9AA2BF;
     --on-surface: #fff;
-    --hover-row: rgba(255,255,255,0.03);
-    --tag-bg: rgba(255,255,255,0.06);
-    --tag-border: rgba(255,255,255,0.1);
-    --rec-divider: rgba(255,255,255,0.04);
+    --hover-row: rgba(255,255,255,0.04);
+    --tag-bg: rgba(255,255,255,0.07);
+    --tag-border: rgba(255,255,255,0.13);
+    --rec-divider: rgba(255,255,255,0.06);
     --cohere: #4E6FE0;
     --google: #34A853;
     --meta: #1877F2;
     --openai: #74AA9C;
     --xai: #9B59B6;
     --embed: #E67E22;
+    --nvidia: #76B900;
   }
 
   /* LIGHT THEME */
@@ -107,6 +108,12 @@
   html.light .badge-openai { color: #2A706A; }
   html.light .badge-xai    { color: #6B2E9E; }
   html.light .badge-embed  { color: #8B4A0A; }
+  html.light .badge-nvidia   { color: #3A6400; }
+  html.light .badge-alibaba  { color: #B04000; }
+  html.light .badge-deepseek { color: #1A4BB5; }
+  html.light .badge-gemma    { color: #0A7A50; }
+  html.light .badge-phi      { color: #0055A0; }
+  html.light .badge-mistral  { color: #A03000; }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -249,6 +256,28 @@
   .badge-openai { background: rgba(116,170,156,0.2); color: #8CD4C4; border: 1px solid rgba(116,170,156,0.4); }
   .badge-xai    { background: rgba(155,89,182,0.2);  color: #C993FF; border: 1px solid rgba(155,89,182,0.4); }
   .badge-embed  { background: rgba(230,126,34,0.2);  color: #FFAE6D; border: 1px solid rgba(230,126,34,0.4); }
+  .badge-nvidia   { background: rgba(118,185,0,0.2);   color: #A8E05A; border: 1px solid rgba(118,185,0,0.4); }
+  .badge-alibaba  { background: rgba(255,98,0,0.2);   color: #FF9D5C; border: 1px solid rgba(255,98,0,0.4); }
+  .badge-deepseek { background: rgba(77,139,255,0.2); color: #7EB5FF; border: 1px solid rgba(77,139,255,0.4); }
+  .badge-gemma    { background: rgba(52,200,130,0.2); color: #5DEAAA; border: 1px solid rgba(52,200,130,0.4); }
+  .badge-phi      { background: rgba(0,164,239,0.2);  color: #5AC8F5; border: 1px solid rgba(0,164,239,0.4); }
+  .badge-mistral  { background: rgba(250,82,15,0.2);  color: #FF9966; border: 1px solid rgba(250,82,15,0.4); }
+
+  /* IMPORT FAMILY SUB-TITLE */
+  .import-family-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 6px 0 10px;
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .import-family-title::after { content:''; flex:1; height:1px; background: var(--border); }
 
   /* PILL TAGS */
   .tag {
@@ -543,7 +572,7 @@
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
     <h1>OCI GenAI Catalog</h1>
   </div>
-  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 13 Mar 2026 &nbsp;|&nbsp; 30+ models</p>
+  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 17 Mar 2026 &nbsp;|&nbsp; 30+ models</p>
   
   <nav class="view-switcher" style="display: flex; background: var(--panel2); border: 1px solid var(--border); padding: 4px; border-radius: 4px; margin-left: 20px;">
     <button class="view-btn active" id="btnReference" style="background: var(--border); color: var(--on-surface); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Technical Tables</button>
@@ -558,7 +587,7 @@
   <!-- WIZARD VIEW -->
   <div id="wizardView" style="display: none; max-width: 1100px; margin: 0 auto; padding-bottom: 40px;">
     <div style="background: var(--panel); border: 1px solid var(--border); padding: 40px; display: flex; gap: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-      <div style="flex: 1; min-width: 0;">
+      <div id="wizQuestionsPanel" style="flex: 1; min-width: 0;">
 
         <!-- Progress bar -->
         <div style="display:flex; align-items:center; margin-bottom:28px;">
@@ -693,12 +722,10 @@
 
       <!-- Results panel -->
       <div id="wizResultsBox" style="display:none; flex:0 0 360px; border-left:1px solid var(--border); padding-left:40px;">
-        <div style="background:var(--dark); border:1px solid var(--border); padding:24px; border-top:2px solid var(--red);">
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em;">Recommended Models</div>
-          <div id="wizSummary" style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--red-light); margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--border); line-height:1.6;"></div>
-          <div id="resList"></div>
-          <button id="wizReset" style="width:100%; margin-top:20px; font-size:12px; background:var(--panel2); color:var(--text); border:1px solid var(--border); padding:10px; cursor:pointer; border-radius:2px;">✕ Start Over</button>
-        </div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.1em;">Recommended Models</div>
+        <div id="wizSummary" style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--red-light); margin-bottom:16px; line-height:1.6;"></div>
+        <div id="resList"></div>
+        <button id="wizReset" style="margin-top:20px; font-size:12px; background:var(--panel2); color:var(--text); border:1px solid var(--border); padding:10px 24px; cursor:pointer; border-radius:2px;">✕ Start Over</button>
       </div>
     </div>
   </div>
@@ -729,6 +756,7 @@
     <div class="stat"><div class="stat-num">24</div><div class="stat-label">Chat Models (Active)</div></div>
     <div class="stat"><div class="stat-num">9</div><div class="stat-label">Embedding Models</div></div>
     <div class="stat"><div class="stat-num">1</div><div class="stat-label">Rerank Model</div></div>
+    <div class="stat"><div class="stat-num">74</div><div class="stat-label">Imported Models</div></div>
   </div>
 
 
@@ -741,16 +769,15 @@
   <table>
     <thead>
       <tr>
-        <th>Model Name</th>
+        <th>Model</th>
         <th>Model ID</th>
         <th>Tier</th>
         <th>Parameters</th>
-        <th>Context Window</th>
+        <th>Context</th>
         <th>Multimodal</th>
-        <th>Fine-tunable</th>
-        <th>Tool Use / Agents</th>
         <th>Reasoning</th>
-        <th>RAG Optimized</th>
+        <th>Tool Use</th>
+        <th>Fine-tunable</th>
         <th>Status</th>
         <th>Regions</th>
         <th>Best For</th>
@@ -766,14 +793,15 @@
   <table>
     <thead>
       <tr>
-        <th>Model Name</th>
+        <th>Model</th>
         <th>Model ID</th>
         <th>Tier</th>
-        <th>Context Window</th>
+        <th>Parameters</th>
+        <th>Context</th>
         <th>Multimodal</th>
-        <th>Thinking / Reasoning</th>
-        <th>Speed Profile</th>
-        <th>Fine-tunable on OCI</th>
+        <th>Reasoning</th>
+        <th>Tool Use</th>
+        <th>Fine-tunable</th>
         <th>Status</th>
         <th>Regions</th>
         <th>Best For</th>
@@ -789,16 +817,15 @@
   <table>
     <thead>
       <tr>
-        <th>Model Name</th>
+        <th>Model</th>
         <th>Model ID</th>
         <th>Tier</th>
-        <th>Architecture</th>
-        <th>Total Params</th>
-        <th>Active Params (MoE)</th>
-        <th>Context Window</th>
+        <th>Parameters</th>
+        <th>Context</th>
         <th>Multimodal</th>
-        <th>Fine-tunable (LoRA)</th>
+        <th>Reasoning</th>
         <th>Tool Use</th>
+        <th>Fine-tunable</th>
         <th>Status</th>
         <th>Regions</th>
         <th>Best For</th>
@@ -814,15 +841,15 @@
   <table>
     <thead>
       <tr>
-        <th>Model Name</th>
+        <th>Model</th>
         <th>Model ID</th>
         <th>Tier</th>
         <th>Parameters</th>
-        <th>Context Window</th>
-        <th>Reasoning / Agentic</th>
+        <th>Context</th>
+        <th>Multimodal</th>
+        <th>Reasoning</th>
         <th>Tool Use</th>
-        <th>Open Source</th>
-        <th>Fine-tunable on OCI</th>
+        <th>Fine-tunable</th>
         <th>Status</th>
         <th>Regions</th>
         <th>Best For</th>
@@ -838,16 +865,15 @@
   <table>
     <thead>
       <tr>
-        <th>Model Name</th>
+        <th>Model</th>
         <th>Model ID</th>
         <th>Tier</th>
-        <th>Context Window</th>
+        <th>Parameters</th>
+        <th>Context</th>
         <th>Multimodal</th>
-        <th>Thinking / Chain-of-Thought</th>
-        <th>Coding Focus</th>
-        <th>Speed Profile</th>
-        <th>Domain Knowledge</th>
-        <th>Agentic</th>
+        <th>Reasoning</th>
+        <th>Tool Use</th>
+        <th>Fine-tunable</th>
         <th>Status</th>
         <th>Regions</th>
         <th>Best For</th>
@@ -904,6 +930,685 @@
   </table>
   </div>
 
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  IMPORTED MODELS (Model Import — bring your own model)     -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <div class="section-title">Imported Models</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Available via <strong style="color:var(--text);">OCI Generative AI Model Import</strong> — import open-weights models from HuggingFace into your own dedicated GPU cluster endpoint. 8 provider families · 74 models · supports fine-tuned variants within ±10% parameter count.</p>
+
+  <!-- ALIBABA QWEN -->
+  <div class="import-family-title" data-family="alibaba">Alibaba Qwen Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">QwQ-32B</span></td>
+        <td><span class="model-id">Qwen/QwQ-32B</span></td>
+        <td><span class="tag tag-blue">Reasoning</span></td>
+        <td><span class="params">32B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-Embedding-0.6B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-Embedding-0.6B</span></td>
+        <td><span class="tag tag-orange">Embed</span></td>
+        <td><span class="params">0.6B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag tag-green">A10_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-Embedding-4B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-Embedding-4B</span></td>
+        <td><span class="tag tag-orange">Embed</span></td>
+        <td><span class="params">4B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag tag-green">A10_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-Embedding-8B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-Embedding-8B</span></td>
+        <td><span class="tag tag-orange">Embed</span></td>
+        <td><span class="params">8B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-0.6B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-0.6B</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">0.6B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-1.7B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-1.7B</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">1.7B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-4B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-4B</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">4B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-8B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-8B</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">8B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-14B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-14B</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">14B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-32B</span></td>
+        <td><span class="model-id">Qwen/Qwen3-32B</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">32B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-4B-Instruct-2507</span></td>
+        <td><span class="model-id">Qwen/Qwen3-4B-Instruct-2507</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">4B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-30B-A3B-Instruct-2507</span></td>
+        <td><span class="model-id">Qwen/Qwen3-30B-A3B-Instruct-2507</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">30B</span> <span class="params-active">3B active</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-235B-A22B-Instruct-2507</span></td>
+        <td><span class="model-id">Qwen/Qwen3-235B-A22B-Instruct-2507</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">235B</span> <span class="params-active">22B active</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag tag-blue">H100_X8</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-VL-30B-A3B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen3-VL-30B-A3B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">30B</span> <span class="params-active">3B active</span></td>
+        <td>—</td>
+        <td><span class="tag tag-blue">H100_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen3-VL-235B-A22B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen3-VL-235B-A22B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">235B</span> <span class="params-active">22B active</span></td>
+        <td>—</td>
+        <td><span class="tag tag-blue">H100_X8</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-Coder-32B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-Coder-32B-Instruct</span></td>
+        <td><span class="tag tag-green">Coder</span></td>
+        <td><span class="params">32B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-0.5B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-0.5B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">0.5B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-1.5B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-1.5B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">1.5B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-3B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-3B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">3B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-7B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-7B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-14B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-14B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">14B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-32B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-32B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">32B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-72B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-72B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">72B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X4</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-VL-3B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-VL-3B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">3B</span></td>
+        <td>—</td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-VL-7B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-VL-7B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">7B</span></td>
+        <td>—</td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-VL-32B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-VL-32B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">32B</span></td>
+        <td>—</td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2.5-VL-72B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2.5-VL-72B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">72B</span></td>
+        <td>—</td>
+        <td><span class="tag">A100_80G_X4</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2-0.5B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2-0.5B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">0.5B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2-1.5B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2-1.5B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">1.5B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2-7B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2-7B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2-72B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2-72B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">72B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X4</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2-VL-2B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2-VL-2B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">2B</span></td>
+        <td>—</td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2-VL-7B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2-VL-7B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">7B</span></td>
+        <td>—</td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">Qwen2-VL-72B-Instruct</span></td>
+        <td><span class="model-id">Qwen/Qwen2-VL-72B-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">72B</span></td>
+        <td>—</td>
+        <td><span class="tag">A100_80G_X4</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- DEEPSEEK -->
+  <div class="import-family-title" data-family="deepseek">DeepSeek Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-deepseek">DeepSeek</span><br><span class="model-name">DeepSeek-R1-Distill-Qwen-32B</span></td>
+        <td><span class="model-id">deepseek-ai/DeepSeek-R1-Distill-Qwen-32B</span></td>
+        <td><span class="tag tag-blue">Reasoning</span></td>
+        <td><span class="params">32B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- GOOGLE GEMMA -->
+  <div class="import-family-title" data-family="gemma">Google Gemma Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 3 270M</span></td>
+        <td><span class="model-id">google/gemma-3-270m-it</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">270M</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 3 1B</span></td>
+        <td><span class="model-id">google/gemma-3-1b-it</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">1B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 3 4B</span></td>
+        <td><span class="model-id">google/gemma-3-4b-it</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">4B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 3 12B</span></td>
+        <td><span class="model-id">google/gemma-3-12b-it</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">12B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 3 27B</span></td>
+        <td><span class="model-id">google/gemma-3-27b-it</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">27B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 2 2B</span></td>
+        <td><span class="model-id">google/gemma-2-2b-it</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">2B</span></td>
+        <td><span class="ctx ctx-sm">8K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 2 9B</span></td>
+        <td><span class="model-id">google/gemma-2-9b-it</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">9B</span></td>
+        <td><span class="ctx ctx-sm">8K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 2 27B</span></td>
+        <td><span class="model-id">google/gemma-2-27b-it</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">27B</span></td>
+        <td><span class="ctx ctx-sm">8K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- META LLAMA -->
+  <div class="import-family-title" data-family="meta">Meta Llama Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 4 Maverick 17B</span></td>
+        <td><span class="model-id">meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">17B×128E</span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="tag tag-blue">H100_X8</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 4 Scout 17B</span></td>
+        <td><span class="model-id">meta-llama/Llama-4-Scout-17B-16E-Instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">17B×16E</span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="tag tag-blue">H100_X4</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 3.3 70B Instruct</span></td>
+        <td><span class="model-id">meta-llama/Llama-3.3-70B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">70B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X4</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 3.2 3B Instruct</span></td>
+        <td><span class="model-id">meta-llama/Llama-3.2-3B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">3B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 3.2 1B Instruct</span></td>
+        <td><span class="model-id">meta-llama/Llama-3.2-1B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">1B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 3.1 8B Instruct</span></td>
+        <td><span class="model-id">meta-llama/Llama-3.1-8B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">8B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 3 8B Instruct</span></td>
+        <td><span class="model-id">meta-llama/Meta-Llama-3-8B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">8B</span></td>
+        <td><span class="ctx ctx-sm">8K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 3 70B Instruct</span></td>
+        <td><span class="model-id">meta-llama/Meta-Llama-3-70B-Instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">70B</span></td>
+        <td><span class="ctx ctx-sm">8K</span></td>
+        <td><span class="tag">A100_80G_X4</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 2 70B Chat</span></td>
+        <td><span class="model-id">meta-llama/Llama-2-70b-chat-hf</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">70B</span></td>
+        <td><span class="ctx ctx-sm">4K</span></td>
+        <td><span class="tag">A100_80G_X4</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 2 13B Chat</span></td>
+        <td><span class="model-id">meta-llama/Llama-2-13b-chat-hf</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">13B</span></td>
+        <td><span class="ctx ctx-sm">4K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 2 7B Chat</span></td>
+        <td><span class="model-id">meta-llama/Llama-2-7b-chat-hf</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-sm">4K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- MICROSOFT PHI -->
+  <div class="import-family-title" data-family="phi">Microsoft Phi Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-4</span></td>
+        <td><span class="model-id">microsoft/phi-4</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">14B</span></td>
+        <td><span class="ctx ctx-md">16K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-3 Vision 128K</span></td>
+        <td><span class="model-id">microsoft/Phi-3-vision-128k-instruct</span></td>
+        <td><span class="tag tag-blue">Vision</span></td>
+        <td><span class="params">4.2B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag tag-blue">H100_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-3 Medium 128K</span></td>
+        <td><span class="model-id">microsoft/Phi-3-medium-128k-instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">14B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-3 Medium 4K</span></td>
+        <td><span class="model-id">microsoft/Phi-3-medium-4k-instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">14B</span></td>
+        <td><span class="ctx ctx-sm">4K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-3 Small 128K</span></td>
+        <td><span class="model-id">microsoft/Phi-3-small-128k-instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-3 Small 8K</span></td>
+        <td><span class="model-id">microsoft/Phi-3-small-8k-instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-sm">8K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-3 Mini 128K</span></td>
+        <td><span class="model-id">microsoft/Phi-3-mini-128k-instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">3.8B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-3 Mini 4K</span></td>
+        <td><span class="model-id">microsoft/Phi-3-mini-4k-instruct</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">3.8B</span></td>
+        <td><span class="ctx ctx-sm">4K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- MISTRAL -->
+  <div class="import-family-title" data-family="mistral">Mistral Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-mistral">Mistral</span><br><span class="model-name">Mixtral 8x7B Instruct v0.1</span></td>
+        <td><span class="model-id">mistralai/Mixtral-8x7B-Instruct-v0.1</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">8×7B MoE</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X2</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-mistral">Mistral</span><br><span class="model-name">Mistral Nemo Instruct 2407</span></td>
+        <td><span class="model-id">mistralai/Mistral-Nemo-Instruct-2407</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">12B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-mistral">Mistral</span><br><span class="model-name">Mistral 7B Instruct v0.3</span></td>
+        <td><span class="model-id">mistralai/Mistral-7B-Instruct-v0.3</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-mistral">Mistral</span><br><span class="model-name">Mistral 7B Instruct v0.2</span></td>
+        <td><span class="model-id">mistralai/Mistral-7B-Instruct-v0.2</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-md">32K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-mistral">Mistral</span><br><span class="model-name">Mistral 7B Instruct v0.1</span></td>
+        <td><span class="model-id">mistralai/Mistral-7B-Instruct-v0.1</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-sm">8K</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-mistral">Mistral</span><br><span class="model-name">E5 Mistral 7B Instruct</span></td>
+        <td><span class="model-id">intfloat/e5-mistral-7b-instruct</span></td>
+        <td><span class="tag tag-orange">Embed</span></td>
+        <td><span class="params">7B</span></td>
+        <td><span class="ctx ctx-sm">8K</span></td>
+        <td><span class="tag tag-green">A10_X1</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- NVIDIA NEMOTRON -->
+  <div class="import-family-title" data-family="nvidia">NVIDIA Nemotron Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-nvidia">NVIDIA</span><br><span class="model-name">Nemotron 3 Super 120B</span></td>
+        <td><span class="model-id">nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">120B</span> <span class="params-active">12B active</span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="tag tag-blue">H100_X8</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-nvidia">NVIDIA</span><br><span class="model-name">Nemotron 3 Nano 30B (FP8)</span></td>
+        <td><span class="model-id">nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">30B</span> <span class="params-active">3B active</span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="tag tag-blue">H100_X4</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-nvidia">NVIDIA</span><br><span class="model-name">Nemotron 3 Nano 30B (BF16)</span></td>
+        <td><span class="model-id">nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">30B</span> <span class="params-active">3B active</span></td>
+        <td><span class="ctx ctx-huge">1M</span></td>
+        <td><span class="tag">A100_80G_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-nvidia">NVIDIA</span><br><span class="model-name">Llama 3.1 Nemotron 70B Instruct</span></td>
+        <td><span class="model-id">nvidia/Llama-3.1-Nemotron-70B-Instruct-HF</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">70B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag">A100_80G_X4</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- OPENAI GPTOSS (IMPORTED) -->
+  <div class="import-family-title" data-family="openai-oss">OpenAI GptOss Family</div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="model-cell"><span class="badge badge-openai">OpenAI</span><br><span class="model-name">GptOss 20B</span></td>
+        <td><span class="model-id">openai/gpt-oss-20b</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">20B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag tag-blue">H100_X1</span></td>
+      </tr>
+      <tr>
+        <td class="model-cell"><span class="badge badge-openai">OpenAI</span><br><span class="model-name">GptOss 120B</span></td>
+        <td><span class="model-id">openai/gpt-oss-120b</span></td>
+        <td><span class="tag">Chat</span></td>
+        <td><span class="params">120B</span></td>
+        <td><span class="ctx ctx-lg">128K</span></td>
+        <td><span class="tag tag-blue">H100_X2</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 
   <!-- ══════════════════════════════════════════════════════════ -->
   <!--  USE-CASE DECISION MATRIX                                  -->
@@ -1030,7 +1735,7 @@
     <p>³ Retired/deprecated models (Command R legacy, Llama 3 70B, Llama 3.1 70B) are omitted from the main tables.</p>
     <p>⁴ Model Import feature (GA 2025) lets you bring your own LLMs from Hugging Face or OCI Object Storage.</p>
     <p>⁶ Grok 4.1 Fast context window (2M tokens) is confirmed by OCI documentation. Grok 4 and Grok 4 Fast context windows are not disclosed in OCI official docs.</p>
-    <p>⁵ Data sources (OCI Official Documentation, last updated 13 March 2026):
+    <p>⁵ Data sources (OCI Official Documentation, last updated 17 March 2026):
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Pretrained Models</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Models by Region</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Inferencing Modes</a> ·
@@ -1044,6 +1749,7 @@
   <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border); text-align:center; font-size:12px; color:var(--muted); font-family:'IBM Plex Mono',monospace;">
     <a href="https://github.com/enricopesce/oci-genai-catalog" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">⌥ GitHub Repository</a>
     <a href="https://enricopesce.github.io/oci-genai-catalog/models.json" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">{ } models.json</a>
+    <a href="https://enricopesce.github.io/oci-genai-catalog/imported-models.json" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">{ } imported-models.json</a>
     <a href="https://github.com/enricopesce" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none;">@ enricopesce</a>
   </div>
 
@@ -1161,79 +1867,21 @@
     return '<td style="min-width:160px;white-space:normal">' + chips + '</td>';
   }
 
-  // ── ROW RENDERERS ─────────────────────────────────────────────────
-  function rowCohere(m) {
-    return '<tr' + (m.tags.length ? ' data-tags="' + m.tags.join(' ') + '"' : '') + '>' +
+  // ── ROW RENDERER (unified — same 12 columns for all chat providers) ─
+  function rowChat(m) {
+    var reasoning       = m.reasoning || m.thinking;
+    var reasoningDetail = m.reasoningDetail || m.thinkingDetail;
+    var toolUse         = m.toolUse || m.agentic;
+    var toolUseDetail   = m.toolUseDetail || m.agenticDetail;
+    return '<tr' + (m.tags && m.tags.length ? ' data-tags="' + m.tags.join(' ') + '"' : '') + '>' +
       mkModelCell(m) + mkModelId(m) +
       '<td>' + mkTier(m) + '</td>' +
       mkParams(m) +
       '<td>' + mkCtx(m) + '</td>' +
       '<td>' + mkBool(m.multimodal, m.multimodalDetail, null) + '</td>' +
+      '<td>' + mkBoolOrDash(reasoning, reasoningDetail) + '</td>' +
+      '<td>' + mkBool(toolUse, toolUseDetail, null) + '</td>' +
       '<td>' + mkBool(m.fineTunable, m.fineTunableDetail, null) + '</td>' +
-      '<td>' + mkBool(m.toolUse, m.toolUseDetail, null) + '</td>' +
-      '<td>' + mkBoolOrDash(m.reasoning, m.reasoningDetail) + '</td>' +
-      '<td>' + mkBool(m.ragOptimized, m.ragOptimizedDetail, null) + '</td>' +
-      mkStatus(m) + mkRegions(m) + mkBestFor(m) +
-    '</tr>';
-  }
-
-  function rowGoogle(m) {
-    return '<tr>' +
-      mkModelCell(m) + mkModelId(m) +
-      '<td>' + mkTier(m) + '</td>' +
-      '<td>' + mkCtx(m) + '</td>' +
-      '<td>' + mkBool(m.multimodal, m.multimodalDetail, null) + '</td>' +
-      '<td>' + mkBool(m.reasoning, m.reasoningDetail, null) + '</td>' +
-      '<td>' + mkTag(m.speedProfile, m.speedProfileClass) + '</td>' +
-      '<td>' + mkBool(m.fineTunable, m.fineTunableDetail, null) + '</td>' +
-      mkStatus(m) + mkRegions(m) + mkBestFor(m) +
-    '</tr>';
-  }
-
-  function rowMeta(m) {
-    var isMoE = m.architecture && m.architecture.indexOf('MoE') !== -1;
-    var activeCell = '<td><span class="params">' + m.activeParameters +
-      (isMoE ? ' <span class="params-active">active</span>' : '') +
-      '</span></td>';
-    return '<tr' + (m.tags.length ? ' data-tags="' + m.tags.join(' ') + '"' : '') + '>' +
-      mkModelCell(m) + mkModelId(m) +
-      '<td>' + mkTier(m) + '</td>' +
-      '<td>' + mkTag(m.architecture, null) + '</td>' +
-      '<td><span class="params">' + (m.parameters || '—') + '</span></td>' +
-      activeCell +
-      '<td>' + mkCtx(m) + '</td>' +
-      '<td>' + mkBool(m.multimodal, m.multimodalDetail, m.multimodalNote) + '</td>' +
-      '<td>' + mkBool(m.fineTunable, m.fineTunableDetail, null) + '</td>' +
-      '<td>' + mkBool(m.toolUse, m.toolUseDetail, null) + '</td>' +
-      mkStatus(m) + mkRegions(m) + mkBestFor(m) +
-    '</tr>';
-  }
-
-  function rowOpenAI(m) {
-    return '<tr>' +
-      mkModelCell(m) + mkModelId(m) +
-      '<td>' + mkTier(m) + '</td>' +
-      mkParams(m) +
-      '<td>' + mkCtx(m) + '</td>' +
-      '<td>' + mkBool(m.reasoning, m.reasoningDetail, null) + '</td>' +
-      '<td>' + mkBool(m.toolUse, m.toolUseDetail, null) + '</td>' +
-      '<td>' + mkBool(m.openWeights, 'Open weights', null) + '</td>' +
-      '<td>' + mkBool(m.fineTunable, m.fineTunableDetail, null) + '</td>' +
-      mkStatus(m) + mkRegions(m) + mkBestFor(m) +
-    '</tr>';
-  }
-
-  function rowXai(m) {
-    return '<tr>' +
-      mkModelCell(m) + mkModelId(m) +
-      '<td>' + mkTier(m) + '</td>' +
-      '<td>' + mkCtx(m) + '</td>' +
-      '<td>' + mkBool(m.multimodal, m.multimodalDetail, null) + '</td>' +
-      '<td>' + mkBool(m.thinking, m.thinkingDetail, null) + '</td>' +
-      '<td>' + mkBool(m.codingFocus, m.codingFocusDetail, null) + '</td>' +
-      '<td>' + mkTag(m.speedProfile, m.speedProfileClass) + '</td>' +
-      '<td>' + mkBoolOrDash(m.domainKnowledge, m.domainKnowledgeDetail) + '</td>' +
-      '<td>' + mkBool(m.agentic, m.agenticDetail, null) + '</td>' +
       mkStatus(m) + mkRegions(m) + mkBestFor(m) +
     '</tr>';
   }
@@ -1292,11 +1940,11 @@
       embed:  getTbody('embedding'),
       rerank: getTbody('rerank')
     };
-    if (tb.cohere) tb.cohere.innerHTML = chat.filter(function(m){return m.provider==='cohere';}).map(rowCohere).join('');
-    if (tb.google) tb.google.innerHTML = chat.filter(function(m){return m.provider==='google';}).map(rowGoogle).join('');
-    if (tb.meta)   tb.meta.innerHTML   = chat.filter(function(m){return m.provider==='meta';}).map(rowMeta).join('');
-    if (tb.openai) tb.openai.innerHTML = chat.filter(function(m){return m.provider==='openai';}).map(rowOpenAI).join('');
-    if (tb.xai)    tb.xai.innerHTML    = chat.filter(function(m){return m.provider==='xai';}).map(rowXai).join('');
+    if (tb.cohere) tb.cohere.innerHTML = chat.filter(function(m){return m.provider==='cohere';}).map(rowChat).join('');
+    if (tb.google) tb.google.innerHTML = chat.filter(function(m){return m.provider==='google';}).map(rowChat).join('');
+    if (tb.meta)   tb.meta.innerHTML   = chat.filter(function(m){return m.provider==='meta';}).map(rowChat).join('');
+    if (tb.openai) tb.openai.innerHTML = chat.filter(function(m){return m.provider==='openai';}).map(rowChat).join('');
+    if (tb.xai)    tb.xai.innerHTML    = chat.filter(function(m){return m.provider==='xai';}).map(rowChat).join('');
     if (tb.embed)  tb.embed.innerHTML  = data.embeddingModels.map(rowEmbed).join('');
     if (tb.rerank) tb.rerank.innerHTML = data.rerankModels.map(rowRerank).join('');
 
@@ -1317,6 +1965,46 @@
         tier: (m.sizeVariant === 'Light' || m.input === 'Query + List of texts') ? ['fast'] : ['flagship', 'balanced'],
         ctx: 'standard'
       };
+    });
+  }
+
+  // ── IMPORTED MODELS RENDERER ──────────────────────────────────────
+  var IMP_TYPE_LABEL = { chat:'Chat', embed:'Embed', vision:'Vision', reasoning:'Reasoning', coder:'Coder' };
+  var IMP_TYPE_CLASS = { chat:'', embed:' tag-orange', vision:' tag-blue', reasoning:' tag-blue', coder:' tag-green' };
+
+  function getImportTbody(familyId) {
+    var title = document.querySelector('.import-family-title[data-family="' + familyId + '"]');
+    if (!title) return null;
+    var wrap = title.nextElementSibling;
+    return (wrap && wrap.classList.contains('table-wrap')) ? wrap.querySelector('tbody') : null;
+  }
+
+  function rowImported(m, family) {
+    var t = m.type || 'chat';
+    var typeHtml = '<span class="tag' + (IMP_TYPE_CLASS[t] || '') + '">' + (IMP_TYPE_LABEL[t] || t) + '</span>';
+    var paramHtml = m.params
+      ? '<span class="params">' + m.params + '</span>' + (m.activeParams ? ' <span class="params-active">' + m.activeParams + '</span>' : '')
+      : '—';
+    var ctxHtml = m.contextClass
+      ? '<span class="ctx ctx-' + m.contextClass + '">' + m.contextWindowLabel + '</span>'
+      : '—';
+    var clsCls = m.clusterClass ? ' ' + m.clusterClass : '';
+    return '<tr>' +
+      '<td class="model-cell"><span class="badge badge-' + family.badge + '">' + family.label + '</span><br>' +
+        '<span class="model-name">' + m.name + '</span></td>' +
+      '<td><span class="model-id">' + m.hfId + '</span></td>' +
+      '<td>' + typeHtml + '</td>' +
+      '<td>' + paramHtml + '</td>' +
+      '<td>' + ctxHtml + '</td>' +
+      '<td><span class="tag' + clsCls + '">' + m.clusterShape + '</span></td>' +
+    '</tr>';
+  }
+
+  function renderImported(data) {
+    data.families.forEach(function(family) {
+      var tb = getImportTbody(family.id);
+      if (!tb) return;
+      tb.innerHTML = family.models.map(function(m) { return rowImported(m, family); }).join('');
     });
   }
 
@@ -1392,16 +2080,17 @@
   // Clear static tbody content immediately (prevents flash of old HTML)
   document.querySelectorAll('#referenceView table tbody').forEach(function(tb) { tb.innerHTML = ''; });
 
-  fetch('models.json')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      renderAll(data);
-      initFilters();
-    })
-    .catch(function(err) {
-      console.error('Failed to load models.json:', err);
-      initFilters(); // still wire up chips even if data fails
-    });
+  Promise.all([
+    fetch('models.json').then(function(r) { return r.json(); }),
+    fetch('imported-models.json').then(function(r) { return r.json(); })
+  ]).then(function(results) {
+    renderAll(results[0]);
+    renderImported(results[1]);
+    initFilters();
+  }).catch(function(err) {
+    console.error('Failed to load model data:', err);
+    initFilters();
+  });
 
   // ── WIZARD REGION MAP ─────────────────────────────────────────────
   var WIZARD_REGION_MAP = {
@@ -1501,20 +2190,28 @@
         : (r.finetune ? '<span class="tag tag-orange" style="font-size:9px;">Fine-tunable</span>' : '');
 
       html +=
-        '<div style="padding:12px 0;border-bottom:1px solid var(--rec-divider);">' +
-          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">' +
-            '<span style="font-size:16px;">' + medals[i] + '</span>' +
+        '<div style="background:var(--dark);border:1px solid var(--border);border-top:2px solid var(--red);padding:20px;">' +
+          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">' +
+            '<span style="font-size:20px;">' + medals[i] + '</span>' +
             '<span class="badge ' + r.badge + '">' + (WIZ_PROVIDER[r.badge] || '') + '</span>' +
             deployBadge +
           '</div>' +
-          '<div style="font-weight:600;color:var(--on-surface);font-size:13px;">' + r.name + '</div>' +
-          '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:var(--muted);margin-top:2px;">' + r.id + '</div>' +
-          '<div style="color:var(--muted);font-size:12px;margin-top:5px;">' + r.why + '</div>' +
-          (regionTags ? '<div style="margin-top:6px;">' + regionTags + '</div>' : '') +
+          '<div style="font-weight:700;color:var(--on-surface);font-size:14px;margin-bottom:4px;">' + r.name + '</div>' +
+          '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:var(--muted);margin-bottom:8px;">' + r.id + '</div>' +
+          '<div style="color:var(--muted);font-size:12px;line-height:1.5;">' + r.why + '</div>' +
+          (regionTags ? '<div style="margin-top:10px;">' + regionTags + '</div>' : '') +
         '</div>';
     });
-    document.getElementById('resList').innerHTML = html;
-    document.getElementById('wizResultsBox').style.display = 'flex';
+    var gridHtml = recs.length === 0
+      ? html
+      : '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">' + html + '</div>';
+    document.getElementById('resList').innerHTML = gridHtml;
+    document.getElementById('wizQuestionsPanel').style.display = 'none';
+    var box = document.getElementById('wizResultsBox');
+    box.style.display = 'block';
+    box.style.flex = '1';
+    box.style.borderLeft = 'none';
+    box.style.paddingLeft = '0';
   }
 
   // ── WIZARD STEP NAVIGATION ────────────────────────────────────────
@@ -1522,7 +2219,12 @@
   var wizHistory = [];
 
   function wizGoToStep(n) {
-    document.getElementById('wizResultsBox').style.display = 'none';
+    document.getElementById('wizQuestionsPanel').style.display = '';
+    var box = document.getElementById('wizResultsBox');
+    box.style.display = 'none';
+    box.style.flex = '';
+    box.style.borderLeft = '';
+    box.style.paddingLeft = '';
     document.querySelectorAll('.wiz-step').forEach(function(s) {
       s.style.display = parseInt(s.dataset.step) === n ? '' : 'none';
     });
