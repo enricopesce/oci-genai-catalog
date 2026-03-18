@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="enricopesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="5e773e9">
+<meta name="build-version" content="2457c72">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -2192,7 +2192,7 @@
       html +=
         '<div style="background:var(--dark);border:1px solid var(--border);border-top:2px solid var(--red);padding:20px;">' +
           '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">' +
-            '<span style="font-size:20px;">' + medals[i] + '</span>' +
+            '<span style="font-size:20px;">' + (medals[i] || '✦') + '</span>' +
             '<span class="badge ' + r.badge + '">' + (WIZ_PROVIDER[r.badge] || '') + '</span>' +
             deployBadge +
           '</div>' +
