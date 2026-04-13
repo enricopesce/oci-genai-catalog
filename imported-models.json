@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "dataDate": "2026-03-17",
+    "dataDate": "2026-04-13",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm",
-    "version": "2026-03",
-    "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count."
+    "version": "2026-04",
+    "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count. Includes the Qwen Image family announced for OCI Generative AI in March 2026."
   },
   "families": [
     {
@@ -13,6 +13,11 @@
       "label": "Alibaba",
       "models": [
         { "name": "QwQ-32B",                        "hfId": "Qwen/QwQ-32B",                             "type": "reasoning", "params": "32B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
+        { "name": "Qwen Image",                    "hfId": "Qwen/Qwen-Image",                          "type": "image",     "params": null,   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen Image Edit",               "hfId": "Qwen/Qwen-Image-Edit",                     "type": "image",     "params": null,   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen Image 2512",               "hfId": "Qwen/Qwen-Image-2512",                     "type": "image",     "params": null,   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen Image Edit 2511",          "hfId": "Qwen/Qwen-Image-Edit-2511",                "type": "image",     "params": null,   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Qwen Image Edit 2509",          "hfId": "Qwen/Qwen-Image-Edit-2509",                "type": "image",     "params": null,   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Qwen3-Embedding-0.6B",            "hfId": "Qwen/Qwen3-Embedding-0.6B",                "type": "embed",     "params": "0.6B", "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A10_X1",      "clusterClass": "tag-green" },
         { "name": "Qwen3-Embedding-4B",              "hfId": "Qwen/Qwen3-Embedding-4B",                  "type": "embed",     "params": "4B",   "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A10_X2",      "clusterClass": "tag-green" },
         { "name": "Qwen3-Embedding-8B",              "hfId": "Qwen/Qwen3-Embedding-8B",                  "type": "embed",     "params": "8B",   "activeParams": null,        "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
