@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "dataDate": "2026-04-15",
+    "dataDate": "2026-04-17",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/",
     "version": "2026-04",
     "regionDefinitions": {
@@ -1546,7 +1546,9 @@
         "us-chicago-1":  "both",
         "sa-saopaulo-1": "both",
         "eu-frankfurt-1":"both",
-        "uk-london-1":   "both"
+        "uk-london-1":   "both",
+        "me-dubai-1":    "dedicated",
+        "ap-osaka-1":    "both"
       },
       "wizardWhy": "English text semantic search · classification · clustering"
     },
@@ -1566,8 +1568,7 @@
       "status": "active",
       "statusLabel": "Active",
       "regions": {
-        "us-chicago-1":  "both",
-        "sa-saopaulo-1": "both"
+        "us-chicago-1":  "both"
       },
       "wizardWhy": "Cost-efficient English text embeddings at scale"
     },
@@ -1593,7 +1594,8 @@
         "sa-saopaulo-1": "both",
         "eu-frankfurt-1":"both",
         "uk-london-1":   "both",
-        "ap-hyderabad-1":"both",
+        "me-riyadh-1":   "dedicated",
+        "me-dubai-1":    "dedicated",
         "ap-osaka-1":    "both"
       },
       "wizardWhy": "Global text semantic search in 100+ languages"
@@ -1614,8 +1616,7 @@
       "status": "active",
       "statusLabel": "Active",
       "regions": {
-        "us-chicago-1":  "both",
-        "sa-saopaulo-1": "both"
+        "us-chicago-1":  "both"
       },
       "wizardWhy": "Affordable multilingual text embeddings at volume"
     }

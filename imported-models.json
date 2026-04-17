@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "dataDate": "2026-04-15",
+    "dataDate": "2026-04-17",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm",
     "version": "2026-04",
     "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count. Includes the Qwen Image family announced for OCI Generative AI in March 2026."

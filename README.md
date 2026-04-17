@@ -2,7 +2,7 @@
 
 > **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference cataloguing all models available on **Oracle Cloud Infrastructure (OCI) Generative AI**, updated April 2026.
+A single-page reference cataloguing the active **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), verified April 2026.
 
 ## What's inside
 
@@ -18,7 +18,8 @@ A single-page reference cataloguing all models available on **Oracle Cloud Infra
 
 ## Features
 
-- 5 native providers + 79 imported models across 11 providers
+- 5 native providers + 79 imported models across 8 provider families
+- Commercial OCI regions (OC1) covered in the UI; sovereign and government regions are not yet modeled
 - Dark / Light mode toggle (preference saved in `localStorage`)
 - Guided model selection wizard
 - Fully static — no JavaScript framework, no build step
