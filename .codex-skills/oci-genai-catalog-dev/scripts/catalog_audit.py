@@ -19,7 +19,7 @@ PROVIDER_SECTION_KEYWORDS = {
     "xai": "xAI Grok Family",
 }
 
-KNOWN_IMPORTED_TYPES = {"chat", "embed", "vision", "reasoning", "coder", "image"}
+KNOWN_IMPORTED_TYPES = {"chat", "embed", "vision", "reasoning", "coder", "image", "audio"}
 
 
 def read_text(path: Path) -> str:
