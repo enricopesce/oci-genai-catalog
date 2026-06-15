@@ -2,6 +2,13 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-06-15
+
+- Synced OCI model reference data against the current public Oracle documentation.
+- Added imported `nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4` with B200_X4 recommended cluster shape.
+- Added imported `openai/whisper-large-v3-turbo` for audio-to-text workloads with H100_X1 and A100_80G_X1 recommended cluster shapes.
+- Updated `Rerank 3.5` to active status and corrected Meta Llama 3.3 70B commercial-region availability.
+
 ## 2026-05-07
 
 - Synced OCI model reference data against the current Oracle documentation.

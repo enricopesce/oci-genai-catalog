@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "dataDate": "2026-05-17",
+    "dataDate": "2026-06-15",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/",
-    "version": "2026-05",
+    "version": "2026-06",
     "regionDefinitions": {
       "us-ashburn-1":  "US East (Ashburn)",
       "us-chicago-1":  "US Midwest (Chicago)",
@@ -611,9 +611,7 @@
       "bestFor": "Best text-only 70B tasks; outperforms 3.1 70B and 3.2 90B on text benchmarks",
       "tags": ["fine-tunable"],
       "regions": {
-        "us-ashburn-1":  "dedicated",
         "us-chicago-1":  "both",
-        "us-phoenix-1":  "both",
         "sa-saopaulo-1": "both",
         "eu-frankfurt-1":"both",
         "uk-london-1":   "both",
@@ -1735,8 +1733,8 @@
       "input": "Query + List of texts",
       "output": "Ordered array with relevance scores",
       "useCase": "RAG pipelines, document ranking, search result reordering, precision improvement",
-      "status": "deprecated",
-      "statusLabel": "Deprecated",
+      "status": "active",
+      "statusLabel": "Active",
       "regions": {
         "us-ashburn-1":  "dedicated",
         "us-chicago-1":  "dedicated",

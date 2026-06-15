@@ -2,7 +2,7 @@
 
 > **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), verified May 2026.
+A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), verified June 2026.
 
 ## What's inside
 
@@ -11,14 +11,14 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 | **Chat models** | Cohere Command A family · Google Gemini 2.5 · Meta Llama 4 · OpenAI gpt-oss · xAI Grok 4.3 |
 | **Embedding models** | Cohere Embed v3 & v4 (text + multimodal) |
 | **Rerank models** | Cohere Rerank 4.0 Fast, Rerank 4.0 Pro, Rerank 3.5 |
-| **Imported models** | 82 community/open-weight models via OCI Model Catalog |
+| **Imported models** | 84 compatible/importable models via OCI Model Import |
 | **Selection wizard** | Guided 4-step model picker (use case → quality/speed → deployment → region) |
 
 **Columns covered:** Model ID · Tier · Context window · Multimodal · Tool use · Fine-tuning · Reasoning · Status · Best for
 
 ## Features
 
-- 5 native providers + 82 imported models across 8 provider families
+- 5 native providers + 84 imported models across 9 provider families
 - Commercial OCI regions (OC1) covered in the UI, including UAE Central (Abu Dhabi); sovereign and government regions are not yet modeled
 - Dark / Light mode toggle (preference saved in `localStorage`)
 - Guided model selection wizard
@@ -48,4 +48,5 @@ All data sourced from the [OCI official documentation](https://docs.oracle.com/e
 | [Google (Gemma)](https://ai.google.dev/gemma) | Gemma 4 31B, Gemma 3 (270M–27B), Gemma 2 (2B–27B) |
 | [Microsoft](https://microsoft.com) | Phi-4, Phi-3 family |
 | [Mistral](https://mistral.ai) | Mixtral 8x7B, Mistral Nemo, Mistral 7B, E5-Mistral |
-| [NVIDIA](https://nvidia.com) | Nemotron Super 120B, Nano 30B, Llama Nemotron 70B |
+| [NVIDIA](https://nvidia.com) | Nemotron Ultra 550B, Super 120B, Nano 30B, Llama Nemotron 70B |
+| [OpenAI](https://openai.com) | Whisper Large V3 Turbo, gpt-oss-120b, gpt-oss-20b |

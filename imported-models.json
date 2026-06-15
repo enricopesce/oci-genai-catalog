@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "dataDate": "2026-05-17",
+    "dataDate": "2026-06-15",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm",
-    "version": "2026-05",
-    "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count. Includes Qwen, Gemma, NVIDIA Nemotron, and OpenAI gpt-oss entries reflected in the OCI Model Import documentation."
+    "version": "2026-06",
+    "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count. Includes Qwen, Gemma, NVIDIA Nemotron, OpenAI Whisper, and OpenAI gpt-oss entries reflected in the OCI Model Import documentation."
   },
   "families": [
     {
@@ -136,10 +136,20 @@
       "badge": "nvidia",
       "label": "NVIDIA",
       "models": [
+        { "name": "Nemotron 3 Ultra 550B",           "hfId": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4", "type": "chat", "params": "550B", "activeParams": "55B active", "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "B200_X4",     "clusterClass": "tag-blue" },
         { "name": "Nemotron 3 Super 120B",           "hfId": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16", "type": "chat", "params": "120B", "activeParams": "12B active", "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "H100_X8",     "clusterClass": "tag-blue" },
         { "name": "Nemotron 3 Nano 30B (FP8)",       "hfId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",    "type": "chat", "params": "30B",  "activeParams": "3B active",  "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "H100_X4",     "clusterClass": "tag-blue" },
         { "name": "Nemotron 3 Nano 30B (BF16)",      "hfId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",   "type": "chat", "params": "30B",  "activeParams": "3B active",  "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Llama 3.1 Nemotron 70B Instruct", "hfId": "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",   "type": "chat", "params": "70B",  "activeParams": null,         "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X4", "clusterClass": "" }
+      ]
+    },
+    {
+      "id": "openai-whisper",
+      "name": "OpenAI Whisper Family",
+      "badge": "openai",
+      "label": "OpenAI",
+      "models": [
+        { "name": "Whisper Large V3 Turbo", "hfId": "openai/whisper-large-v3-turbo", "type": "audio", "params": null, "activeParams": null, "contextWindowLabel": "—", "contextClass": null, "clusterShape": "H100_X1 / A100_80G_X1", "clusterClass": "tag-blue" }
       ]
     },
     {
