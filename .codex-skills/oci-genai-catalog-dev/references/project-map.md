@@ -7,6 +7,7 @@
 - `imported-models.json`: imported/open-weight catalog source of truth.
 - `sw.js`: small navigation-only service worker.
 - `README.md`: public-facing project description.
+- `AGENTS.md`: repository-level Codex guidance loaded automatically at session start.
 - `.codex-skills/oci-genai-catalog-dev/`: local maintenance skill, references, and audit helper.
 
 ## Runtime flow
@@ -39,12 +40,12 @@
 - Imported-model HTML rows are duplicated fallback content. Runtime replaces them, so JSON edits are the real data changes.
 - Filter chips use row text plus `data-tags`, with OR inside a chip group and AND across groups.
 - Embedding recommendations ignore tier, deployment, and region filtering even though the wizard still asks those questions.
-- The repo root contains a zero-byte `.codex` file; do not assume it is a directory for project-local Codex config.
+- In managed Codex workspaces, `.codex/` and `.agents/` may be mounted read-only. Use root `AGENTS.md` as the durable integration point unless the environment allows project-local `.codex/config.toml` or `.agents/skills`.
 
 ## Practical commands
 
 - Audit data sync points:
-  - `python3 /home/opc/source/ocillms/.codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo /home/opc/source/ocillms`
+  - `python3 .codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo .`
 - Serve locally:
   - `python3 -m http.server 8080`
 - Count current model totals quickly:

@@ -1,1 +1,5 @@
-/.codex
+# Ignore Codex local runtime state while allowing future tracked project config.
+/.codex/*
+!/.codex/config.toml
+!/.codex/rules/
+!/.codex/rules/*.rules

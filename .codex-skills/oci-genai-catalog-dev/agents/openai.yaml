@@ -1,4 +1,4 @@
 interface:
   display_name: "OCI GenAI Catalog Dev"
   short_description: "Maintain the OCI GenAI Catalog project"
-  default_prompt: "Use $oci-genai-catalog-dev to continue work on /home/opc/source/ocillms."
+  default_prompt: "Use $oci-genai-catalog-dev to continue work on this OCI GenAI Catalog repository."

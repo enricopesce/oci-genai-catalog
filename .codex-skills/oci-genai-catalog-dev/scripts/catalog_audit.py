@@ -189,7 +189,7 @@ def audit(repo: Path) -> int:
     repo_codex = repo / ".codex"
     if repo_codex.exists() and repo_codex.is_file():
         warnings.append(
-            "repo root contains a zero-byte .codex file; do not treat it as a directory for local skills"
+            "repo root contains a .codex file; replace it with a directory before adding project-local Codex config"
         )
 
     print(f"Repo: {repo}")
@@ -227,7 +227,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--repo",
-        default="/home/opc/source/ocillms",
+        default=".",
         help="Path to the OCI GenAI Catalog repository (default: %(default)s)",
     )
     args = parser.parse_args()

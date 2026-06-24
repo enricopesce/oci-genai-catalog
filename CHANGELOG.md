@@ -2,6 +2,16 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-06-24
+
+- Re-verified OCI Generative AI catalog data against current public Oracle documentation using parallel focused research agents.
+- Added imported `Qwen/Qwen3-Next-80B-A3B-Instruct`, `deepseek-ai/DeepSeek-V4-Pro`, `deepseek-ai/DeepSeek-V4-Flash`, and `google/medgemma-27b-text-it`, increasing imported-model coverage from 84 to 88 models.
+- Updated imported Qwen and Gemma recommended dedicated AI cluster shape coverage where Oracle now lists multiple compatible shapes.
+- Marked `cohere.rerank.v3-5` (`Rerank 3.5`) as deprecated while keeping it visible in the reference catalog.
+- Updated the guided wizard and static use-case guide to recommend active models only.
+- Synced catalog dates, imported-model counts, dashboard copy, and README model summaries to the 24 June 2026 refresh.
+- Documented that future non-trivial repository changes should update `CHANGELOG.md`.
+
 ## 2026-06-15
 
 - Synced OCI model reference data against the current public Oracle documentation.

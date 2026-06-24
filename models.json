@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "dataDate": "2026-06-15",
+    "dataDate": "2026-06-24",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/",
     "version": "2026-06",
     "regionDefinitions": {
@@ -1733,8 +1733,8 @@
       "input": "Query + List of texts",
       "output": "Ordered array with relevance scores",
       "useCase": "RAG pipelines, document ranking, search result reordering, precision improvement",
-      "status": "active",
-      "statusLabel": "Active",
+      "status": "deprecated",
+      "statusLabel": "Deprecated",
       "regions": {
         "us-ashburn-1":  "dedicated",
         "us-chicago-1":  "dedicated",
