@@ -12,7 +12,12 @@ All notable updates to this repository are tracked here.
 - Synced catalog dates, dashboard counts, imported-family mount points, badge styles, and README summaries.
 - Replaced text-matching filter chips with structured hosted/importable views, model search, role and capability facets, active-by-default lifecycle filtering, regional deployment matching, context thresholds, imported GPU filters, dynamic counts, and complete empty-section handling.
 - Simplified catalog discovery around primary model roles and intent-aware use-case search; moved infrastructure facets into an inline advanced panel with live counts, cascading region/deployment availability, removable filter chips, deprecated-model opt-in, and accurate active/total labels.
-- Added a guided-selection handoff that opens every matching active catalog model with the wizard workload, deployment, and geographic region filters already applied.
+- Added a guided-selection handoff that opens every matching active catalog model with the wizard workload, deployment, and hosted geographic region filters already applied.
+- Hid zero-result role and filter choices while preserving selected zero-result values and always keeping each filter's neutral reset choice available; promoted the filter panel to an always-visible, non-collapsible standard catalog view.
+- Added a combined Clusters scope for dedicated-capable hosted models and compatible Model Import models, including GPU filtering, direct switching from the hosted deployment selector, and dedicated-wizard handoff for imported workloads.
+- Consolidated the separate Model role row into the Capability selector, which now exposes chat, embedding, rerank, image, and audio roles alongside vision, reasoning, coding, tool-use, and fine-tuning capabilities.
+- Hid every empty model section and the complete results area when no models match, and removed the verbose Regions badge column from native model tables while retaining region-based filtering.
+- Made the catalog stat bar reflect only currently visible filtered records and hide zero-count cards, replacing misleading global totals after capability, scope, search, or infrastructure filters are applied.
 
 ## 2026-06-24
 

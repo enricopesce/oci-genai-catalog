@@ -22,9 +22,9 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 - 97 imported models across 12 Model Import families, including Qwen, DeepSeek, Gemma, Llama, MiniMax, Mistral, Kimi, Nemotron, Whisper, gpt-oss, and GLM entries
 - Commercial OCI regions (OC1) covered in the UI, including UAE Central (Abu Dhabi); sovereign and government regions are not yet modeled
 - Dark / Light mode toggle (preference saved in `localStorage`)
-- Guided model selection wizard with a one-click handoff to the equivalent catalog filters
+- Guided model selection wizard with a one-click handoff to the matching catalog scope and workload filters
 - Intent-aware catalog search across model names, IDs, providers, and use cases
-- Streamlined filters with primary model roles, advanced capability and infrastructure facets, live option counts, geographic region/deployment cascading, and removable applied-filter chips
+- Always-visible catalog filters with a unified capability/role selector, live option and result-summary counts, geographic region/deployment cascading, and a combined cluster scope covering dedicated hosted endpoints plus compatible Model Import models
 - Semantic headings and keyboard-focusable table sections for accessibility
 - Fully static — no JavaScript framework, no build step
 - Mobile responsive

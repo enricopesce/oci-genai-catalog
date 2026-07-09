@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="cad1161">
+<meta name="build-version" content="27037fe">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -124,6 +124,7 @@
   html.light .badge-zai      { color: #6A5700; }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
   body {
     background: var(--dark);
     color: var(--text);
@@ -222,6 +223,12 @@
     outline: 2px solid var(--red-light);
     outline-offset: 3px;
   }
+  .native-chat-table th:nth-child(11),
+  .native-chat-table td:nth-child(11),
+  .native-embed-table th:nth-child(9),
+  .native-embed-table td:nth-child(9),
+  .native-rerank-table th:nth-child(7),
+  .native-rerank-table td:nth-child(7) { display: none; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   thead th {
     background: var(--panel2);
@@ -421,24 +428,21 @@
   .filter-search:focus,
   .filter-select:focus,
   .scope-btn:focus-visible,
-  .role-filter-btn:focus-visible,
   .filter-chip:focus-visible,
-  .filter-reset:focus-visible,
-  .filter-more summary:focus-visible {
+  .filter-reset:focus-visible {
     outline: 2px solid var(--red-light);
     outline-offset: 2px;
   }
   .scope-switch {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-width: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 430px;
     background: var(--panel2);
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: 3px;
   }
-  .scope-btn,
-  .role-filter-btn {
+  .scope-btn {
     border: 0;
     background: transparent;
     color: var(--muted);
@@ -449,46 +453,18 @@
     white-space: nowrap;
   }
   .scope-btn { border-radius: 2px; }
-  .scope-btn.active,
-  .role-filter-btn.active {
+  .scope-btn.active {
     background: var(--border);
     color: var(--on-surface);
   }
-  .scope-count,
-  .role-count {
+  .scope-count {
     color: var(--muted);
     font-weight: 400;
     margin-left: 4px;
   }
-  .filter-role-row {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    margin-top: 12px;
-    overflow-x: auto;
-    padding-bottom: 2px;
-    scrollbar-width: thin;
-  }
-  .filter-group-label {
-    color: var(--muted);
-    font: 10px 'IBM Plex Mono', monospace;
-    letter-spacing: 0.08em;
-    margin-right: 6px;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  .role-filter-btn {
-    border-bottom: 2px solid transparent;
-  }
-  .role-filter-btn.active {
-    background: transparent;
-    border-bottom-color: var(--red);
-    color: var(--red-light);
-  }
-  .role-filter-btn[hidden] { display: none; }
-  .role-filter-btn:disabled { opacity: 0.38; cursor: default; }
   .hosted-only[hidden],
-  .imported-only[hidden] { display: none !important; }
+  .imported-only[hidden],
+  .hosted-status[hidden] { display: none !important; }
   .filter-field {
     display: grid;
     gap: 4px;
@@ -526,23 +502,15 @@
     accent-color: var(--red);
   }
   .filter-more { margin-top: 12px; }
-  .filter-more summary {
-    list-style: none;
-    min-height: 34px;
-    display: inline-flex;
+  .filter-more-heading {
     align-items: center;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: var(--text);
-    cursor: pointer;
-    font: 12px 'IBM Plex Sans', sans-serif;
-    padding: 6px 10px;
+    color: var(--muted);
+    display: flex;
+    font: 10px 'IBM Plex Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     white-space: nowrap;
   }
-  .filter-more summary::-webkit-details-marker { display: none; }
-  .filter-more summary::after { content: '▾'; color: var(--muted); margin-left: 10px; }
-  .filter-more[open] summary { border-color: var(--muted); }
-  .filter-more[open] summary::after { content: '▴'; }
   .filter-more-count {
     align-items: center;
     background: rgba(192,57,43,0.18);
@@ -567,7 +535,6 @@
     border: 1px solid var(--border);
     border-radius: 4px;
   }
-  .filter-more:not([open]) .filter-more-panel { display: none; }
   .filter-summary {
     display: flex;
     align-items: center;
@@ -662,10 +629,8 @@
     /* Catalog filters */
     .filter-shell { padding: 12px 0; margin-bottom: 18px; }
     .filter-search { font-size: 12px; }
-    .scope-btn, .role-filter-btn { font-size: 10px; padding: 5px 8px; }
-    .filter-group-label { width: 100%; }
+    .scope-btn { font-size: 10px; padding: 5px 8px; }
     .filter-more { width: 100%; }
-    .filter-more summary { justify-content: space-between; }
     .filter-more-panel {
       grid-template-columns: 1fr;
     }
@@ -937,22 +902,13 @@
       <input class="filter-search" id="filterSearch" type="search" placeholder="Search model, ID, provider, or use case" autocomplete="off" spellcheck="false">
       <div class="scope-switch" role="group" aria-label="Catalog scope">
         <button class="scope-btn active" type="button" data-filter-scope="hosted" aria-pressed="true">OCI Hosted <span class="scope-count" id="hostedScopeCount">17 active / 39</span></button>
+        <button class="scope-btn" type="button" data-filter-scope="cluster" aria-pressed="false" title="Dedicated hosted endpoints and Model Import models">Clusters <span class="scope-count" id="clusterScopeCount">108 / 122</span></button>
         <button class="scope-btn" type="button" data-filter-scope="imported" aria-pressed="false">Model Import <span class="scope-count" id="importedScopeCount">97</span></button>
       </div>
     </div>
 
-    <div class="filter-role-row" role="group" aria-label="Model role">
-      <span class="filter-group-label">Model role</span>
-      <button class="role-filter-btn active" type="button" data-filter-role="all" aria-pressed="true">All <span class="role-count">0</span></button>
-      <button class="role-filter-btn" type="button" data-filter-role="chat" aria-pressed="false">Chat <span class="role-count">0</span></button>
-      <button class="role-filter-btn" type="button" data-filter-role="embed" aria-pressed="false">Embedding <span class="role-count">0</span></button>
-      <button class="role-filter-btn" type="button" data-filter-role="rerank" aria-pressed="false">Rerank <span class="role-count">0</span></button>
-      <button class="role-filter-btn" type="button" data-filter-role="image" aria-pressed="false">Image <span class="role-count">0</span></button>
-      <button class="role-filter-btn" type="button" data-filter-role="audio" aria-pressed="false">Audio <span class="role-count">0</span></button>
-    </div>
-
-    <details class="filter-more" id="filterMore">
-      <summary>Advanced filters <span class="filter-more-count" id="filterMoreCount" hidden>0</span></summary>
+    <div class="filter-more" id="filterMore">
+      <div class="filter-more-heading">Filters <span class="filter-more-count" id="filterMoreCount" hidden>0</span></div>
       <div class="filter-more-panel">
         <label class="filter-field">
           <span class="filter-field-label" id="providerFilterLabel">Provider</span>
@@ -972,18 +928,18 @@
         </label>
         <label class="filter-field">
           <span class="filter-field-label">Capability</span>
-          <select class="filter-select" id="filterCapability"><option value="">Any capability</option></select>
+          <select class="filter-select" id="filterCapability"><option value="">Any capability / role</option></select>
         </label>
         <label class="filter-field imported-only" hidden>
           <span class="filter-field-label">GPU hardware</span>
           <select class="filter-select" id="filterGpu"><option value="">Any GPU</option></select>
         </label>
-        <label class="filter-status hosted-only" id="filterStatusWrap">
+        <label class="filter-status hosted-status" id="filterStatusWrap">
           <input id="filterIncludeDeprecated" type="checkbox">
           <span>Include deprecated models</span>
         </label>
       </div>
-    </details>
+    </div>
 
     <div class="filter-summary">
       <span class="filter-result-count" id="filterResultCount" aria-live="polite">0 models</span>
@@ -992,6 +948,7 @@
     </div>
   </div>
   <div class="no-results" id="noResults">No models match the selected filters.</div>
+  <div id="catalogResults">
 
   <!-- STAT BAR -->
   <div class="stat-bar">
@@ -1008,7 +965,7 @@
   <!-- ══════════════════════════════════════════════════════════ -->
 
   <h2 class="section-title">Chat Models — Cohere Family</h2>
-  <div class="table-wrap">
+  <div class="table-wrap native-chat-table">
   <table>
     <thead>
       <tr>
@@ -1102,7 +1059,7 @@
   </div>
 
   <h2 class="section-title">Chat Models — Google Gemini Family</h2>
-  <div class="table-wrap">
+  <div class="table-wrap native-chat-table">
   <table>
     <thead>
       <tr>
@@ -1168,7 +1125,7 @@
   </div>
 
   <h2 class="section-title">Chat Models — Meta Llama Family</h2>
-  <div class="table-wrap">
+  <div class="table-wrap native-chat-table">
   <table>
     <thead>
       <tr>
@@ -1276,7 +1233,7 @@
   </div>
 
   <h2 class="section-title">Chat Models — OpenAI gpt-oss Family</h2>
-  <div class="table-wrap">
+  <div class="table-wrap native-chat-table">
   <table>
     <thead>
       <tr>
@@ -1328,7 +1285,7 @@
   </div>
 
   <h2 class="section-title">Chat Models — xAI Grok Family</h2>
-  <div class="table-wrap">
+  <div class="table-wrap native-chat-table">
   <table>
     <thead>
       <tr>
@@ -1497,7 +1454,7 @@
   <!-- ══════════════════════════════════════════════════════════ -->
 
   <h2 class="section-title">Embedding Models</h2>
-  <div class="table-wrap">
+  <div class="table-wrap native-embed-table">
   <table>
     <thead>
       <tr>
@@ -1618,7 +1575,7 @@
 
   <!-- RERANK -->
   <h2 class="section-title">Rerank Model</h2>
-  <div class="table-wrap">
+  <div class="table-wrap native-rerank-table">
   <table>
     <thead>
       <tr>
@@ -2560,6 +2517,7 @@
     <a href="https://enricopesce.github.io/oci-genai-catalog/imported-models.json" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">{ } imported-models.json</a>
     <a href="https://github.com/enricopesce" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none;">Enrico Pesce</a>
   </div>
+  </div><!-- /#catalogResults -->
 
 </div><!-- /#referenceView -->
 </main><!-- /.container -->
@@ -2907,6 +2865,11 @@
     var t = m.type || 'chat';
     var role = (t === 'embed' || t === 'image' || t === 'audio') ? t : 'chat';
     var capabilities = ['vision', 'reasoning', 'coder'].indexOf(t) !== -1 ? [t] : [];
+    var tasks = [];
+    if (t === 'embed') tasks = ['embed', 'rag'];
+    if (t === 'chat' || t === 'reasoning') tasks = ['chat', 'rag'];
+    if (t === 'vision') tasks = ['vision', 'chat', 'rag'];
+    if (t === 'coder') tasks = ['code', 'chat', 'rag'];
     var typeHtml = '<span class="tag' + (IMP_TYPE_CLASS[t] || '') + '">' + (IMP_TYPE_LABEL[t] || t) + '</span>';
     var paramHtml = m.params
       ? '<span class="params">' + m.params + '</span>' + (m.activeParams ? ' <span class="params-active">' + m.activeParams + '</span>' : '')
@@ -2920,9 +2883,9 @@
       scope: 'imported', roles: [role], provider: family.id,
       providerLabel: family.label, status: 'listed',
       search: [m.name, m.hfId, family.label, t, m.params, m.contextWindowLabel,
-        m.clusterShape].join(' '),
+        m.clusterShape].concat(tasks).join(' '),
       contextK: contextLabelToK(m.contextWindowLabel),
-      deployments: ['dedicated'], capabilities: capabilities, gpus: gpuMatches
+      deployments: ['dedicated'], capabilities: capabilities, tasks: tasks, gpus: gpuMatches
     });
     return '<tr' + attrs + '>' +
       '<td class="model-cell"><span class="badge badge-' + family.badge + '">' + family.label + '</span><br>' +
@@ -2945,6 +2908,7 @@
 
   // ── STRUCTURED CATALOG FILTERS ────────────────────────────────────
   function initFilters() {
+    var statCards = document.querySelectorAll('.stat-bar .stat');
     var controls = {
       shell: document.getElementById('catalogFilters'),
       search: document.getElementById('filterSearch'),
@@ -2956,19 +2920,24 @@
       context: document.getElementById('filterContext'),
       capability: document.getElementById('filterCapability'),
       gpu: document.getElementById('filterGpu'),
-      more: document.getElementById('filterMore'),
       moreCount: document.getElementById('filterMoreCount'),
       count: document.getElementById('filterResultCount'),
       chips: document.getElementById('filterChips'),
       reset: document.getElementById('filterReset'),
       noResults: document.getElementById('noResults'),
+      results: document.getElementById('catalogResults'),
+      stats: {
+        providers: statCards[0],
+        chat: statCards[1],
+        embed: statCards[2],
+        rerank: statCards[3],
+        imported: statCards[4]
+      },
       importedTitle: document.getElementById('importedSectionTitle'),
       importedIntro: document.getElementById('importedSectionIntro')
     };
     var scopeButtons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-scope]'));
-    var roleButtons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-role]'));
     var currentScope = 'hosted';
-    var currentRole = 'all';
     var currentWizardTask = '';
 
     function splitValues(value) {
@@ -3022,6 +2991,9 @@
 
     if (!records.length) {
       controls.shell.hidden = true;
+      controls.results.hidden = true;
+      controls.noResults.style.display = 'block';
+      controls.noResults.textContent = 'No model data is available.';
       return;
     }
 
@@ -3032,6 +3004,15 @@
       option.disabled = !!disabled;
       select.appendChild(option);
       return option;
+    }
+
+    function recordInScope(record, scope) {
+      if (scope === 'cluster') {
+        return record.scope === 'imported' || (
+          record.scope === 'hosted' && record.deployments.indexOf('dedicated') !== -1
+        );
+      }
+      return record.scope === scope;
     }
 
     var gpuOrder = ['A10', 'A100', 'H100', 'H200', 'B200'];
@@ -3045,7 +3026,12 @@
     var hostedRecords = records.filter(function(record) { return record.scope === 'hosted'; });
     var activeHosted = hostedRecords.filter(function(record) { return record.status === 'active'; }).length;
     var importedTotal = records.filter(function(record) { return record.scope === 'imported'; }).length;
+    var clusterRecords = records.filter(function(record) { return recordInScope(record, 'cluster'); });
+    var currentCluster = clusterRecords.filter(function(record) {
+      return record.scope === 'imported' || record.status === 'active';
+    }).length;
     document.getElementById('hostedScopeCount').textContent = activeHosted + ' active / ' + hostedRecords.length;
+    document.getElementById('clusterScopeCount').textContent = currentCluster + ' / ' + clusterRecords.length;
     document.getElementById('importedScopeCount').textContent = importedTotal;
 
     var regionOptions = Object.keys(REGION_GROUPS).map(function(group) {
@@ -3055,7 +3041,7 @@
     }));
     var deploymentOptions = [
       { value: 'ondemand', label: 'On-demand' },
-      { value: 'dedicated', label: 'Dedicated cluster' }
+      { value: 'dedicated', label: 'Dedicated clusters' }
     ];
     var contextOptions = [
       { value: 128, label: 'At least 128K' },
@@ -3064,6 +3050,11 @@
       { value: 2000, label: 'At least 2M' }
     ];
     var capabilityOptions = [
+      { value: 'role:chat', label: 'Chat' },
+      { value: 'role:embed', label: 'Embedding' },
+      { value: 'role:rerank', label: 'Rerank' },
+      { value: 'role:image', label: 'Image generation' },
+      { value: 'role:audio', label: 'Audio' },
       { value: 'vision', label: 'Multimodal / vision' },
       { value: 'reasoning', label: 'Reasoning' },
       { value: 'coder', label: 'Coding' },
@@ -3075,15 +3066,14 @@
     function getState() {
       return {
         scope: currentScope,
-        role: currentRole,
         search: controls.search.value.trim().toLowerCase(),
-        includeDeprecated: currentScope === 'hosted' && controls.includeDeprecated.checked,
+        includeDeprecated: currentScope !== 'imported' && controls.includeDeprecated.checked,
         provider: controls.provider.value,
         deployment: currentScope === 'hosted' ? controls.deployment.value : '',
         region: currentScope === 'hosted' ? controls.region.value : '',
         contextK: Number(controls.context.value || 0),
         capability: controls.capability.value,
-        gpu: currentScope === 'imported' ? controls.gpu.value : '',
+        gpu: currentScope === 'imported' || currentScope === 'cluster' ? controls.gpu.value : '',
         wizardTask: currentWizardTask
       };
     }
@@ -3092,6 +3082,16 @@
       var next = {};
       Object.keys(state).forEach(function(name) { next[name] = state[name]; });
       next[key] = value;
+      return next;
+    }
+
+    function facetOptionState(state, key, value) {
+      var next = withValue(state, key, value);
+      if (state.scope === 'hosted' && key === 'deployment' && value === 'dedicated') {
+        next.scope = 'cluster';
+        next.deployment = '';
+        next.region = '';
+      }
       return next;
     }
 
@@ -3104,16 +3104,22 @@
       return region ? [region] : [];
     }
 
+    function recordHasCapability(record, capability) {
+      if (capability.indexOf('role:') === 0) {
+        return record.roles.indexOf(capability.slice(5)) !== -1;
+      }
+      return record.capabilities.indexOf(capability) !== -1;
+    }
+
     function recordMatches(record, state) {
-      if (record.scope !== state.scope) return false;
+      if (!recordInScope(record, state.scope)) return false;
       if (state.search && !state.search.split(/\s+/).every(function(term) {
         return record.search.indexOf(term) !== -1;
       })) return false;
-      if (state.scope === 'hosted' && !state.includeDeprecated && record.status !== 'active') return false;
-      if (state.role !== 'all' && record.roles.indexOf(state.role) === -1) return false;
+      if (record.scope === 'hosted' && !state.includeDeprecated && record.status !== 'active') return false;
       if (state.provider && record.provider !== state.provider) return false;
       if (state.contextK && record.contextK < state.contextK) return false;
-      if (state.capability && record.capabilities.indexOf(state.capability) === -1) return false;
+      if (state.capability && !recordHasCapability(record, state.capability)) return false;
       if (state.wizardTask && record.tasks.indexOf(state.wizardTask) === -1) return false;
 
       if (state.scope === 'hosted') {
@@ -3128,7 +3134,7 @@
         }
       }
 
-      if (state.scope === 'imported' && state.gpu && record.gpus.indexOf(state.gpu) === -1) return false;
+      if (state.gpu && (record.scope !== 'imported' || record.gpus.indexOf(state.gpu) === -1)) return false;
       return true;
     }
 
@@ -3136,30 +3142,42 @@
       return records.filter(function(record) { return recordMatches(record, state); }).length;
     }
 
-    function refreshRoleCounts(state) {
-      roleButtons.forEach(function(button) {
-        var role = button.dataset.filterRole;
-        var availableInScope = role === 'all' || records.some(function(record) {
-          return record.scope === state.scope && record.roles.indexOf(role) !== -1;
-        });
-        button.hidden = !availableInScope;
-        if (!availableInScope) return;
-        var count = countMatches(withValue(state, 'role', role));
-        button.querySelector('.role-count').textContent = count;
-        button.disabled = count === 0 && currentRole !== role;
-        button.classList.toggle('active', currentRole === role);
-        button.setAttribute('aria-pressed', currentRole === role ? 'true' : 'false');
-      });
+    function setResultStat(card, count, singular, plural) {
+      card.hidden = count === 0;
+      card.querySelector('.stat-num').textContent = count;
+      card.querySelector('.stat-label').textContent = count === 1 ? singular : plural;
+    }
+
+    function updateResultStats(visibleRecords) {
+      var providers = {};
+      visibleRecords.forEach(function(record) { providers[record.provider] = true; });
+      setResultStat(controls.stats.providers, Object.keys(providers).length,
+        'Model Provider', 'Model Providers');
+      setResultStat(controls.stats.chat, visibleRecords.filter(function(record) {
+        return record.roles.indexOf('chat') !== -1;
+      }).length, 'Chat Model', 'Chat Models');
+      setResultStat(controls.stats.embed, visibleRecords.filter(function(record) {
+        return record.roles.indexOf('embed') !== -1;
+      }).length, 'Embedding Model', 'Embedding Models');
+      setResultStat(controls.stats.rerank, visibleRecords.filter(function(record) {
+        return record.roles.indexOf('rerank') !== -1;
+      }).length, 'Rerank Model', 'Rerank Models');
+      setResultStat(controls.stats.imported, visibleRecords.filter(function(record) {
+        return record.scope === 'imported';
+      }).length, 'Imported Model', 'Imported Models');
     }
 
     function refreshSelect(select, state, key, allValue, allLabel, options) {
       var selected = String(select.value);
-      var availableValues = options.map(function(option) { return String(option.value); });
+      var availableValues = [String(allValue)];
       select.innerHTML = '';
       addOption(select, allValue, allLabel + ' (' + countMatches(withValue(state, key, allValue)) + ')', false);
       options.forEach(function(option) {
-        var count = countMatches(withValue(state, key, option.value));
-        addOption(select, option.value, option.label + ' (' + count + ')', count === 0 && selected !== String(option.value));
+        var optionValue = String(option.value);
+        var count = countMatches(facetOptionState(state, key, option.value));
+        if (count === 0 && selected !== optionValue) return;
+        addOption(select, option.value, option.label + ' (' + count + ')', false);
+        availableValues.push(optionValue);
       });
       select.value = availableValues.indexOf(selected) !== -1 ? selected : String(allValue);
     }
@@ -3167,24 +3185,26 @@
     function refreshFacetOptions(state) {
       var providers = {};
       records.forEach(function(record) {
-        if (record.scope === state.scope) providers[record.provider] = record.providerLabel;
+        if (recordInScope(record, state.scope)) providers[record.provider] = record.providerLabel;
       });
-      var noun = state.scope === 'hosted' ? 'providers' : 'families';
+      var noun = state.scope === 'hosted' ? 'providers' :
+        state.scope === 'imported' ? 'families' : 'providers / families';
       var providerOptions = Object.keys(providers).sort(function(a, b) {
         return providers[a].localeCompare(providers[b]);
       }).map(function(provider) {
         return { value: provider, label: providers[provider] };
       });
       refreshSelect(controls.provider, state, 'provider', '', 'All ' + noun, providerOptions);
-      controls.providerLabel.textContent = state.scope === 'hosted' ? 'Provider' : 'Family';
+      controls.providerLabel.textContent = state.scope === 'hosted' ? 'Provider' :
+        state.scope === 'imported' ? 'Family' : 'Provider / family';
 
       if (state.scope === 'hosted') {
         refreshSelect(controls.region, state, 'region', '', 'Any region', regionOptions);
         refreshSelect(controls.deployment, state, 'deployment', '', 'Any deployment', deploymentOptions);
       }
       refreshSelect(controls.context, state, 'contextK', 0, 'Any context', contextOptions);
-      refreshSelect(controls.capability, state, 'capability', '', 'Any capability', capabilityOptions);
-      if (state.scope === 'imported') {
+      refreshSelect(controls.capability, state, 'capability', '', 'Any capability / role', capabilityOptions);
+      if (state.scope === 'imported' || state.scope === 'cluster') {
         refreshSelect(controls.gpu, state, 'gpu', '', 'Any GPU', gpuOptions);
       }
     }
@@ -3192,11 +3212,6 @@
     function selectedLabel(select) {
       var option = select.options[select.selectedIndex];
       return option ? option.textContent.replace(/\s+\([0-9]+\)$/, '') : '';
-    }
-
-    function roleLabel(role) {
-      var button = roleButtons.find(function(item) { return item.dataset.filterRole === role; });
-      return button ? button.firstChild.nodeValue.trim() : role;
     }
 
     function updateScopeUI() {
@@ -3209,7 +3224,10 @@
         element.hidden = currentScope !== 'hosted';
       });
       document.querySelectorAll('.imported-only').forEach(function(element) {
-        element.hidden = currentScope !== 'imported';
+        element.hidden = currentScope !== 'imported' && currentScope !== 'cluster';
+      });
+      document.querySelectorAll('.hosted-status').forEach(function(element) {
+        element.hidden = currentScope === 'imported';
       });
     }
 
@@ -3229,14 +3247,15 @@
     }
 
     function updateSummary(state, visible) {
-      var scopeTotal = records.filter(function(record) { return record.scope === state.scope; }).length;
+      var scopeTotal = records.filter(function(record) {
+        return recordInScope(record, state.scope);
+      }).length;
       var taskLabels = {
         rag: 'RAG', code: 'Code & agents', vision: 'Vision', chat: 'Enterprise chat',
         embed: 'Semantic search', finetune: 'Fine-tuning'
       };
       controls.count.textContent = visible + ' of ' + scopeTotal + ' models';
       controls.chips.innerHTML = '';
-      if (state.role !== 'all') appendChip(roleLabel(state.role), 'role');
       if (state.wizardTask) appendChip('Wizard: ' + (taskLabels[state.wizardTask] || state.wizardTask), 'wizardTask');
       if (state.provider) appendChip(selectedLabel(controls.provider), 'provider');
       if (state.region) appendChip(selectedLabel(controls.region), 'region');
@@ -3251,8 +3270,8 @@
       controls.moreCount.textContent = advancedCount;
       controls.moreCount.hidden = advancedCount === 0;
       var changed = !!(
-        state.search || state.role !== 'all' || state.provider || state.deployment ||
-        state.region || state.contextK || state.capability || state.gpu ||
+        state.search || state.provider || state.deployment || state.region ||
+        state.contextK || state.capability || state.gpu ||
         state.includeDeprecated || state.wizardTask
       );
       controls.reset.style.display = changed ? 'inline-block' : 'none';
@@ -3260,36 +3279,40 @@
 
     function applyFilter() {
       var state = getState();
-      refreshRoleCounts(state);
       refreshFacetOptions(state);
       state = getState();
 
-      var visible = 0;
+      var visibleRecords = [];
       records.forEach(function(record) {
         var match = recordMatches(record, state);
         record.el.hidden = !match;
-        if (match) visible++;
+        if (match) visibleRecords.push(record);
       });
+      var visible = visibleRecords.length;
+      updateResultStats(visibleRecords);
       sections.forEach(function(section) {
         var hasVisibleRows = section.records.some(function(record) { return !record.el.hidden; });
         section.wrap.hidden = !hasVisibleRows;
         if (section.title) section.title.hidden = !hasVisibleRows;
       });
 
-      var showImportedHeader = state.scope === 'imported' && visible > 0;
+      var showImportedHeader = records.some(function(record) {
+        return record.scope === 'imported' && !record.el.hidden;
+      });
       controls.importedTitle.hidden = !showImportedHeader;
       controls.importedIntro.hidden = !showImportedHeader;
+      controls.results.hidden = visible === 0;
       controls.noResults.style.display = visible === 0 ? 'block' : 'none';
+      var scopeLabel = state.scope === 'hosted' ? 'hosted' :
+        state.scope === 'imported' ? 'importable' : 'dedicated-cluster';
       controls.noResults.textContent = visible === 0
-        ? 'No ' + (state.scope === 'hosted' ? 'hosted' : 'importable') + ' models match the selected filters.'
-        : '';
+        ? 'No ' + scopeLabel + ' models match the selected filters.' : '';
       updateSummary(state, visible);
     }
 
     scopeButtons.forEach(function(button) {
       button.addEventListener('click', function() {
         currentScope = button.dataset.filterScope;
-        currentRole = 'all';
         currentWizardTask = '';
         controls.provider.value = '';
         controls.deployment.value = '';
@@ -3298,23 +3321,23 @@
         controls.capability.value = '';
         controls.gpu.value = '';
         controls.includeDeprecated.checked = false;
-        controls.more.open = false;
         updateScopeUI();
         applyFilter();
       });
     });
 
-    roleButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        if (button.disabled) return;
-        currentRole = button.dataset.filterRole;
-        applyFilter();
-      });
-    });
-
     controls.search.addEventListener('input', applyFilter);
-    [controls.includeDeprecated, controls.provider, controls.deployment, controls.region,
-     controls.context, controls.capability, controls.gpu].forEach(function(control) {
+    controls.deployment.addEventListener('change', function() {
+      if (currentScope === 'hosted' && controls.deployment.value === 'dedicated') {
+        currentScope = 'cluster';
+        controls.deployment.value = '';
+        controls.region.value = '';
+        updateScopeUI();
+      }
+      applyFilter();
+    });
+    [controls.includeDeprecated, controls.provider, controls.region, controls.context,
+     controls.capability, controls.gpu].forEach(function(control) {
       control.addEventListener('change', applyFilter);
     });
 
@@ -3322,7 +3345,6 @@
       var chip = event.target.closest('[data-filter-remove]');
       if (!chip) return;
       var key = chip.dataset.filterRemove;
-      if (key === 'role') currentRole = 'all';
       if (key === 'wizardTask') currentWizardTask = '';
       if (key === 'search') controls.search.value = '';
       if (key === 'provider') controls.provider.value = '';
@@ -3337,7 +3359,6 @@
 
     controls.reset.addEventListener('click', function() {
       controls.search.value = '';
-      currentRole = 'all';
       currentWizardTask = '';
       controls.provider.value = '';
       controls.deployment.value = '';
@@ -3346,24 +3367,23 @@
       controls.capability.value = '';
       controls.gpu.value = '';
       controls.includeDeprecated.checked = false;
-      controls.more.open = false;
       applyFilter();
       controls.search.focus();
     });
 
     window.applyCatalogPreset = function(preset) {
-      currentScope = 'hosted';
-      currentRole = preset.task === 'embed' ? 'all' : 'chat';
+      currentScope = preset.deployment === 'dedicated' ? 'cluster' : 'hosted';
       currentWizardTask = preset.task || '';
       controls.search.value = '';
       controls.provider.value = '';
       controls.context.value = '0';
-      controls.capability.value = '';
+      controls.capability.value = preset.task === 'embed' ? '' : 'role:chat';
       controls.gpu.value = '';
       controls.includeDeprecated.checked = false;
-      controls.region.value = preset.region && preset.region !== 'any' ? 'group:' + preset.region : '';
-      controls.deployment.value = preset.deployment && preset.deployment !== 'any' ? preset.deployment : '';
-      controls.more.open = false;
+      controls.region.value = currentScope === 'hosted' && preset.region && preset.region !== 'any'
+        ? 'group:' + preset.region : '';
+      controls.deployment.value = currentScope === 'hosted' && preset.deployment && preset.deployment !== 'any'
+        ? preset.deployment : '';
       updateScopeUI();
       applyFilter();
       showView('reference');
