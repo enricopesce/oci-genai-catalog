@@ -16,8 +16,9 @@
 2. It fetches `models.json` and `imported-models.json` with `Promise.all(...)`.
 3. `renderAll()` fills native chat/embed/rerank sections from `models.json`.
 4. `renderImported()` fills imported family tables from `imported-models.json`.
-5. `initFilters()` snapshots rendered rows and applies text-based filtering.
-6. Wizard data is derived from JSON, not from the static recommendation cards.
+5. The row renderers attach normalized role, capability, workload, availability, and hardware filter metadata derived from JSON fields.
+6. `initFilters()` snapshots that metadata and applies scope-aware structured filtering with faceted option counts.
+7. Wizard data is derived from JSON, not from the static recommendation cards, and wizard results can apply an equivalent workload/region/deployment preset to the catalog.
 
 ## Fields that matter for behavior
 
@@ -38,7 +39,9 @@
 
 - Fetch failure leaves the page with empty tables because the script clears table bodies before loading data.
 - Imported-model HTML rows are duplicated fallback content. Runtime replaces them, so JSON edits are the real data changes.
-- Filter chips use row text plus `data-tags`, with OR inside a chip group and AND across groups.
+- Catalog filters depend on `filterRowAttrs()` metadata emitted by every runtime row renderer. Keep primary roles separate from overlapping capabilities, and use workload task metadata for wizard-to-catalog handoff.
+- Hosted and importable models intentionally expose different infrastructure facets: hosted models have lifecycle, deployment, and region metadata; importable models have family and recommended GPU hardware. Both scopes can expose context and capability facets.
+- Region options include geographic groups as well as exact OCI regions. Regional deployment matching must accept a model only when at least one region in the selected group supports the selected access mode.
 - Embedding recommendations ignore tier, deployment, and region filtering even though the wizard still asks those questions.
 - In managed Codex workspaces, `.codex/` and `.agents/` may be mounted read-only. Use root `AGENTS.md` as the durable integration point unless the environment allows project-local `.codex/config.toml` or `.agents/skills`.
 

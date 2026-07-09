@@ -2,6 +2,18 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-07-09
+
+- Re-verified native and imported catalog data against current public Oracle documentation, including source pages updated through 6 July 2026.
+- Added MiniMax, Moonshot AI Kimi, and Z.ai GLM imported-model families.
+- Added Oracle-tested Qwen3 VL FP8, Mistral Medium 3.5, Devstral 2, and NVIDIA Nemotron Nano entries; removed two Phi 128K variants no longer listed by Oracle.
+- Updated current DeepSeek and Gemma recommended cluster shapes, increasing imported coverage from 88 models across 9 families to 97 models across 12 families.
+- Corrected Phoenix availability for `cohere.embed-multilingual-v3.0` and Sao Paulo availability for `cohere.rerank.v3-5`.
+- Synced catalog dates, dashboard counts, imported-family mount points, badge styles, and README summaries.
+- Replaced text-matching filter chips with structured hosted/importable views, model search, role and capability facets, active-by-default lifecycle filtering, regional deployment matching, context thresholds, imported GPU filters, dynamic counts, and complete empty-section handling.
+- Simplified catalog discovery around primary model roles and intent-aware use-case search; moved infrastructure facets into an inline advanced panel with live counts, cascading region/deployment availability, removable filter chips, deprecated-model opt-in, and accurate active/total labels.
+- Added a guided-selection handoff that opens every matching active catalog model with the wizard workload, deployment, and geographic region filters already applied.
+
 ## 2026-06-24
 
 - Re-verified OCI Generative AI catalog data against current public Oracle documentation using parallel focused research agents.

@@ -2,7 +2,7 @@
 
 > **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), including active models and deprecated models still listed by Oracle, verified 24 June 2026.
+A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), including active models and deprecated models still listed by Oracle, verified 6 July 2026.
 
 ## What's inside
 
@@ -11,18 +11,20 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 | **Chat models** | 27 native chat models across Cohere, Google, Meta, OpenAI, and xAI; 14 active and 13 deprecated |
 | **Embedding models** | 9 Cohere Embed models; Embed 4 active and Embed v3 variants deprecated |
 | **Rerank models** | 3 Cohere rerank models: Rerank 4.0 Fast and Pro active; Rerank 3.5 deprecated |
-| **Imported models** | 88 compatible/importable models across 9 OCI Model Import families |
-| **Selection wizard** | Guided 4-step model picker (use case → quality/speed → deployment → region) |
+| **Imported models** | 97 compatible/importable models across 12 OCI Model Import families |
+| **Selection wizard** | Guided 4-step model picker with a handoff to all matching catalog rows |
 
 **Columns covered:** Model ID · Tier · Context window · Multimodal · Tool use · Fine-tuning · Reasoning · Status · Best for
 
 ## Features
 
 - Native catalog covers 27 chat models, 9 embedding models, and 3 rerank models with status labels for active and deprecated entries
-- 88 imported models across 9 Model Import families, including Qwen, DeepSeek, Gemma, Llama, Nemotron, Whisper, and gpt-oss entries
+- 97 imported models across 12 Model Import families, including Qwen, DeepSeek, Gemma, Llama, MiniMax, Mistral, Kimi, Nemotron, Whisper, gpt-oss, and GLM entries
 - Commercial OCI regions (OC1) covered in the UI, including UAE Central (Abu Dhabi); sovereign and government regions are not yet modeled
 - Dark / Light mode toggle (preference saved in `localStorage`)
-- Guided model selection wizard
+- Guided model selection wizard with a one-click handoff to the equivalent catalog filters
+- Intent-aware catalog search across model names, IDs, providers, and use cases
+- Streamlined filters with primary model roles, advanced capability and infrastructure facets, live option counts, geographic region/deployment cascading, and removable applied-filter chips
 - Semantic headings and keyboard-focusable table sections for accessibility
 - Fully static — no JavaScript framework, no build step
 - Mobile responsive

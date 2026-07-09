@@ -50,7 +50,9 @@ From the repository root, start by running `python3 .codex-skills/oci-genai-cata
 
 - Native tables render through `renderAll()` and a single `rowChat()` schema.
 - Imported tables render through `renderImported()` using `family.id` and `data-family`.
-- Filter chips are text-based; new filter controls only work if the row text or `data-tags` exposes matching terms.
+- Catalog filters are structured. `rowChat()`, `rowEmbed()`, `rowRerank()`, and `rowImported()` emit normalized `data-*` metadata through `filterRowAttrs()`, and `initFilters()` evaluates that metadata instead of scanning rendered row text.
+- Keep primary model roles separate from overlapping capabilities. Hosted and importable scopes expose different infrastructure facets, while shared search, context, capability, and workload-task metadata drives faceted counts and wizard-to-catalog handoff.
+- Keep status, deployment, region-group access, capability, context, workload task, imported family, and GPU metadata aligned when renderer fields change.
 - Wizard ranking depends on JSON fields such as `wizardTasks`, `wizardTier`, `wizardCtx`, `wizardWhy`, `regions`, `callType`, and `fineTunable`.
 - The embedding wizard path is intentionally special-cased and ignores tier, deployment, and region filtering.
 - The page clears all table bodies before fetching JSON; fetch failures leave empty tables. Be careful when changing fetch paths or startup order.

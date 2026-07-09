@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "dataDate": "2026-06-24",
+    "dataDate": "2026-07-06",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm",
-    "version": "2026-06",
+    "version": "2026-07",
     "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count. Includes Oracle-listed compatible imported families reflected in the OCI Model Import documentation."
   },
   "families": [
@@ -34,6 +34,7 @@
         { "name": "Qwen3-30B-A3B-Instruct-2507",     "hfId": "Qwen/Qwen3-30B-A3B-Instruct-2507",         "type": "chat",      "params": "30B",  "activeParams": "3B active", "contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
         { "name": "Qwen3-235B-A22B-Instruct-2507",   "hfId": "Qwen/Qwen3-235B-A22B-Instruct-2507",       "type": "chat",      "params": "235B", "activeParams": "22B active","contextWindowLabel": "32K",  "contextClass": "md",   "clusterShape": "H100_X8",     "clusterClass": "tag-blue" },
         { "name": "Qwen3-VL-30B-A3B-Instruct",       "hfId": "Qwen/Qwen3-VL-30B-A3B-Instruct",           "type": "vision",    "params": "30B",  "activeParams": "3B active", "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "H100_X2",     "clusterClass": "tag-blue" },
+        { "name": "Qwen3-VL-30B-A3B-Instruct-FP8",   "hfId": "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8",       "type": "vision",    "params": "30B",  "activeParams": "3B active", "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "H100_X2 / H200_X2", "clusterClass": "tag-blue" },
         { "name": "Qwen3-VL-235B-A22B-Instruct",     "hfId": "Qwen/Qwen3-VL-235B-A22B-Instruct",         "type": "vision",    "params": "235B", "activeParams": "22B active","contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "H100_X8",     "clusterClass": "tag-blue" },
         { "name": "Qwen2.5-Coder-32B-Instruct",      "hfId": "Qwen/Qwen2.5-Coder-32B-Instruct",          "type": "coder",     "params": "32B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
         { "name": "Qwen2.5-0.5B-Instruct",           "hfId": "Qwen/Qwen2.5-0.5B-Instruct",               "type": "chat",      "params": "0.5B", "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X1", "clusterClass": "" },
@@ -62,8 +63,8 @@
       "badge": "deepseek",
       "label": "DeepSeek",
       "models": [
-        { "name": "DeepSeek-V4-Pro",              "hfId": "deepseek-ai/DeepSeek-V4-Pro",              "type": "reasoning", "params": null,  "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "H200_X8",     "clusterClass": "tag-blue" },
-        { "name": "DeepSeek-V4-Flash",            "hfId": "deepseek-ai/DeepSeek-V4-Flash",            "type": "reasoning", "params": null,  "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "H100_X4",     "clusterClass": "tag-blue" },
+        { "name": "DeepSeek-V4-Pro",              "hfId": "deepseek-ai/DeepSeek-V4-Pro",              "type": "reasoning", "params": null,  "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "H200_X8 / B200_X8", "clusterClass": "tag-blue" },
+        { "name": "DeepSeek-V4-Flash",            "hfId": "deepseek-ai/DeepSeek-V4-Flash",            "type": "reasoning", "params": null,  "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "H100_X4 / B200_X4", "clusterClass": "tag-blue" },
         { "name": "DeepSeek-R1-Distill-Qwen-32B", "hfId": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B", "type": "reasoning", "params": "32B", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X2", "clusterClass": "" }
       ]
     },
@@ -74,7 +75,7 @@
       "label": "Gemma",
       "models": [
         { "name": "MedGemma 27B Text", "hfId": "google/medgemma-27b-text-it", "type": "chat",   "params": "27B",  "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "A100_80G_X2 / H100_X2 / H200_X1 / B200_X1", "clusterClass": "tag-blue" },
-        { "name": "Gemma 4 31B",       "hfId": "google/gemma-4-31B-it",       "type": "vision", "params": "31B",  "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "A100_40G_X2 / A100_80G_X2 / H100_X2 / H200_X1 / B200_X1", "clusterClass": "tag-blue" },
+        { "name": "Gemma 4 31B",       "hfId": "google/gemma-4-31B-it",       "type": "vision", "params": "31B",  "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "A100_80G_X2 / H100_X2 / H200_X1 / B200_X1", "clusterClass": "tag-blue" },
         { "name": "Gemma 3 270M", "hfId": "google/gemma-3-270m-it", "type": "chat",   "params": "270M", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Gemma 3 1B",   "hfId": "google/gemma-3-1b-it",   "type": "chat",   "params": "1B",   "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Gemma 3 4B",   "hfId": "google/gemma-3-4b-it",   "type": "vision", "params": "4B",   "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
@@ -112,12 +113,22 @@
       "models": [
         { "name": "Phi-4",             "hfId": "microsoft/phi-4",                       "type": "chat",   "params": "14B",  "activeParams": null, "contextWindowLabel": "16K",  "contextClass": "md", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Phi-3 Vision 128K", "hfId": "microsoft/Phi-3-vision-128k-instruct",  "type": "vision", "params": "4.2B", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "H100_X1",     "clusterClass": "tag-blue" },
-        { "name": "Phi-3 Medium 128K", "hfId": "microsoft/Phi-3-medium-128k-instruct",  "type": "chat",   "params": "14B",  "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Phi-3 Medium 4K",   "hfId": "microsoft/Phi-3-medium-4k-instruct",    "type": "chat",   "params": "14B",  "activeParams": null, "contextWindowLabel": "4K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" },
-        { "name": "Phi-3 Small 128K",  "hfId": "microsoft/Phi-3-small-128k-instruct",   "type": "chat",   "params": "7B",   "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Phi-3 Small 8K",    "hfId": "microsoft/Phi-3-small-8k-instruct",     "type": "chat",   "params": "7B",   "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Phi-3 Mini 128K",   "hfId": "microsoft/Phi-3-mini-128k-instruct",    "type": "chat",   "params": "3.8B", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Phi-3 Mini 4K",     "hfId": "microsoft/Phi-3-mini-4k-instruct",      "type": "chat",   "params": "3.8B", "activeParams": null, "contextWindowLabel": "4K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" }
+      ]
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax Family",
+      "badge": "minimax",
+      "label": "MiniMax",
+      "models": [
+        { "name": "MiniMax M3 MXFP8", "hfId": "MiniMaxAI/MiniMax-M3-MXFP8", "type": "chat",  "params": "428B", "activeParams": "23B active", "contextWindowLabel": "1M", "contextClass": "huge", "clusterShape": "H200_X8 / B200_X8", "clusterClass": "tag-blue" },
+        { "name": "MiniMax M2.7",      "hfId": "MiniMaxAI/MiniMax-M2.7",      "type": "coder", "params": null,   "activeParams": null,         "contextWindowLabel": "—",  "contextClass": null,   "clusterShape": "H100_X8 / H200_X8", "clusterClass": "tag-blue" },
+        { "name": "MiniMax M2.5",      "hfId": "MiniMaxAI/MiniMax-M2.5",      "type": "coder", "params": null,   "activeParams": null,         "contextWindowLabel": "—",  "contextClass": null,   "clusterShape": "H100_X8 / H200_X8", "clusterClass": "tag-blue" },
+        { "name": "MiniMax M2",        "hfId": "MiniMaxAI/MiniMax-M2",        "type": "coder", "params": null,   "activeParams": null,         "contextWindowLabel": "—",  "contextClass": null,   "clusterShape": "H100_X8 / H200_X8", "clusterClass": "tag-blue" }
       ]
     },
     {
@@ -126,12 +137,24 @@
       "badge": "mistral",
       "label": "Mistral",
       "models": [
+        { "name": "Mistral Medium 3.5 128B",      "hfId": "mistralai/Mistral-Medium-3.5-128B",            "type": "chat",  "params": "128B",      "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "H100_X8 / A100_80G_X8 / H200_X8 / B200_X8", "clusterClass": "tag-blue" },
+        { "name": "Devstral 2 123B Instruct 2512", "hfId": "mistralai/Devstral-2-123B-Instruct-2512",      "type": "coder", "params": "123B",      "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "H100_X8 / H200_X8", "clusterClass": "tag-blue" },
         { "name": "Mixtral 8x7B Instruct v0.1",  "hfId": "mistralai/Mixtral-8x7B-Instruct-v0.1",  "type": "chat",  "params": "8×7B MoE", "activeParams": null, "contextWindowLabel": "32K",  "contextClass": "md", "clusterShape": "A100_80G_X2", "clusterClass": "" },
         { "name": "Mistral Nemo Instruct 2407",   "hfId": "mistralai/Mistral-Nemo-Instruct-2407",   "type": "chat",  "params": "12B",       "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Mistral 7B Instruct v0.3",     "hfId": "mistralai/Mistral-7B-Instruct-v0.3",     "type": "chat",  "params": "7B",        "activeParams": null, "contextWindowLabel": "32K",  "contextClass": "md", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Mistral 7B Instruct v0.2",     "hfId": "mistralai/Mistral-7B-Instruct-v0.2",     "type": "chat",  "params": "7B",        "activeParams": null, "contextWindowLabel": "32K",  "contextClass": "md", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Mistral 7B Instruct v0.1",     "hfId": "mistralai/Mistral-7B-Instruct-v0.1",     "type": "chat",  "params": "7B",        "activeParams": null, "contextWindowLabel": "8K",   "contextClass": "sm", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "E5 Mistral 7B Instruct",       "hfId": "intfloat/e5-mistral-7b-instruct",        "type": "embed", "params": "7B",        "activeParams": null, "contextWindowLabel": "32K",  "contextClass": "md", "clusterShape": "A10_X1",      "clusterClass": "tag-green" }
+      ]
+    },
+    {
+      "id": "moonshot",
+      "name": "Moonshot AI Kimi Family",
+      "badge": "moonshot",
+      "label": "Moonshot AI",
+      "models": [
+        { "name": "Kimi K2.6",      "hfId": "moonshotai/Kimi-K2.6",      "type": "coder", "params": null, "activeParams": null, "contextWindowLabel": "—", "contextClass": null, "clusterShape": "H200_X8 / B200_X8", "clusterClass": "tag-blue" },
+        { "name": "Kimi K2.7 Code", "hfId": "moonshotai/Kimi-K2.7-Code", "type": "coder", "params": null, "activeParams": null, "contextWindowLabel": "—", "contextClass": null, "clusterShape": "H200_X8 / B200_X8", "clusterClass": "tag-blue" }
       ]
     },
     {
@@ -144,6 +167,7 @@
         { "name": "Nemotron 3 Super 120B",           "hfId": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16", "type": "chat", "params": "120B", "activeParams": "12B active", "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "H100_X8",     "clusterClass": "tag-blue" },
         { "name": "Nemotron 3 Nano 30B (FP8)",       "hfId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",    "type": "chat", "params": "30B",  "activeParams": "3B active",  "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "H100_X4",     "clusterClass": "tag-blue" },
         { "name": "Nemotron 3 Nano 30B (BF16)",      "hfId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",   "type": "chat", "params": "30B",  "activeParams": "3B active",  "contextWindowLabel": "1M",   "contextClass": "huge", "clusterShape": "A100_80G_X1", "clusterClass": "" },
+        { "name": "Llama 3.1 Nemotron Nano 8B v1",   "hfId": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",         "type": "chat", "params": "8B",   "activeParams": null,         "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Llama 3.1 Nemotron 70B Instruct", "hfId": "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",   "type": "chat", "params": "70B",  "activeParams": null,         "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X4", "clusterClass": "" }
       ]
     },
@@ -164,6 +188,15 @@
       "models": [
         { "name": "GptOss 20B",  "hfId": "openai/gpt-oss-20b",  "type": "chat", "params": "20B",  "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "H100_X1", "clusterClass": "tag-blue" },
         { "name": "GptOss 120B", "hfId": "openai/gpt-oss-120b", "type": "chat", "params": "120B", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "H100_X2", "clusterClass": "tag-blue" }
+      ]
+    },
+    {
+      "id": "zai",
+      "name": "Z.ai GLM Family",
+      "badge": "zai",
+      "label": "Z.ai",
+      "models": [
+        { "name": "GLM 5.2 FP8", "hfId": "zai-org/GLM-5.2-FP8", "type": "coder", "params": null, "activeParams": null, "contextWindowLabel": "1M", "contextClass": "huge", "clusterShape": "H200_X8 / B200_X8", "clusterClass": "tag-blue" }
       ]
     }
   ]

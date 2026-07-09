@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="fd88ddb">
+<meta name="build-version" content="cad1161">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -36,7 +36,7 @@
   "name": "OCI GenAI Catalog",
   "description": "Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models including chat, embedding, and rerank models from 5 providers.",
   "url": "https://enricopesce.github.io/oci-genai-catalog/",
-  "dateModified": "2026-06-24",
+  "dateModified": "2026-07-06",
   "author": { "@type": "Person", "name": "Enrico Pesce" },
   "about": {
     "@type": "Thing",
@@ -119,6 +119,9 @@
   html.light .badge-gemma    { color: #086A46; }
   html.light .badge-phi      { color: #0055A0; }
   html.light .badge-mistral  { color: #A03000; }
+  html.light .badge-minimax  { color: #9B245E; }
+  html.light .badge-moonshot { color: #006B70; }
+  html.light .badge-zai      { color: #6A5700; }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -271,6 +274,9 @@
   .badge-gemma    { background: rgba(52,200,130,0.2); color: #5DEAAA; border: 1px solid rgba(52,200,130,0.4); }
   .badge-phi      { background: rgba(0,164,239,0.2);  color: #5AC8F5; border: 1px solid rgba(0,164,239,0.4); }
   .badge-mistral  { background: rgba(250,82,15,0.2);  color: #FF9966; border: 1px solid rgba(250,82,15,0.4); }
+  .badge-minimax  { background: rgba(214,68,135,0.2); color: #F08CBA; border: 1px solid rgba(214,68,135,0.4); }
+  .badge-moonshot { background: rgba(0,156,166,0.2);  color: #66D5DB; border: 1px solid rgba(0,156,166,0.4); }
+  .badge-zai      { background: rgba(210,174,30,0.2); color: #EAD66B; border: 1px solid rgba(210,174,30,0.4); }
 
   /* IMPORT FAMILY SUB-TITLE */
   .import-family-title {
@@ -377,70 +383,242 @@
   .rec-meta  { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 5px; }
   .rec-meta .tag { font-size: 10px; padding: 1px 5px; line-height: 1.5; }
 
-  /* FILTER CHIPS */
-  .chip-bar {
-    display: flex;
-    flex-wrap: wrap;
+  /* STRUCTURED CATALOG FILTERS */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .filter-shell {
+    margin-bottom: 24px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .filter-primary {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) auto;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 32px;
+    gap: 12px;
   }
-  .chip-group {
-    display: contents;
-  }
-  .chip-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0 4px 0 10px;
-    white-space: nowrap;
-  }
-  .chip-label:first-child { padding-left: 0; }
-  .chip {
-    background: var(--tag-bg);
-    border: 1px solid var(--tag-border);
-    color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 2px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.15s, border-color 0.15s, color 0.15s;
-  }
-  .chip:hover {
-    background: var(--panel2);
-    border-color: var(--muted);
+  .filter-search {
+    width: 100%;
+    min-height: 38px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
     color: var(--text);
+    font: 13px 'IBM Plex Sans', sans-serif;
+    padding: 8px 12px;
   }
-  .chip.active {
-    background: rgba(192,57,43,0.15);
-    border-color: var(--red);
+  .filter-search::placeholder { color: var(--muted); }
+  .filter-search:focus,
+  .filter-select:focus,
+  .scope-btn:focus-visible,
+  .role-filter-btn:focus-visible,
+  .filter-chip:focus-visible,
+  .filter-reset:focus-visible,
+  .filter-more summary:focus-visible {
+    outline: 2px solid var(--red-light);
+    outline-offset: 2px;
+  }
+  .scope-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 300px;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px;
+  }
+  .scope-btn,
+  .role-filter-btn {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font: 600 11px 'IBM Plex Mono', monospace;
+    min-height: 30px;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+  .scope-btn { border-radius: 2px; }
+  .scope-btn.active,
+  .role-filter-btn.active {
+    background: var(--border);
+    color: var(--on-surface);
+  }
+  .scope-count,
+  .role-count {
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .filter-role-row {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 12px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+  }
+  .filter-group-label {
+    color: var(--muted);
+    font: 10px 'IBM Plex Mono', monospace;
+    letter-spacing: 0.08em;
+    margin-right: 6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .role-filter-btn {
+    border-bottom: 2px solid transparent;
+  }
+  .role-filter-btn.active {
+    background: transparent;
+    border-bottom-color: var(--red);
     color: var(--red-light);
   }
-  .chip-count {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-left: auto;
-    white-space: nowrap;
+  .role-filter-btn[hidden] { display: none; }
+  .role-filter-btn:disabled { opacity: 0.38; cursor: default; }
+  .hosted-only[hidden],
+  .imported-only[hidden] { display: none !important; }
+  .filter-field {
+    display: grid;
+    gap: 4px;
+    min-width: 160px;
   }
-  .chip-clear {
-    background: none;
+  .filter-field-label {
+    color: var(--muted);
+    font: 10px 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .filter-select {
+    min-height: 34px;
+    width: 100%;
+    background: var(--panel);
     border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 2px;
-    cursor: pointer;
-    display: none;
-    white-space: nowrap;
-    transition: color 0.15s, border-color 0.15s;
+    border-radius: 4px;
+    color: var(--text);
+    font: 12px 'IBM Plex Sans', sans-serif;
+    padding: 6px 28px 6px 9px;
   }
-  .chip-clear:hover { color: var(--text); border-color: var(--muted); }
+  .filter-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 34px;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .filter-status input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--red);
+  }
+  .filter-more { margin-top: 12px; }
+  .filter-more summary {
+    list-style: none;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    cursor: pointer;
+    font: 12px 'IBM Plex Sans', sans-serif;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+  .filter-more summary::-webkit-details-marker { display: none; }
+  .filter-more summary::after { content: '▾'; color: var(--muted); margin-left: 10px; }
+  .filter-more[open] summary { border-color: var(--muted); }
+  .filter-more[open] summary::after { content: '▴'; }
+  .filter-more-count {
+    align-items: center;
+    background: rgba(192,57,43,0.18);
+    border: 1px solid var(--red);
+    border-radius: 10px;
+    color: var(--red-light);
+    display: inline-flex;
+    font: 600 10px 'IBM Plex Mono', monospace;
+    justify-content: center;
+    margin-left: 8px;
+    min-width: 20px;
+    padding: 1px 5px;
+  }
+  .filter-more-count[hidden] { display: none; }
+  .filter-more-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+    padding: 14px;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .filter-more:not([open]) .filter-more-panel { display: none; }
+  .filter-summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 26px;
+    margin-top: 12px;
+    color: var(--muted);
+    font: 11px 'IBM Plex Mono', monospace;
+  }
+  .filter-result-count { color: var(--on-surface); white-space: nowrap; }
+  .filter-chip-list {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .filter-chip {
+    align-items: center;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 12px;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    font: 10px 'IBM Plex Mono', monospace;
+    gap: 6px;
+    min-height: 24px;
+    padding: 3px 8px;
+  }
+  .filter-chip::after {
+    color: var(--muted);
+    content: '×';
+    font-size: 13px;
+    line-height: 1;
+  }
+  .filter-chip:hover {
+    border-color: var(--muted);
+    color: var(--on-surface);
+  }
+  .filter-reset {
+    display: none;
+    margin-left: auto;
+    border: 0;
+    background: transparent;
+    color: var(--red-light);
+    cursor: pointer;
+    font: 11px 'IBM Plex Mono', monospace;
+    padding: 4px 0;
+    white-space: nowrap;
+  }
+  .filter-reset:hover { color: var(--on-surface); }
 
   .no-results {
     display: none;
@@ -458,7 +636,8 @@
     header p { width: 100%; margin-left: 0; margin-top: 8px; }
     .theme-toggle { margin-left: auto; }
     .stat-bar { gap: 10px; margin-bottom: 24px; }
-    .chip-bar { margin-bottom: 20px; gap: 5px; }
+    .filter-primary { grid-template-columns: 1fr; }
+    .scope-switch { min-width: 0; width: 100%; }
   }
 
   @media (max-width: 600px) {
@@ -480,10 +659,19 @@
     .stat-num { font-size: 22px; }
     .stat-label { font-size: 11px; }
 
-    /* Chip filters */
-    .chip-bar { margin-bottom: 16px; }
-    .chip { font-size: 10px; padding: 3px 8px; }
-    .chip-label { font-size: 9px; padding-left: 6px; }
+    /* Catalog filters */
+    .filter-shell { padding: 12px 0; margin-bottom: 18px; }
+    .filter-search { font-size: 12px; }
+    .scope-btn, .role-filter-btn { font-size: 10px; padding: 5px 8px; }
+    .filter-group-label { width: 100%; }
+    .filter-more { width: 100%; }
+    .filter-more summary { justify-content: space-between; }
+    .filter-more-panel {
+      grid-template-columns: 1fr;
+    }
+    .filter-summary { align-items: flex-start; flex-wrap: wrap; }
+    .filter-chip-list { flex-basis: 100%; order: 3; }
+    .filter-reset { margin-left: auto; }
 
     /* Tables */
     .table-wrap {
@@ -581,7 +769,7 @@
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
     <h1>OCI GenAI Catalog</h1>
   </div>
-  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 24 Jun 2026 &nbsp;|&nbsp; 30+ models</p>
+  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 6 Jul 2026 &nbsp;|&nbsp; 30+ models</p>
   
   <nav class="view-switcher" style="display: flex; background: var(--panel2); border: 1px solid var(--border); padding: 4px; border-radius: 4px; margin-left: 20px;">
     <button class="view-btn active" id="btnReference" style="background: var(--border); color: var(--on-surface); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Technical Tables</button>
@@ -734,6 +922,7 @@
         <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.1em;">Recommended Models</div>
         <div id="wizSummary" style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--red-light); margin-bottom:16px; line-height:1.6;"></div>
         <div id="resList"></div>
+        <button id="wizViewMatches" style="display:none; margin-top:20px; font-size:12px; background:var(--red); color:#fff; border:1px solid var(--red); padding:10px 24px; cursor:pointer; border-radius:2px;">View all matching models</button>
         <button id="wizReset" style="margin-top:20px; font-size:12px; background:var(--panel2); color:var(--text); border:1px solid var(--border); padding:10px 24px; cursor:pointer; border-radius:2px;">✕ Start Over</button>
       </div>
     </div>
@@ -741,31 +930,76 @@
 
   <div id="referenceView">
 
-  <!-- FILTER CHIPS -->
-  <div class="chip-bar">
-    <span class="chip-label">Provider</span>
-    <button class="chip" data-q="cohere"    data-group="provider">Cohere</button>
-    <button class="chip" data-q="google"    data-group="provider">Google</button>
-    <button class="chip" data-q="meta"      data-group="provider">Meta</button>
-    <button class="chip" data-q="openai"    data-group="provider">OpenAI</button>
-    <button class="chip" data-q="xai"       data-group="provider">xAI</button>
-    <span class="chip-label">Context</span>
-    <button class="chip" data-q="2m"        data-group="context">2M Tokens</button>
-    <button class="chip" data-q="1m"        data-group="context">1M Tokens</button>
-    <button class="chip" data-q="256k"      data-group="context">256K</button>
-    <button class="chip" data-q="128k"      data-group="context">128K</button>
-    <span class="chip-count" id="chipCount"></span>
-    <button class="chip-clear" id="chipClear">✕ Clear</button>
+  <!-- STRUCTURED CATALOG FILTERS -->
+  <div class="filter-shell" id="catalogFilters">
+    <div class="filter-primary">
+      <label class="sr-only" for="filterSearch">Search model, ID, provider, or use case</label>
+      <input class="filter-search" id="filterSearch" type="search" placeholder="Search model, ID, provider, or use case" autocomplete="off" spellcheck="false">
+      <div class="scope-switch" role="group" aria-label="Catalog scope">
+        <button class="scope-btn active" type="button" data-filter-scope="hosted" aria-pressed="true">OCI Hosted <span class="scope-count" id="hostedScopeCount">17 active / 39</span></button>
+        <button class="scope-btn" type="button" data-filter-scope="imported" aria-pressed="false">Model Import <span class="scope-count" id="importedScopeCount">97</span></button>
+      </div>
+    </div>
+
+    <div class="filter-role-row" role="group" aria-label="Model role">
+      <span class="filter-group-label">Model role</span>
+      <button class="role-filter-btn active" type="button" data-filter-role="all" aria-pressed="true">All <span class="role-count">0</span></button>
+      <button class="role-filter-btn" type="button" data-filter-role="chat" aria-pressed="false">Chat <span class="role-count">0</span></button>
+      <button class="role-filter-btn" type="button" data-filter-role="embed" aria-pressed="false">Embedding <span class="role-count">0</span></button>
+      <button class="role-filter-btn" type="button" data-filter-role="rerank" aria-pressed="false">Rerank <span class="role-count">0</span></button>
+      <button class="role-filter-btn" type="button" data-filter-role="image" aria-pressed="false">Image <span class="role-count">0</span></button>
+      <button class="role-filter-btn" type="button" data-filter-role="audio" aria-pressed="false">Audio <span class="role-count">0</span></button>
+    </div>
+
+    <details class="filter-more" id="filterMore">
+      <summary>Advanced filters <span class="filter-more-count" id="filterMoreCount" hidden>0</span></summary>
+      <div class="filter-more-panel">
+        <label class="filter-field">
+          <span class="filter-field-label" id="providerFilterLabel">Provider</span>
+          <select class="filter-select" id="filterProvider"><option value="">All providers</option></select>
+        </label>
+        <label class="filter-field hosted-only">
+          <span class="filter-field-label">Region</span>
+          <select class="filter-select" id="filterRegion"><option value="">Any region</option></select>
+        </label>
+        <label class="filter-field hosted-only">
+          <span class="filter-field-label">Deployment</span>
+          <select class="filter-select" id="filterDeployment"><option value="">Any deployment</option></select>
+        </label>
+        <label class="filter-field">
+          <span class="filter-field-label">Minimum context</span>
+          <select class="filter-select" id="filterContext"><option value="0">Any context</option></select>
+        </label>
+        <label class="filter-field">
+          <span class="filter-field-label">Capability</span>
+          <select class="filter-select" id="filterCapability"><option value="">Any capability</option></select>
+        </label>
+        <label class="filter-field imported-only" hidden>
+          <span class="filter-field-label">GPU hardware</span>
+          <select class="filter-select" id="filterGpu"><option value="">Any GPU</option></select>
+        </label>
+        <label class="filter-status hosted-only" id="filterStatusWrap">
+          <input id="filterIncludeDeprecated" type="checkbox">
+          <span>Include deprecated models</span>
+        </label>
+      </div>
+    </details>
+
+    <div class="filter-summary">
+      <span class="filter-result-count" id="filterResultCount" aria-live="polite">0 models</span>
+      <div class="filter-chip-list" id="filterChips" aria-label="Applied filters"></div>
+      <button class="filter-reset" id="filterReset" type="button">Clear all</button>
+    </div>
   </div>
   <div class="no-results" id="noResults">No models match the selected filters.</div>
 
   <!-- STAT BAR -->
   <div class="stat-bar">
     <div class="stat"><div class="stat-num">5</div><div class="stat-label">Model Providers</div></div>
-    <div class="stat"><div class="stat-num">27</div><div class="stat-label">Chat Models (Active)</div></div>
-    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Embedding Models</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Rerank Model</div></div>
-    <div class="stat"><div class="stat-num">88</div><div class="stat-label">Imported Models</div></div>
+    <div class="stat"><div class="stat-num">27</div><div class="stat-label">Chat Models (14 Active)</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Embedding Models (1 Active)</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Rerank Models (2 Active)</div></div>
+    <div class="stat"><div class="stat-num">97</div><div class="stat-label">Imported Models</div></div>
   </div>
 
 
@@ -1416,8 +1650,8 @@
   <!--  IMPORTED MODELS (Model Import — bring your own model)     -->
   <!-- ══════════════════════════════════════════════════════════ -->
 
-  <h2 class="section-title">Imported Models</h2>
-  <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Available via <strong style="color:var(--text);">OCI Generative AI Model Import</strong> — import open-weights and third-party models from HuggingFace into your own dedicated GPU cluster endpoint. 9 provider families · 88 models · supports fine-tuned variants within ±10% parameter count.</p>
+  <h2 class="section-title" id="importedSectionTitle">Imported Models</h2>
+  <p id="importedSectionIntro" style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Available via <strong style="color:var(--text);">OCI Generative AI Model Import</strong> — import open-weights and third-party models from HuggingFace into your own dedicated GPU cluster endpoint. 12 provider families · 97 models · supports fine-tuned variants within ±10% parameter count.</p>
 
   <!-- ALIBABA QWEN -->
   <h3 class="import-family-title" data-family="alibaba">Alibaba Qwen Family</h3>
@@ -2005,6 +2239,15 @@
   </table>
   </div>
 
+  <!-- MINIMAX -->
+  <h3 class="import-family-title" data-family="minimax">MiniMax Family</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
+
   <!-- MISTRAL -->
   <h3 class="import-family-title" data-family="mistral">Mistral Family</h3>
   <div class="table-wrap">
@@ -2060,6 +2303,15 @@
         <td><span class="tag tag-green">A10_X1</span></td>
       </tr>
     </tbody>
+  </table>
+  </div>
+
+  <!-- MOONSHOT AI KIMI -->
+  <h3 class="import-family-title" data-family="moonshot">Moonshot AI Kimi Family</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody></tbody>
   </table>
   </div>
 
@@ -2154,6 +2406,15 @@
         <td><span class="tag tag-blue">H100_X2</span></td>
       </tr>
     </tbody>
+  </table>
+  </div>
+
+  <!-- Z.AI GLM -->
+  <h3 class="import-family-title" data-family="zai">Z.ai GLM Family</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <tbody></tbody>
   </table>
   </div>
 
@@ -2282,7 +2543,7 @@
     <p>³ Retired models no longer listed in the current OCI pretrained-model catalog are omitted from the main tables; deprecated models still listed by OCI are shown with deprecated status.</p>
     <p>⁴ Model Import feature (GA 2025) lets you bring your own models from Hugging Face or OCI Object Storage.</p>
     <p>⁶ OCI documents Grok 4 at 128K context, Grok 4.3 at 1M context, and Grok 4 Fast, Grok 4.1 Fast, Grok 4.20, and Grok 4.20 Multi-Agent at 2M context.</p>
-    <p>⁵ Data sources (OCI Official Documentation; catalog last updated 24 June 2026; OC1 commercial regions only):
+    <p>⁵ Data sources (OCI Official Documentation; catalog last updated 6 July 2026; OC1 commercial regions only):
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Pretrained Models</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:var(--link);">Models by Region</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:var(--link);">Inferencing Modes</a> ·
@@ -2361,6 +2622,67 @@
     'me-dubai-1':    'UAE East (Dubai)',
     'ap-hyderabad-1':'India South (Hyderabad)', 'ap-osaka-1':    'Japan Central (Osaka)'
   };
+  var REGION_GROUPS = {
+    americas: ['us-ashburn-1', 'us-chicago-1', 'us-phoenix-1', 'sa-saopaulo-1'],
+    europe:   ['eu-frankfurt-1', 'uk-london-1'],
+    me:       ['me-riyadh-1', 'me-abudhabi-1', 'me-dubai-1'],
+    apac:     ['ap-hyderabad-1', 'ap-osaka-1']
+  };
+  var REGION_GROUP_LABELS = {
+    americas: 'Any Americas region', europe: 'Any Europe region',
+    me: 'Any Middle East region', apac: 'Any Asia Pacific region'
+  };
+
+  function escapeAttr(value) {
+    return String(value === null || value === undefined ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function uniqueValues(values) {
+    return values.filter(function(value, index) { return value && values.indexOf(value) === index; });
+  }
+
+  function contextLabelToK(label) {
+    var match = String(label || '').toUpperCase().match(/([0-9.]+)\s*([KM])/);
+    if (!match) return 0;
+    return Math.round(parseFloat(match[1]) * (match[2] === 'M' ? 1000 : 1));
+  }
+
+  function regionMetadata(regions) {
+    var ids = Object.keys(regions || {});
+    var deployments = [];
+    var access = ids.map(function(id) {
+      var mode = regions[id];
+      if (mode === 'both' || mode === 'ondemand') deployments.push('ondemand');
+      if (mode === 'both' || mode === 'dedicated') deployments.push('dedicated');
+      return id + ':' + mode;
+    });
+    return { ids: ids, deployments: uniqueValues(deployments), access: access };
+  }
+
+  function filterRowAttrs(meta) {
+    var values = {
+      scope: meta.scope,
+      roles: uniqueValues(meta.roles || []).join(' '),
+      provider: meta.provider,
+      providerLabel: meta.providerLabel,
+      status: meta.status,
+      search: (meta.search || '').toLowerCase(),
+      contextK: meta.contextK || 0,
+      deployments: uniqueValues(meta.deployments || []).join(' '),
+      regions: uniqueValues(meta.regions || []).join(' '),
+      regionAccess: uniqueValues(meta.regionAccess || []).join(' '),
+      capabilities: uniqueValues(meta.capabilities || []).join(' '),
+      tasks: uniqueValues(meta.tasks || []).join(' '),
+      gpus: uniqueValues(meta.gpus || []).join(' ')
+    };
+    return Object.keys(values).map(function(key) {
+      return ' data-' + key.replace(/[A-Z]/g, function(char) { return '-' + char.toLowerCase(); }) + '="' + escapeAttr(values[key]) + '"';
+    }).join('');
+  }
 
   function enhanceTableAccessibility() {
     document.querySelectorAll('.table-wrap').forEach(function(wrap) {
@@ -2435,7 +2757,25 @@
     var reasoningDetail = m.reasoningDetail || m.thinkingDetail;
     var toolUse         = m.toolUse || m.agentic;
     var toolUseDetail   = m.toolUseDetail || m.agenticDetail;
-    return '<tr' + (m.tags && m.tags.length ? ' data-tags="' + m.tags.join(' ') + '"' : '') + '>' +
+    var regionMeta      = regionMetadata(m.regions);
+    var roles           = ['chat'];
+    var capabilities    = [];
+    if (m.multimodal) capabilities.push('vision');
+    if (reasoning) capabilities.push('reasoning');
+    if (m.codingFocus) capabilities.push('coder');
+    if (toolUse) capabilities.push('tool');
+    if (m.fineTunable) capabilities.push('finetune');
+    var tasks = (m.wizardTasks || []).concat(m.fineTunable ? ['finetune'] : []);
+    var attrs = filterRowAttrs({
+      scope: 'hosted', roles: roles, provider: m.provider,
+      providerLabel: PROVIDER_LABELS[m.provider], status: m.status,
+      search: [m.name, m.id, PROVIDER_LABELS[m.provider], m.bestFor, m.wizardWhy,
+        m.tierLabel].concat(m.altIds || [], m.tags || [], m.wizardTasks || []).join(' '),
+      contextK: m.contextWindowK, deployments: regionMeta.deployments,
+      regions: regionMeta.ids, regionAccess: regionMeta.access,
+      capabilities: capabilities, tasks: tasks
+    });
+    return '<tr' + attrs + (m.tags && m.tags.length ? ' data-tags="' + m.tags.join(' ') + '"' : '') + '>' +
       mkModelCell(m) + mkModelId(m) +
       '<td>' + mkTier(m) + '</td>' +
       mkParams(m) +
@@ -2449,7 +2789,18 @@
   }
 
   function rowEmbed(m) {
-    return '<tr>' +
+    var regionMeta = regionMetadata(m.regions);
+    var capabilities = [];
+    if (m.multimodalImage) capabilities.push('vision');
+    var attrs = filterRowAttrs({
+      scope: 'hosted', roles: ['embed'], provider: m.provider,
+      providerLabel: PROVIDER_LABELS[m.provider], status: m.status,
+      search: [m.name, m.id, PROVIDER_LABELS[m.provider], m.useCase, m.wizardWhy,
+        'embedding semantic search rag'].join(' '), contextK: 0,
+      deployments: regionMeta.deployments, regions: regionMeta.ids,
+      regionAccess: regionMeta.access, capabilities: capabilities, tasks: ['embed']
+    });
+    return '<tr' + attrs + '>' +
       '<td class="model-cell"><span class="badge badge-embed">Cohere</span><br>' +
         '<span class="model-name">' + m.name + '</span></td>' +
       '<td><span class="model-id">' + m.id + '</span></td>' +
@@ -2464,7 +2815,16 @@
   }
 
   function rowRerank(m) {
-    return '<tr>' +
+    var regionMeta = regionMetadata(m.regions);
+    var attrs = filterRowAttrs({
+      scope: 'hosted', roles: ['rerank'], provider: m.provider,
+      providerLabel: PROVIDER_LABELS[m.provider], status: m.status,
+      search: [m.name, m.id, PROVIDER_LABELS[m.provider], m.useCase, m.wizardWhy,
+        'rerank ranking semantic search rag'].join(' '), contextK: 0,
+      deployments: regionMeta.deployments, regions: regionMeta.ids,
+      regionAccess: regionMeta.access, tasks: ['embed']
+    });
+    return '<tr' + attrs + '>' +
       '<td class="model-cell"><span class="badge badge-embed">Cohere</span><br>' +
         '<span class="model-name">' + m.name + '</span></td>' +
       '<td><span class="model-id">' + m.id + '</span></td>' +
@@ -2545,6 +2905,8 @@
 
   function rowImported(m, family) {
     var t = m.type || 'chat';
+    var role = (t === 'embed' || t === 'image' || t === 'audio') ? t : 'chat';
+    var capabilities = ['vision', 'reasoning', 'coder'].indexOf(t) !== -1 ? [t] : [];
     var typeHtml = '<span class="tag' + (IMP_TYPE_CLASS[t] || '') + '">' + (IMP_TYPE_LABEL[t] || t) + '</span>';
     var paramHtml = m.params
       ? '<span class="params">' + m.params + '</span>' + (m.activeParams ? ' <span class="params-active">' + m.activeParams + '</span>' : '')
@@ -2553,7 +2915,16 @@
       ? '<span class="ctx ctx-' + m.contextClass + '">' + m.contextWindowLabel + '</span>'
       : '—';
     var clsCls = m.clusterClass ? ' ' + m.clusterClass : '';
-    return '<tr>' +
+    var gpuMatches = m.clusterShape.match(/(?:A10|A100|H100|H200|B200)(?=_)/g) || [];
+    var attrs = filterRowAttrs({
+      scope: 'imported', roles: [role], provider: family.id,
+      providerLabel: family.label, status: 'listed',
+      search: [m.name, m.hfId, family.label, t, m.params, m.contextWindowLabel,
+        m.clusterShape].join(' '),
+      contextK: contextLabelToK(m.contextWindowLabel),
+      deployments: ['dedicated'], capabilities: capabilities, gpus: gpuMatches
+    });
+    return '<tr' + attrs + '>' +
       '<td class="model-cell"><span class="badge badge-' + family.badge + '">' + family.label + '</span><br>' +
         '<span class="model-name">' + m.name + '</span></td>' +
       '<td><span class="model-id">' + m.hfId + '</span></td>' +
@@ -2572,72 +2943,437 @@
     });
   }
 
-  // ── FILTER CHIPS ──────────────────────────────────────────────────
+  // ── STRUCTURED CATALOG FILTERS ────────────────────────────────────
   function initFilters() {
-    var sections = [];
-    document.querySelectorAll('.table-wrap').forEach(function(wrap) {
-      var rows = [];
-      wrap.querySelectorAll('tbody tr').forEach(function(tr) {
-        rows.push({ el: tr, text: tr.textContent.toLowerCase(), tags: (tr.dataset.tags || '').toLowerCase() });
-      });
-      var title = wrap.previousElementSibling;
-      sections.push({
-        wrap: wrap,
-        title: (title && title.classList.contains('section-title')) ? title : null,
-        rows: rows
-      });
-    });
+    var controls = {
+      shell: document.getElementById('catalogFilters'),
+      search: document.getElementById('filterSearch'),
+      includeDeprecated: document.getElementById('filterIncludeDeprecated'),
+      provider: document.getElementById('filterProvider'),
+      providerLabel: document.getElementById('providerFilterLabel'),
+      deployment: document.getElementById('filterDeployment'),
+      region: document.getElementById('filterRegion'),
+      context: document.getElementById('filterContext'),
+      capability: document.getElementById('filterCapability'),
+      gpu: document.getElementById('filterGpu'),
+      more: document.getElementById('filterMore'),
+      moreCount: document.getElementById('filterMoreCount'),
+      count: document.getElementById('filterResultCount'),
+      chips: document.getElementById('filterChips'),
+      reset: document.getElementById('filterReset'),
+      noResults: document.getElementById('noResults'),
+      importedTitle: document.getElementById('importedSectionTitle'),
+      importedIntro: document.getElementById('importedSectionIntro')
+    };
+    var scopeButtons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-scope]'));
+    var roleButtons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-role]'));
+    var currentScope = 'hosted';
+    var currentRole = 'all';
+    var currentWizardTask = '';
 
-    function applyFilter() {
-      var activeChips = document.querySelectorAll('.chip.active');
-      document.getElementById('chipClear').style.display = activeChips.length ? 'inline-block' : 'none';
-      if (activeChips.length === 0) {
-        sections.forEach(function(s) {
-          s.rows.forEach(function(r) { r.el.style.display = ''; });
-          s.wrap.style.display = '';
-          if (s.title) s.title.style.display = '';
-        });
-        document.getElementById('chipCount').textContent = '';
-        document.getElementById('noResults').style.display = 'none';
-        return;
-      }
-      var groups = {};
-      document.querySelectorAll('.chip.active').forEach(function(c) {
-        var g = c.dataset.group;
-        if (!groups[g]) groups[g] = [];
-        groups[g].push(c.dataset.q);
-      });
-      var groupKeys = Object.keys(groups);
-      var total = 0;
-      sections.forEach(function(s) {
-        var visible = 0;
-        s.rows.forEach(function(r) {
-          var match = groupKeys.every(function(g) {
-            return groups[g].some(function(q) {
-              return r.text.indexOf(q) !== -1 || r.tags.indexOf(q) !== -1;
-            });
-          });
-          r.el.style.display = match ? '' : 'none';
-          if (match) visible++;
-        });
-        total += visible;
-        s.wrap.style.display = visible > 0 ? '' : 'none';
-        if (s.title) s.title.style.display = visible > 0 ? '' : 'none';
-      });
-      document.getElementById('chipCount').textContent = total + ' model' + (total !== 1 ? 's' : '') + ' found';
-      document.getElementById('noResults').style.display = total === 0 ? 'block' : 'none';
+    function splitValues(value) {
+      return String(value || '').split(/\s+/).filter(Boolean);
     }
 
-    document.querySelectorAll('.chip').forEach(function(chip) {
-      chip.addEventListener('click', function() {
-        chip.classList.toggle('active');
+    function parseRegionAccess(value) {
+      var result = {};
+      splitValues(value).forEach(function(pair) {
+        var separator = pair.lastIndexOf(':');
+        if (separator > 0) result[pair.slice(0, separator)] = pair.slice(separator + 1);
+      });
+      return result;
+    }
+
+    var sections = [];
+    var records = [];
+    document.querySelectorAll('#referenceView .table-wrap').forEach(function(wrap) {
+      var title = wrap.previousElementSibling;
+      var section = {
+        wrap: wrap,
+        title: title && (
+          title.classList.contains('section-title') ||
+          title.classList.contains('import-family-title')
+        ) ? title : null,
+        records: []
+      };
+      wrap.querySelectorAll('tbody tr[data-scope]').forEach(function(tr) {
+        var record = {
+          el: tr,
+          section: section,
+          scope: tr.dataset.scope,
+          roles: splitValues(tr.dataset.roles),
+          provider: tr.dataset.provider,
+          providerLabel: tr.dataset.providerLabel,
+          status: tr.dataset.status,
+          search: tr.dataset.search || '',
+          contextK: Number(tr.dataset.contextK || 0),
+          deployments: splitValues(tr.dataset.deployments),
+          regions: splitValues(tr.dataset.regions),
+          regionAccess: parseRegionAccess(tr.dataset.regionAccess),
+          capabilities: splitValues(tr.dataset.capabilities),
+          tasks: splitValues(tr.dataset.tasks),
+          gpus: splitValues(tr.dataset.gpus)
+        };
+        section.records.push(record);
+        records.push(record);
+      });
+      sections.push(section);
+    });
+
+    if (!records.length) {
+      controls.shell.hidden = true;
+      return;
+    }
+
+    function addOption(select, value, label, disabled) {
+      var option = document.createElement('option');
+      option.value = value;
+      option.textContent = label;
+      option.disabled = !!disabled;
+      select.appendChild(option);
+      return option;
+    }
+
+    var gpuOrder = ['A10', 'A100', 'H100', 'H200', 'B200'];
+    var gpuValues = [];
+    records.forEach(function(record) {
+      if (record.scope === 'imported') gpuValues = gpuValues.concat(record.gpus);
+    });
+    gpuValues = uniqueValues(gpuValues).sort(function(a, b) {
+      return gpuOrder.indexOf(a) - gpuOrder.indexOf(b);
+    });
+    var hostedRecords = records.filter(function(record) { return record.scope === 'hosted'; });
+    var activeHosted = hostedRecords.filter(function(record) { return record.status === 'active'; }).length;
+    var importedTotal = records.filter(function(record) { return record.scope === 'imported'; }).length;
+    document.getElementById('hostedScopeCount').textContent = activeHosted + ' active / ' + hostedRecords.length;
+    document.getElementById('importedScopeCount').textContent = importedTotal;
+
+    var regionOptions = Object.keys(REGION_GROUPS).map(function(group) {
+      return { value: 'group:' + group, label: REGION_GROUP_LABELS[group] };
+    }).concat(Object.keys(REGION_NAMES).map(function(regionId) {
+      return { value: regionId, label: REGION_NAMES[regionId] };
+    }));
+    var deploymentOptions = [
+      { value: 'ondemand', label: 'On-demand' },
+      { value: 'dedicated', label: 'Dedicated cluster' }
+    ];
+    var contextOptions = [
+      { value: 128, label: 'At least 128K' },
+      { value: 256, label: 'At least 256K' },
+      { value: 1000, label: 'At least 1M' },
+      { value: 2000, label: 'At least 2M' }
+    ];
+    var capabilityOptions = [
+      { value: 'vision', label: 'Multimodal / vision' },
+      { value: 'reasoning', label: 'Reasoning' },
+      { value: 'coder', label: 'Coding' },
+      { value: 'tool', label: 'Tool use / agents' },
+      { value: 'finetune', label: 'Fine-tunable' }
+    ];
+    var gpuOptions = gpuValues.map(function(gpu) { return { value: gpu, label: gpu }; });
+
+    function getState() {
+      return {
+        scope: currentScope,
+        role: currentRole,
+        search: controls.search.value.trim().toLowerCase(),
+        includeDeprecated: currentScope === 'hosted' && controls.includeDeprecated.checked,
+        provider: controls.provider.value,
+        deployment: currentScope === 'hosted' ? controls.deployment.value : '',
+        region: currentScope === 'hosted' ? controls.region.value : '',
+        contextK: Number(controls.context.value || 0),
+        capability: controls.capability.value,
+        gpu: currentScope === 'imported' ? controls.gpu.value : '',
+        wizardTask: currentWizardTask
+      };
+    }
+
+    function withValue(state, key, value) {
+      var next = {};
+      Object.keys(state).forEach(function(name) { next[name] = state[name]; });
+      next[key] = value;
+      return next;
+    }
+
+    function modeSupports(access, deployment) {
+      return access === 'both' || access === deployment;
+    }
+
+    function selectedRegionIds(region) {
+      if (region.indexOf('group:') === 0) return REGION_GROUPS[region.slice(6)] || [];
+      return region ? [region] : [];
+    }
+
+    function recordMatches(record, state) {
+      if (record.scope !== state.scope) return false;
+      if (state.search && !state.search.split(/\s+/).every(function(term) {
+        return record.search.indexOf(term) !== -1;
+      })) return false;
+      if (state.scope === 'hosted' && !state.includeDeprecated && record.status !== 'active') return false;
+      if (state.role !== 'all' && record.roles.indexOf(state.role) === -1) return false;
+      if (state.provider && record.provider !== state.provider) return false;
+      if (state.contextK && record.contextK < state.contextK) return false;
+      if (state.capability && record.capabilities.indexOf(state.capability) === -1) return false;
+      if (state.wizardTask && record.tasks.indexOf(state.wizardTask) === -1) return false;
+
+      if (state.scope === 'hosted') {
+        if (state.region) {
+          var availableInRegion = selectedRegionIds(state.region).some(function(regionId) {
+            var access = record.regionAccess[regionId];
+            return access && (!state.deployment || modeSupports(access, state.deployment));
+          });
+          if (!availableInRegion) return false;
+        } else if (state.deployment && record.deployments.indexOf(state.deployment) === -1) {
+          return false;
+        }
+      }
+
+      if (state.scope === 'imported' && state.gpu && record.gpus.indexOf(state.gpu) === -1) return false;
+      return true;
+    }
+
+    function countMatches(state) {
+      return records.filter(function(record) { return recordMatches(record, state); }).length;
+    }
+
+    function refreshRoleCounts(state) {
+      roleButtons.forEach(function(button) {
+        var role = button.dataset.filterRole;
+        var availableInScope = role === 'all' || records.some(function(record) {
+          return record.scope === state.scope && record.roles.indexOf(role) !== -1;
+        });
+        button.hidden = !availableInScope;
+        if (!availableInScope) return;
+        var count = countMatches(withValue(state, 'role', role));
+        button.querySelector('.role-count').textContent = count;
+        button.disabled = count === 0 && currentRole !== role;
+        button.classList.toggle('active', currentRole === role);
+        button.setAttribute('aria-pressed', currentRole === role ? 'true' : 'false');
+      });
+    }
+
+    function refreshSelect(select, state, key, allValue, allLabel, options) {
+      var selected = String(select.value);
+      var availableValues = options.map(function(option) { return String(option.value); });
+      select.innerHTML = '';
+      addOption(select, allValue, allLabel + ' (' + countMatches(withValue(state, key, allValue)) + ')', false);
+      options.forEach(function(option) {
+        var count = countMatches(withValue(state, key, option.value));
+        addOption(select, option.value, option.label + ' (' + count + ')', count === 0 && selected !== String(option.value));
+      });
+      select.value = availableValues.indexOf(selected) !== -1 ? selected : String(allValue);
+    }
+
+    function refreshFacetOptions(state) {
+      var providers = {};
+      records.forEach(function(record) {
+        if (record.scope === state.scope) providers[record.provider] = record.providerLabel;
+      });
+      var noun = state.scope === 'hosted' ? 'providers' : 'families';
+      var providerOptions = Object.keys(providers).sort(function(a, b) {
+        return providers[a].localeCompare(providers[b]);
+      }).map(function(provider) {
+        return { value: provider, label: providers[provider] };
+      });
+      refreshSelect(controls.provider, state, 'provider', '', 'All ' + noun, providerOptions);
+      controls.providerLabel.textContent = state.scope === 'hosted' ? 'Provider' : 'Family';
+
+      if (state.scope === 'hosted') {
+        refreshSelect(controls.region, state, 'region', '', 'Any region', regionOptions);
+        refreshSelect(controls.deployment, state, 'deployment', '', 'Any deployment', deploymentOptions);
+      }
+      refreshSelect(controls.context, state, 'contextK', 0, 'Any context', contextOptions);
+      refreshSelect(controls.capability, state, 'capability', '', 'Any capability', capabilityOptions);
+      if (state.scope === 'imported') {
+        refreshSelect(controls.gpu, state, 'gpu', '', 'Any GPU', gpuOptions);
+      }
+    }
+
+    function selectedLabel(select) {
+      var option = select.options[select.selectedIndex];
+      return option ? option.textContent.replace(/\s+\([0-9]+\)$/, '') : '';
+    }
+
+    function roleLabel(role) {
+      var button = roleButtons.find(function(item) { return item.dataset.filterRole === role; });
+      return button ? button.firstChild.nodeValue.trim() : role;
+    }
+
+    function updateScopeUI() {
+      scopeButtons.forEach(function(button) {
+        var selected = button.dataset.filterScope === currentScope;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      });
+      document.querySelectorAll('.hosted-only').forEach(function(element) {
+        element.hidden = currentScope !== 'hosted';
+      });
+      document.querySelectorAll('.imported-only').forEach(function(element) {
+        element.hidden = currentScope !== 'imported';
+      });
+    }
+
+    function appendChip(label, key) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'filter-chip';
+      chip.dataset.filterRemove = key;
+      chip.textContent = label;
+      chip.setAttribute('aria-label', 'Remove filter: ' + label);
+      controls.chips.appendChild(chip);
+    }
+
+    function advancedFilterCount(state) {
+      return [state.provider, state.deployment, state.region, state.contextK,
+        state.capability, state.gpu, state.includeDeprecated].filter(Boolean).length;
+    }
+
+    function updateSummary(state, visible) {
+      var scopeTotal = records.filter(function(record) { return record.scope === state.scope; }).length;
+      var taskLabels = {
+        rag: 'RAG', code: 'Code & agents', vision: 'Vision', chat: 'Enterprise chat',
+        embed: 'Semantic search', finetune: 'Fine-tuning'
+      };
+      controls.count.textContent = visible + ' of ' + scopeTotal + ' models';
+      controls.chips.innerHTML = '';
+      if (state.role !== 'all') appendChip(roleLabel(state.role), 'role');
+      if (state.wizardTask) appendChip('Wizard: ' + (taskLabels[state.wizardTask] || state.wizardTask), 'wizardTask');
+      if (state.provider) appendChip(selectedLabel(controls.provider), 'provider');
+      if (state.region) appendChip(selectedLabel(controls.region), 'region');
+      if (state.deployment) appendChip(selectedLabel(controls.deployment), 'deployment');
+      if (state.contextK) appendChip(selectedLabel(controls.context), 'contextK');
+      if (state.capability) appendChip(selectedLabel(controls.capability), 'capability');
+      if (state.gpu) appendChip(selectedLabel(controls.gpu), 'gpu');
+      if (state.includeDeprecated) appendChip('Including deprecated', 'includeDeprecated');
+      if (state.search) appendChip('Search: "' + controls.search.value.trim() + '"', 'search');
+
+      var advancedCount = advancedFilterCount(state);
+      controls.moreCount.textContent = advancedCount;
+      controls.moreCount.hidden = advancedCount === 0;
+      var changed = !!(
+        state.search || state.role !== 'all' || state.provider || state.deployment ||
+        state.region || state.contextK || state.capability || state.gpu ||
+        state.includeDeprecated || state.wizardTask
+      );
+      controls.reset.style.display = changed ? 'inline-block' : 'none';
+    }
+
+    function applyFilter() {
+      var state = getState();
+      refreshRoleCounts(state);
+      refreshFacetOptions(state);
+      state = getState();
+
+      var visible = 0;
+      records.forEach(function(record) {
+        var match = recordMatches(record, state);
+        record.el.hidden = !match;
+        if (match) visible++;
+      });
+      sections.forEach(function(section) {
+        var hasVisibleRows = section.records.some(function(record) { return !record.el.hidden; });
+        section.wrap.hidden = !hasVisibleRows;
+        if (section.title) section.title.hidden = !hasVisibleRows;
+      });
+
+      var showImportedHeader = state.scope === 'imported' && visible > 0;
+      controls.importedTitle.hidden = !showImportedHeader;
+      controls.importedIntro.hidden = !showImportedHeader;
+      controls.noResults.style.display = visible === 0 ? 'block' : 'none';
+      controls.noResults.textContent = visible === 0
+        ? 'No ' + (state.scope === 'hosted' ? 'hosted' : 'importable') + ' models match the selected filters.'
+        : '';
+      updateSummary(state, visible);
+    }
+
+    scopeButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        currentScope = button.dataset.filterScope;
+        currentRole = 'all';
+        currentWizardTask = '';
+        controls.provider.value = '';
+        controls.deployment.value = '';
+        controls.region.value = '';
+        controls.context.value = '0';
+        controls.capability.value = '';
+        controls.gpu.value = '';
+        controls.includeDeprecated.checked = false;
+        controls.more.open = false;
+        updateScopeUI();
         applyFilter();
       });
     });
-    document.getElementById('chipClear').addEventListener('click', function() {
-      document.querySelectorAll('.chip.active').forEach(function(c) { c.classList.remove('active'); });
+
+    roleButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        if (button.disabled) return;
+        currentRole = button.dataset.filterRole;
+        applyFilter();
+      });
+    });
+
+    controls.search.addEventListener('input', applyFilter);
+    [controls.includeDeprecated, controls.provider, controls.deployment, controls.region,
+     controls.context, controls.capability, controls.gpu].forEach(function(control) {
+      control.addEventListener('change', applyFilter);
+    });
+
+    controls.chips.addEventListener('click', function(event) {
+      var chip = event.target.closest('[data-filter-remove]');
+      if (!chip) return;
+      var key = chip.dataset.filterRemove;
+      if (key === 'role') currentRole = 'all';
+      if (key === 'wizardTask') currentWizardTask = '';
+      if (key === 'search') controls.search.value = '';
+      if (key === 'provider') controls.provider.value = '';
+      if (key === 'deployment') controls.deployment.value = '';
+      if (key === 'region') controls.region.value = '';
+      if (key === 'contextK') controls.context.value = '0';
+      if (key === 'capability') controls.capability.value = '';
+      if (key === 'gpu') controls.gpu.value = '';
+      if (key === 'includeDeprecated') controls.includeDeprecated.checked = false;
       applyFilter();
     });
+
+    controls.reset.addEventListener('click', function() {
+      controls.search.value = '';
+      currentRole = 'all';
+      currentWizardTask = '';
+      controls.provider.value = '';
+      controls.deployment.value = '';
+      controls.region.value = '';
+      controls.context.value = '0';
+      controls.capability.value = '';
+      controls.gpu.value = '';
+      controls.includeDeprecated.checked = false;
+      controls.more.open = false;
+      applyFilter();
+      controls.search.focus();
+    });
+
+    window.applyCatalogPreset = function(preset) {
+      currentScope = 'hosted';
+      currentRole = preset.task === 'embed' ? 'all' : 'chat';
+      currentWizardTask = preset.task || '';
+      controls.search.value = '';
+      controls.provider.value = '';
+      controls.context.value = '0';
+      controls.capability.value = '';
+      controls.gpu.value = '';
+      controls.includeDeprecated.checked = false;
+      controls.region.value = preset.region && preset.region !== 'any' ? 'group:' + preset.region : '';
+      controls.deployment.value = preset.deployment && preset.deployment !== 'any' ? preset.deployment : '';
+      controls.more.open = false;
+      updateScopeUI();
+      applyFilter();
+      showView('reference');
+      setTimeout(function() {
+        controls.shell.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 0);
+    };
+
+    updateScopeUI();
+    applyFilter();
   }
 
   // ── FETCH MODELS.JSON AND RENDER ──────────────────────────────────
@@ -2657,12 +3393,7 @@
   });
 
   // ── WIZARD REGION MAP ─────────────────────────────────────────────
-  var WIZARD_REGION_MAP = {
-    'americas': ['us-ashburn-1', 'us-chicago-1', 'us-phoenix-1', 'sa-saopaulo-1'],
-    'europe':   ['eu-frankfurt-1', 'uk-london-1'],
-    'me':       ['me-riyadh-1', 'me-abudhabi-1', 'me-dubai-1'],
-    'apac':     ['ap-hyderabad-1', 'ap-osaka-1']
-  };
+  var WIZARD_REGION_MAP = REGION_GROUPS;
 
   // ── WIZARD SCORING ────────────────────────────────────────────────
   function wizScore(m, tier) {
@@ -2692,7 +3423,7 @@
     });
   }
 
-  function wizGetRecs(task, tier, deployment, region) {
+  function wizGetMatches(task, tier, deployment, region) {
     var pool = task === 'embed' ? WIZ_EMBED : WIZ_MODELS;
     return pool
       .map(function(m) {
@@ -2702,8 +3433,7 @@
         return { model: m, matchedRegions: matchedRegions, score: wizScore(m, tier) };
       })
       .filter(function(entry) { return !!entry; })
-      .sort(function(a, b) { return b.score - a.score; })
-      .slice(0, 3);
+      .sort(function(a, b) { return b.score - a.score; });
   }
 
   // ── WIZARD RESULTS RENDERER ───────────────────────────────────────
@@ -2717,7 +3447,8 @@
     var tier       = wizAnswers[2] || 'balanced';
     var deployment = wizAnswers[3] || 'any';
     var region     = wizAnswers[4] || 'any';
-    var recs = wizGetRecs(task, tier, deployment, region);
+    var matches = wizGetMatches(task, tier, deployment, region);
+    var recs = matches.slice(0, 3);
 
     // Summary line
     var parts = [];
@@ -2770,6 +3501,9 @@
       ? html
       : '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">' + html + '</div>';
     document.getElementById('resList').innerHTML = gridHtml;
+    var viewMatches = document.getElementById('wizViewMatches');
+    viewMatches.style.display = matches.length ? 'inline-block' : 'none';
+    viewMatches.textContent = 'View all ' + matches.length + ' matching model' + (matches.length === 1 ? '' : 's');
     document.getElementById('wizQuestionsPanel').style.display = 'none';
     var box = document.getElementById('wizResultsBox');
     box.style.display = 'block';
@@ -2827,6 +3561,7 @@
     wizAnswers = {};
     wizHistory = [];
     document.getElementById('wizResultsBox').style.display = 'none';
+    document.getElementById('wizViewMatches').style.display = 'none';
     document.querySelectorAll('.wiz-opt').forEach(function(b) { b.classList.remove('wiz-selected'); });
     wizGoToStep(1);
   }
@@ -2849,6 +3584,14 @@
   });
 
   document.getElementById('wizReset').addEventListener('click', wizReset);
+  document.getElementById('wizViewMatches').addEventListener('click', function() {
+    if (typeof window.applyCatalogPreset !== 'function') return;
+    window.applyCatalogPreset({
+      task: wizAnswers[1],
+      deployment: wizAnswers[3] || 'any',
+      region: wizAnswers[4] || 'any'
+    });
+  });
 
   // ── SERVICE WORKER — cache busting ────────────────────────────────
   if ('serviceWorker' in navigator) {
