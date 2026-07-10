@@ -24,7 +24,7 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 - Dark / Light mode toggle (preference saved in `localStorage`)
 - Guided model selection wizard with a one-click handoff to the matching catalog scope and workload filters
 - Intent-aware catalog search across model names, IDs, providers, and use cases
-- Always-visible catalog filters with a unified capability/role selector, live option and result-summary counts, geographic region/deployment cascading, and a combined cluster scope covering dedicated hosted endpoints plus compatible Model Import models
+- Deployment-first catalog filtering that clearly separates on-demand access from dedicated clusters, followed by source, capability/role, region, context, lifecycle, and GPU refinements with live counts
 - Semantic headings and keyboard-focusable table sections for accessibility
 - Fully static — no JavaScript framework, no build step
 - Mobile responsive

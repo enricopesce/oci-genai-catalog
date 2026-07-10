@@ -2,6 +2,11 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-07-10
+
+- Added a deployment-first catalog selector that clearly separates all hosted access, on-demand access, and dedicated-cluster paths before users refine by model source or capability.
+- Replaced the implicit Dedicated-select-to-Clusters scope jump with explicit synchronized deployment and scope controls, preserving wizard handoff, regional filtering for hosted models, and GPU filtering for Model Import.
+
 ## 2026-07-09
 
 - Re-verified native and imported catalog data against current public Oracle documentation, including source pages updated through 6 July 2026.

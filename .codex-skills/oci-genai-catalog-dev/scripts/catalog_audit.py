@@ -64,6 +64,18 @@ def extract_scope_counts(html: str) -> tuple[int, int, int] | None:
     return int(hosted.group(1)), int(hosted.group(2)), int(imported.group(1))
 
 
+def extract_deployment_counts(html: str) -> tuple[int, int, int, int, int, int] | None:
+    patterns = (
+        r'id="anyDeploymentCount">(\d+) / (\d+)</span>',
+        r'id="ondemandDeploymentCount">(\d+) / (\d+)</span>',
+        r'id="dedicatedDeploymentCount">(\d+) / (\d+)</span>',
+    )
+    matches = [re.search(pattern, html) for pattern in patterns]
+    if not all(matches):
+        return None
+    return tuple(int(value) for match in matches for value in match.groups())
+
+
 def extract_import_intro_counts(html: str) -> tuple[int, int] | None:
     match = re.search(
         r"(\d+)\s+provider families\s*[^0-9<]+\s*(\d+)\s+models",
@@ -96,6 +108,11 @@ def audit(repo: Path) -> int:
     active_chat = sum(model.get("status") == "active" for model in chat_models)
     active_embedding = sum(model.get("status") == "active" for model in embedding_models)
     active_rerank = sum(model.get("status") == "active" for model in rerank_models)
+    native_models = chat_models + embedding_models + rerank_models
+
+    def supports_deployment(model: dict, deployment: str) -> bool:
+        access_modes = model.get("regions", {}).values()
+        return any(mode in {"both", deployment} for mode in access_modes)
 
     models_date = models["metadata"]["dataDate"]
     imported_date = imported["metadata"]["dataDate"]
@@ -118,6 +135,7 @@ def audit(repo: Path) -> int:
     )
     html_stats = extract_stats(html)
     scope_counts = extract_scope_counts(html)
+    deployment_counts = extract_deployment_counts(html)
     import_intro_counts = extract_import_intro_counts(html)
     html_family_ids = extract_family_ids(html)
     json_family_ids = [family["id"] for family in imported_families]
@@ -171,6 +189,24 @@ def audit(repo: Path) -> int:
     else:
         errors.append(
             f"catalog scope counts are {scope_counts or 'missing'}, expected {expected_scope_counts}"
+        )
+
+    ondemand_models = [model for model in native_models if supports_deployment(model, "ondemand")]
+    dedicated_models = [model for model in native_models if supports_deployment(model, "dedicated")]
+    expected_deployment_counts = (
+        active_chat + active_embedding + active_rerank,
+        len(native_models),
+        sum(model.get("status") == "active" for model in ondemand_models),
+        len(ondemand_models),
+        sum(model.get("status") == "active" for model in dedicated_models) + len(imported_models),
+        len(dedicated_models) + len(imported_models),
+    )
+    if deployment_counts == expected_deployment_counts:
+        ok.append("deployment-path active/total counts match JSON data")
+    else:
+        errors.append(
+            "deployment-path counts are "
+            f"{deployment_counts or 'missing'}, expected {expected_deployment_counts}"
         )
 
     if import_intro_counts == (len(imported_families), len(imported_models)):

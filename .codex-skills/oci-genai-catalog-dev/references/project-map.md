@@ -17,8 +17,8 @@
 3. `renderAll()` fills native chat/embed/rerank sections from `models.json`.
 4. `renderImported()` fills imported family tables from `imported-models.json`.
 5. The row renderers attach normalized role, capability, workload, availability, and hardware filter metadata derived from JSON fields.
-6. `initFilters()` snapshots that metadata and applies an always-visible structured filter panel with faceted option counts across hosted, imported, and combined dedicated-cluster scopes; one Capability selector exposes both primary roles and overlapping feature capabilities.
-7. Wizard data is derived from JSON, not from the static recommendation cards, and wizard results can apply an equivalent workload/region/deployment preset to the catalog; dedicated presets open the combined cluster scope.
+6. `initFilters()` snapshots that metadata and applies an always-visible structured filter panel. A deployment-path selector first separates all hosted modes, on-demand access, and dedicated clusters; scope and faceted controls then refine hosted, imported, or combined dedicated results. One Capability selector exposes both primary roles and overlapping feature capabilities.
+7. Wizard data is derived from JSON, not from the static recommendation cards, and wizard results can apply an equivalent workload/region/deployment preset to the catalog; its deployment answer activates the matching primary selector, and dedicated presets open the combined cluster scope.
 
 ## Fields that matter for behavior
 
@@ -30,6 +30,7 @@
 
 - Header updated date.
 - JSON-LD `dateModified`.
+- Deployment-path fallback counts for all hosted, on-demand, and dedicated-cluster results.
 - Stat-bar fallback counts; runtime replaces them with counts for the currently visible filtered records.
 - Imported-section summary counts (`provider families` and `models`).
 - Footnote data-source date.
@@ -40,7 +41,7 @@
 - Fetch failure leaves the page with empty tables because the script clears table bodies before loading data.
 - Imported-model HTML rows are duplicated fallback content. Runtime replaces them, so JSON edits are the real data changes.
 - Catalog filters depend on `filterRowAttrs()` metadata emitted by every runtime row renderer. Keep primary roles separate from overlapping capabilities in row metadata even though the UI combines both in one Capability selector; role options use `role:`-prefixed values. Use workload task metadata for wizard-to-catalog handoff.
-- Hosted and importable models expose different infrastructure facets: hosted models have lifecycle, deployment, and region metadata; importable models have family and recommended GPU hardware. The combined cluster scope includes dedicated-capable hosted rows plus all Model Import rows, while GPU selection narrows it to importable models; choosing the hosted deployment option for dedicated clusters switches into this combined scope.
+- Hosted and importable models expose different infrastructure facets: hosted models have lifecycle, deployment, and region metadata; importable models have family and recommended GPU hardware. The deployment-path selector owns the on-demand/dedicated distinction. Dedicated activates the combined cluster scope, which includes dedicated-capable hosted rows plus all Model Import rows; GPU selection narrows it to importable models.
 - Region filtering remains hosted-only because the imported-model snapshot does not contain regional availability; a dedicated wizard handoff preserves workload and cluster intent but does not apply its region answer to Model Import rows.
 - Region options include geographic groups as well as exact OCI regions. Regional deployment matching must accept a model only when at least one region in the selected group supports the selected access mode.
 - Native row metadata retains exact region access for filtering, but the comparison tables intentionally omit the verbose Regions badge column. Empty table headings are hidden with their tables, and the entire results block is hidden when no model matches.
