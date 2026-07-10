@@ -48,34 +48,6 @@ def extract_single(pattern: str, text: str, label: str) -> str | None:
     return match.group(1)
 
 
-def extract_stats(html: str) -> dict[str, int]:
-    pairs = re.findall(
-        r'<div class="stat"><div class="stat-num">(\d+)</div><div class="stat-label">([^<]+)</div></div>',
-        html,
-    )
-    return {label.strip(): int(value) for value, label in pairs}
-
-
-def extract_scope_counts(html: str) -> tuple[int, int, int] | None:
-    hosted = re.search(r'id="hostedScopeCount">(\d+) active / (\d+)</span>', html)
-    imported = re.search(r'id="importedScopeCount">(\d+)</span>', html)
-    if not hosted or not imported:
-        return None
-    return int(hosted.group(1)), int(hosted.group(2)), int(imported.group(1))
-
-
-def extract_deployment_counts(html: str) -> tuple[int, int, int, int, int, int] | None:
-    patterns = (
-        r'id="anyDeploymentCount">(\d+) / (\d+)</span>',
-        r'id="ondemandDeploymentCount">(\d+) / (\d+)</span>',
-        r'id="dedicatedDeploymentCount">(\d+) / (\d+)</span>',
-    )
-    matches = [re.search(pattern, html) for pattern in patterns]
-    if not all(matches):
-        return None
-    return tuple(int(value) for match in matches for value in match.groups())
-
-
 def extract_import_intro_counts(html: str) -> tuple[int, int] | None:
     match = re.search(
         r"(\d+)\s+provider families\s*[^0-9<]+\s*(\d+)\s+models",
@@ -105,27 +77,10 @@ def audit(repo: Path) -> int:
     providers = sorted({model["provider"] for model in chat_models})
     imported_families = imported["families"]
     imported_models = [model for family in imported_families for model in family["models"]]
-    active_chat = sum(model.get("status") == "active" for model in chat_models)
-    active_embedding = sum(model.get("status") == "active" for model in embedding_models)
-    active_rerank = sum(model.get("status") == "active" for model in rerank_models)
-    native_models = chat_models + embedding_models + rerank_models
-
-    def supports_deployment(model: dict, deployment: str) -> bool:
-        access_modes = model.get("regions", {}).values()
-        return any(mode in {"both", deployment} for mode in access_modes)
-
     models_date = models["metadata"]["dataDate"]
     imported_date = imported["metadata"]["dataDate"]
     expected_header_date = format_short_date(models_date)
     expected_footnote_date = format_long_date(models_date)
-    expected_stats = {
-        "Model Providers": len(providers),
-        f"Chat Models ({active_chat} Active)": len(chat_models),
-        f"Embedding Models ({active_embedding} Active)": len(embedding_models),
-        f"Rerank Models ({active_rerank} Active)": len(rerank_models),
-        "Imported Models": len(imported_models),
-    }
-
     header_date = extract_single(r"Updated\s+([0-9]{1,2}\s+[A-Za-z]{3}\s+[0-9]{4})", html, "header date")
     date_modified = extract_single(r'"dateModified":\s*"([0-9]{4}-[0-9]{2}-[0-9]{2})"', html, "dateModified")
     footnote_date = extract_single(
@@ -133,9 +88,6 @@ def audit(repo: Path) -> int:
         html,
         "footnote date",
     )
-    html_stats = extract_stats(html)
-    scope_counts = extract_scope_counts(html)
-    deployment_counts = extract_deployment_counts(html)
     import_intro_counts = extract_import_intro_counts(html)
     html_family_ids = extract_family_ids(html)
     json_family_ids = [family["id"] for family in imported_families]
@@ -172,41 +124,6 @@ def audit(repo: Path) -> int:
     else:
         errors.append(
             f'footnote data-source date is "{footnote_date or "missing"}", expected "{expected_footnote_date}"'
-        )
-
-    if html_stats == expected_stats:
-        ok.append("stat-bar counts match JSON data")
-    else:
-        errors.append(f"stat-bar counts are {html_stats}, expected {expected_stats}")
-
-    expected_scope_counts = (
-        active_chat + active_embedding + active_rerank,
-        len(chat_models) + len(embedding_models) + len(rerank_models),
-        len(imported_models),
-    )
-    if scope_counts == expected_scope_counts:
-        ok.append("catalog scope active/total counts match JSON data")
-    else:
-        errors.append(
-            f"catalog scope counts are {scope_counts or 'missing'}, expected {expected_scope_counts}"
-        )
-
-    ondemand_models = [model for model in native_models if supports_deployment(model, "ondemand")]
-    dedicated_models = [model for model in native_models if supports_deployment(model, "dedicated")]
-    expected_deployment_counts = (
-        active_chat + active_embedding + active_rerank,
-        len(native_models),
-        sum(model.get("status") == "active" for model in ondemand_models),
-        len(ondemand_models),
-        sum(model.get("status") == "active" for model in dedicated_models) + len(imported_models),
-        len(dedicated_models) + len(imported_models),
-    )
-    if deployment_counts == expected_deployment_counts:
-        ok.append("deployment-path active/total counts match JSON data")
-    else:
-        errors.append(
-            "deployment-path counts are "
-            f"{deployment_counts or 'missing'}, expected {expected_deployment_counts}"
         )
 
     if import_intro_counts == (len(imported_families), len(imported_models)):

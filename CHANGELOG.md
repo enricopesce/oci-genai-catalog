@@ -4,11 +4,11 @@ All notable updates to this repository are tracked here.
 
 ## 2026-07-10
 
-- Added a deployment-first catalog selector that clearly separates all hosted access, on-demand access, and dedicated-cluster paths before users refine by model source or capability.
-- Replaced the implicit Dedicated-select-to-Clusters scope jump with explicit synchronized deployment and scope controls, preserving wizard handoff, regional filtering for hosted models, and GPU filtering for Model Import.
-
-## 2026-07-09
-
+- Added a deployment-first catalog selector with two explicit paths—on-demand access and dedicated clusters—before users refine by capability or infrastructure facets.
+- Removed the secondary source-scope switch: on-demand now shows eligible hosted models directly, while dedicated shows the combined hosted and Model Import catalog with aligned wizard handoff and GPU filtering.
+- Removed deployment-card counts, the filtered “x of y models” line, and the provider/role stat cards to keep the catalog focused on the model tables.
+- Moved the static Use-Case Selection Guide out of the technical catalog into its own top-level Use Cases view.
+- Removed parenthesized result counts from filter options and replaced geographic-group region choices with exact official OCI region names and identifiers.
 - Re-verified native and imported catalog data against current public Oracle documentation, including source pages updated through 6 July 2026.
 - Added MiniMax, Moonshot AI Kimi, and Z.ai GLM imported-model families.
 - Added Oracle-tested Qwen3 VL FP8, Mistral Medium 3.5, Devstral 2, and NVIDIA Nemotron Nano entries; removed two Phi 128K variants no longer listed by Oracle.

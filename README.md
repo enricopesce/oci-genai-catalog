@@ -13,6 +13,7 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 | **Rerank models** | 3 Cohere rerank models: Rerank 4.0 Fast and Pro active; Rerank 3.5 deprecated |
 | **Imported models** | 97 compatible/importable models across 12 OCI Model Import families |
 | **Selection wizard** | Guided 4-step model picker with a handoff to all matching catalog rows |
+| **Use cases** | Separate decision guide for workload, deployment, and regional scenarios |
 
 **Columns covered:** Model ID · Tier · Context window · Multimodal · Tool use · Fine-tuning · Reasoning · Status · Best for
 
@@ -23,8 +24,9 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 - Commercial OCI regions (OC1) covered in the UI, including UAE Central (Abu Dhabi); sovereign and government regions are not yet modeled
 - Dark / Light mode toggle (preference saved in `localStorage`)
 - Guided model selection wizard with a one-click handoff to the matching catalog scope and workload filters
+- Dedicated Use Cases view, separated from the technical catalog tables
 - Intent-aware catalog search across model names, IDs, providers, and use cases
-- Deployment-first catalog filtering that clearly separates on-demand access from dedicated clusters, followed by source, capability/role, region, context, lifecycle, and GPU refinements with live counts
+- Deployment-first catalog filtering that clearly separates on-demand access from dedicated clusters, followed by capability/role, exact OCI region, context, lifecycle, and GPU refinements with cascading availability
 - Semantic headings and keyboard-focusable table sections for accessibility
 - Fully static — no JavaScript framework, no build step
 - Mobile responsive

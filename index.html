@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="83cd101">
+<meta name="build-version" content="9763f1d">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -186,20 +186,39 @@
   }
   .theme-toggle:hover { background: var(--border); }
 
+  /* PRIMARY VIEWS */
+  .view-switcher {
+    display: flex;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    padding: 4px;
+    border-radius: 4px;
+    margin-left: 20px;
+  }
+  .view-btn {
+    background: none;
+    color: var(--muted);
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 16px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .view-btn.active {
+    background: var(--border);
+    color: var(--on-surface);
+  }
+  .view-btn:focus-visible {
+    outline: 2px solid var(--red-light);
+    outline-offset: 2px;
+  }
+
   /* LAYOUT */
   .container { padding: 40px 48px; max-width: 1800px; margin: 0 auto; }
-
-  /* INTRO STATS */
-  .stat-bar { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
-  .stat {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--red);
-    padding: 16px 20px;
-    flex: 1; min-width: 140px;
-  }
-  .stat-num { font-size: 28px; font-weight: 700; font-family: 'IBM Plex Mono', monospace; color: var(--on-surface); }
-  .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
 
   /* SECTION TITLES */
   .section-title {
@@ -427,7 +446,7 @@
   }
   .deployment-switch {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
   .deployment-btn {
@@ -439,7 +458,7 @@
     cursor: pointer;
     display: grid;
     gap: 2px 9px;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr);
     min-height: 58px;
     padding: 9px 11px;
     text-align: left;
@@ -462,16 +481,9 @@
     font-size: 11px;
     line-height: 1.25;
   }
-  .deployment-count {
-    color: var(--muted);
-    font: 10px 'IBM Plex Mono', monospace;
-    grid-column: 3;
-    grid-row: 1 / span 2;
-    white-space: nowrap;
-  }
   .filter-primary {
     display: grid;
-    grid-template-columns: minmax(260px, 1fr) auto;
+    grid-template-columns: minmax(260px, 1fr);
     align-items: center;
     gap: 12px;
   }
@@ -489,40 +501,10 @@
   .filter-search:focus,
   .filter-select:focus,
   .deployment-btn:focus-visible,
-  .scope-btn:focus-visible,
   .filter-chip:focus-visible,
   .filter-reset:focus-visible {
     outline: 2px solid var(--red-light);
     outline-offset: 2px;
-  }
-  .scope-switch {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    min-width: 430px;
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 3px;
-  }
-  .scope-btn {
-    border: 0;
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    font: 600 11px 'IBM Plex Mono', monospace;
-    min-height: 30px;
-    padding: 5px 10px;
-    white-space: nowrap;
-  }
-  .scope-btn { border-radius: 2px; }
-  .scope-btn.active {
-    background: var(--border);
-    color: var(--on-surface);
-  }
-  .scope-count {
-    color: var(--muted);
-    font-weight: 400;
-    margin-left: 4px;
   }
   .hosted-only[hidden],
   .imported-only[hidden],
@@ -606,7 +588,6 @@
     color: var(--muted);
     font: 11px 'IBM Plex Mono', monospace;
   }
-  .filter-result-count { color: var(--on-surface); white-space: nowrap; }
   .filter-chip-list {
     display: flex;
     flex: 1 1 auto;
@@ -664,10 +645,8 @@
     .matrix-row { grid-template-columns: 1fr; }
     header p { width: 100%; margin-left: 0; margin-top: 8px; }
     .theme-toggle { margin-left: auto; }
-    .stat-bar { gap: 10px; margin-bottom: 24px; }
     .deployment-switch { grid-template-columns: 1fr; }
     .filter-primary { grid-template-columns: 1fr; }
-    .scope-switch { min-width: 0; width: 100%; }
   }
 
   @media (max-width: 600px) {
@@ -682,24 +661,18 @@
     header p { font-size: 11px; }
     .container { padding: 16px 12px; }
     .section-title { font-size: 11px; margin-top: 28px; }
-
-    /* Stat bar */
-    .stat-bar { gap: 8px; margin-bottom: 18px; }
-    .stat { padding: 10px 14px; min-width: 120px; }
-    .stat-num { font-size: 22px; }
-    .stat-label { font-size: 11px; }
+    .view-switcher { margin-left: 0; order: 3; width: 100%; }
+    .view-btn { flex: 1 1 0; font-size: 10px; padding: 6px; }
 
     /* Catalog filters */
     .filter-shell { padding: 12px 0; margin-bottom: 18px; }
     .deployment-heading { align-items: flex-start; flex-direction: column; gap: 3px; }
     .filter-search { font-size: 12px; }
-    .scope-btn { font-size: 10px; padding: 5px 8px; }
     .filter-more { width: 100%; }
     .filter-more-panel {
       grid-template-columns: 1fr;
     }
     .filter-summary { align-items: flex-start; flex-wrap: wrap; }
-    .filter-chip-list { flex-basis: 100%; order: 3; }
     .filter-reset { margin-left: auto; }
 
     /* Tables */
@@ -800,9 +773,10 @@
   </div>
   <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 6 Jul 2026 &nbsp;|&nbsp; 30+ models</p>
   
-  <nav class="view-switcher" style="display: flex; background: var(--panel2); border: 1px solid var(--border); padding: 4px; border-radius: 4px; margin-left: 20px;">
-    <button class="view-btn active" id="btnReference" style="background: var(--border); color: var(--on-surface); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Technical Tables</button>
-    <button class="view-btn" id="btnWizard" style="background: none; color: var(--muted); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Guided Selection</button>
+  <nav class="view-switcher" aria-label="Catalog sections">
+    <button class="view-btn active" id="btnReference" type="button" aria-pressed="true">Technical Tables</button>
+    <button class="view-btn" id="btnWizard" type="button" aria-pressed="false">Guided Selection</button>
+    <button class="view-btn" id="btnUseCases" type="button" aria-pressed="false">Use Cases</button>
   </nav>
 
   <button class="theme-toggle" id="themeToggle">☀ Light Mode</button>
@@ -888,7 +862,7 @@
         <!-- Step 3: Deployment mode -->
         <div class="wiz-step" data-step="3" style="display:none;">
           <div class="wiz-step-title">Step 3 — Deployment mode?</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
             <button class="wiz-opt" data-val="ondemand">
               <span class="wiz-opt-icon">⚡</span>
               <span class="wiz-opt-label">On-Demand</span>
@@ -898,11 +872,6 @@
               <span class="wiz-opt-icon">🔒</span>
               <span class="wiz-opt-label">Dedicated Cluster</span>
               <span class="wiz-opt-desc">Private GPU resources; required for fine-tuning and data compliance</span>
-            </button>
-            <button class="wiz-opt" data-val="any">
-              <span class="wiz-opt-icon">◎</span>
-              <span class="wiz-opt-label">No Preference</span>
-              <span class="wiz-opt-desc">Show all models regardless of deployment type</span>
             </button>
           </div>
         </div>
@@ -967,23 +936,15 @@
         <span>Choose pay-per-request access or tenancy-exclusive GPU capacity before refining the catalog.</span>
       </div>
       <div class="deployment-switch" role="group" aria-label="Deployment path">
-        <button class="deployment-btn active" type="button" data-filter-deployment="any" aria-pressed="true">
-          <span class="deployment-icon" aria-hidden="true">◫</span>
-          <span class="deployment-name">All hosted modes</span>
-          <span class="deployment-desc">Browse hosted and externally routed models across every access mode.</span>
-          <span class="deployment-count" title="Current / total catalog records" id="anyDeploymentCount">17 / 39</span>
-        </button>
-        <button class="deployment-btn" type="button" data-filter-deployment="ondemand" aria-pressed="false">
+        <button class="deployment-btn active" type="button" data-filter-deployment="ondemand" aria-pressed="true">
           <span class="deployment-icon" aria-hidden="true">⚡</span>
           <span class="deployment-name">On-demand</span>
           <span class="deployment-desc">No cluster provisioning; shared or external capacity billed per request.</span>
-          <span class="deployment-count" title="Current / total catalog records" id="ondemandDeploymentCount">15 / 33</span>
         </button>
         <button class="deployment-btn" type="button" data-filter-deployment="dedicated" aria-pressed="false">
           <span class="deployment-icon" aria-hidden="true">◆</span>
           <span class="deployment-name">Dedicated clusters</span>
           <span class="deployment-desc">Tenancy-exclusive GPUs for predictable hosting, Model Import, and fine-tuning.</span>
-          <span class="deployment-count" title="Current / total catalog records" id="dedicatedDeploymentCount">108 / 122</span>
         </button>
       </div>
     </div>
@@ -991,11 +952,6 @@
     <div class="filter-primary">
       <label class="sr-only" for="filterSearch">Search model, ID, provider, or use case</label>
       <input class="filter-search" id="filterSearch" type="search" placeholder="Search model, ID, provider, or use case" autocomplete="off" spellcheck="false">
-      <div class="scope-switch" role="group" aria-label="Catalog scope">
-        <button class="scope-btn active" type="button" data-filter-scope="hosted" aria-pressed="true">OCI Hosted <span class="scope-count" id="hostedScopeCount">17 active / 39</span></button>
-        <button class="scope-btn" type="button" data-filter-scope="cluster" aria-pressed="false" title="Dedicated hosted endpoints and Model Import models">All Dedicated <span class="scope-count" id="clusterScopeCount">108 / 122</span></button>
-        <button class="scope-btn" type="button" data-filter-scope="imported" aria-pressed="false">Model Import <span class="scope-count" id="importedScopeCount">97</span></button>
-      </div>
     </div>
 
     <div class="filter-more" id="filterMore">
@@ -1028,24 +984,13 @@
       </div>
     </div>
 
-    <div class="filter-summary">
-      <span class="filter-result-count" id="filterResultCount" aria-live="polite">0 models</span>
+    <div class="filter-summary" id="filterSummary" hidden>
       <div class="filter-chip-list" id="filterChips" aria-label="Applied filters"></div>
       <button class="filter-reset" id="filterReset" type="button">Clear all</button>
     </div>
   </div>
   <div class="no-results" id="noResults">No models match the selected filters.</div>
   <div id="catalogResults">
-
-  <!-- STAT BAR -->
-  <div class="stat-bar">
-    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Model Providers</div></div>
-    <div class="stat"><div class="stat-num">27</div><div class="stat-label">Chat Models (14 Active)</div></div>
-    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Embedding Models (1 Active)</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Rerank Models (2 Active)</div></div>
-    <div class="stat"><div class="stat-num">97</div><div class="stat-label">Imported Models</div></div>
-  </div>
-
 
   <!-- ══════════════════════════════════════════════════════════ -->
   <!--  CHAT MODELS                                              -->
@@ -2466,7 +2411,8 @@
   <!--  USE-CASE DECISION MATRIX                                  -->
   <!-- ══════════════════════════════════════════════════════════ -->
 
-  <h2 class="section-title">Use-Case Selection Guide</h2>
+  <div id="useCasesView" style="display:none;">
+  <h2 class="section-title" style="margin-top:0;">Use-Case Selection Guide</h2>
   <div class="matrix-row">
     <div class="matrix-card">
       <h3>🔍 RAG / Document Search</h3>
@@ -2561,6 +2507,7 @@
       <div class="rec-item"><div class="rec-icon">📝</div><div><div class="rec-title">Fine-Tuning Requires Dedicated</div><div class="rec-desc">On-demand mode supports inference only — to fine-tune a model you must provision a dedicated AI cluster first</div><div class="rec-meta"><span class="tag tag-orange">Dedicated required</span></div></div></div>
     </div>
   </div>
+  </div><!-- /#useCasesView -->
 
   <!-- LEGEND -->
   <div class="legend">
@@ -2626,20 +2573,34 @@
   // ── VIEW SWITCHER ─────────────────────────────────────────────────
   var btnRef  = document.getElementById('btnReference');
   var btnWiz  = document.getElementById('btnWizard');
+  var btnUse  = document.getElementById('btnUseCases');
   var refView = document.getElementById('referenceView');
   var wizView = document.getElementById('wizardView');
+  var useView = document.getElementById('useCasesView');
+
+  // The static guide lives near its source tables in the HTML, but is presented
+  // as an independent top-level view in the rendered page.
+  document.getElementById('main').insertBefore(useView, refView);
+
+  function setViewButton(button, active) {
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', active ? 'true' : 'false');
+  }
 
   function showView(v) {
+    var toRef = v === 'reference';
     var toWiz = v === 'wizard';
-    wizView.style.display   = toWiz ? '' : 'none';
-    refView.style.display   = toWiz ? 'none' : '';
-    btnWiz.style.background = toWiz ? 'var(--border)' : 'none';
-    btnWiz.style.color      = toWiz ? 'var(--on-surface)' : 'var(--muted)';
-    btnRef.style.background = toWiz ? 'none' : 'var(--border)';
-    btnRef.style.color      = toWiz ? 'var(--muted)' : 'var(--on-surface)';
+    var toUse = v === 'use-cases';
+    refView.style.display = toRef ? '' : 'none';
+    wizView.style.display = toWiz ? '' : 'none';
+    useView.style.display = toUse ? '' : 'none';
+    setViewButton(btnRef, toRef);
+    setViewButton(btnWiz, toWiz);
+    setViewButton(btnUse, toUse);
   }
   btnRef.addEventListener('click', function() { showView('reference'); });
   btnWiz.addEventListener('click', function() { showView('wizard'); });
+  btnUse.addEventListener('click', function() { showView('use-cases'); });
 
   // ── WIZARD DATA (populated from JSON after fetch) ─────────────────
   var WIZ_MODELS = [];
@@ -2661,9 +2622,9 @@
   };
   var REGION_NAMES = {
     'us-ashburn-1':  'US East (Ashburn)',      'us-chicago-1':  'US Midwest (Chicago)',
-    'us-phoenix-1':  'US West (Phoenix)',       'sa-saopaulo-1': 'Brazil East (São Paulo)',
+    'us-phoenix-1':  'US West (Phoenix)',       'sa-saopaulo-1': 'Brazil East (Sao Paulo)',
     'eu-frankfurt-1':'Germany Central (Frankfurt)', 'uk-london-1': 'UK South (London)',
-    'me-riyadh-1':   'Saudi Arabia (Riyadh)',   'me-abudhabi-1': 'UAE Central (Abu Dhabi)',
+    'me-riyadh-1':   'Saudi Arabia Central (Riyadh)', 'me-abudhabi-1': 'UAE Central (Abu Dhabi)',
     'me-dubai-1':    'UAE East (Dubai)',
     'ap-hyderabad-1':'India South (Hyderabad)', 'ap-osaka-1':    'Japan Central (Osaka)'
   };
@@ -2673,11 +2634,6 @@
     me:       ['me-riyadh-1', 'me-abudhabi-1', 'me-dubai-1'],
     apac:     ['ap-hyderabad-1', 'ap-osaka-1']
   };
-  var REGION_GROUP_LABELS = {
-    americas: 'Any Americas region', europe: 'Any Europe region',
-    me: 'Any Middle East region', apac: 'Any Asia Pacific region'
-  };
-
   function escapeAttr(value) {
     return String(value === null || value === undefined ? '' : value)
       .replace(/&/g, '&amp;')
@@ -2995,7 +2951,6 @@
 
   // ── STRUCTURED CATALOG FILTERS ────────────────────────────────────
   function initFilters() {
-    var statCards = document.querySelectorAll('.stat-bar .stat');
     var controls = {
       shell: document.getElementById('catalogFilters'),
       search: document.getElementById('filterSearch'),
@@ -3007,24 +2962,16 @@
       capability: document.getElementById('filterCapability'),
       gpu: document.getElementById('filterGpu'),
       moreCount: document.getElementById('filterMoreCount'),
-      count: document.getElementById('filterResultCount'),
+      summary: document.getElementById('filterSummary'),
       chips: document.getElementById('filterChips'),
       reset: document.getElementById('filterReset'),
       noResults: document.getElementById('noResults'),
       results: document.getElementById('catalogResults'),
-      stats: {
-        providers: statCards[0],
-        chat: statCards[1],
-        embed: statCards[2],
-        rerank: statCards[3],
-        imported: statCards[4]
-      },
       importedTitle: document.getElementById('importedSectionTitle'),
       importedIntro: document.getElementById('importedSectionIntro')
     };
     var deploymentButtons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-deployment]'));
-    var scopeButtons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-scope]'));
-    var currentDeployment = 'any';
+    var currentDeployment = 'ondemand';
     var currentScope = 'hosted';
     var currentWizardTask = '';
 
@@ -3111,31 +3058,9 @@
     gpuValues = uniqueValues(gpuValues).sort(function(a, b) {
       return gpuOrder.indexOf(a) - gpuOrder.indexOf(b);
     });
-    var hostedRecords = records.filter(function(record) { return record.scope === 'hosted'; });
-    var activeHosted = hostedRecords.filter(function(record) { return record.status === 'active'; }).length;
-    var importedTotal = records.filter(function(record) { return record.scope === 'imported'; }).length;
-    var clusterRecords = records.filter(function(record) { return recordInScope(record, 'cluster'); });
-    var ondemandRecords = hostedRecords.filter(function(record) {
-      return record.deployments.indexOf('ondemand') !== -1;
+    var regionOptions = Object.keys(REGION_NAMES).map(function(regionId) {
+      return { value: regionId, label: REGION_NAMES[regionId] + ' — ' + regionId };
     });
-    var activeOndemand = ondemandRecords.filter(function(record) {
-      return record.status === 'active';
-    }).length;
-    var currentCluster = clusterRecords.filter(function(record) {
-      return record.scope === 'imported' || record.status === 'active';
-    }).length;
-    document.getElementById('anyDeploymentCount').textContent = activeHosted + ' / ' + hostedRecords.length;
-    document.getElementById('ondemandDeploymentCount').textContent = activeOndemand + ' / ' + ondemandRecords.length;
-    document.getElementById('dedicatedDeploymentCount').textContent = currentCluster + ' / ' + clusterRecords.length;
-    document.getElementById('hostedScopeCount').textContent = activeHosted + ' active / ' + hostedRecords.length;
-    document.getElementById('clusterScopeCount').textContent = currentCluster + ' / ' + clusterRecords.length;
-    document.getElementById('importedScopeCount').textContent = importedTotal;
-
-    var regionOptions = Object.keys(REGION_GROUPS).map(function(group) {
-      return { value: 'group:' + group, label: REGION_GROUP_LABELS[group] };
-    }).concat(Object.keys(REGION_NAMES).map(function(regionId) {
-      return { value: regionId, label: REGION_NAMES[regionId] };
-    }));
     var contextOptions = [
       { value: 128, label: 'At least 128K' },
       { value: 256, label: 'At least 256K' },
@@ -3160,13 +3085,13 @@
       return {
         scope: currentScope,
         search: controls.search.value.trim().toLowerCase(),
-        includeDeprecated: currentScope !== 'imported' && controls.includeDeprecated.checked,
+        includeDeprecated: controls.includeDeprecated.checked,
         provider: controls.provider.value,
         deployment: currentDeployment,
         region: currentScope === 'hosted' ? controls.region.value : '',
         contextK: Number(controls.context.value || 0),
         capability: controls.capability.value,
-        gpu: currentScope === 'imported' || currentScope === 'cluster' ? controls.gpu.value : '',
+        gpu: currentScope === 'cluster' ? controls.gpu.value : '',
         wizardTask: currentWizardTask
       };
     }
@@ -3182,11 +3107,6 @@
       return access === 'both' || access === deployment;
     }
 
-    function selectedRegionIds(region) {
-      if (region.indexOf('group:') === 0) return REGION_GROUPS[region.slice(6)] || [];
-      return region ? [region] : [];
-    }
-
     function recordHasCapability(record, capability) {
       if (capability.indexOf('role:') === 0) {
         return record.roles.indexOf(capability.slice(5)) !== -1;
@@ -3200,7 +3120,7 @@
         return record.search.indexOf(term) !== -1;
       })) return false;
       if (record.scope === 'hosted' && !state.includeDeprecated && record.status !== 'active') return false;
-      if (state.deployment !== 'any' && record.deployments.indexOf(state.deployment) === -1) return false;
+      if (record.deployments.indexOf(state.deployment) === -1) return false;
       if (state.provider && record.provider !== state.provider) return false;
       if (state.contextK && record.contextK < state.contextK) return false;
       if (state.capability && !recordHasCapability(record, state.capability)) return false;
@@ -3208,10 +3128,8 @@
 
       if (state.scope === 'hosted') {
         if (state.region) {
-          var availableInRegion = selectedRegionIds(state.region).some(function(regionId) {
-            var access = record.regionAccess[regionId];
-            return access && (state.deployment === 'any' || modeSupports(access, state.deployment));
-          });
+          var access = record.regionAccess[state.region];
+          var availableInRegion = access && modeSupports(access, state.deployment);
           if (!availableInRegion) return false;
         }
       }
@@ -3224,41 +3142,16 @@
       return records.filter(function(record) { return recordMatches(record, state); }).length;
     }
 
-    function setResultStat(card, count, singular, plural) {
-      card.hidden = count === 0;
-      card.querySelector('.stat-num').textContent = count;
-      card.querySelector('.stat-label').textContent = count === 1 ? singular : plural;
-    }
-
-    function updateResultStats(visibleRecords) {
-      var providers = {};
-      visibleRecords.forEach(function(record) { providers[record.provider] = true; });
-      setResultStat(controls.stats.providers, Object.keys(providers).length,
-        'Model Provider', 'Model Providers');
-      setResultStat(controls.stats.chat, visibleRecords.filter(function(record) {
-        return record.roles.indexOf('chat') !== -1;
-      }).length, 'Chat Model', 'Chat Models');
-      setResultStat(controls.stats.embed, visibleRecords.filter(function(record) {
-        return record.roles.indexOf('embed') !== -1;
-      }).length, 'Embedding Model', 'Embedding Models');
-      setResultStat(controls.stats.rerank, visibleRecords.filter(function(record) {
-        return record.roles.indexOf('rerank') !== -1;
-      }).length, 'Rerank Model', 'Rerank Models');
-      setResultStat(controls.stats.imported, visibleRecords.filter(function(record) {
-        return record.scope === 'imported';
-      }).length, 'Imported Model', 'Imported Models');
-    }
-
     function refreshSelect(select, state, key, allValue, allLabel, options) {
       var selected = String(select.value);
       var availableValues = [String(allValue)];
       select.innerHTML = '';
-      addOption(select, allValue, allLabel + ' (' + countMatches(withValue(state, key, allValue)) + ')', false);
+      addOption(select, allValue, allLabel, false);
       options.forEach(function(option) {
         var optionValue = String(option.value);
         var count = countMatches(withValue(state, key, option.value));
         if (count === 0 && selected !== optionValue) return;
-        addOption(select, option.value, option.label + ' (' + count + ')', false);
+        addOption(select, option.value, option.label, false);
         availableValues.push(optionValue);
       });
       select.value = availableValues.indexOf(selected) !== -1 ? selected : String(allValue);
@@ -3269,39 +3162,28 @@
       records.forEach(function(record) {
         if (recordInScope(record, state.scope)) providers[record.provider] = record.providerLabel;
       });
-      var noun = state.scope === 'hosted' ? 'providers' :
-        state.scope === 'imported' ? 'families' : 'providers / families';
+      var noun = state.scope === 'hosted' ? 'providers' : 'providers / families';
       var providerOptions = Object.keys(providers).sort(function(a, b) {
         return providers[a].localeCompare(providers[b]);
       }).map(function(provider) {
         return { value: provider, label: providers[provider] };
       });
       refreshSelect(controls.provider, state, 'provider', '', 'All ' + noun, providerOptions);
-      controls.providerLabel.textContent = state.scope === 'hosted' ? 'Provider' :
-        state.scope === 'imported' ? 'Family' : 'Provider / family';
+      controls.providerLabel.textContent = state.scope === 'hosted' ? 'Provider' : 'Provider / family';
 
       if (state.scope === 'hosted') {
-        refreshSelect(controls.region, state, 'region', '', 'Any region', regionOptions);
+        refreshSelect(controls.region, state, 'region', '', 'Any OCI region', regionOptions);
       }
       refreshSelect(controls.context, state, 'contextK', 0, 'Any context', contextOptions);
       refreshSelect(controls.capability, state, 'capability', '', 'Any capability / role', capabilityOptions);
-      if (state.scope === 'imported' || state.scope === 'cluster') {
+      if (state.scope === 'cluster') {
         refreshSelect(controls.gpu, state, 'gpu', '', 'Any GPU', gpuOptions);
       }
     }
 
     function selectedLabel(select) {
       var option = select.options[select.selectedIndex];
-      return option ? option.textContent.replace(/\s+\([0-9]+\)$/, '') : '';
-    }
-
-    function deploymentLabel(value) {
-      var labels = {
-        any: 'All hosted modes',
-        ondemand: 'On-demand',
-        dedicated: 'Dedicated clusters'
-      };
-      return labels[value] || value;
+      return option ? option.textContent : '';
     }
 
     function updateDeploymentUI() {
@@ -3313,19 +3195,11 @@
     }
 
     function updateScopeUI() {
-      scopeButtons.forEach(function(button) {
-        var selected = button.dataset.filterScope === currentScope;
-        button.classList.toggle('active', selected);
-        button.setAttribute('aria-pressed', selected ? 'true' : 'false');
-      });
       document.querySelectorAll('.hosted-only').forEach(function(element) {
         element.hidden = currentScope !== 'hosted';
       });
       document.querySelectorAll('.imported-only').forEach(function(element) {
-        element.hidden = currentScope !== 'imported' && currentScope !== 'cluster';
-      });
-      document.querySelectorAll('.hosted-status').forEach(function(element) {
-        element.hidden = currentScope === 'imported';
+        element.hidden = currentScope !== 'cluster';
       });
     }
 
@@ -3344,20 +3218,13 @@
         state.capability, state.gpu, state.includeDeprecated].filter(Boolean).length;
     }
 
-    function updateSummary(state, visible) {
-      var scopeTotal = records.filter(function(record) {
-        return recordInScope(record, state.scope) && (
-          state.deployment === 'any' || record.deployments.indexOf(state.deployment) !== -1
-        );
-      }).length;
+    function updateSummary(state) {
       var taskLabels = {
         rag: 'RAG', code: 'Code & agents', vision: 'Vision', chat: 'Enterprise chat',
         embed: 'Semantic search', finetune: 'Fine-tuning'
       };
-      controls.count.textContent = visible + ' of ' + scopeTotal + ' models';
       controls.chips.innerHTML = '';
       if (state.wizardTask) appendChip('Wizard: ' + (taskLabels[state.wizardTask] || state.wizardTask), 'wizardTask');
-      if (state.deployment !== 'any') appendChip(deploymentLabel(state.deployment), 'deployment');
       if (state.provider) appendChip(selectedLabel(controls.provider), 'provider');
       if (state.region) appendChip(selectedLabel(controls.region), 'region');
       if (state.contextK) appendChip(selectedLabel(controls.context), 'contextK');
@@ -3370,10 +3237,11 @@
       controls.moreCount.textContent = advancedCount;
       controls.moreCount.hidden = advancedCount === 0;
       var changed = !!(
-        state.search || state.provider || state.deployment !== 'any' || state.region ||
+        state.search || state.provider || state.region ||
         state.contextK || state.capability || state.gpu ||
         state.includeDeprecated || state.wizardTask
       );
+      controls.summary.hidden = !changed;
       controls.reset.style.display = changed ? 'inline-block' : 'none';
     }
 
@@ -3382,14 +3250,12 @@
       refreshFacetOptions(state);
       state = getState();
 
-      var visibleRecords = [];
+      var visible = 0;
       records.forEach(function(record) {
         var match = recordMatches(record, state);
         record.el.hidden = !match;
-        if (match) visibleRecords.push(record);
+        if (match) visible += 1;
       });
-      var visible = visibleRecords.length;
-      updateResultStats(visibleRecords);
       sections.forEach(function(section) {
         var hasVisibleRows = section.records.some(function(record) { return !record.el.hidden; });
         section.wrap.hidden = !hasVisibleRows;
@@ -3403,36 +3269,16 @@
       controls.importedIntro.hidden = !showImportedHeader;
       controls.results.hidden = visible === 0;
       controls.noResults.style.display = visible === 0 ? 'block' : 'none';
-      var scopeLabel = state.scope === 'hosted' ? 'hosted' :
-        state.scope === 'imported' ? 'importable' : 'dedicated-cluster';
+      var scopeLabel = state.scope === 'hosted' ? 'hosted' : 'dedicated-cluster';
       controls.noResults.textContent = visible === 0
         ? 'No ' + scopeLabel + ' models match the selected filters.' : '';
-      updateSummary(state, visible);
+      updateSummary(state);
     }
 
     deploymentButtons.forEach(function(button) {
       button.addEventListener('click', function() {
         currentDeployment = button.dataset.filterDeployment;
         currentScope = currentDeployment === 'dedicated' ? 'cluster' : 'hosted';
-        currentWizardTask = '';
-        controls.provider.value = '';
-        controls.region.value = '';
-        controls.context.value = '0';
-        controls.capability.value = '';
-        controls.gpu.value = '';
-        controls.includeDeprecated.checked = false;
-        updateDeploymentUI();
-        updateScopeUI();
-        applyFilter();
-      });
-    });
-
-    scopeButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        currentScope = button.dataset.filterScope;
-        if (currentScope === 'cluster' || currentScope === 'imported') {
-          currentDeployment = 'dedicated';
-        }
         currentWizardTask = '';
         controls.provider.value = '';
         controls.region.value = '';
@@ -3459,16 +3305,6 @@
       if (key === 'wizardTask') currentWizardTask = '';
       if (key === 'search') controls.search.value = '';
       if (key === 'provider') controls.provider.value = '';
-      if (key === 'deployment') {
-        currentDeployment = 'any';
-        if (currentScope !== 'hosted') {
-          currentScope = 'hosted';
-          controls.region.value = '';
-          controls.gpu.value = '';
-        }
-        updateDeploymentUI();
-        updateScopeUI();
-      }
       if (key === 'region') controls.region.value = '';
       if (key === 'contextK') controls.context.value = '0';
       if (key === 'capability') controls.capability.value = '';
@@ -3479,7 +3315,7 @@
 
     controls.reset.addEventListener('click', function() {
       controls.search.value = '';
-      currentDeployment = 'any';
+      currentDeployment = 'ondemand';
       currentScope = 'hosted';
       currentWizardTask = '';
       controls.provider.value = '';
@@ -3495,7 +3331,7 @@
     });
 
     window.applyCatalogPreset = function(preset) {
-      currentDeployment = preset.deployment || 'any';
+      currentDeployment = preset.deployment === 'dedicated' ? 'dedicated' : 'ondemand';
       currentScope = currentDeployment === 'dedicated' ? 'cluster' : 'hosted';
       currentWizardTask = preset.task || '';
       controls.search.value = '';
@@ -3504,8 +3340,9 @@
       controls.capability.value = preset.task === 'embed' ? '' : 'role:chat';
       controls.gpu.value = '';
       controls.includeDeprecated.checked = false;
-      controls.region.value = currentScope === 'hosted' && preset.region && preset.region !== 'any'
-        ? 'group:' + preset.region : '';
+      // Wizard regions are broad geographic groups; the catalog exposes only
+      // exact OCI regions, so the handoff leaves the precise region unselected.
+      controls.region.value = '';
       updateDeploymentUI();
       updateScopeUI();
       applyFilter();
@@ -3583,13 +3420,13 @@
   // ── WIZARD RESULTS RENDERER ───────────────────────────────────────
   var WIZ_TASK_LABELS   = { rag:'RAG', code:'Code & Agents', vision:'Vision', chat:'Enterprise Chat', embed:'Embeddings', finetune:'Fine-Tuning' };
   var WIZ_TIER_LABELS   = { flagship:'Flagship', balanced:'Balanced', fast:'Fast/Lite' };
-  var WIZ_DEPLOY_LABELS = { ondemand:'On-Demand', dedicated:'Dedicated', any:'Any Mode' };
+  var WIZ_DEPLOY_LABELS = { ondemand:'On-Demand', dedicated:'Dedicated' };
   var WIZ_REGION_LABELS = { americas:'Americas', europe:'Europe', me:'Middle East', apac:'Asia Pacific', any:'Global' };
 
   function wizShowResults() {
     var task       = wizAnswers[1];
     var tier       = wizAnswers[2] || 'balanced';
-    var deployment = wizAnswers[3] || 'any';
+    var deployment = wizAnswers[3] || 'ondemand';
     var region     = wizAnswers[4] || 'any';
     var matches = wizGetMatches(task, tier, deployment, region);
     var recs = matches.slice(0, 3);
@@ -3732,7 +3569,7 @@
     if (typeof window.applyCatalogPreset !== 'function') return;
     window.applyCatalogPreset({
       task: wizAnswers[1],
-      deployment: wizAnswers[3] || 'any',
+      deployment: wizAnswers[3] || 'ondemand',
       region: wizAnswers[4] || 'any'
     });
   });
