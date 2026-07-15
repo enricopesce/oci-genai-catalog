@@ -16,6 +16,7 @@ Options:
   --auth METHOD          OCI CLI auth method, e.g. security_token
   --regions LIST         Comma-separated explicit regions instead of all OC1 regions
   --output PATH          Destination JSON (default: native-model-matrix.json)
+  --catalog-output PATH  Write a models.json-shaped CLI-only snapshot to PATH
   -h, --help             Show this help
 EOF
 }
@@ -25,6 +26,7 @@ profile='DEFAULT'
 auth=''
 regions_csv=''
 output='native-model-matrix.json'
+catalog_output=''
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -33,6 +35,7 @@ while [[ $# -gt 0 ]]; do
     --auth) auth=${2:?missing value for --auth}; shift 2 ;;
     --regions) regions_csv=${2:?missing value for --regions}; shift 2 ;;
     --output) output=${2:?missing value for --output}; shift 2 ;;
+    --catalog-output) catalog_output=${2:?missing value for --catalog-output}; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) printf 'Unknown option: %s\n' "$1" >&2; usage >&2; exit 2 ;;
   esac
@@ -113,6 +116,68 @@ jq -n \
     regions: $regions,
     failures: $failures
   }' > "$output"
+
+if [[ -n "$catalog_output" ]]; then
+  jq '
+    def model_records:
+      [.regions | to_entries[] | .key as $region | .value.items[] | . + {__region: $region}]
+      | sort_by(.displayName)
+      | group_by(.displayName)
+      | map(
+          . as $entries
+          | $entries[0] as $first
+          | {
+              name: $first.displayName,
+              id: $first.displayName,
+              provider: $first.vendor,
+              capabilities: ([$entries[].capabilities[]?] | unique | sort),
+              type: $first.type,
+              isLongTermSupported: ([$entries[].isLongTermSupported] | all),
+              isImageTextToTextSupported: ([$entries[].isImageTextToTextSupported] | any),
+              regionalInventory: (
+                reduce $entries[] as $entry ({};
+                  .[$entry.__region] = {
+                    lifecycleState: $entry.lifecycleState,
+                    lifecycleDetails: $entry.lifecycleDetails,
+                    timeCreated: $entry.timeCreated,
+                    timeDeprecated: $entry.timeDeprecated,
+                    timeOnDemandRetired: $entry.timeOnDemandRetired,
+                    timeDedicatedRetired: $entry.timeDedicatedRetired,
+                    dedicatedAiClusterShapes: [
+                      $entry.compatibleDedicatedAiClusterShapes[]?
+                      | {name, isDefault, quotaUnit}
+                    ]
+                  }
+                )
+              )
+            }
+        );
+    model_records as $all
+    | {
+        metadata: {
+          generatedAt: .metadata.generatedAt,
+          source: .metadata.source,
+          scope: .metadata.scope,
+          limitations: [
+            "CLI output is the sole source for this snapshot.",
+            "OCI CLI does not expose context windows, model tiers, use-case descriptions, or a definitive per-region on-demand access mode.",
+            "regionalInventory records observed lifecycle and dedicated-cluster shapes; it must not be treated as the models.json regions access map."
+          ],
+          successfulRegions: (.regions | keys | sort),
+          failedRegions: [.failures[].region]
+        },
+        chatModels: [$all[] | select(.capabilities | index("CHAT"))],
+        embeddingModels: [$all[] | select(.capabilities | index("TEXT_EMBEDDINGS"))],
+        rerankModels: [$all[] | select(.capabilities | index("TEXT_RERANK"))],
+        otherModels: [$all[] | select(
+          (.capabilities | index("CHAT") | not)
+          and (.capabilities | index("TEXT_EMBEDDINGS") | not)
+          and (.capabilities | index("TEXT_RERANK") | not)
+        )]
+      }
+  ' "$output" > "$catalog_output"
+  printf 'Wrote CLI-only catalog snapshot to %s\n' "$catalog_output"
+fi
 
 printf 'Wrote %s successful region(s) and %s failed region(s) to %s\n' \
   "$(jq -s 'length' "$successes")" \

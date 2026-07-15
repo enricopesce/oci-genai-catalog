@@ -9,6 +9,7 @@ All notable updates to this repository are tracked here.
 - Advanced the JSON source snapshot and catalog freshness markers to 15 July 2026.
 - Replaced the header's stale model-count claim with a direct link to the native catalog JSON reference.
 - Added a local OCI CLI exporter that captures native-model inventories and dedicated-cluster shapes across queryable OC1 regions for future catalog reconciliation.
+- Added an optional CLI-only `models.json`-shaped snapshot, preserving region-level lifecycle and dedicated-shape data while explicitly marking information the CLI does not provide.
 
 ## 2026-07-10
 

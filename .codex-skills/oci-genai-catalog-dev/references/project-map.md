@@ -6,7 +6,7 @@
 - `models.json`: native OCI catalog source of truth.
 - `imported-models.json`: imported/open-weight catalog source of truth.
 - `sw.js`: small navigation-only service worker.
-- `scripts/export-native-model-matrix.sh`: local OCI CLI exporter for native model inventories and dedicated-cluster shapes across queryable OC1 regions.
+- `scripts/export-native-model-matrix.sh`: local OCI CLI exporter for native model inventories and dedicated-cluster shapes across queryable OC1 regions; it can also produce a CLI-only `models.json`-shaped comparison snapshot.
 - `README.md`: public-facing project description.
 - `AGENTS.md`: repository-level Codex guidance loaded automatically at session start.
 - `.codex-skills/oci-genai-catalog-dev/`: local maintenance skill, references, and audit helper.
@@ -58,4 +58,4 @@
   - `jq '{chat: (.chatModels|length), embed: (.embeddingModels|length), rerank: (.rerankModels|length)}' models.json`
   - `jq '{families: (.families|length), imported: ([.families[].models[]] | length)}' imported-models.json`
 - Export native model and dedicated-shape data from an authenticated OCI CLI profile:
-  - `scripts/export-native-model-matrix.sh --compartment-id 'YOUR_COMPARTMENT_OCID'`
+  - `scripts/export-native-model-matrix.sh --compartment-id 'YOUR_COMPARTMENT_OCID' --catalog-output models-cli.json`

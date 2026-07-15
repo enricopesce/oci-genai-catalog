@@ -59,6 +59,8 @@ scripts/export-native-model-matrix.sh --compartment-id 'YOUR_COMPARTMENT_OCID'
 
 The generated `native-model-matrix.json` is ignored by Git. It is a local verification input for reconciling native dedicated-cluster shapes by region.
 
+To also produce a `models.json`-shaped snapshot sourced solely from OCI CLI, add `--catalog-output models-cli.json`. The snapshot deliberately records unavailable fields as limitations rather than inferring them from documentation.
+
 ## Native Providers
 
 | Provider | Models |
