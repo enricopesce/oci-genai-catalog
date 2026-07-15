@@ -4,13 +4,22 @@ All notable updates to this repository are tracked here.
 
 ## 2026-07-15
 
-- Re-verified native OCI Generative AI model inventory, lifecycle status, and OC1 regional availability against Oracle's public pretrained-model and regional-availability documentation.
+- Replaced the incorrect “native model” taxonomy with OCI's “pretrained model” terminology throughout the schema, UI, exporter, audit, and maintenance documentation.
+- Added structured dedicated-cluster options to all 97 imported models, including GPU type, GPU count, required units, Limits dimension, and AI unit count.
+- Published a fresh authenticated OCI CLI scan as the canonical pretrained inventory in `catalog.json`: 68 unique model IDs across 13 queryable regions, 38 regions with dedicated-unit Limits observations, and 29 preserved failed queries.
+- Added the complete operational inventory table to the site, covering every CLI-observed capability family without inferring on-demand or dedicated access from model lifecycle observations.
+- Corrected the Rerank 3.5 model ID from `cohere.rerank.v3-5` to the CLI-observed `cohere.rerank-v3.5` and separated CLI authority metadata from documentation-derived extension fields.
+- Consolidated the published runtime inventory into `catalog.json`, combining pretrained and Model Import records under explicit `pretrained` and `imported` sections; the page now fetches this one catalog source.
+- Re-verified pretrained OCI Generative AI model inventory, lifecycle status, and OC1 regional availability against Oracle's public pretrained-model and regional-availability documentation.
 - Re-verified all 12 Oracle-tested Model Import families and their 97 compatible models against the current Oracle documentation; no inventory changes were published upstream.
 - Advanced the JSON source snapshot and catalog freshness markers to 15 July 2026.
-- Replaced the header's stale model-count claim with a direct link to the native catalog JSON reference.
-- Added a local OCI CLI exporter that captures native-model inventories and dedicated-cluster shapes across queryable OC1 regions for future catalog reconciliation.
-- Added an optional CLI-only `models.json`-shaped snapshot, preserving region-level lifecycle and dedicated-shape data while explicitly marking information the CLI does not provide.
+- Replaced the header's stale model-count claim with a direct link to the pretrained catalog JSON reference.
+- Added a local OCI CLI exporter that captures pretrained-model inventories and dedicated-unit Limits data across queryable OC1 regions for future catalog reconciliation.
+- Added an optional CLI-only `models.json`-shaped snapshot, preserving region-level lifecycle and sizing-limit data while explicitly marking information the CLI does not provide.
 - Changed the CLI offering export to discover all active `READY` regions from the tenancy's OCI region subscriptions before querying Generative AI.
+- Corrected OCI CLI region discovery and profile parsing, added bounded parallel queries, disabled per-region retries, and made large inventory aggregation file-backed so full-tenancy scans complete reliably.
+- Added per-region `ai-generative` Limits extraction for dedicated-unit sizing and corrected CLI snapshot normalization for the kebab-case model payload returned by OCI CLI 3.82.
+- Changed the maintenance source hierarchy so authenticated pretrained OCI CLI/API responses are authoritative, with Oracle documentation retained only for extension fields and secondary verification.
 
 ## 2026-07-10
 
@@ -19,7 +28,7 @@ All notable updates to this repository are tracked here.
 - Removed deployment-card counts, the filtered “x of y models” line, and the provider/role stat cards to keep the catalog focused on the model tables.
 - Moved the static Use-Case Selection Guide out of the technical catalog into its own top-level Use Cases view.
 - Removed parenthesized result counts from filter options and replaced geographic-group region choices with exact official OCI region names and identifiers.
-- Re-verified native and imported catalog data against current public Oracle documentation, including source pages updated through 6 July 2026.
+- Re-verified pretrained and imported catalog data against current public Oracle documentation, including source pages updated through 6 July 2026.
 - Added MiniMax, Moonshot AI Kimi, and Z.ai GLM imported-model families.
 - Added Oracle-tested Qwen3 VL FP8, Mistral Medium 3.5, Devstral 2, and NVIDIA Nemotron Nano entries; removed two Phi 128K variants no longer listed by Oracle.
 - Updated current DeepSeek and Gemma recommended cluster shapes, increasing imported coverage from 88 models across 9 families to 97 models across 12 families.
@@ -31,7 +40,7 @@ All notable updates to this repository are tracked here.
 - Hid zero-result role and filter choices while preserving selected zero-result values and always keeping each filter's neutral reset choice available; promoted the filter panel to an always-visible, non-collapsible standard catalog view.
 - Added a combined Clusters scope for dedicated-capable hosted models and compatible Model Import models, including GPU filtering, direct switching from the hosted deployment selector, and dedicated-wizard handoff for imported workloads.
 - Consolidated the separate Model role row into the Capability selector, which now exposes chat, embedding, rerank, image, and audio roles alongside vision, reasoning, coding, tool-use, and fine-tuning capabilities.
-- Hid every empty model section and the complete results area when no models match, and removed the verbose Regions badge column from native model tables while retaining region-based filtering.
+- Hid every empty model section and the complete results area when no models match, and removed the verbose Regions badge column from pretrained model tables while retaining region-based filtering.
 - Made the catalog stat bar reflect only currently visible filtered records and hide zero-count cards, replacing misleading global totals after capability, scope, search, or infrastructure filters are applied.
 
 ## 2026-06-24
@@ -57,7 +66,7 @@ All notable updates to this repository are tracked here.
 
 - Synced OCI model reference data against the current public Oracle documentation.
 - Added UAE Central (`me-abudhabi-1`) to the commercial OC1 region set and selection wizard region matching.
-- Added `cohere.rerank-v4.0-fast` and `cohere.rerank-v4.0-pro` to the native rerank catalog.
+- Added `cohere.rerank-v4.0-fast` and `cohere.rerank-v4.0-pro` to the pretrained rerank catalog.
 - Added imported `Qwen/Qwen3.6-35B-A3B`, `Qwen/Qwen3.5-9B`, and `google/gemma-4-31B-it`, increasing imported-model coverage from 79 to 82 models.
 - Marked older Cohere Command R, Meta Llama 3.2/3.1, xAI Grok, and Cohere Embed v3 entries as deprecated while keeping them visible in the catalog.
 
@@ -77,4 +86,4 @@ All notable updates to this repository are tracked here.
 
 - Synced OCI model reference data against the current Oracle documentation.
 - Added `ap-hyderabad-1` to `Rerank 3.5` in `models.json` to match Oracle's current regional availability for Cohere Rerank 3.5.
-- Re-verified native and imported model inventories against the Oracle pretrained, regional availability, and imported-model documentation pages.
+- Re-verified pretrained and imported model inventories against the Oracle pretrained, regional availability, and imported-model documentation pages.

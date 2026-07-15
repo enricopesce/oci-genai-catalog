@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="c26d91b">
+<meta name="build-version" content="225f5da">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -242,12 +242,12 @@
     outline: 2px solid var(--red-light);
     outline-offset: 3px;
   }
-  .native-chat-table th:nth-child(11),
-  .native-chat-table td:nth-child(11),
-  .native-embed-table th:nth-child(9),
-  .native-embed-table td:nth-child(9),
-  .native-rerank-table th:nth-child(7),
-  .native-rerank-table td:nth-child(7) { display: none; }
+  .pretrained-chat-table th:nth-child(11),
+  .pretrained-chat-table td:nth-child(11),
+  .pretrained-embed-table th:nth-child(9),
+  .pretrained-embed-table td:nth-child(9),
+  .pretrained-rerank-table th:nth-child(7),
+  .pretrained-rerank-table td:nth-child(7) { display: none; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   thead th {
     background: var(--panel2);
@@ -771,7 +771,7 @@
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
     <h1>OCI GenAI Catalog</h1>
   </div>
-  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 15 Jul 2026 &nbsp;|&nbsp; <a href="models.json" target="_blank" rel="noopener">{ } models.json</a></p>
+  <p>Primary source: authenticated OCI CLI/API &nbsp;|&nbsp; Updated 15 Jul 2026 &nbsp;|&nbsp; <a href="catalog.json" target="_blank" rel="noopener">{ } catalog.json</a></p>
   
   <nav class="view-switcher" aria-label="Catalog sections">
     <button class="view-btn active" id="btnReference" type="button" aria-pressed="true">Technical Tables</button>
@@ -997,7 +997,7 @@
   <!-- ══════════════════════════════════════════════════════════ -->
 
   <h2 class="section-title">Chat Models — Cohere Family</h2>
-  <div class="table-wrap native-chat-table">
+  <div class="table-wrap pretrained-chat-table">
   <table>
     <thead>
       <tr>
@@ -1091,7 +1091,7 @@
   </div>
 
   <h2 class="section-title">Chat Models — Google Gemini Family</h2>
-  <div class="table-wrap native-chat-table">
+  <div class="table-wrap pretrained-chat-table">
   <table>
     <thead>
       <tr>
@@ -1157,7 +1157,7 @@
   </div>
 
   <h2 class="section-title">Chat Models — Meta Llama Family</h2>
-  <div class="table-wrap native-chat-table">
+  <div class="table-wrap pretrained-chat-table">
   <table>
     <thead>
       <tr>
@@ -1265,7 +1265,7 @@
   </div>
 
   <h2 class="section-title">Chat Models — OpenAI gpt-oss Family</h2>
-  <div class="table-wrap native-chat-table">
+  <div class="table-wrap pretrained-chat-table">
   <table>
     <thead>
       <tr>
@@ -1317,7 +1317,7 @@
   </div>
 
   <h2 class="section-title">Chat Models — xAI Grok Family</h2>
-  <div class="table-wrap native-chat-table">
+  <div class="table-wrap pretrained-chat-table">
   <table>
     <thead>
       <tr>
@@ -1486,7 +1486,7 @@
   <!-- ══════════════════════════════════════════════════════════ -->
 
   <h2 class="section-title">Embedding Models</h2>
-  <div class="table-wrap native-embed-table">
+  <div class="table-wrap pretrained-embed-table">
   <table>
     <thead>
       <tr>
@@ -1607,7 +1607,7 @@
 
   <!-- RERANK -->
   <h2 class="section-title">Rerank Model</h2>
-  <div class="table-wrap native-rerank-table">
+  <div class="table-wrap pretrained-rerank-table">
   <table>
     <thead>
       <tr>
@@ -1623,7 +1623,7 @@
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-embed">Cohere</span><br><span class="model-name">Rerank 3.5</span></td>
-        <td><span class="model-id">cohere.rerank.v3-5</span></td>
+        <td><span class="model-id">cohere.rerank-v3.5</span></td>
         <td>Query + List of texts</td>
         <td>Ordered array with relevance scores</td>
         <td class="best-for">RAG pipelines, document ranking, search result reordering, precision improvement</td>
@@ -1631,6 +1631,29 @@
         <td style="min-width:160px;white-space:normal"><span class="tag tag-orange" title="US East (Ashburn) · Dedicated only">US-ASH</span> <span class="tag tag-orange" title="US Midwest (Chicago) · Dedicated only">US-CHI</span> <span class="tag tag-orange" title="Brazil East (São Paulo) · Dedicated only">SA-SAO</span> <span class="tag tag-orange" title="Germany Central (Frankfurt) · Dedicated only">EU-FRA</span> <span class="tag tag-orange" title="UK South (London) · Dedicated only">UK-LON</span> <span class="tag tag-orange" title="Saudi Arabia (Riyadh) · Dedicated only">ME-RUH</span> <span class="tag tag-orange" title="UAE Central (Abu Dhabi) · Dedicated only">ME-AUH</span> <span class="tag tag-orange" title="India South (Hyderabad) · Dedicated only">AP-HYD</span> <span class="tag tag-orange" title="Japan Central (Osaka) · Dedicated only">AP-OSA</span></td>
       </tr>
     </tbody>
+  </table>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  OCI CLI OPERATIONAL INVENTORY                            -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <h2 class="section-title" id="operationalInventoryTitle">OCI Pretrained Operational Inventory</h2>
+  <p id="operationalInventoryIntro" style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Canonical inventory observed through authenticated OCI CLI queries across all subscribed regions. It records operational IDs, capabilities, lifecycle, and regional observations without inferring inferencing modes.</p>
+  <div class="table-wrap operational-inventory-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Model ID</th>
+        <th>Provider</th>
+        <th>Type</th>
+        <th>Capabilities</th>
+        <th>Lifecycle</th>
+        <th>Observed Regions</th>
+      </tr>
+    </thead>
+    <tbody id="operationalInventoryBody"></tbody>
   </table>
   </div>
 
@@ -1646,7 +1669,7 @@
   <h3 class="import-family-title" data-family="alibaba">Alibaba Qwen Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-alibaba">Alibaba</span><br><span class="model-name">QwQ-32B</span></td>
@@ -1968,7 +1991,7 @@
   <h3 class="import-family-title" data-family="deepseek">DeepSeek Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-deepseek">DeepSeek</span><br><span class="model-name">DeepSeek-R1-Distill-Qwen-32B</span></td>
@@ -1986,7 +2009,7 @@
   <h3 class="import-family-title" data-family="gemma">Google Gemma Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-gemma">Gemma</span><br><span class="model-name">Gemma 3 270M</span></td>
@@ -2060,7 +2083,7 @@
   <h3 class="import-family-title" data-family="meta">Meta Llama Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-meta">Meta</span><br><span class="model-name">Llama 4 Maverick 17B</span></td>
@@ -2158,7 +2181,7 @@
   <h3 class="import-family-title" data-family="phi">Microsoft Phi Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-phi">Microsoft</span><br><span class="model-name">Phi-4</span></td>
@@ -2232,7 +2255,7 @@
   <h3 class="import-family-title" data-family="minimax">MiniMax Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody></tbody>
   </table>
   </div>
@@ -2241,7 +2264,7 @@
   <h3 class="import-family-title" data-family="mistral">Mistral Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-mistral">Mistral</span><br><span class="model-name">Mixtral 8x7B Instruct v0.1</span></td>
@@ -2299,7 +2322,7 @@
   <h3 class="import-family-title" data-family="moonshot">Moonshot AI Kimi Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody></tbody>
   </table>
   </div>
@@ -2308,7 +2331,7 @@
   <h3 class="import-family-title" data-family="nvidia">NVIDIA Nemotron Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-nvidia">NVIDIA</span><br><span class="model-name">Nemotron 3 Ultra 550B</span></td>
@@ -2358,7 +2381,7 @@
   <h3 class="import-family-title" data-family="openai-whisper">OpenAI Whisper Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-openai">OpenAI</span><br><span class="model-name">Whisper Large V3 Turbo</span></td>
@@ -2376,7 +2399,7 @@
   <h3 class="import-family-title" data-family="openai-oss">OpenAI GptOss Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody>
       <tr>
         <td class="model-cell"><span class="badge badge-openai">OpenAI</span><br><span class="model-name">GptOss 20B</span></td>
@@ -2402,7 +2425,7 @@
   <h3 class="import-family-title" data-family="zai">Z.ai GLM Family</h3>
   <div class="table-wrap">
   <table>
-    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
     <tbody></tbody>
   </table>
   </div>
@@ -2456,7 +2479,7 @@
   <div class="matrix-row" style="grid-template-columns: 1fr 1fr;">
     <div class="matrix-card">
       <h3>🌐 Multilingual Applications</h3>
-      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Cohere Command A</div><div class="rec-desc">Native multilingual support, 256K context, high-throughput production</div><div class="rec-meta"><span class="tag tag-green">On-demand + Ded.</span></div></div></div>
+          <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">Cohere Command A</div><div class="rec-desc">Strong multilingual support, 256K context, high-throughput production</div><div class="rec-meta"><span class="tag tag-green">On-demand + Ded.</span></div></div></div>
       <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Meta Llama 4 Scout / Maverick</div><div class="rec-desc">Open-weight multilingual models with strong cross-language performance</div><div class="rec-meta"><span class="tag tag-green">On-demand + Ded.</span></div></div></div>
       <div class="rec-item"><div class="rec-icon">🔤</div><div><div class="rec-title">Cohere Embed Multilingual 3 / Embed 4</div><div class="rec-desc">Semantic search in 100+ languages; Gen 4 adds multimodal</div><div class="rec-meta"><span class="tag tag-green">On-demand + Ded.</span></div></div></div>
     </div>
@@ -2534,7 +2557,7 @@
     <p>³ Retired models no longer listed in the current OCI pretrained-model catalog are omitted from the main tables; deprecated models still listed by OCI are shown with deprecated status.</p>
     <p>⁴ Model Import feature (GA 2025) lets you bring your own models from Hugging Face or OCI Object Storage.</p>
     <p>⁶ OCI documents Grok 4 at 128K context, Grok 4.3 at 1M context, and Grok 4 Fast, Grok 4.1 Fast, Grok 4.20, and Grok 4.20 Multi-Agent at 2M context.</p>
-    <p>⁵ Data sources (OCI Official Documentation; catalog last updated 15 July 2026; OC1 commercial regions only):
+    <p>⁵ Primary data source: authenticated OCI CLI/API scan across all subscribed regions; catalog last updated 15 July 2026. Oracle documentation is used only for fields the CLI does not expose:
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Pretrained Models</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:var(--link);">Models by Region</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:var(--link);">Inferencing Modes</a> ·
@@ -2543,12 +2566,11 @@
   </div>
 
   <div style="margin-top:24px; padding:10px 16px; background:rgba(230,126,34,0.08); border:1px solid rgba(230,126,34,0.25); font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; line-height:1.6;">
-    ⚠ <strong style="color:var(--warn-text);">Unofficial reference — not an official Oracle document.</strong> This page was assembled from OCI public documentation. Data may contain errors or be out of date. Always verify against <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/" target="_blank" rel="noopener" style="color:var(--link);">docs.oracle.com</a> before making production decisions.
+    ⚠ <strong style="color:var(--warn-text);">Unofficial reference — not an official Oracle document.</strong> The pretrained-model operational inventory comes from authenticated OCI CLI/API observations; descriptive and cluster-shape extension fields come from OCI documentation. Failed regional queries remain recorded in <a href="catalog.json" target="_blank" rel="noopener" style="color:var(--link);">catalog.json</a> and must not be interpreted as empty regions.
   </div>
   <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border); text-align:center; font-size:12px; color:var(--muted); font-family:'IBM Plex Mono',monospace;">
     <a href="https://github.com/enricopesce/oci-genai-catalog" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">⌥ GitHub Repository</a>
-    <a href="https://enricopesce.github.io/oci-genai-catalog/models.json" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">{ } models.json</a>
-    <a href="https://enricopesce.github.io/oci-genai-catalog/imported-models.json" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">{ } imported-models.json</a>
+    <a href="https://enricopesce.github.io/oci-genai-catalog/catalog.json" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">{ } catalog.json</a>
     <a href="https://github.com/enricopesce" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none;">Enrico Pesce</a>
   </div>
   </div><!-- /#catalogResults -->
@@ -2837,6 +2859,34 @@
     '</tr>';
   }
 
+  function renderOperational(data) {
+    var body = document.getElementById('operationalInventoryBody');
+    var title = document.getElementById('operationalInventoryTitle');
+    var models = data.operationalModels || [];
+    if (!body) return;
+    body.innerHTML = models.map(function(model) {
+      var provider = (model.providers || []).join(', ') || '—';
+      var types = (model.types || []).join(', ') || '—';
+      var capabilities = (model.capabilities || []).map(function(capability) {
+        return '<span class="tag">' + escapeAttr(capability) + '</span>';
+      }).join(' ') || '—';
+      var lifecycle = (model.lifecycleStates || []).map(function(state) {
+        return '<span class="status-' + (state === 'ACTIVE' ? 'active' : 'deprecated') + '">● ' + escapeAttr(state) + '</span>';
+      }).join('<br>') || '—';
+      var regions = model.observedRegions || [];
+      var regionLabel = regions.length + (regions.length === 1 ? ' region' : ' regions');
+      return '<tr>' +
+        '<td><span class="model-id">' + escapeAttr(model.id) + '</span></td>' +
+        '<td><span class="badge">' + escapeAttr(provider) + '</span></td>' +
+        '<td>' + escapeAttr(types) + '</td>' +
+        '<td style="white-space:normal">' + capabilities + '</td>' +
+        '<td>' + lifecycle + '</td>' +
+        '<td><span class="tag tag-blue" title="' + escapeAttr(regions.join(' · ')) + '">' + regionLabel + '</span></td>' +
+      '</tr>';
+    }).join('');
+    if (title) title.textContent = 'OCI Pretrained Operational Inventory — ' + models.length + ' model IDs';
+  }
+
   // ── TABLE POPULATION ──────────────────────────────────────────────
   function getTbody(keyword) {
     var found = null;
@@ -2921,7 +2971,18 @@
       ? '<span class="ctx ctx-' + m.contextClass + '">' + m.contextWindowLabel + '</span>'
       : '—';
     var clsCls = m.clusterClass ? ' ' + m.clusterClass : '';
-    var gpuMatches = m.clusterShape.match(/(?:A10|A100|H100|H200|B200)(?=_)/g) || [];
+    var clusterOptions = m.dedicatedClusterOptions || [];
+    var gpuMatches = clusterOptions.map(function(option) {
+      return option.gpuType.split('_')[0];
+    });
+    var clusterHtml = clusterOptions.map(function(option) {
+      var title = option.gpuCount + ' GPU ' + option.gpuType +
+        ' · ' + option.requiredUnits + ' required limit unit(s)' +
+        ' · ' + option.aiUnitCount + ' AI units' +
+        ' · ' + option.limitName;
+      return '<span class="tag' + clsCls + '" title="' + escapeAttr(title) + '">' +
+        escapeAttr(option.unitShape) + ' · ' + option.gpuCount + ' GPU</span>';
+    }).join('<br>');
     var attrs = filterRowAttrs({
       scope: 'imported', roles: [role], provider: family.id,
       providerLabel: family.label, status: 'listed',
@@ -2937,7 +2998,7 @@
       '<td>' + typeHtml + '</td>' +
       '<td>' + paramHtml + '</td>' +
       '<td>' + ctxHtml + '</td>' +
-      '<td><span class="tag' + clsCls + '">' + m.clusterShape + '</span></td>' +
+      '<td>' + (clusterHtml || '—') + '</td>' +
     '</tr>';
   }
 
@@ -2991,6 +3052,7 @@
     var sections = [];
     var records = [];
     document.querySelectorAll('#referenceView .table-wrap').forEach(function(wrap) {
+      if (wrap.classList.contains('operational-inventory-table')) return;
       var title = wrap.previousElementSibling;
       var section = {
         wrap: wrap,
@@ -3357,14 +3419,12 @@
     applyFilter();
   }
 
-  // ── FETCH MODELS.JSON AND RENDER ──────────────────────────────────
-  // Refresh the server-rendered snapshot when fresh JSON is available.
-  Promise.all([
-    fetch('models.json').then(function(r) { return r.json(); }),
-    fetch('imported-models.json').then(function(r) { return r.json(); })
-  ]).then(function(results) {
-    renderAll(results[0]);
-    renderImported(results[1]);
+  // ── FETCH CATALOG.JSON AND RENDER ─────────────────────────────────
+  // One published runtime snapshot contains pretrained and imported inventories.
+  fetch('catalog.json').then(function(r) { return r.json(); }).then(function(catalog) {
+    renderAll(catalog.pretrained);
+    renderOperational(catalog.pretrained);
+    renderImported(catalog.imported);
     enhanceTableAccessibility();
     initFilters();
   }).catch(function(err) {

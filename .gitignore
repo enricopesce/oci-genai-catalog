@@ -5,6 +5,6 @@
 !/.codex/rules/*.rules
 
 # Authenticated OCI CLI exports are local verification inputs, not site assets.
-native-model-matrix.json
+pretrained-model-matrix.json
 models-cli.json
 genai-offering-cli.json

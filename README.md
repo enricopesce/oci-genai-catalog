@@ -2,13 +2,14 @@
 
 > **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), including active models and deprecated models still listed by Oracle, verified 6 July 2026.
+A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), including active models and deprecated models still listed by Oracle, verified 15 July 2026. The site loads one published runtime data file: `catalog.json`.
 
 ## What's inside
 
 | Section | Details |
 |---------|---------|
-| **Chat models** | 27 native chat models across Cohere, Google, Meta, OpenAI, and xAI; 14 active and 13 deprecated |
+| **OCI CLI operational inventory** | 68 unique pretrained offering IDs observed across 13 queryable subscribed regions, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
+| **Chat models** | 27 pretrained chat models across Cohere, Google, Meta, OpenAI, and xAI; 14 active and 13 deprecated |
 | **Embedding models** | 9 Cohere Embed models; Embed 4 active and Embed v3 variants deprecated |
 | **Rerank models** | 3 Cohere rerank models: Rerank 4.0 Fast and Pro active; Rerank 3.5 deprecated |
 | **Imported models** | 97 compatible/importable models across 12 OCI Model Import families |
@@ -19,7 +20,9 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 
 ## Features
 
-- Native catalog covers 27 chat models, 9 embedding models, and 3 rerank models with status labels for active and deprecated entries
+- Canonical pretrained inventory records all 68 OCI CLI-observed model IDs, their capabilities, lifecycle states, regional observations, dedicated-unit Limits data, and failed regional queries
+- Documentation-enriched comparison views cover 27 chat models, 9 embedding models, and 3 rerank models with descriptive fields unavailable from OCI CLI
+- Every imported model has structured dedicated-cluster alternatives with `unitShape`, `gpuType`, `gpuCount`, required limit units, limit name, and AI unit count
 - 97 imported models across 12 Model Import families, including Qwen, DeepSeek, Gemma, Llama, MiniMax, Mistral, Kimi, Nemotron, Whisper, gpt-oss, and GLM entries
 - Commercial OCI regions (OC1) covered in the UI, including UAE Central (Abu Dhabi); sovereign and government regions are not yet modeled
 - Dark / Light mode toggle (preference saved in `localStorage`)
@@ -31,9 +34,9 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 - Fully static — no JavaScript framework, no build step
 - Mobile responsive
 
-## Data source
+## Data sources
 
-All data sourced from the [OCI official documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/).
+Authenticated OCI CLI responses are the primary source for pretrained offering inventory, capabilities, lifecycle, regional observations, and dedicated-unit Limits data. [OCI official documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/) is used as the source for imported-model compatibility, recommended unit shapes, explicit GPU counts, and other fields the CLI model listing does not expose.
 
 ## Development
 
@@ -51,20 +54,21 @@ Run the catalog audit after non-trivial data, UI, or documentation changes:
 python3 .codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo .
 ```
 
-To capture native-model and dedicated-cluster-shape data from an authenticated OCI CLI profile, run:
+To capture pretrained-model and dedicated-unit Limits data from an authenticated OCI CLI profile, run:
 
 ```bash
-scripts/export-native-model-matrix.sh \
+scripts/export-pretrained-model-matrix.sh \
   --compartment-id 'YOUR_COMPARTMENT_OCID' \
+  --parallel 6 \
   --output genai-offering-cli.json \
   --catalog-output models-cli.json
 ```
 
-The generated `genai-offering-cli.json` is ignored by Git. It is the complete raw OCI CLI offering observed in every active region subscribed to the tenancy, including all fields returned by `list-models`; failed or unsupported regions are retained in `failures`.
+The generated `genai-offering-cli.json` is ignored by Git. It combines the raw model offering returned by `list-models` with regional `dedicated-unit-*` values from the `ai-generative` Limits service; failed or unsupported queries are retained in `failures`. Region queries run with bounded concurrency, configurable through `--parallel`, and skip OCI CLI retries so unavailable endpoints do not stall a full scan. Limits describe the tenancy's regional quota dimensions and values; they do not prove capacity or provide model-to-shape compatibility.
 
-To also produce a `models.json`-shaped snapshot sourced solely from OCI CLI, add `--catalog-output models-cli.json`. The snapshot deliberately records unavailable fields as limitations rather than inferring them from documentation.
+To also produce a CLI-only pretrained-inventory snapshot, add `--catalog-output models-cli.json`. It is a local verification input, not a published site asset; `catalog.json` is the one runtime catalog file. The CLI-only snapshot deliberately records unavailable fields as limitations rather than inferring them from documentation.
 
-## Native Providers
+## Pretrained Model Providers
 
 | Provider | Models |
 |----------|--------|
