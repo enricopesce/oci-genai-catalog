@@ -6,15 +6,16 @@ usage() {
   cat <<'EOF'
 Usage: scripts/export-native-model-matrix.sh --compartment-id OCID [options]
 
-Export the OCI Generative AI model collection for every public OC1 region that
-the configured OCI CLI profile can query. Regions without the service or access
-are recorded in "failures"; the export still completes with all successful data.
+Export the OCI Generative AI model collection for every active region subscribed
+to the configured tenancy. Regions without the service or access are recorded
+in "failures"; the export still completes with all successful data.
 
 Options:
   --compartment-id OCID  Compartment OCID used by OCI Generative AI (required)
   --profile NAME         OCI CLI profile (default: DEFAULT)
   --auth METHOD          OCI CLI auth method, e.g. security_token
-  --regions LIST         Comma-separated explicit regions instead of all OC1 regions
+  --tenancy-id OCID      Tenancy OCID (read from the OCI CLI profile by default)
+  --regions LIST         Comma-separated explicit regions instead of subscribed regions
   --output PATH          Destination JSON (default: native-model-matrix.json)
   --catalog-output PATH  Write a models.json-shaped CLI-only snapshot to PATH
   -h, --help             Show this help
@@ -24,6 +25,7 @@ EOF
 compartment_id=''
 profile='DEFAULT'
 auth=''
+tenancy_id=''
 regions_csv=''
 output='native-model-matrix.json'
 catalog_output=''
@@ -33,6 +35,7 @@ while [[ $# -gt 0 ]]; do
     --compartment-id) compartment_id=${2:?missing value for --compartment-id}; shift 2 ;;
     --profile) profile=${2:?missing value for --profile}; shift 2 ;;
     --auth) auth=${2:?missing value for --auth}; shift 2 ;;
+    --tenancy-id) tenancy_id=${2:?missing value for --tenancy-id}; shift 2 ;;
     --regions) regions_csv=${2:?missing value for --regions}; shift 2 ;;
     --output) output=${2:?missing value for --output}; shift 2 ;;
     --catalog-output) catalog_output=${2:?missing value for --catalog-output}; shift 2 ;;
@@ -62,20 +65,32 @@ failures="$tmp_dir/failures.jsonl"
 : > "$successes"
 : > "$failures"
 
+region_discovery='explicit region list'
 if [[ -n "$regions_csv" ]]; then
   IFS=',' read -r -a regions <<< "$regions_csv"
 else
-  regions_json="$tmp_dir/regions.json"
-  oci iam region list "${oci_auth[@]}" --output json > "$regions_json"
+  if [[ -z "$tenancy_id" ]]; then
+    tenancy_id=$(oci configure get tenancy --profile "$profile" 2>/dev/null || true)
+  fi
+  if [[ -z "$tenancy_id" ]]; then
+    printf '%s\n' 'Unable to determine tenancy OCID. Supply --tenancy-id explicitly.' >&2
+    exit 1
+  fi
+  regions_json="$tmp_dir/region-subscriptions.json"
+  oci iam region-subscription list \
+    "${oci_auth[@]}" \
+    --tenancy-id "$tenancy_id" \
+    --output json > "$regions_json"
   mapfile -t regions < <(
     jq -r '(.data // .items // [])[]
-      | select((."realm-key" // .realmKey) == "oc1")
-      | (.key // .name)' "$regions_json" | sort -u
+      | select(.status == "READY")
+      | (."region-key" // .regionKey)' "$regions_json" | sort -u
   )
+  region_discovery='active OCI region subscriptions (READY)'
 fi
 
 if [[ ${#regions[@]} -eq 0 ]]; then
-  printf '%s\n' 'No OC1 regions were discovered. Use --regions to provide a list explicitly.' >&2
+  printf '%s\n' 'No active regions were discovered. Use --regions to provide a list explicitly.' >&2
   exit 1
 fi
 
@@ -104,6 +119,7 @@ failures_array=$(jq -s '.' "$failures")
 jq -n \
   --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
   --arg profile "$profile" \
+  --arg region_discovery "$region_discovery" \
   --argjson regions "$regions_object" \
   --argjson failures "$failures_array" \
   '{
@@ -111,7 +127,8 @@ jq -n \
       generatedAt: $generated_at,
       source: "OCI CLI generative-ai model-collection list-models",
       profile: $profile,
-      scope: "public OC1 regions queryable by the configured profile"
+      scope: "active OCI regions queryable by the configured profile",
+      regionDiscovery: $region_discovery
     },
     regions: $regions,
     failures: $failures

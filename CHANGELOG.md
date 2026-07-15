@@ -10,6 +10,7 @@ All notable updates to this repository are tracked here.
 - Replaced the header's stale model-count claim with a direct link to the native catalog JSON reference.
 - Added a local OCI CLI exporter that captures native-model inventories and dedicated-cluster shapes across queryable OC1 regions for future catalog reconciliation.
 - Added an optional CLI-only `models.json`-shaped snapshot, preserving region-level lifecycle and dedicated-shape data while explicitly marking information the CLI does not provide.
+- Changed the CLI offering export to discover all active `READY` regions from the tenancy's OCI region subscriptions before querying Generative AI.
 
 ## 2026-07-10
 

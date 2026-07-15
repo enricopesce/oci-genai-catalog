@@ -54,10 +54,13 @@ python3 .codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo .
 To capture native-model and dedicated-cluster-shape data from an authenticated OCI CLI profile, run:
 
 ```bash
-scripts/export-native-model-matrix.sh --compartment-id 'YOUR_COMPARTMENT_OCID'
+scripts/export-native-model-matrix.sh \
+  --compartment-id 'YOUR_COMPARTMENT_OCID' \
+  --output genai-offering-cli.json \
+  --catalog-output models-cli.json
 ```
 
-The generated `native-model-matrix.json` is ignored by Git. It is a local verification input for reconciling native dedicated-cluster shapes by region.
+The generated `genai-offering-cli.json` is ignored by Git. It is the complete raw OCI CLI offering observed in every active region subscribed to the tenancy, including all fields returned by `list-models`; failed or unsupported regions are retained in `failures`.
 
 To also produce a `models.json`-shaped snapshot sourced solely from OCI CLI, add `--catalog-output models-cli.json`. The snapshot deliberately records unavailable fields as limitations rather than inferring them from documentation.
 
