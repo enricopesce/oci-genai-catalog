@@ -2,6 +2,13 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-07-15
+
+- Re-verified native OCI Generative AI model inventory, lifecycle status, and OC1 regional availability against Oracle's public pretrained-model and regional-availability documentation.
+- Re-verified all 12 Oracle-tested Model Import families and their 97 compatible models against the current Oracle documentation; no inventory changes were published upstream.
+- Advanced the JSON source snapshot and catalog freshness markers to 15 July 2026.
+- Replaced the header's stale model-count claim with a direct link to the native catalog JSON reference.
+
 ## 2026-07-10
 
 - Added a deployment-first catalog selector with two explicit paths—on-demand access and dedicated clusters—before users refine by capability or infrastructure facets.

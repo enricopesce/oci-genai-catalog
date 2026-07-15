@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "dataDate": "2026-07-06",
+    "dataDate": "2026-07-15",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/",
-    "version": "2026-07",
+    "version": "2026-07-15",
     "regionDefinitions": {
       "us-ashburn-1":  "US East (Ashburn)",
       "us-chicago-1":  "US Midwest (Chicago)",
