@@ -8,6 +8,7 @@ All notable updates to this repository are tracked here.
 - Re-verified all 12 Oracle-tested Model Import families and their 97 compatible models against the current Oracle documentation; no inventory changes were published upstream.
 - Advanced the JSON source snapshot and catalog freshness markers to 15 July 2026.
 - Replaced the header's stale model-count claim with a direct link to the native catalog JSON reference.
+- Added a local OCI CLI exporter that captures native-model inventories and dedicated-cluster shapes across queryable OC1 regions for future catalog reconciliation.
 
 ## 2026-07-10
 

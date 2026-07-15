@@ -51,6 +51,14 @@ Run the catalog audit after non-trivial data, UI, or documentation changes:
 python3 .codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo .
 ```
 
+To capture native-model and dedicated-cluster-shape data from an authenticated OCI CLI profile, run:
+
+```bash
+scripts/export-native-model-matrix.sh --compartment-id 'YOUR_COMPARTMENT_OCID'
+```
+
+The generated `native-model-matrix.json` is ignored by Git. It is a local verification input for reconciling native dedicated-cluster shapes by region.
+
 ## Native Providers
 
 | Provider | Models |

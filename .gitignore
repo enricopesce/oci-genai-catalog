@@ -3,3 +3,6 @@
 !/.codex/config.toml
 !/.codex/rules/
 !/.codex/rules/*.rules
+
+# Authenticated OCI CLI exports are local verification inputs, not site assets.
+native-model-matrix.json
