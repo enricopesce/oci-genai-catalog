@@ -6,6 +6,9 @@ All notable updates to this repository are tracked here.
 
 - Consolidated duplicate provider choices in the dedicated-cluster catalog, so multiple Model Import families from OpenAI share one provider filter and imported Meta models align with the pretrained Meta provider.
 - Hardened dedicated-cluster GPU metadata normalization so the hardware filter reliably matches structured GPU types, including the `A100_80G` catalog variant.
+- Made the GPU hardware facet filter each matching model's displayed cluster options as well as its row, so unrelated GPU shapes no longer remain visible after selecting a specific GPU.
+- Hid the unfiltered OCI pretrained operational inventory whenever a catalog filter or the dedicated-cluster path is active, preventing its 68 CLI IDs from appearing as filtered results.
+- Replaced the ambiguous dedicated hardware facet with one GPU model selector listing every exact model/count combination, and reformatted cluster options as readable labels such as `2 × A10 · A10_X2`.
 
 ## 2026-07-15
 
