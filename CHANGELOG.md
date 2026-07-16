@@ -2,6 +2,11 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-07-16
+
+- Consolidated duplicate provider choices in the dedicated-cluster catalog, so multiple Model Import families from OpenAI share one provider filter and imported Meta models align with the pretrained Meta provider.
+- Hardened dedicated-cluster GPU metadata normalization so the hardware filter reliably matches structured GPU types, including the `A100_80G` catalog variant.
+
 ## 2026-07-15
 
 - Replaced the incorrect “native model” taxonomy with OCI's “pretrained model” terminology throughout the schema, UI, exporter, audit, and maintenance documentation.

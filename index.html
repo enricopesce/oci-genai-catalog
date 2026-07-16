@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="225f5da">
+<meta name="build-version" content="26d35f5">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -2674,6 +2674,20 @@
     return Math.round(parseFloat(match[1]) * (match[2] === 'M' ? 1000 : 1));
   }
 
+  function importedProviderKey(family) {
+    // A provider can publish more than one import family (for example OpenAI
+    // Whisper and gpt-oss). Use the shared badge taxonomy so the combined
+    // dedicated catalog exposes one provider option for all of its families.
+    return family.badge || family.id;
+  }
+
+  function gpuTypeKey(gpuType) {
+    // Catalog GPU types can include a memory suffix (A100_80G), while the
+    // hardware facet intentionally groups variants under the GPU generation.
+    var match = String(gpuType || '').toUpperCase().match(/^(A10|A100|H100|H200|B200)(?:_|$)/);
+    return match ? match[1] : '';
+  }
+
   function regionMetadata(regions) {
     var ids = Object.keys(regions || {});
     var deployments = [];
@@ -2972,9 +2986,9 @@
       : '—';
     var clsCls = m.clusterClass ? ' ' + m.clusterClass : '';
     var clusterOptions = m.dedicatedClusterOptions || [];
-    var gpuMatches = clusterOptions.map(function(option) {
-      return option.gpuType.split('_')[0];
-    });
+    var gpuMatches = uniqueValues(clusterOptions.map(function(option) {
+      return gpuTypeKey(option.gpuType);
+    }));
     var clusterHtml = clusterOptions.map(function(option) {
       var title = option.gpuCount + ' GPU ' + option.gpuType +
         ' · ' + option.requiredUnits + ' required limit unit(s)' +
@@ -2984,7 +2998,7 @@
         escapeAttr(option.unitShape) + ' · ' + option.gpuCount + ' GPU</span>';
     }).join('<br>');
     var attrs = filterRowAttrs({
-      scope: 'imported', roles: [role], provider: family.id,
+      scope: 'imported', roles: [role], provider: importedProviderKey(family),
       providerLabel: family.label, status: 'listed',
       search: [m.name, m.hfId, family.label, t, m.params, m.contextWindowLabel,
         m.clusterShape].concat(tasks).join(' '),
