@@ -2,6 +2,11 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-07-21
+
+- Refreshed the catalog from an authenticated OCI CLI scan across every subscribed `READY` region: the inventory remains 68 pretrained offerings across 13 queryable model regions, with 38 dedicated-unit Limits observations and 29 failed regional queries preserved.
+- Re-checked Oracle's pretrained, regional availability, serving-mode, and Model Import documentation; the documentation-enriched presentation inventory remains 27 chat, 9 embedding, 3 rerank, and 97 imported models across 12 families.
+
 ## 2026-07-16
 
 - Consolidated duplicate provider choices in the dedicated-cluster catalog, so multiple Model Import families from OpenAI share one provider filter and imported Meta models align with the pretrained Meta provider.
