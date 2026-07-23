@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="eb40148">
+<meta name="build-version" content="ab3484c">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -972,10 +972,6 @@
         <label class="filter-field">
           <span class="filter-field-label">Capability</span>
           <select class="filter-select" id="filterCapability"><option value="">Any capability / role</option></select>
-        </label>
-        <label class="filter-field imported-only" hidden>
-          <span class="filter-field-label">GPU model</span>
-          <select class="filter-select" id="filterGpu"><option value="">Any GPU model</option></select>
         </label>
         <label class="filter-status hosted-status" id="filterStatusWrap">
           <input id="filterIncludeDeprecated" type="checkbox">
@@ -2683,7 +2679,7 @@
 
   function gpuTypeKey(gpuType) {
     // Catalog GPU types can include a memory suffix (A100_80G), while the
-    // hardware facet intentionally groups variants under the GPU generation.
+    // display label uses the GPU generation.
     var match = String(gpuType || '').toUpperCase().match(/^(A10|A100|H100|H200|B200)(?:_|$)/);
     return match ? match[1] : '';
   }
@@ -2718,9 +2714,7 @@
       regions: uniqueValues(meta.regions || []).join(' '),
       regionAccess: uniqueValues(meta.regionAccess || []).join(' '),
       capabilities: uniqueValues(meta.capabilities || []).join(' '),
-      tasks: uniqueValues(meta.tasks || []).join(' '),
-      gpus: uniqueValues(meta.gpus || []).join(' '),
-      gpuConfigs: uniqueValues(meta.gpuConfigs || []).join(' ')
+      tasks: uniqueValues(meta.tasks || []).join(' ')
     };
     return Object.keys(values).map(function(key) {
       return ' data-' + key.replace(/[A-Z]/g, function(char) { return '-' + char.toLowerCase(); }) + '="' + escapeAttr(values[key]) + '"';
@@ -2992,21 +2986,12 @@
       : '—';
     var clsCls = m.clusterClass ? ' ' + m.clusterClass : '';
     var clusterOptions = m.dedicatedClusterOptions || [];
-    var gpuMatches = uniqueValues(clusterOptions.map(function(option) {
-      return gpuTypeKey(option.gpuType);
-    }));
-    var gpuConfigs = uniqueValues(clusterOptions.map(function(option) {
-      return gpuTypeKey(option.gpuType) + ':' + option.gpuCount;
-    }));
     var clusterHtml = clusterOptions.map(function(option) {
-      var gpuKey = gpuTypeKey(option.gpuType);
       var title = option.gpuCount + ' GPU ' + option.gpuType +
         ' · ' + option.requiredUnits + ' required limit unit(s)' +
         ' · ' + option.aiUnitCount + ' AI units' +
         ' · ' + option.limitName;
-      return '<span class="tag cluster-option' + clsCls + '" data-gpu="' + escapeAttr(gpuKey) +
-        '" data-gpu-config="' + escapeAttr(gpuKey + ':' + option.gpuCount) +
-        '" title="' + escapeAttr(title) + '">' +
+      return '<span class="tag cluster-option' + clsCls + '" title="' + escapeAttr(title) + '">' +
         option.gpuCount + ' × ' + escapeAttr(gpuTypeLabel(option.gpuType)) +
         ' · ' + escapeAttr(option.unitShape) + '</span>';
     }).join('<br>');
@@ -3016,8 +3001,7 @@
       search: [m.name, m.hfId, family.label, t, m.params, m.contextWindowLabel,
         m.clusterShape].concat(tasks).join(' '),
       contextK: contextLabelToK(m.contextWindowLabel),
-      deployments: ['dedicated'], capabilities: capabilities, tasks: tasks,
-      gpus: gpuMatches, gpuConfigs: gpuConfigs
+      deployments: ['dedicated'], capabilities: capabilities, tasks: tasks
     });
     return '<tr' + attrs + '>' +
       '<td class="model-cell"><span class="badge badge-' + family.badge + '">' + family.label + '</span><br>' +
@@ -3049,7 +3033,6 @@
       region: document.getElementById('filterRegion'),
       context: document.getElementById('filterContext'),
       capability: document.getElementById('filterCapability'),
-      gpu: document.getElementById('filterGpu'),
       moreCount: document.getElementById('filterMoreCount'),
       summary: document.getElementById('filterSummary'),
       chips: document.getElementById('filterChips'),
@@ -3108,9 +3091,7 @@
           regions: splitValues(tr.dataset.regions),
           regionAccess: parseRegionAccess(tr.dataset.regionAccess),
           capabilities: splitValues(tr.dataset.capabilities),
-          tasks: splitValues(tr.dataset.tasks),
-          gpus: splitValues(tr.dataset.gpus),
-          gpuConfigs: splitValues(tr.dataset.gpuConfigs)
+          tasks: splitValues(tr.dataset.tasks)
         };
         section.records.push(record);
         records.push(record);
@@ -3144,17 +3125,6 @@
       return record.scope === scope;
     }
 
-    var gpuOrder = ['A10', 'A100', 'H100', 'H200', 'B200'];
-    var gpuConfigValues = [];
-    records.forEach(function(record) {
-      if (record.scope === 'imported') gpuConfigValues = gpuConfigValues.concat(record.gpuConfigs);
-    });
-    gpuConfigValues = uniqueValues(gpuConfigValues).sort(function(a, b) {
-      var aParts = a.split(':');
-      var bParts = b.split(':');
-      var gpuComparison = gpuOrder.indexOf(aParts[0]) - gpuOrder.indexOf(bParts[0]);
-      return gpuComparison || Number(aParts[1]) - Number(bParts[1]);
-    });
     var regionOptions = Object.keys(REGION_NAMES).map(function(regionId) {
       return { value: regionId, label: REGION_NAMES[regionId] + ' — ' + regionId };
     });
@@ -3176,12 +3146,6 @@
       { value: 'tool', label: 'Tool use / agents' },
       { value: 'finetune', label: 'Fine-tunable' }
     ];
-    var gpuOptions = gpuConfigValues.map(function(config) {
-      var parts = config.split(':');
-      var gpuLabel = parts[0] === 'A100' ? 'A100 80 GB' : parts[0];
-      return { value: config, label: parts[1] + ' × ' + gpuLabel };
-    });
-
     function getState() {
       return {
         scope: currentScope,
@@ -3192,7 +3156,6 @@
         region: currentScope === 'hosted' ? controls.region.value : '',
         contextK: Number(controls.context.value || 0),
         capability: controls.capability.value,
-        gpuConfig: currentScope === 'cluster' ? controls.gpu.value : '',
         wizardTask: currentWizardTask
       };
     }
@@ -3235,11 +3198,6 @@
         }
       }
 
-      if (state.gpuConfig && (
-        record.scope !== 'imported' || record.gpuConfigs.indexOf(state.gpuConfig) === -1
-      )) {
-        return false;
-      }
       return true;
     }
 
@@ -3281,9 +3239,6 @@
       }
       refreshSelect(controls.context, state, 'contextK', 0, 'Any context', contextOptions);
       refreshSelect(controls.capability, state, 'capability', '', 'Any capability / role', capabilityOptions);
-      if (state.scope === 'cluster') {
-        refreshSelect(controls.gpu, state, 'gpuConfig', '', 'Any GPU model', gpuOptions);
-      }
     }
 
     function selectedLabel(select) {
@@ -3320,13 +3275,13 @@
 
     function advancedFilterCount(state) {
       return [state.provider, state.region, state.contextK,
-        state.capability, state.gpuConfig, state.includeDeprecated].filter(Boolean).length;
+        state.capability, state.includeDeprecated].filter(Boolean).length;
     }
 
     function hasCatalogFilter(state) {
       return state.deployment !== 'ondemand' || !!(
         state.search || state.provider || state.region || state.contextK ||
-        state.capability || state.gpuConfig || state.includeDeprecated || state.wizardTask
+        state.capability || state.includeDeprecated || state.wizardTask
       );
     }
 
@@ -3351,7 +3306,6 @@
       if (state.region) appendChip(selectedLabel(controls.region), 'region');
       if (state.contextK) appendChip(selectedLabel(controls.context), 'contextK');
       if (state.capability) appendChip(selectedLabel(controls.capability), 'capability');
-      if (state.gpuConfig) appendChip(selectedLabel(controls.gpu), 'gpuConfig');
       if (state.includeDeprecated) appendChip('Including deprecated', 'includeDeprecated');
       if (state.search) appendChip('Search: "' + controls.search.value.trim() + '"', 'search');
 
@@ -3360,7 +3314,7 @@
       controls.moreCount.hidden = advancedCount === 0;
       var changed = !!(
         state.search || state.provider || state.region ||
-        state.contextK || state.capability || state.gpuConfig ||
+        state.contextK || state.capability ||
         state.includeDeprecated || state.wizardTask
       );
       controls.summary.hidden = !changed;
@@ -3376,11 +3330,6 @@
       records.forEach(function(record) {
         var match = recordMatches(record, state);
         record.el.hidden = !match;
-        if (record.scope === 'imported') {
-          record.el.querySelectorAll('.cluster-option[data-gpu]').forEach(function(option) {
-            option.hidden = !!state.gpuConfig && option.dataset.gpuConfig !== state.gpuConfig;
-          });
-        }
         if (match) visible += 1;
       });
       sections.forEach(function(section) {
@@ -3412,7 +3361,6 @@
         controls.region.value = '';
         controls.context.value = '0';
         controls.capability.value = '';
-        controls.gpu.value = '';
         controls.includeDeprecated.checked = false;
         updateDeploymentUI();
         updateScopeUI();
@@ -3422,7 +3370,7 @@
 
     controls.search.addEventListener('input', applyFilter);
     [controls.includeDeprecated, controls.provider, controls.region, controls.context,
-     controls.capability, controls.gpu].forEach(function(control) {
+     controls.capability].forEach(function(control) {
       control.addEventListener('change', applyFilter);
     });
 
@@ -3436,7 +3384,6 @@
       if (key === 'region') controls.region.value = '';
       if (key === 'contextK') controls.context.value = '0';
       if (key === 'capability') controls.capability.value = '';
-      if (key === 'gpuConfig') controls.gpu.value = '';
       if (key === 'includeDeprecated') controls.includeDeprecated.checked = false;
       applyFilter();
     });
@@ -3450,7 +3397,6 @@
       controls.region.value = '';
       controls.context.value = '0';
       controls.capability.value = '';
-      controls.gpu.value = '';
       controls.includeDeprecated.checked = false;
       updateDeploymentUI();
       updateScopeUI();
@@ -3466,7 +3412,6 @@
       controls.provider.value = '';
       controls.context.value = '0';
       controls.capability.value = preset.task === 'embed' ? '' : 'role:chat';
-      controls.gpu.value = '';
       controls.includeDeprecated.checked = false;
       // Wizard regions are broad geographic groups; the catalog exposes only
       // exact OCI regions, so the handoff leaves the precise region unselected.

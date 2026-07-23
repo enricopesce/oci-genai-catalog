@@ -2,6 +2,10 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-07-23
+
+- Removed the dedicated-cluster GPU configuration filter. OCI documents recommended shapes for imported models, not a monotonic compatibility matrix, so exact GPU-count matching could incorrectly imply that a model documented for `A10_X1` is incompatible with `A10_X2`.
+
 ## 2026-07-21
 
 - Refreshed the catalog from an authenticated OCI CLI scan across every subscribed `READY` region: the inventory remains 68 pretrained offerings across 13 queryable model regions, with 38 dedicated-unit Limits observations and 29 failed regional queries preserved.
