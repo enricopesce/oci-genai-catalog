@@ -2,6 +2,11 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-07-29
+
+- Refreshed the catalog from an authenticated OCI CLI scan across every subscribed `READY` region: 66 pretrained offerings across 13 queryable model regions, 38 dedicated-unit Limits observations, and 29 failed regional queries preserved.
+- The operational inventory now includes `google.gemini-3.1-flash-lite` and `google.gemini-3.5-flash`; four no-longer-observed Dreamina offering IDs were removed from the CLI-authoritative inventory.
+
 ## 2026-07-23
 
 - Removed the dedicated-cluster GPU configuration filter. OCI documents recommended shapes for imported models, not a monotonic compatibility matrix, so exact GPU-count matching could incorrectly imply that a model documented for `A10_X1` is incompatible with `A10_X2`.

@@ -2,13 +2,13 @@
 
 > **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), including active models and deprecated models still listed by Oracle, verified 21 July 2026. The site loads one published runtime data file: `catalog.json`.
+A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), including active models and deprecated models still listed by Oracle, verified 29 July 2026. The site loads one published runtime data file: `catalog.json`.
 
 ## What's inside
 
 | Section | Details |
 |---------|---------|
-| **OCI CLI operational inventory** | 68 unique pretrained offering IDs observed across 13 queryable subscribed regions, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
+| **OCI CLI operational inventory** | 66 unique pretrained offering IDs observed across 13 queryable subscribed regions, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
 | **Chat models** | 27 pretrained chat models across Cohere, Google, Meta, OpenAI, and xAI; 14 active and 13 deprecated |
 | **Embedding models** | 9 Cohere Embed models; Embed 4 active and Embed v3 variants deprecated |
 | **Rerank models** | 3 Cohere rerank models: Rerank 4.0 Fast and Pro active; Rerank 3.5 deprecated |
@@ -20,7 +20,7 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 
 ## Features
 
-- Canonical pretrained inventory records all 68 OCI CLI-observed model IDs, their capabilities, lifecycle states, regional observations, dedicated-unit Limits data, and failed regional queries
+- Canonical pretrained inventory records all 66 OCI CLI-observed model IDs, their capabilities, lifecycle states, regional observations, dedicated-unit Limits data, and failed regional queries
 - Documentation-enriched comparison views cover 27 chat models, 9 embedding models, and 3 rerank models with descriptive fields unavailable from OCI CLI
 - Every imported model has structured dedicated-cluster alternatives with `unitShape`, `gpuType`, `gpuCount`, required limit units, limit name, and AI unit count
 - 97 imported models across 12 Model Import families, including Qwen, DeepSeek, Gemma, Llama, MiniMax, Mistral, Kimi, Nemotron, Whisper, gpt-oss, and GLM entries

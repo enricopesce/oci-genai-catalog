@@ -1,8 +1,8 @@
 {
   "metadata": {
     "schemaVersion": "1.2",
-    "dataDate": "2026-07-21",
-    "version": "2026-07-21",
+    "dataDate": "2026-07-29",
+    "version": "2026-07-29",
     "description": "OCI Generative AI catalog with CLI-authoritative pretrained inventory and documentation-enriched imported-model deployment data.",
     "sources": {
       "imported": {
@@ -15,7 +15,7 @@
       },
       "pretrained": {
         "primary": {
-          "generatedAt": "2026-07-21T09:16:34Z",
+          "generatedAt": "2026-07-29T16:07:21Z",
           "scope": "active OCI regions queryable by the configured profile",
           "authority": "OCI CLI/API",
           "commands": [
@@ -184,7 +184,7 @@
               "query": "models"
             }
           ],
-          "observedUniqueModels": 68,
+          "observedUniqueModels": 66,
           "limitations": [
             "CLI output is the sole source for this snapshot.",
             "OCI CLI does not expose context windows, model tiers, use-case descriptions, or a definitive per-region on-demand access mode.",
@@ -4624,19 +4624,29 @@
         "regionalInventory": {
           "us-chicago-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaapi24rzaaosmjv5liywqvew2rtd2cffgek7f37jqlybl7zmolh5tq"
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaapi24rzaaosmjv5liywqvew2rtd2cffgek7f37jqlybl7zmolh5tq",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaapi24rzaaxh5ulr23qhwme4bbix3bu3x5opqswkaxpuirgcmo4m7a",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceya4bk5foxjdxe6332b6dmkzrdtqdulyodbek7ewzt5gqnq",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyafhwal37hxwylnpbcncidimbwteff4xha77n5xz4m7p6a"
             ],
             "capabilities": [
+              "FINE_TUNE",
               "TEXT_GENERATION"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
-              "Created"
+              "Base Model created",
+              "BaseModel created",
+              "Created",
+              "Created BaseModel"
             ],
             "timeCreated": [
-              "2023-09-08T18:58:04.529000+00:00"
+              "2023-09-08T18:58:04.529000+00:00",
+              "2023-10-13T21:21:33.212000+00:00",
+              "2023-12-01T20:46:38.865000+00:00",
+              "2024-01-02T21:06:03.031000+00:00"
             ],
             "timeDeprecated": [
               "2024-06-18T00:00:00+00:00"
@@ -5535,19 +5545,28 @@
         "regionalInventory": {
           "us-chicago-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaapi24rzaafk4jhk2p3dq5rglhmrmmwp7j6nieungz3yurjkdu4wkq"
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaapi24rzaafk4jhk2p3dq5rglhmrmmwp7j6nieungz3yurjkdu4wkq",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaapi24rzaalcbnpexqvkxpwfdcqskcupap27qtvr7ew5ierjpbih2a",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyacw6jlwbfskxv5e4yqd5yupgaxcn6x4q3esrv7punjo5a",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyad4uybcjtw475o4uqja3oz3kzrfhln7joysjxj3npp2la"
             ],
             "capabilities": [
+              "FINE_TUNE",
               "TEXT_GENERATION"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "Base Model created",
+              "BaseModel created",
               "Created"
             ],
             "timeCreated": [
-              "2023-09-08T18:59:27.153000+00:00"
+              "2023-09-08T18:59:27.153000+00:00",
+              "2023-09-08T22:20:13.843000+00:00",
+              "2023-12-01T20:42:45.284000+00:00",
+              "2024-01-02T20:50:08.484000+00:00"
             ],
             "timeDeprecated": [
               "2024-06-18T00:00:00+00:00"
@@ -5706,43 +5725,67 @@
         "regionalInventory": {
           "ap-osaka-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceya3lnbhnr52mylmwksij7i7si7ob75rjhmeukmrxxa7lea"
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceya26uefbj4fuhzeclsk4ezdugqgcajr7eadfoqqhyjlo5q",
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceya3lnbhnr52mylmwksij7i7si7ob75rjhmeukmrxxa7lea",
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyalwjpqcd6icypy4c5y5hac3gc3otp3kzt7xl3nnhfqfaa"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-19T04:13:29.601000+00:00"
+              "2024-11-19T04:13:29.601000+00:00",
+              "2024-11-25T17:38:58.221000+00:00",
+              "2026-02-25T20:55:06.133000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "eu-frankfurt-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyaeamxpkvjhthrqorbgbwlspi564yxfud6igdcdhdu2whq"
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyaa3g5rtig54mhpt2briv5f6varl3dln35es737hkjxryq",
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyaeamxpkvjhthrqorbgbwlspi564yxfud6igdcdhdu2whq",
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyafmiaqjdhjnfjenukmmspj5oftgdzuph7mkayklca2wra"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-14T21:20:57.603000+00:00"
+              "2024-11-14T21:20:57.603000+00:00",
+              "2024-11-14T21:24:10.125000+00:00",
+              "2026-02-26T02:36:07.167000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "me-riyadh-1": {
             "offeringIds": [
@@ -5772,23 +5815,35 @@
           },
           "uk-london-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyahpidcahiiyhcdmnvicfxo7suq3pxcimkyik75mbxziqq"
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceya2at63zoqyjhesbvxy5t3gjrkmwvu7mrpz5nm7liddbcq",
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyahpidcahiiyhcdmnvicfxo7suq3pxcimkyik75mbxziqq",
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyajm6lnylqes32aporpd3poe5b5slvc5qar3trdqpgvuwa"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-13T20:04:37.679000+00:00"
+              "2024-11-13T20:04:37.679000+00:00",
+              "2024-11-13T20:10:36.139000+00:00",
+              "2026-02-25T22:39:30.339000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "us-ashburn-1": {
             "offeringIds": [
@@ -5814,23 +5869,35 @@
           },
           "us-chicago-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyanrlpnq5ybfu5hnzarg7jomak3q6kyhkzjsl4qj24fyoq"
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyanrlpnq5ybfu5hnzarg7jomak3q6kyhkzjsl4qj24fyoq",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyas55cc2k3xfoppun5lc5cs3ntecg7bohu3ftzkdadfd4q",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaxakzjxuj7k6tv4trle7vn5ledi54edastlylajzv2pnq"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-13T20:43:22.735000+00:00"
+              "2024-11-13T20:43:22.735000+00:00",
+              "2024-11-13T20:50:20.690000+00:00",
+              "2026-02-26T06:13:17.845000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           }
         },
         "dedicatedClusterMapping": {
@@ -5892,19 +5959,23 @@
           },
           "eu-frankfurt-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyas2o6kah3r7rescpzejgeujubbdp3l7ixdivt7wmnkiva",
               "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyazi3cpmptwa52f7dgwyskloughcxtjgrqre3pngwtig4q"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-06-01T02:17:31.001000+00:00"
+              "2024-06-01T02:17:31.001000+00:00",
+              "2024-07-05T19:29:54.420000+00:00"
             ],
             "timeDeprecated": [
               "2024-11-14T00:00:00+00:00"
@@ -5918,19 +5989,23 @@
           },
           "uk-london-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyauryaezgbyqwehvckgv6sxv3mr7z2l2i4xpbtfoxkemfa"
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyauryaezgbyqwehvckgv6sxv3mr7z2l2i4xpbtfoxkemfa",
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyawajd4gxzovbrurc4mdgytxh7smyy6tacvwcazmdddeka"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-06-04T11:15:40.290000+00:00"
+              "2024-06-04T11:15:40.290000+00:00",
+              "2024-06-25T23:52:00.352000+00:00"
             ],
             "timeDeprecated": [
               "2024-11-14T00:00:00+00:00"
@@ -5944,19 +6019,23 @@
           },
           "us-chicago-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceya6zlum2tckeaw2slxb6bschxqcshevuhk72qmob26oxwa",
               "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyawk6mgunzodenakhkuwxanvt6wo3jcpf72ln52dymk4wq"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-05-30T22:43:42.344000+00:00"
+              "2024-05-30T22:43:42.344000+00:00",
+              "2024-07-08T21:19:08.959000+00:00"
             ],
             "timeDeprecated": [
               "2024-11-14T00:00:00+00:00"
@@ -6166,6 +6245,7 @@
         "regionalInventory": {
           "ap-osaka-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyavehogdjchroczjggyubpoj3vyvb43ycbmy5zh3irki5q",
               "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyayobenuynf4om42tyrr7scxwijpzwfajc6i6w5wjcmjbq"
             ],
             "capabilities": [
@@ -6178,14 +6258,22 @@
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-18T09:31:12.418000+00:00"
+              "2024-11-18T09:31:12.418000+00:00",
+              "2026-02-25T20:56:02.987000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "eu-frankfurt-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceya52go75h77yhndojcqhf4r4g6ykkcfk3buzcgzi4wlcra",
               "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyabdu6rjjmg75pixtecqvjen4x4st4mhs2a4zzfx5cgkmq"
             ],
             "capabilities": [
@@ -6198,14 +6286,22 @@
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-02T00:55:15.305000+00:00"
+              "2024-11-02T00:55:15.305000+00:00",
+              "2026-02-26T02:39:24.885000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "me-riyadh-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.me-riyadh-1.amaaaaaask7dceya5bxedqi2prj22x75l5mpxbqzo2rai262fgrwreaybafa",
               "ocid1.generativeaimodel.oc1.me-riyadh-1.amaaaaaask7dceya7tvtuq2xa5gjchm73s7qa73q7654vvc6ilxb7nmp237q"
             ],
             "capabilities": [
@@ -6218,7 +6314,8 @@
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-07-29T04:55:05.627000+00:00"
+              "2025-07-29T04:55:05.627000+00:00",
+              "2025-07-30T18:59:35.401000+00:00"
             ],
             "timeDeprecated": [
               "2025-05-01T00:00:00+00:00"
@@ -6232,7 +6329,8 @@
           },
           "uk-london-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceya5umoptfnq5yg7w2l5lte3fjpism64ismzmyehfcdh5cq"
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceya5umoptfnq5yg7w2l5lte3fjpism64ismzmyehfcdh5cq",
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceya6pzru2qw3naa6i6yksr7cxmp7gg57ebuaiyhabmj3lqq"
             ],
             "capabilities": [
               "CHAT"
@@ -6244,15 +6342,23 @@
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-01T19:08:17.989000+00:00"
+              "2024-11-01T19:08:17.989000+00:00",
+              "2026-02-25T22:41:39.542000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "us-ashburn-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceya7sjdzr3mm64jnkmnrgikwmkp3momtlknow4gwwe2whqa"
+              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceya7sjdzr3mm64jnkmnrgikwmkp3momtlknow4gwwe2whqa",
+              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyabo2nd4xk5gngbzuokfnqrvusg6aa3pv3efzzggsrhvfa"
             ],
             "capabilities": [
               "CHAT"
@@ -6264,17 +6370,23 @@
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-01-24T06:44:03.818000+00:00"
+              "2025-01-24T06:44:03.818000+00:00",
+              "2026-05-20T20:02:31.872000+00:00"
             ],
-            "timeDeprecated": [],
+            "timeDeprecated": [
+              "2025-05-01T00:00:00+00:00"
+            ],
             "timeOnDemandRetired": [
               "2025-05-01T00:00:00+00:00"
             ],
-            "timeDedicatedRetired": []
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "us-chicago-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaodm6rdyxmdzlddweh4amobzoo4fatlao2pwnekexmosq"
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaodm6rdyxmdzlddweh4amobzoo4fatlao2pwnekexmosq",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaxe2fxtv2l34bov7e44xn6t57dlbj3t23wnhd4agx6wka"
             ],
             "capabilities": [
               "CHAT"
@@ -6286,11 +6398,18 @@
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-01T19:39:58.628000+00:00"
+              "2024-11-01T19:39:58.628000+00:00",
+              "2026-02-26T06:26:22.617000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "us-phoenix-1": {
             "offeringIds": [
@@ -8899,206 +9018,6 @@
         }
       },
       {
-        "id": "dreamina.dreamina-seedance-2-0-260128",
-        "providers": [
-          "dreamina"
-        ],
-        "types": [
-          "BASE"
-        ],
-        "capabilities": [
-          "IMAGE_TEXT_TO_VIDEO",
-          "TEXT_TO_VIDEO"
-        ],
-        "longTermSupported": true,
-        "imageTextToTextSupported": false,
-        "observedRegions": [
-          "us-ashburn-1"
-        ],
-        "lifecycleStates": [
-          "ACTIVE"
-        ],
-        "regionalInventory": {
-          "us-ashburn-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyav2nadpyhcin45rgpwrmtua4dyfvzbb7dmbc5mpz2xqgq"
-            ],
-            "capabilities": [
-              "IMAGE_TEXT_TO_VIDEO",
-              "TEXT_TO_VIDEO"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Base Model created"
-            ],
-            "timeCreated": [
-              "2026-05-26T19:41:54.805000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          }
-        },
-        "dedicatedClusterMapping": {
-          "status": "not_exposed_by_cli",
-          "unitShapes": null,
-          "gpuCount": null,
-          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
-        }
-      },
-      {
-        "id": "dreamina.dreamina-seedance-2-0-fast-260128",
-        "providers": [
-          "dreamina"
-        ],
-        "types": [
-          "BASE"
-        ],
-        "capabilities": [
-          "IMAGE_TEXT_TO_VIDEO",
-          "TEXT_TO_VIDEO"
-        ],
-        "longTermSupported": true,
-        "imageTextToTextSupported": false,
-        "observedRegions": [
-          "us-ashburn-1"
-        ],
-        "lifecycleStates": [
-          "ACTIVE"
-        ],
-        "regionalInventory": {
-          "us-ashburn-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyagzxiofyu5eywgf4356abamkjnppwklmcjyck3fjx5wsa"
-            ],
-            "capabilities": [
-              "IMAGE_TEXT_TO_VIDEO",
-              "TEXT_TO_VIDEO"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Base Model created"
-            ],
-            "timeCreated": [
-              "2026-05-26T19:41:54.606000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          }
-        },
-        "dedicatedClusterMapping": {
-          "status": "not_exposed_by_cli",
-          "unitShapes": null,
-          "gpuCount": null,
-          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
-        }
-      },
-      {
-        "id": "dreamina.seedance-1-5-pro-251215",
-        "providers": [
-          "dreamina"
-        ],
-        "types": [
-          "BASE"
-        ],
-        "capabilities": [
-          "IMAGE_TEXT_TO_VIDEO",
-          "TEXT_TO_VIDEO"
-        ],
-        "longTermSupported": true,
-        "imageTextToTextSupported": false,
-        "observedRegions": [
-          "us-ashburn-1"
-        ],
-        "lifecycleStates": [
-          "ACTIVE"
-        ],
-        "regionalInventory": {
-          "us-ashburn-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyac4pykalynb3h4wkhddn6s7nah4gupjluzbt2rnrp4otq"
-            ],
-            "capabilities": [
-              "IMAGE_TEXT_TO_VIDEO",
-              "TEXT_TO_VIDEO"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Base Model created"
-            ],
-            "timeCreated": [
-              "2026-05-26T19:41:54.943000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          }
-        },
-        "dedicatedClusterMapping": {
-          "status": "not_exposed_by_cli",
-          "unitShapes": null,
-          "gpuCount": null,
-          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
-        }
-      },
-      {
-        "id": "dreamina.seedance-default",
-        "providers": [
-          "byteplus"
-        ],
-        "types": [
-          "BASE"
-        ],
-        "capabilities": [
-          "IMAGE_TEXT_TO_VIDEO",
-          "TEXT_TO_VIDEO"
-        ],
-        "longTermSupported": true,
-        "imageTextToTextSupported": false,
-        "observedRegions": [
-          "us-ashburn-1"
-        ],
-        "lifecycleStates": [
-          "ACTIVE"
-        ],
-        "regionalInventory": {
-          "us-ashburn-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyaxam5e3oo3zs5p7b52aghknoas5wypeu77aojwygh3ygq"
-            ],
-            "capabilities": [
-              "IMAGE_TEXT_TO_VIDEO",
-              "TEXT_TO_VIDEO"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Base Model created"
-            ],
-            "timeCreated": [
-              "2026-06-09T21:39:15.810000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          }
-        },
-        "dedicatedClusterMapping": {
-          "status": "not_exposed_by_cli",
-          "unitShapes": null,
-          "gpuCount": null,
-          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
-        }
-      },
-      {
         "id": "google.gemini-2.5-flash",
         "providers": [
           "google"
@@ -9495,6 +9414,102 @@
         }
       },
       {
+        "id": "google.gemini-3.1-flash-lite",
+        "providers": [
+          "google"
+        ],
+        "types": [
+          "BASE"
+        ],
+        "capabilities": [
+          "CHAT"
+        ],
+        "longTermSupported": true,
+        "imageTextToTextSupported": false,
+        "observedRegions": [
+          "ap-osaka-1"
+        ],
+        "lifecycleStates": [
+          "ACTIVE"
+        ],
+        "regionalInventory": {
+          "ap-osaka-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyaycbihkpgg6t7ayidewdxnz7i44ev6vplhubccjldrfcq"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-07-25T02:51:26.067000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          }
+        },
+        "dedicatedClusterMapping": {
+          "status": "not_exposed_by_cli",
+          "unitShapes": null,
+          "gpuCount": null,
+          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
+        }
+      },
+      {
+        "id": "google.gemini-3.5-flash",
+        "providers": [
+          "google"
+        ],
+        "types": [
+          "BASE"
+        ],
+        "capabilities": [
+          "CHAT"
+        ],
+        "longTermSupported": true,
+        "imageTextToTextSupported": false,
+        "observedRegions": [
+          "ap-osaka-1"
+        ],
+        "lifecycleStates": [
+          "ACTIVE"
+        ],
+        "regionalInventory": {
+          "ap-osaka-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyascfvxhtypm7thv4cocyooqtai42d3ffiai6pg2xnn6lq"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-07-25T02:51:26.026000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          }
+        },
+        "dedicatedClusterMapping": {
+          "status": "not_exposed_by_cli",
+          "unitShapes": null,
+          "gpuCount": null,
+          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
+        }
+      },
+      {
         "id": "meta.llama-3-70b-instruct",
         "providers": [
           "meta"
@@ -9521,19 +9536,23 @@
         "regionalInventory": {
           "ap-osaka-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyajx53fgpxxkhfbd6mwb6x3awhp7kd4y5qxysjnyb5clwq",
               "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyavgyzjsooayy7bjubpg25vhomcepdqje6jurqhjv33ega"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-01-23T07:19:40.649000+00:00"
+              "2025-01-23T07:19:40.649000+00:00",
+              "2025-05-17T02:23:46.407000+00:00"
             ],
             "timeDeprecated": [
               "2024-06-18T00:00:00+00:00"
@@ -9547,19 +9566,23 @@
           },
           "eu-frankfurt-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceya47muknh2iwh2oc6ojcszkgwv4qrsrcjg3hqmddzcsrba"
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceya47muknh2iwh2oc6ojcszkgwv4qrsrcjg3hqmddzcsrba",
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyauo27aj64jvt3iqt3ztuylst7nnosax63rudq3atpel5q"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
-              "Base Model created"
+              "Base Model created",
+              "BaseModel created"
             ],
             "timeCreated": [
-              "2024-05-07T19:19:25.508000+00:00"
+              "2024-05-07T19:19:25.508000+00:00",
+              "2024-05-14T00:00:03.941000+00:00"
             ],
             "timeDeprecated": [
               "2024-06-18T00:00:00+00:00"
@@ -9573,19 +9596,23 @@
           },
           "uk-london-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyadjhcug37ms6axzxsw67x55gew2kelekqeupkqs7omlqa",
               "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyaplxvoaiprdoltkphy3fg3ml2xxgt3mwrdptolv5fs5rq"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-05-14T09:52:34.421000+00:00"
+              "2024-05-14T09:52:34.421000+00:00",
+              "2024-05-22T17:50:55.982000+00:00"
             ],
             "timeDeprecated": [
               "2024-06-18T00:00:00+00:00"
@@ -9599,7 +9626,8 @@
           },
           "us-chicago-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyacvzhkgxj55hypq6r2s6prjdhli5eizvafigwvlw6qe7q"
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyacvzhkgxj55hypq6r2s6prjdhli5eizvafigwvlw6qe7q",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaycmwwnvu2gaqrffquofgmshlqzcdwpk727n4cykg34oa"
             ],
             "capabilities": [
               "CHAT",
@@ -9609,14 +9637,22 @@
               "ACTIVE"
             ],
             "lifecycleDetails": [
-              "BaseModel created"
+              "BaseModel created",
+              "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-05-09T00:02:34.024000+00:00"
+              "2024-05-09T00:02:34.024000+00:00",
+              "2024-05-09T00:09:35.422000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2024-06-18T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2024-11-12T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2025-08-07T00:00:00+00:00"
+            ]
           },
           "us-phoenix-1": {
             "offeringIds": [
@@ -9814,19 +9850,23 @@
         "regionalInventory": {
           "ap-osaka-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyaclp5mruwsfwjzwnlz4yhi374vqhkms5yd5y3xmmxd2tq"
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyaclp5mruwsfwjzwnlz4yhi374vqhkms5yd5y3xmmxd2tq",
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyawyw62w5h2lw4wtgoi6wiouseo4frxfmva5flzha2jupa"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-11-11T06:08:47.761000+00:00"
+              "2024-11-11T06:08:47.761000+00:00",
+              "2024-11-18T09:38:56.650000+00:00"
             ],
             "timeDeprecated": [
               "2025-02-07T00:00:00+00:00"
@@ -9840,7 +9880,8 @@
           },
           "eu-frankfurt-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyaafgjxeup773zisv5bynndtsuxxueil4ktkl4vv6jmdga"
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyaafgjxeup773zisv5bynndtsuxxueil4ktkl4vv6jmdga",
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyatobkuq6yg3lqeqhawaj3i7pckwaoeyf2liwnzvgtp6ba"
             ],
             "capabilities": [
               "CHAT",
@@ -9850,30 +9891,42 @@
               "ACTIVE"
             ],
             "lifecycleDetails": [
-              "BaseModel created"
+              "BaseModel created",
+              "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-09-17T23:38:39.503000+00:00"
+              "2024-09-17T23:38:39.503000+00:00",
+              "2024-09-18T04:22:38.850000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2025-02-07T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2025-07-10T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2025-08-07T00:00:00+00:00"
+            ]
           },
           "uk-london-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyalrn6qcppcwds5fwlnrp2jcn5dwywlkivqe47zlyuos5q",
               "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyarp4fbl4nicr66ibhaqqxg5w77nnzlgmof5hinslboika"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-09-17T18:40:21.647000+00:00"
+              "2024-09-17T18:40:21.647000+00:00",
+              "2024-09-17T18:58:17.244000+00:00"
             ],
             "timeDeprecated": [
               "2025-02-07T00:00:00+00:00"
@@ -9887,19 +9940,23 @@
           },
           "us-chicago-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaiir6nnhmlgwvh37dr2mvragxzszqmz3hok52pcgmpqta"
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaiir6nnhmlgwvh37dr2mvragxzszqmz3hok52pcgmpqta",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaqs2rjgakftp4qsh6r7pldt22np7u2jmaaawhchjmlkya"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2024-09-18T20:25:39.421000+00:00"
+              "2024-09-18T20:25:39.421000+00:00",
+              "2024-09-18T21:09:47.920000+00:00"
             ],
             "timeDeprecated": [
               "2025-02-07T00:00:00+00:00"
@@ -9984,9 +10041,15 @@
             "timeCreated": [
               "2024-11-18T09:27:05.688000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2024-11-21T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2024-11-21T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "uk-london-1": {
             "offeringIds": [
@@ -10107,9 +10170,15 @@
             "timeCreated": [
               "2024-11-19T04:14:36.463000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "me-riyadh-1": {
             "offeringIds": [
@@ -10220,7 +10289,8 @@
         "regionalInventory": {
           "ap-hyderabad-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-hyderabad-1.amaaaaaask7dceyaczsujuo5r4bsxbqabbpsdyzu2d3c2cptpgynmw6cwpbq"
+              "ocid1.generativeaimodel.oc1.ap-hyderabad-1.amaaaaaask7dceyaczsujuo5r4bsxbqabbpsdyzu2d3c2cptpgynmw6cwpbq",
+              "ocid1.generativeaimodel.oc1.ap-hyderabad-1.amaaaaaask7dceyasfsbkw6v5y34rnb6mo7a3o7dr2av4ho6rdbra5ofqrdq"
             ],
             "capabilities": [
               "CHAT",
@@ -10233,27 +10303,36 @@
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-06-27T17:49:14.319000+00:00"
+              "2025-06-27T17:49:14.319000+00:00",
+              "2025-06-27T17:49:14.378000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
+            "timeDeprecated": [
+              "2025-05-01T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2025-05-01T00:00:00+00:00"
+            ],
             "timeDedicatedRetired": []
           },
           "ap-osaka-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceya2f5s3u3cujohpegyu2me6fnod3v5fxrj5vztdecdzk2q",
               "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyaei4b6vhy7rgsqzuqet4ndnnun4fhxco2tfzusslg35wa"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-01-15T20:52:59.374000+00:00"
+              "2025-01-15T20:52:59.374000+00:00",
+              "2025-03-05T18:13:25.427000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -10261,19 +10340,23 @@
           },
           "eu-frankfurt-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceya4tdabclcsqbc3yj2mozvvqoq5ccmliv3354hfu3mx6bq"
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceya4tdabclcsqbc3yj2mozvvqoq5ccmliv3354hfu3mx6bq",
+              "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyawtgjdjsbztdju55myfzwrhkptcw5s7upofzhkfuhoqhq"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-01-31T20:11:24.570000+00:00"
+              "2025-01-31T20:11:24.570000+00:00",
+              "2025-03-07T01:59:29.324000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -10281,19 +10364,23 @@
           },
           "me-riyadh-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.me-riyadh-1.amaaaaaask7dceyaiegrg4tl7uliratox65rbnsw4f2ainpgbvdbjfcj2pma"
+              "ocid1.generativeaimodel.oc1.me-riyadh-1.amaaaaaask7dceyaiegrg4tl7uliratox65rbnsw4f2ainpgbvdbjfcj2pma",
+              "ocid1.generativeaimodel.oc1.me-riyadh-1.amaaaaaask7dceyaz27xls2b2utujvzv43k4pomaq7v2kyr7utt4vg4wz7ua"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-07-21T17:37:28.267000+00:00"
+              "2025-07-21T17:37:28.267000+00:00",
+              "2025-07-22T01:47:36.565000+00:00"
             ],
             "timeDeprecated": [
               "2025-05-01T00:00:00+00:00"
@@ -10305,19 +10392,23 @@
           },
           "uk-london-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyach2dyu6g5w5ocnvbkto2g76wxitj3rpddplsqoxqh2lq"
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyach2dyu6g5w5ocnvbkto2g76wxitj3rpddplsqoxqh2lq",
+              "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyaymvuoythzhynbtzrp4wp4fywfqwrhbkhkuipv6nromyq"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-01-15T22:21:43.470000+00:00"
+              "2025-01-15T22:21:43.470000+00:00",
+              "2025-03-07T00:41:29.729000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -10325,19 +10416,23 @@
           },
           "us-chicago-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyajqi26fkxly6qje5ysvezzrypapl7ujdnqfjq6hzo2loq"
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyajqi26fkxly6qje5ysvezzrypapl7ujdnqfjq6hzo2loq",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyazz5xnau6rie75wc2imyk4z54b6rg3z6rpbdlhox4cm7a"
             ],
             "capabilities": [
-              "CHAT"
+              "CHAT",
+              "FINE_TUNE"
             ],
             "lifecycleStates": [
               "ACTIVE"
             ],
             "lifecycleDetails": [
+              "BaseModel created",
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2025-01-15T22:50:29.699000+00:00"
+              "2025-01-15T22:50:29.699000+00:00",
+              "2025-03-07T23:51:52.481000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -13797,10 +13892,13 @@
         "regionalInventory": {
           "us-ashburn-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyabunqeeexcdv5m3pg26indxfdp4vvfyh7bqu2ew3k5v5q"
+              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyabunqeeexcdv5m3pg26indxfdp4vvfyh7bqu2ew3k5v5q",
+              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyavhpf5h2hsckzxatsbbebctet2cwv76nrecqdugxgyjja"
             ],
             "capabilities": [
-              "CHAT"
+              "AUDIO_TO_AUDIO",
+              "CHAT",
+              "REALTIME"
             ],
             "lifecycleStates": [
               "ACTIVE"
@@ -13809,7 +13907,8 @@
               "Base Model created"
             ],
             "timeCreated": [
-              "2026-04-17T17:53:26.684000+00:00"
+              "2026-04-17T17:53:26.684000+00:00",
+              "2026-05-07T21:04:53.527000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -13817,10 +13916,13 @@
           },
           "us-chicago-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyafyglq6nyz4zzomd26dvhvxcq4zfr2moa2e6nkquc4peq"
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyafyglq6nyz4zzomd26dvhvxcq4zfr2moa2e6nkquc4peq",
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyaxjtckpbt4cumjahh2jh2dz6ajaof2pntrlqybjnotoka"
             ],
             "capabilities": [
-              "CHAT"
+              "AUDIO_TO_AUDIO",
+              "CHAT",
+              "REALTIME"
             ],
             "lifecycleStates": [
               "ACTIVE"
@@ -13829,7 +13931,8 @@
               "Base Model created"
             ],
             "timeCreated": [
-              "2026-05-08T00:52:16.280000+00:00"
+              "2026-05-08T00:52:16.280000+00:00",
+              "2026-05-08T21:10:37.445000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -13837,10 +13940,13 @@
           },
           "us-phoenix-1": {
             "offeringIds": [
+              "ocid1.generativeaimodel.oc1.phx.amaaaaaask7dceyanf5tkvc2lxlxqczs4zhswvtwfbi426v6z6g3tdaqargq",
               "ocid1.generativeaimodel.oc1.phx.amaaaaaask7dceyaxbfl5mxysxoele34j3u5f5x5jmijxjnx23sgkgn7edhq"
             ],
             "capabilities": [
-              "CHAT"
+              "AUDIO_TO_AUDIO",
+              "CHAT",
+              "REALTIME"
             ],
             "lifecycleStates": [
               "ACTIVE"
@@ -13849,7 +13955,8 @@
               "Base Model created"
             ],
             "timeCreated": [
-              "2026-04-17T18:11:38.183000+00:00"
+              "2026-04-17T18:11:38.183000+00:00",
+              "2026-05-07T21:09:50.802000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -16568,147 +16675,147 @@
       {
         "region": "af-casablanca-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"C252FC4F1D2E4632BD0E9110137917BE/9D4B678DED222E9CDB385F6A4C454A0F/0337F381E3746F858EE276DC01C52BB8\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.af-casablanca-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:11.606614+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"0A8EC8EFF24F4A3D90BDB57E96F7B20A/CF5AAB6ECD1A3D6022256A6A4C454A2A/64E75E424BECCA8FBEE299D2CA52B1E6\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.af-casablanca-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:06:58.109795+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "af-johannesburg-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"D4BC7C05EF214BF29C61D92E1147530D/B61C16C8FD6B5CE9DB385F6A4A4E4252/16F8C52B143C1130276C51DF0DDB8152\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.af-johannesburg-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:12.015380+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"34913FAF6AEB45EC8067B77A676BF17A/DC69811AAFC7123C22256A6A4A4E42D0/E1A8851903A2FB97A2BE0D8D4FC6EFC3\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.af-johannesburg-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:06:58.820729+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "ap-melbourne-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"459E222DBABA4AA480FBB7933E19B02A/C7EE3498689A45DDDC385F6A4D454C5E/CDD921B705925B65DB60D645AEF1FAE3\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-melbourne-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:12.417148+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"FB3858EAB2204A21A79C4F707B088688/5C4433C1BB264BA123256A6A4D454CBA/D695E65C47CC75195EF18B607EF54C9D\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-melbourne-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:06:59.395378+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "ap-mumbai-1",
         "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-21T09:16:11.570584\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:06:57.931825\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "ap-singapore-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"34BEC72B33F6441BB1E9F5D7B4CA780A/1BF85E43D08A0420DD385F6A53494E6E/AA8B3ED55CE71AC03C47BD36F9701224\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-singapore-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:13.408071+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"D9B3F367582349B883575DF89BF834C4/E967357BC199EF2B23256A6A53494E67/89A0A2E40FB27D4992B5557C46463F40\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-singapore-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:06:59.929165+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "ap-sydney-1",
         "query": "models",
-        "error": "TransientServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"InternalError\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Bad Gateway\",\n    \"opc-request-id\": \"633BEB4DF43043FBBF0F6F80C5520DC0/73BAB9BC35CC1448DE385F6A53594485/74B246D97D60573D456876E6400BEA87\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-sydney-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 502,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:32.624727+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "TransientServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"InternalError\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Bad Gateway\",\n    \"opc-request-id\": \"F60DB10F28294535A71734401AE2DADC/8845A712BCB00B0825256A6A53594495/85DE4442EA5B1EF066531AF36FEA031C\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-sydney-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 502,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:19.515505+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-amsterdam-1",
         "query": "models",
-        "error": "TransientServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"InternalError\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Bad Gateway\",\n    \"opc-request-id\": \"3F22C13CEA2C4A0BBBBB34F78D1723BC/D03F8476781E5E85DE385F6A414D5329/B299BF14A9965895D990B86CCF6D7E85\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-amsterdam-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 502,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:32.783014+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "TransientServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"InternalError\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Bad Gateway\",\n    \"opc-request-id\": \"1270E9B463D34DBBA7ED6510DADC8687/744BF38733739B5A25256A6A414D536C/DE7D8834EC7ACACB9298551729D01090\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-amsterdam-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 502,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:19.433845+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-dublin-3",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"6F6930186CF64838B3A78221AB7565C9/DF8B9EBF9BA3948EDE385F6A5A514FEE/6BF9EC24D0C74A91AA12245125C22A28\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-dublin-3.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:14.843172+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"9FEDFF5DEA2B478994992E24D2EC33D5/24813577AA7B023425256A6A5A514FD1/915BBF3B18A177915A8D6FBD65E97331\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-dublin-3.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:01.776488+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-madrid-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"D957FB1195374227A5E5C2185126D470/8A34DF571A659F2ADF385F6A4D414463/765457725F33CD0B222EC983A5211064\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-madrid-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:15.926069+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"049C0DDBC2754F3D9CBA5EA7B69322F4/0511F467B244640126256A6A4D4144AF/AADBB7D464435F79255B7445682CC4EF\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-madrid-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:02.273830+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-madrid-3",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"F2E1016232E440C99B5850669FFB5FFA/B68D281A295179B1DF385F6A4F524614/8ADE3E383ADC6965A266CA3D20A30FF4\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-madrid-3.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:15.971617+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"B0E861CC6C414BB0A439AE666C4E0C00/FB7AA9DDEB7770D527256A6A4F5246D4/9F1188BBB4837C857D394DD7703E319C\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-madrid-3.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:03.030874+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-marseille-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"CC4110DD76474332A4F5AF3E2A224903/B5E4744DC0353378E0385F6A4D52532E/4412C1D1B9169E460E99259A8010B21A\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-marseille-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:16.415123+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"D6DD9125DE9D4FACBA5ABA6A94C4FA8E/C4F080BC7298F0EB27256A6A4D52537E/7596D87DA7DF80BE3406231125C6E8AF\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-marseille-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:03.053927+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-milan-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"D8BF36F4DA1648E79DB302DED8373429/2D3D8114848AAE1EE0385F6A4C494E49/072C980343B8B70EBBA7ED430A14D79B\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-milan-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:16.952515+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"023C6750BC7A4C63BDD67BDF6F48A71A/2D55C5B5379F1E6427256A6A4C494E9F/486254DB34AD16DC3AD5090404277B4D\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-milan-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:03.384906+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-paris-1",
         "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-21T09:16:17.060758\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:04.094788\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-stockholm-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"F2C9332E8FA147F186AF57FF45DA4A43/91F358AE9000F77FE1385F6A41524EF4/EEDD8F453F0D3FA4F7288C5DB38C91AA\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-stockholm-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:17.223668+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"72A164290EB54F3A9B81FD15EB663BB5/19E15E0D3CCD75B528256A6A41524E41/F22BB3998EC0852AE5977E2DE206AA72\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-stockholm-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:04.432239+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-turin-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"FC81A3BECC1F4548A11B5A5F97E8CE22/1B49F115D1821AF8E1385F6A4E5251B2/1748685BD5AEF0C3C404A73B315F8E92\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-turin-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:17.715963+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"A867D414826F49CBAEFE43BF90B4DA22/315A34EBDAAE823A28256A6A4E52517A/399D13174D88384C851797931B2E8C6E\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-turin-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:04.353200+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-zurich-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"ED090B174E2F46939408F79CBB713B9D/272176AE8195498DE2385F6A5A5248BF/8070EA393D3B6601B3D11266C1ABF203\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-zurich-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:18.039583+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"F2CA3EB4AF7641479C3E1A16CDC155C0/7141FE7B2E6FA5CA28256A6A5A5248CB/E5930A55D05C129C1FE7376C642484AA\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-zurich-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:04.321783+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "il-jerusalem-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"2FEDA134649149738C87AA240D932CB0/590F05AAE2156A65E2385F6A4D545A7A/DB453845C287B136B59A89E9A81CA626\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.il-jerusalem-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:18.561375+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"5CE6652B7660447CB128DA2ACD02CBBD/D780C31D1C9842A129256A6A4D545A8F/8794DF07D767F8D73DB67B8989C5AA32\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.il-jerusalem-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:05.536816+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "me-jeddah-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"65FF02B9FDC941168981152A6EB839C0/491340DAF8F44AADE3385F6A4A45449F/1F3224AE7177CA5F42BF6DD6B6D7C30F\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.me-jeddah-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:19.415733+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"E3B01C407F3941FFBA358316395FA996/8639F2CE9562D3AF29256A6A4A4544C7/9145335DFD4CE86F5E31640A4EAB2FF0\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.me-jeddah-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:05.810035+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "me-neom-1",
         "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-21T09:16:19.851176\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:06.758730\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "me-neom-1",
         "query": "clusterSizing",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-21T09:16:20.234733\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:07.166846\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "mx-monterrey-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"47558CCEAE9B4CDBB0CDCE9E30C6799E/0A233C732B512954E5385F6A4D545959/DDF22923B4388CB2B43F33A21D7E6B09\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.mx-monterrey-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:21.358462+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"5326057F2E6848378E305D298A8D28E2/4B988F3D4052268C2C256A6A4D545914/A2F7CBD06B2C97B64876C380CBD3E18F\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.mx-monterrey-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:08.211551+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "mx-queretaro-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"2E08643A691F4985B56A826FA8528D52/51F712B2A64A032CE5385F6A51524F49/3BC08A1664AE7AA1AA34EBC770CCC9C3\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.mx-queretaro-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:21.525107+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"7BA23002271C4F8E9223C231BCDF2A9D/E0424B63C2D0295C2C256A6A51524FD9/8E6DB51B4A67E2FB0D324530F9E51A08\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.mx-queretaro-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:08.270787+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "sa-santiago-1",
         "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-21T09:16:21.069353\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:07.828428\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "uk-cardiff-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"20723CD76DD84BB2B9DD99ED6A6C00F1/8BE9311A0F38770DE6385F6A43574C7E/5E3867E5F28D0C1C16BED45F537920F4\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.uk-cardiff-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:22.276501+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"F37B8CD6FC034D2D8F1434AB89F2715F/658CBA44B568EBFF2D256A6A43574C41/77ED8835F2114B0DEC44B235879365BD\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.uk-cardiff-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:09.031197+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-abilene-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"61B984A157DE452586AF6D71A6CD0DE6/27546ECACE703E64E7385F6A41424CAC/2720650D6424A44A01A7CEAD566BE3EB\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-abilene-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:23.449468+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"C803E4A1EDD4464D8F62E4F79AA79D06/8199A22E5DFF8F862E256A6A41424C0A/3CC81C022DE0E93B872405E132153630\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-abilene-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:10.490936+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-dallas-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"B13746FBEDE7445CA8D36312E33D1B4D/83E08853B9677D7DE8385F6A444657B6/3C0F5E5997C5DDF324891CD62426AE6A\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-dallas-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:24.953809+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"30ED592EDB6E4AC5997F4EC9CF5DE978/0185EF76E19582762F256A6A44465729/FA496BEFD0EB3D00F294EB397CC5F0BB\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-dallas-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:11.813082+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-saltlake-1",
         "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-21T09:16:25.159939\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:12.264877\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-saltlake-1",
         "query": "clusterSizing",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-21T09:16:25.498279\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:12.592606\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-saltlake-2",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"FF2BBF536F0F4C6DAF2A3E4DA46E7AA0/88F0DA0FA771C86FEA385F6A41474119/2E89792D54485B250658CB3A5EA2D10F\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-saltlake-2.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-21T09:16:26.151118+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"DE37D7CFF2EE49568B10DDD1ADAE192D/8DA874E1B85232FC30256A6A41474100/8C0CFFCA593B4BE16098551E6C6556D5\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-saltlake-2.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:12.951577+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       }
     ]
   }
