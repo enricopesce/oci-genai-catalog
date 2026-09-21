@@ -1,8 +1,8 @@
 {
   "metadata": {
     "schemaVersion": "1.2",
-    "dataDate": "2026-07-29",
-    "version": "2026-07-29",
+    "dataDate": "2026-09-21",
+    "version": "2026-09-21",
     "description": "OCI Generative AI catalog with CLI-authoritative pretrained inventory and documentation-enriched imported-model deployment data.",
     "sources": {
       "imported": {
@@ -15,7 +15,7 @@
       },
       "pretrained": {
         "primary": {
-          "generatedAt": "2026-07-29T16:07:21Z",
+          "generatedAt": "2026-09-21T09:22:30Z",
           "scope": "active OCI regions queryable by the configured profile",
           "authority": "OCI CLI/API",
           "commands": [
@@ -23,14 +23,26 @@
             "OCI CLI limits value list --service-name ai-generative"
           ],
           "successfulRegions": [
+            "af-casablanca-1",
             "ap-hyderabad-1",
+            "ap-melbourne-1",
+            "ap-mumbai-1",
             "ap-osaka-1",
+            "ap-singapore-1",
             "ap-singapore-2",
+            "ap-sydney-1",
             "ap-tokyo-1",
+            "eu-amsterdam-1",
             "eu-frankfurt-1",
+            "eu-madrid-1",
+            "eu-milan-1",
+            "eu-paris-1",
+            "eu-stockholm-1",
             "me-abudhabi-1",
             "me-dubai-1",
             "me-riyadh-1",
+            "mx-queretaro-1",
+            "sa-santiago-1",
             "uk-london-1",
             "us-ashburn-1",
             "us-chicago-1",
@@ -38,28 +50,17 @@
             "us-sanjose-1"
           ],
           "failedRegions": [
-            "af-casablanca-1",
             "af-johannesburg-1",
-            "ap-melbourne-1",
-            "ap-mumbai-1",
-            "ap-singapore-1",
-            "ap-sydney-1",
-            "eu-amsterdam-1",
+            "ca-toronto-1",
             "eu-dublin-3",
-            "eu-madrid-1",
             "eu-madrid-3",
             "eu-marseille-1",
-            "eu-milan-1",
-            "eu-paris-1",
-            "eu-stockholm-1",
             "eu-turin-1",
             "eu-zurich-1",
             "il-jerusalem-1",
             "me-jeddah-1",
             "me-neom-1",
             "mx-monterrey-1",
-            "mx-queretaro-1",
-            "sa-santiago-1",
             "uk-cardiff-1",
             "us-abilene-1",
             "us-dallas-1",
@@ -68,39 +69,15 @@
           ],
           "failedQueries": [
             {
-              "region": "af-casablanca-1",
-              "query": "models"
-            },
-            {
               "region": "af-johannesburg-1",
               "query": "models"
             },
             {
-              "region": "ap-melbourne-1",
-              "query": "models"
-            },
-            {
-              "region": "ap-mumbai-1",
-              "query": "models"
-            },
-            {
-              "region": "ap-singapore-1",
-              "query": "models"
-            },
-            {
-              "region": "ap-sydney-1",
-              "query": "models"
-            },
-            {
-              "region": "eu-amsterdam-1",
+              "region": "ca-toronto-1",
               "query": "models"
             },
             {
               "region": "eu-dublin-3",
-              "query": "models"
-            },
-            {
-              "region": "eu-madrid-1",
               "query": "models"
             },
             {
@@ -109,18 +86,6 @@
             },
             {
               "region": "eu-marseille-1",
-              "query": "models"
-            },
-            {
-              "region": "eu-milan-1",
-              "query": "models"
-            },
-            {
-              "region": "eu-paris-1",
-              "query": "models"
-            },
-            {
-              "region": "eu-stockholm-1",
               "query": "models"
             },
             {
@@ -152,14 +117,6 @@
               "query": "models"
             },
             {
-              "region": "mx-queretaro-1",
-              "query": "models"
-            },
-            {
-              "region": "sa-santiago-1",
-              "query": "models"
-            },
-            {
               "region": "uk-cardiff-1",
               "query": "models"
             },
@@ -184,7 +141,7 @@
               "query": "models"
             }
           ],
-          "observedUniqueModels": 66,
+          "observedUniqueModels": 65,
           "limitations": [
             "CLI output is the sole source for this snapshot.",
             "OCI CLI does not expose context windows, model tiers, use-case descriptions, or a definitive per-region on-demand access mode.",
@@ -193,9 +150,9 @@
           ]
         },
         "secondary": {
-          "dataDate": "2026-07-21",
+          "dataDate": "2026-09-21",
           "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/",
-          "version": "2026-07-21",
+          "version": "2026-09-21",
           "regionDefinitions": {
             "us-ashburn-1": "US East (Ashburn)",
             "us-chicago-1": "US Midwest (Chicago)",
@@ -2717,6 +2674,68 @@
   "pretrained": {
     "chatModels": [
       {
+        "name": "Command A",
+        "id": "cohere.command-a-03-2025",
+        "altIds": [],
+        "provider": "cohere",
+        "callType": "hosted",
+        "tier": "balanced",
+        "tierLabel": "Flagship Chat",
+        "parameters": "111B",
+        "activeParameters": "111B",
+        "architecture": null,
+        "contextWindowLabel": "256K",
+        "contextWindowK": 256,
+        "contextClass": "xl",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": "Advanced",
+        "reasoning": null,
+        "reasoningDetail": null,
+        "ragOptimized": true,
+        "ragOptimizedDetail": null,
+        "openWeights": false,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "active",
+        "statusLabel": "GA (Mar 2025)",
+        "bestFor": "Agentic enterprise tasks, RAG, multilingual, high-throughput production",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "dedicated",
+          "us-chicago-1": "both",
+          "sa-saopaulo-1": "both",
+          "eu-frankfurt-1": "both",
+          "uk-london-1": "both",
+          "me-riyadh-1": "both",
+          "me-dubai-1": "dedicated",
+          "ap-hyderabad-1": "both",
+          "ap-osaka-1": "both"
+        },
+        "wizardTasks": [
+          "rag",
+          "chat"
+        ],
+        "wizardTier": [
+          "flagship",
+          "balanced"
+        ],
+        "wizardCtx": "large",
+        "wizardWhy": "256K context · flagship chat · high-throughput production"
+      },
+      {
         "name": "Command A Reasoning",
         "id": "cohere.command-a-reasoning",
         "altIds": [],
@@ -2842,129 +2861,6 @@
         "wizardWhy": "Enterprise multimodal — images, charts, documents"
       },
       {
-        "name": "Command A",
-        "id": "cohere.command-a-03-2025",
-        "altIds": [],
-        "provider": "cohere",
-        "callType": "hosted",
-        "tier": "balanced",
-        "tierLabel": "Flagship Chat",
-        "parameters": "111B",
-        "activeParameters": "111B",
-        "architecture": null,
-        "contextWindowLabel": "256K",
-        "contextWindowK": 256,
-        "contextClass": "xl",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": "Advanced",
-        "reasoning": null,
-        "reasoningDetail": null,
-        "ragOptimized": true,
-        "ragOptimizedDetail": null,
-        "openWeights": false,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "active",
-        "statusLabel": "GA (Mar 2025)",
-        "bestFor": "Agentic enterprise tasks, RAG, multilingual, high-throughput production",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "dedicated",
-          "us-chicago-1": "both",
-          "sa-saopaulo-1": "both",
-          "eu-frankfurt-1": "both",
-          "uk-london-1": "both",
-          "me-riyadh-1": "both",
-          "me-dubai-1": "dedicated",
-          "ap-hyderabad-1": "both",
-          "ap-osaka-1": "both"
-        },
-        "wizardTasks": [
-          "rag",
-          "chat"
-        ],
-        "wizardTier": [
-          "flagship",
-          "balanced"
-        ],
-        "wizardCtx": "large",
-        "wizardWhy": "256K context · flagship chat · high-throughput production"
-      },
-      {
-        "name": "Command R+ 08-2024",
-        "id": "cohere.command-r-plus-08-2024",
-        "altIds": [],
-        "provider": "cohere",
-        "callType": "hosted",
-        "tier": "balanced",
-        "tierLabel": "Advanced",
-        "parameters": "104B",
-        "activeParameters": "104B",
-        "architecture": null,
-        "contextWindowLabel": "128K",
-        "contextWindowK": 128,
-        "contextClass": "lg",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": null,
-        "reasoningDetail": null,
-        "ragOptimized": true,
-        "ragOptimizedDetail": null,
-        "openWeights": false,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "deprecated",
-        "statusLabel": "Deprecated",
-        "bestFor": "Complex specialized tasks, Q&A, sentiment, multilingual RAG",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "dedicated",
-          "us-chicago-1": "both",
-          "us-phoenix-1": "both",
-          "sa-saopaulo-1": "both",
-          "eu-frankfurt-1": "both",
-          "uk-london-1": "both",
-          "me-riyadh-1": "dedicated",
-          "me-dubai-1": "dedicated",
-          "ap-osaka-1": "both"
-        },
-        "wizardTasks": [
-          "rag",
-          "chat"
-        ],
-        "wizardTier": [
-          "balanced"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "128K context · advanced RAG · multilingual Q&A"
-      },
-      {
         "name": "Command R 08-2024",
         "id": "cohere.command-r-08-2024",
         "altIds": [],
@@ -3026,32 +2922,32 @@
         "wizardWhy": "RAG-optimized · fine-tunable · cost-efficient production"
       },
       {
-        "name": "Gemini 2.5 Pro",
-        "id": "google.gemini-2.5-pro",
+        "name": "Command R+ 08-2024",
+        "id": "cohere.command-r-plus-08-2024",
         "altIds": [],
-        "provider": "google",
-        "callType": "external",
-        "tier": "flagship",
-        "tierLabel": "Flagship",
-        "parameters": null,
-        "activeParameters": null,
+        "provider": "cohere",
+        "callType": "hosted",
+        "tier": "balanced",
+        "tierLabel": "Advanced",
+        "parameters": "104B",
+        "activeParameters": "104B",
         "architecture": null,
-        "contextWindowLabel": "1M",
-        "contextWindowK": 1000,
-        "contextClass": "huge",
-        "multimodal": true,
-        "multimodalDetail": "Text, Image, Code, Audio, Video",
+        "contextWindowLabel": "128K",
+        "contextWindowK": 128,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
         "multimodalNote": null,
         "fineTunable": false,
         "fineTunableDetail": null,
         "toolUse": true,
         "toolUseDetail": null,
-        "reasoning": true,
-        "reasoningDetail": "Advanced Reasoning",
-        "ragOptimized": false,
+        "reasoning": null,
+        "reasoningDetail": null,
+        "ragOptimized": true,
         "ragOptimizedDetail": null,
         "openWeights": false,
-        "speedProfile": "Deep / Accurate",
+        "speedProfile": null,
         "speedProfileClass": null,
         "thinking": false,
         "thinkingDetail": null,
@@ -3061,28 +2957,30 @@
         "domainKnowledgeDetail": null,
         "agentic": false,
         "agenticDetail": null,
-        "status": "active",
-        "statusLabel": "GA",
-        "bestFor": "Most complex multimodal problems, large dataset analysis, SOTA reasoning tasks",
+        "status": "deprecated",
+        "statusLabel": "Deprecated",
+        "bestFor": "Complex specialized tasks, Q&A, sentiment, multilingual RAG",
         "tags": [],
         "regions": {
-          "us-ashburn-1": "ondemand",
-          "us-chicago-1": "ondemand",
-          "us-phoenix-1": "ondemand",
-          "eu-frankfurt-1": "ondemand",
-          "ap-osaka-1": "ondemand"
+          "us-ashburn-1": "dedicated",
+          "us-chicago-1": "both",
+          "us-phoenix-1": "both",
+          "sa-saopaulo-1": "both",
+          "eu-frankfurt-1": "both",
+          "uk-london-1": "both",
+          "me-riyadh-1": "dedicated",
+          "me-dubai-1": "dedicated",
+          "ap-osaka-1": "both"
         },
         "wizardTasks": [
           "rag",
-          "code",
-          "vision",
           "chat"
         ],
         "wizardTier": [
-          "flagship"
+          "balanced"
         ],
-        "wizardCtx": "huge",
-        "wizardWhy": "1M context · SOTA reasoning · text + image + audio + video"
+        "wizardCtx": "standard",
+        "wizardWhy": "128K context · advanced RAG · multilingual Q&A"
       },
       {
         "name": "Gemini 2.5 Flash",
@@ -3201,491 +3099,13 @@
         "wizardWhy": "Lowest-latency Gemini · 1M context · cost-optimized volume"
       },
       {
-        "name": "Llama 4 Maverick",
-        "id": "meta.llama-4-maverick-17b-128e-instruct-fp8",
+        "name": "Gemini 2.5 Pro",
+        "id": "google.gemini-2.5-pro",
         "altIds": [],
-        "provider": "meta",
-        "callType": "hosted",
-        "tier": "flagship",
-        "tierLabel": "Flagship MoE",
-        "parameters": "~400B",
-        "activeParameters": "17B",
-        "architecture": "MoE · 128 Experts",
-        "contextWindowLabel": "512K",
-        "contextWindowK": 512,
-        "contextClass": "xl",
-        "multimodal": true,
-        "multimodalDetail": "Text + Image",
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": true,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "active",
-        "statusLabel": "GA (2025)",
-        "bestFor": "Multimodal understanding, multilingual, coding, agentic systems, large-scale inference",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "both",
-          "us-chicago-1": "both",
-          "sa-saopaulo-1": "dedicated",
-          "uk-london-1": "dedicated",
-          "me-riyadh-1": "dedicated",
-          "me-abudhabi-1": "dedicated",
-          "ap-hyderabad-1": "dedicated",
-          "ap-osaka-1": "dedicated"
-        },
-        "wizardTasks": [
-          "code",
-          "vision",
-          "chat"
-        ],
-        "wizardTier": [
-          "flagship"
-        ],
-        "wizardCtx": "large",
-        "wizardWhy": "Open MoE flagship · text + image · 512K context · multilingual"
-      },
-      {
-        "name": "Llama 4 Scout",
-        "id": "meta.llama-4-scout-17b-16e-instruct",
-        "altIds": [],
-        "provider": "meta",
-        "callType": "hosted",
-        "tier": "balanced",
-        "tierLabel": "Efficient MoE",
-        "parameters": "~109B",
-        "activeParameters": "17B",
-        "architecture": "MoE · 16 Experts",
-        "contextWindowLabel": "192K",
-        "contextWindowK": 192,
-        "contextClass": "xl",
-        "multimodal": true,
-        "multimodalDetail": "Text + Image",
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": true,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "active",
-        "statusLabel": "GA (2025)",
-        "bestFor": "Smaller GPU deployments, efficient multimodal, multilingual, coding",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "both",
-          "us-chicago-1": "both",
-          "sa-saopaulo-1": "dedicated",
-          "uk-london-1": "dedicated",
-          "me-riyadh-1": "dedicated",
-          "me-abudhabi-1": "dedicated",
-          "ap-hyderabad-1": "dedicated",
-          "ap-osaka-1": "dedicated"
-        },
-        "wizardTasks": [
-          "code",
-          "vision",
-          "chat"
-        ],
-        "wizardTier": [
-          "balanced"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Efficient open MoE · multimodal · 192K context"
-      },
-      {
-        "name": "Llama 3.3 70B",
-        "id": "meta.llama-3.3-70b-instruct",
-        "altIds": [],
-        "provider": "meta",
-        "callType": "hosted",
-        "tier": "balanced",
-        "tierLabel": "Best Text 70B",
-        "parameters": "70B",
-        "activeParameters": "70B",
-        "architecture": "Dense",
-        "contextWindowLabel": "128K",
-        "contextWindowK": 128,
-        "contextClass": "lg",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": "Text only",
-        "fineTunable": true,
-        "fineTunableDetail": "LoRA",
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": true,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "active",
-        "statusLabel": "GA",
-        "bestFor": "Best text-only 70B tasks; outperforms 3.1 70B and 3.2 90B on text benchmarks",
-        "tags": [
-          "fine-tunable"
-        ],
-        "regions": {
-          "us-chicago-1": "both",
-          "sa-saopaulo-1": "both",
-          "eu-frankfurt-1": "both",
-          "uk-london-1": "both",
-          "me-riyadh-1": "dedicated",
-          "me-abudhabi-1": "dedicated",
-          "me-dubai-1": "dedicated",
-          "ap-hyderabad-1": "dedicated",
-          "ap-osaka-1": "both"
-        },
-        "wizardTasks": [
-          "chat",
-          "code"
-        ],
-        "wizardTier": [
-          "balanced"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Best open 70B text model · LoRA fine-tunable"
-      },
-      {
-        "name": "Llama 3.2 90B Vision",
-        "id": "meta.llama-3.2-90b-vision-instruct",
-        "altIds": [],
-        "provider": "meta",
-        "callType": "hosted",
-        "tier": "balanced",
-        "tierLabel": "Vision Flagship",
-        "parameters": "90B",
-        "activeParameters": "90B",
-        "architecture": "Dense + Vision",
-        "contextWindowLabel": "128K",
-        "contextWindowK": 128,
-        "contextClass": "lg",
-        "multimodal": true,
-        "multimodalDetail": "Text + Image",
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": true,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "deprecated",
-        "statusLabel": "Deprecated",
-        "bestFor": "Multimodal understanding with large model capacity, image reasoning",
-        "tags": [],
-        "regions": {
-          "us-chicago-1": "both",
-          "sa-saopaulo-1": "both",
-          "uk-london-1": "both",
-          "me-riyadh-1": "dedicated",
-          "ap-osaka-1": "both"
-        },
-        "wizardTasks": [
-          "vision"
-        ],
-        "wizardTier": [
-          "balanced"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Open-weight vision flagship · 90B capacity"
-      },
-      {
-        "name": "Llama 3.2 11B Vision",
-        "id": "meta.llama-3.2-11b-vision-instruct",
-        "altIds": [],
-        "provider": "meta",
-        "callType": "hosted",
-        "tier": "fast",
-        "tierLabel": "Compact Vision",
-        "parameters": "11B",
-        "activeParameters": "11B",
-        "architecture": "Dense + Vision",
-        "contextWindowLabel": "128K",
-        "contextWindowK": 128,
-        "contextClass": "lg",
-        "multimodal": true,
-        "multimodalDetail": "Text + Image",
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": true,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "deprecated",
-        "statusLabel": "Deprecated",
-        "bestFor": "Cost-efficient multimodal; resource-constrained deployments",
-        "tags": [],
-        "regions": {
-          "us-chicago-1": "dedicated",
-          "sa-saopaulo-1": "dedicated",
-          "uk-london-1": "dedicated",
-          "ap-osaka-1": "dedicated"
-        },
-        "wizardTasks": [
-          "vision"
-        ],
-        "wizardTier": [
-          "fast"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Compact open vision · resource-constrained deployments"
-      },
-      {
-        "name": "Llama 3.1 405B",
-        "id": "meta.llama-3.1-405b-instruct",
-        "altIds": [],
-        "provider": "meta",
-        "callType": "hosted",
-        "tier": "flagship",
-        "tierLabel": "Largest Open",
-        "parameters": "405B",
-        "activeParameters": "405B",
-        "architecture": "Dense",
-        "contextWindowLabel": "128K",
-        "contextWindowK": 128,
-        "contextClass": "lg",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": "Text only",
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": true,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "deprecated",
-        "statusLabel": "Deprecated",
-        "bestFor": "Highest text quality open model; complex reasoning, advanced generation",
-        "tags": [],
-        "regions": {
-          "us-chicago-1": "both",
-          "sa-saopaulo-1": "dedicated",
-          "eu-frankfurt-1": "dedicated",
-          "uk-london-1": "dedicated",
-          "ap-osaka-1": "dedicated"
-        },
-        "wizardTasks": [
-          "chat",
-          "code"
-        ],
-        "wizardTier": [
-          "flagship"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Largest open model · highest text quality"
-      },
-      {
-        "name": "gpt-oss-120b",
-        "id": "openai.gpt-oss-120b",
-        "altIds": [],
-        "provider": "openai",
-        "callType": "hosted",
-        "tier": "flagship",
-        "tierLabel": "Flagship OSS",
-        "parameters": "120B",
-        "activeParameters": "120B",
-        "architecture": null,
-        "contextWindowLabel": "128K",
-        "contextWindowK": 128,
-        "contextClass": "lg",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": "Advanced Tool Use",
-        "reasoning": true,
-        "reasoningDetail": "Advanced Reasoning + Agentic",
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": true,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "active",
-        "statusLabel": "GA",
-        "bestFor": "Reasoning, agentic tasks; outperforms similar-size open models; OpenAI-compatible API",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "dedicated",
-          "us-chicago-1": "both",
-          "us-phoenix-1": "dedicated",
-          "sa-saopaulo-1": "dedicated",
-          "eu-frankfurt-1": "both",
-          "uk-london-1": "dedicated",
-          "me-riyadh-1": "dedicated",
-          "me-dubai-1": "dedicated",
-          "ap-hyderabad-1": "dedicated",
-          "ap-osaka-1": "both"
-        },
-        "wizardTasks": [
-          "code",
-          "chat",
-          "rag"
-        ],
-        "wizardTier": [
-          "flagship"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Advanced reasoning + agentic · OpenAI-compatible API"
-      },
-      {
-        "name": "gpt-oss-20b",
-        "id": "openai.gpt-oss-20b",
-        "altIds": [],
-        "provider": "openai",
-        "callType": "hosted",
-        "tier": "fast",
-        "tierLabel": "Efficient OSS",
-        "parameters": "20B",
-        "activeParameters": "20B",
-        "architecture": null,
-        "contextWindowLabel": "128K",
-        "contextWindowK": 128,
-        "contextClass": "lg",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": true,
-        "reasoningDetail": "Reasoning + Agentic",
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": true,
-        "speedProfile": null,
-        "speedProfileClass": null,
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": false,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": false,
-        "agenticDetail": null,
-        "status": "active",
-        "statusLabel": "GA",
-        "bestFor": "Efficient consumer-hardware-optimized reasoning; agentic tasks at lower cost",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "dedicated",
-          "us-chicago-1": "both",
-          "us-phoenix-1": "dedicated",
-          "sa-saopaulo-1": "dedicated",
-          "eu-frankfurt-1": "both",
-          "uk-london-1": "dedicated",
-          "me-riyadh-1": "dedicated",
-          "me-dubai-1": "dedicated",
-          "ap-hyderabad-1": "dedicated",
-          "ap-osaka-1": "both"
-        },
-        "wizardTasks": [
-          "code",
-          "chat"
-        ],
-        "wizardTier": [
-          "fast"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Consumer-hardware optimized · efficient agentic reasoning"
-      },
-      {
-        "name": "Grok 4.3",
-        "id": "xai.grok-4.3",
-        "altIds": [],
-        "provider": "xai",
+        "provider": "google",
         "callType": "external",
         "tier": "flagship",
-        "tierLabel": "Latest Reasoning",
+        "tierLabel": "Flagship",
         "parameters": null,
         "activeParameters": null,
         "architecture": null,
@@ -3693,30 +3113,89 @@
         "contextWindowK": 1000,
         "contextClass": "huge",
         "multimodal": true,
-        "multimodalDetail": "Text + Image",
+        "multimodalDetail": "Text, Image, Code, Audio, Video",
         "multimodalNote": null,
         "fineTunable": false,
         "fineTunableDetail": null,
         "toolUse": true,
         "toolUseDetail": null,
         "reasoning": true,
-        "reasoningDetail": "Advanced",
+        "reasoningDetail": "Advanced Reasoning",
         "ragOptimized": false,
         "ragOptimizedDetail": null,
         "openWeights": false,
-        "speedProfile": "Fast",
-        "speedProfileClass": "tag-green",
-        "thinking": true,
+        "speedProfile": "Deep / Accurate",
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "active",
+        "statusLabel": "GA",
+        "bestFor": "Most complex multimodal problems, large dataset analysis, SOTA reasoning tasks",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "ondemand",
+          "us-chicago-1": "ondemand",
+          "us-phoenix-1": "ondemand",
+          "eu-frankfurt-1": "ondemand",
+          "ap-osaka-1": "ondemand"
+        },
+        "wizardTasks": [
+          "rag",
+          "code",
+          "vision",
+          "chat"
+        ],
+        "wizardTier": [
+          "flagship"
+        ],
+        "wizardCtx": "huge",
+        "wizardWhy": "1M context · SOTA reasoning · text + image + audio + video"
+      },
+      {
+        "name": "Grok 3",
+        "id": "xai.grok-3",
+        "altIds": [],
+        "provider": "xai",
+        "callType": "external",
+        "tier": "balanced",
+        "tierLabel": "Standard",
+        "parameters": null,
+        "activeParameters": null,
+        "architecture": null,
+        "contextWindowLabel": "131K",
+        "contextWindowK": 131,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": false,
+        "speedProfile": "Standard",
+        "speedProfileClass": null,
+        "thinking": false,
         "thinkingDetail": null,
         "codingFocus": true,
         "codingFocusDetail": null,
         "domainKnowledge": true,
-        "domainKnowledgeDetail": "Logic, Math, Science",
+        "domainKnowledgeDetail": "Finance, Health, Law, Science",
         "agentic": true,
         "agenticDetail": null,
-        "status": "active",
-        "statusLabel": "GA (May 2026)",
-        "bestFor": "Complex accuracy-critical reasoning, math, scientific analysis, multi-step investigations, coding",
+        "status": "deprecated",
+        "statusLabel": "Deprecated",
+        "bestFor": "General enterprise tasks, data extraction, text summarization",
         "tags": [],
         "regions": {
           "us-ashburn-1": "ondemand",
@@ -3724,16 +3203,175 @@
           "us-phoenix-1": "ondemand"
         },
         "wizardTasks": [
-          "chat",
-          "code",
-          "rag",
-          "vision"
+          "chat"
         ],
         "wizardTier": [
-          "flagship"
+          "balanced"
         ],
-        "wizardCtx": "huge",
-        "wizardWhy": "1M context · multimodal · latest xAI reasoning · strong prompt adherence"
+        "wizardCtx": "standard",
+        "wizardWhy": "General enterprise tasks · data extraction · summarization"
+      },
+      {
+        "name": "Grok 3 Fast",
+        "id": "xai.grok-3-fast",
+        "altIds": [],
+        "provider": "xai",
+        "callType": "external",
+        "tier": "fast",
+        "tierLabel": "Standard Fast",
+        "parameters": null,
+        "activeParameters": null,
+        "architecture": null,
+        "contextWindowLabel": "131K",
+        "contextWindowK": 131,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": false,
+        "speedProfile": "Speed Optimized",
+        "speedProfileClass": "tag-green",
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": true,
+        "codingFocusDetail": null,
+        "domainKnowledge": true,
+        "domainKnowledgeDetail": null,
+        "agentic": true,
+        "agenticDetail": null,
+        "status": "deprecated",
+        "statusLabel": "Deprecated",
+        "bestFor": "High-throughput enterprise tasks at Grok 3 quality level",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "ondemand",
+          "us-chicago-1": "ondemand",
+          "us-phoenix-1": "ondemand"
+        },
+        "wizardTasks": [
+          "chat"
+        ],
+        "wizardTier": [
+          "fast"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "High-throughput production at Grok 3 quality"
+      },
+      {
+        "name": "Grok 3 Mini",
+        "id": "xai.grok-3-mini",
+        "altIds": [],
+        "provider": "xai",
+        "callType": "external",
+        "tier": "lite",
+        "tierLabel": "Lightweight Thinker",
+        "parameters": null,
+        "activeParameters": null,
+        "architecture": null,
+        "contextWindowLabel": "131K",
+        "contextWindowK": 131,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": false,
+        "speedProfile": "Standard",
+        "speedProfileClass": null,
+        "thinking": true,
+        "thinkingDetail": "Traces exposed",
+        "codingFocus": true,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": true,
+        "agenticDetail": null,
+        "status": "deprecated",
+        "statusLabel": "Deprecated",
+        "bestFor": "Logic-based tasks not requiring deep domain knowledge; transparent thinking traces",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "ondemand",
+          "us-chicago-1": "ondemand",
+          "us-phoenix-1": "ondemand"
+        },
+        "wizardTasks": [
+          "chat"
+        ],
+        "wizardTier": [
+          "fast"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Lightweight thinker · transparent reasoning traces · low cost"
+      },
+      {
+        "name": "Grok 3 Mini Fast",
+        "id": "xai.grok-3-mini-fast",
+        "altIds": [],
+        "provider": "xai",
+        "callType": "external",
+        "tier": "lite",
+        "tierLabel": "Lightweight Fast",
+        "parameters": null,
+        "activeParameters": null,
+        "architecture": null,
+        "contextWindowLabel": "131K",
+        "contextWindowK": 131,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": false,
+        "speedProfile": "Fastest",
+        "speedProfileClass": "tag-green",
+        "thinking": true,
+        "thinkingDetail": "Traces exposed",
+        "codingFocus": true,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": true,
+        "agenticDetail": null,
+        "status": "deprecated",
+        "statusLabel": "Deprecated",
+        "bestFor": "Low-latency logic tasks at minimum cost",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "ondemand",
+          "us-chicago-1": "ondemand",
+          "us-phoenix-1": "ondemand"
+        },
+        "wizardTasks": [
+          "chat"
+        ],
+        "wizardTier": [
+          "fast"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Lowest-latency xAI · logic tasks · transparent reasoning traces"
       },
       {
         "name": "Grok 4",
@@ -4030,19 +3668,76 @@
         "wizardWhy": "2M context · multimodal · orchestrates parallel specialist AI agents"
       },
       {
-        "name": "Grok 3",
-        "id": "xai.grok-3",
+        "name": "Grok 4.3",
+        "id": "xai.grok-4.3",
         "altIds": [],
         "provider": "xai",
         "callType": "external",
-        "tier": "balanced",
-        "tierLabel": "Standard",
+        "tier": "flagship",
+        "tierLabel": "Latest Reasoning",
         "parameters": null,
         "activeParameters": null,
         "architecture": null,
-        "contextWindowLabel": "131K",
-        "contextWindowK": 131,
-        "contextClass": "lg",
+        "contextWindowLabel": "1M",
+        "contextWindowK": 1000,
+        "contextClass": "huge",
+        "multimodal": true,
+        "multimodalDetail": "Text + Image",
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": true,
+        "reasoningDetail": "Advanced",
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": false,
+        "speedProfile": "Fast",
+        "speedProfileClass": "tag-green",
+        "thinking": true,
+        "thinkingDetail": null,
+        "codingFocus": true,
+        "codingFocusDetail": null,
+        "domainKnowledge": true,
+        "domainKnowledgeDetail": "Logic, Math, Science",
+        "agentic": true,
+        "agenticDetail": null,
+        "status": "active",
+        "statusLabel": "GA (May 2026)",
+        "bestFor": "Complex accuracy-critical reasoning, math, scientific analysis, multi-step investigations, coding",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "ondemand",
+          "us-chicago-1": "ondemand",
+          "us-phoenix-1": "ondemand"
+        },
+        "wizardTasks": [
+          "chat",
+          "code",
+          "rag",
+          "vision"
+        ],
+        "wizardTier": [
+          "flagship"
+        ],
+        "wizardCtx": "huge",
+        "wizardWhy": "1M context · multimodal · latest xAI reasoning · strong prompt adherence"
+      },
+      {
+        "name": "Grok 4.6",
+        "id": "xai.grok-4.6",
+        "altIds": [],
+        "provider": "xai",
+        "callType": "external",
+        "tier": "flagship",
+        "tierLabel": "Flagship",
+        "parameters": null,
+        "activeParameters": null,
+        "architecture": null,
+        "contextWindowLabel": "500K",
+        "contextWindowK": 500,
+        "contextClass": "xl",
         "multimodal": false,
         "multimodalDetail": null,
         "multimodalNote": null,
@@ -4050,14 +3745,14 @@
         "fineTunableDetail": null,
         "toolUse": true,
         "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
+        "reasoning": true,
+        "reasoningDetail": "Advanced",
         "ragOptimized": false,
         "ragOptimizedDetail": null,
         "openWeights": false,
         "speedProfile": "Standard",
         "speedProfileClass": null,
-        "thinking": false,
+        "thinking": true,
         "thinkingDetail": null,
         "codingFocus": true,
         "codingFocusDetail": null,
@@ -4065,9 +3760,9 @@
         "domainKnowledgeDetail": "Finance, Health, Law, Science",
         "agentic": true,
         "agenticDetail": null,
-        "status": "deprecated",
-        "statusLabel": "Deprecated",
-        "bestFor": "General enterprise tasks, data extraction, text summarization",
+        "status": "active",
+        "statusLabel": "Active",
+        "bestFor": "Coding, long-running agent workflows, research, and knowledge work",
         "tags": [],
         "regions": {
           "us-ashburn-1": "ondemand",
@@ -4075,175 +3770,14 @@
           "us-phoenix-1": "ondemand"
         },
         "wizardTasks": [
-          "chat"
+          "chat",
+          "code"
         ],
         "wizardTier": [
-          "balanced"
+          "flagship"
         ],
-        "wizardCtx": "standard",
-        "wizardWhy": "General enterprise tasks · data extraction · summarization"
-      },
-      {
-        "name": "Grok 3 Fast",
-        "id": "xai.grok-3-fast",
-        "altIds": [],
-        "provider": "xai",
-        "callType": "external",
-        "tier": "fast",
-        "tierLabel": "Standard Fast",
-        "parameters": null,
-        "activeParameters": null,
-        "architecture": null,
-        "contextWindowLabel": "131K",
-        "contextWindowK": 131,
-        "contextClass": "lg",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": false,
-        "speedProfile": "Speed Optimized",
-        "speedProfileClass": "tag-green",
-        "thinking": false,
-        "thinkingDetail": null,
-        "codingFocus": true,
-        "codingFocusDetail": null,
-        "domainKnowledge": true,
-        "domainKnowledgeDetail": null,
-        "agentic": true,
-        "agenticDetail": null,
-        "status": "deprecated",
-        "statusLabel": "Deprecated",
-        "bestFor": "High-throughput enterprise tasks at Grok 3 quality level",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "ondemand",
-          "us-chicago-1": "ondemand",
-          "us-phoenix-1": "ondemand"
-        },
-        "wizardTasks": [
-          "chat"
-        ],
-        "wizardTier": [
-          "fast"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "High-throughput production at Grok 3 quality"
-      },
-      {
-        "name": "Grok 3 Mini",
-        "id": "xai.grok-3-mini",
-        "altIds": [],
-        "provider": "xai",
-        "callType": "external",
-        "tier": "lite",
-        "tierLabel": "Lightweight Thinker",
-        "parameters": null,
-        "activeParameters": null,
-        "architecture": null,
-        "contextWindowLabel": "131K",
-        "contextWindowK": 131,
-        "contextClass": "lg",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": false,
-        "speedProfile": "Standard",
-        "speedProfileClass": null,
-        "thinking": true,
-        "thinkingDetail": "Traces exposed",
-        "codingFocus": true,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": true,
-        "agenticDetail": null,
-        "status": "deprecated",
-        "statusLabel": "Deprecated",
-        "bestFor": "Logic-based tasks not requiring deep domain knowledge; transparent thinking traces",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "ondemand",
-          "us-chicago-1": "ondemand",
-          "us-phoenix-1": "ondemand"
-        },
-        "wizardTasks": [
-          "chat"
-        ],
-        "wizardTier": [
-          "fast"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Lightweight thinker · transparent reasoning traces · low cost"
-      },
-      {
-        "name": "Grok 3 Mini Fast",
-        "id": "xai.grok-3-mini-fast",
-        "altIds": [],
-        "provider": "xai",
-        "callType": "external",
-        "tier": "lite",
-        "tierLabel": "Lightweight Fast",
-        "parameters": null,
-        "activeParameters": null,
-        "architecture": null,
-        "contextWindowLabel": "131K",
-        "contextWindowK": 131,
-        "contextClass": "lg",
-        "multimodal": false,
-        "multimodalDetail": null,
-        "multimodalNote": null,
-        "fineTunable": false,
-        "fineTunableDetail": null,
-        "toolUse": true,
-        "toolUseDetail": null,
-        "reasoning": false,
-        "reasoningDetail": null,
-        "ragOptimized": false,
-        "ragOptimizedDetail": null,
-        "openWeights": false,
-        "speedProfile": "Fastest",
-        "speedProfileClass": "tag-green",
-        "thinking": true,
-        "thinkingDetail": "Traces exposed",
-        "codingFocus": true,
-        "codingFocusDetail": null,
-        "domainKnowledge": null,
-        "domainKnowledgeDetail": null,
-        "agentic": true,
-        "agenticDetail": null,
-        "status": "deprecated",
-        "statusLabel": "Deprecated",
-        "bestFor": "Low-latency logic tasks at minimum cost",
-        "tags": [],
-        "regions": {
-          "us-ashburn-1": "ondemand",
-          "us-chicago-1": "ondemand",
-          "us-phoenix-1": "ondemand"
-        },
-        "wizardTasks": [
-          "chat"
-        ],
-        "wizardTier": [
-          "fast"
-        ],
-        "wizardCtx": "standard",
-        "wizardWhy": "Lowest-latency xAI · logic tasks · transparent reasoning traces"
+        "wizardCtx": "large",
+        "wizardWhy": "500K context · coding · agentic workflows · knowledge work"
       },
       {
         "name": "Grok Code Fast 1",
@@ -4299,6 +3833,484 @@
         ],
         "wizardCtx": "large",
         "wizardWhy": "Specialized coder · 256K context · plan-write-test-debug loops"
+      },
+      {
+        "name": "Llama 3.1 405B",
+        "id": "meta.llama-3.1-405b-instruct",
+        "altIds": [],
+        "provider": "meta",
+        "callType": "hosted",
+        "tier": "flagship",
+        "tierLabel": "Largest Open",
+        "parameters": "405B",
+        "activeParameters": "405B",
+        "architecture": "Dense",
+        "contextWindowLabel": "128K",
+        "contextWindowK": 128,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": "Text only",
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": true,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "deprecated",
+        "statusLabel": "Deprecated",
+        "bestFor": "Highest text quality open model; complex reasoning, advanced generation",
+        "tags": [],
+        "regions": {
+          "us-chicago-1": "both",
+          "sa-saopaulo-1": "dedicated",
+          "eu-frankfurt-1": "dedicated",
+          "uk-london-1": "dedicated",
+          "ap-osaka-1": "dedicated"
+        },
+        "wizardTasks": [
+          "chat",
+          "code"
+        ],
+        "wizardTier": [
+          "flagship"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Largest open model · highest text quality"
+      },
+      {
+        "name": "Llama 3.2 11B Vision",
+        "id": "meta.llama-3.2-11b-vision-instruct",
+        "altIds": [],
+        "provider": "meta",
+        "callType": "hosted",
+        "tier": "fast",
+        "tierLabel": "Compact Vision",
+        "parameters": "11B",
+        "activeParameters": "11B",
+        "architecture": "Dense + Vision",
+        "contextWindowLabel": "128K",
+        "contextWindowK": 128,
+        "contextClass": "lg",
+        "multimodal": true,
+        "multimodalDetail": "Text + Image",
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": true,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "deprecated",
+        "statusLabel": "Deprecated",
+        "bestFor": "Cost-efficient multimodal; resource-constrained deployments",
+        "tags": [],
+        "regions": {
+          "us-chicago-1": "dedicated",
+          "sa-saopaulo-1": "dedicated",
+          "uk-london-1": "dedicated",
+          "ap-osaka-1": "dedicated"
+        },
+        "wizardTasks": [
+          "vision"
+        ],
+        "wizardTier": [
+          "fast"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Compact open vision · resource-constrained deployments"
+      },
+      {
+        "name": "Llama 3.2 90B Vision",
+        "id": "meta.llama-3.2-90b-vision-instruct",
+        "altIds": [],
+        "provider": "meta",
+        "callType": "hosted",
+        "tier": "balanced",
+        "tierLabel": "Vision Flagship",
+        "parameters": "90B",
+        "activeParameters": "90B",
+        "architecture": "Dense + Vision",
+        "contextWindowLabel": "128K",
+        "contextWindowK": 128,
+        "contextClass": "lg",
+        "multimodal": true,
+        "multimodalDetail": "Text + Image",
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": true,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "deprecated",
+        "statusLabel": "Deprecated",
+        "bestFor": "Multimodal understanding with large model capacity, image reasoning",
+        "tags": [],
+        "regions": {
+          "us-chicago-1": "both",
+          "sa-saopaulo-1": "both",
+          "uk-london-1": "both",
+          "me-riyadh-1": "dedicated",
+          "ap-osaka-1": "both"
+        },
+        "wizardTasks": [
+          "vision"
+        ],
+        "wizardTier": [
+          "balanced"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Open-weight vision flagship · 90B capacity"
+      },
+      {
+        "name": "Llama 3.3 70B",
+        "id": "meta.llama-3.3-70b-instruct",
+        "altIds": [],
+        "provider": "meta",
+        "callType": "hosted",
+        "tier": "balanced",
+        "tierLabel": "Best Text 70B",
+        "parameters": "70B",
+        "activeParameters": "70B",
+        "architecture": "Dense",
+        "contextWindowLabel": "128K",
+        "contextWindowK": 128,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": "Text only",
+        "fineTunable": true,
+        "fineTunableDetail": "LoRA",
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": true,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "active",
+        "statusLabel": "GA",
+        "bestFor": "Best text-only 70B tasks; outperforms 3.1 70B and 3.2 90B on text benchmarks",
+        "tags": [
+          "fine-tunable"
+        ],
+        "regions": {
+          "us-chicago-1": "both",
+          "sa-saopaulo-1": "both",
+          "eu-frankfurt-1": "both",
+          "uk-london-1": "both",
+          "me-riyadh-1": "dedicated",
+          "me-abudhabi-1": "dedicated",
+          "me-dubai-1": "dedicated",
+          "ap-hyderabad-1": "dedicated",
+          "ap-osaka-1": "both"
+        },
+        "wizardTasks": [
+          "chat",
+          "code"
+        ],
+        "wizardTier": [
+          "balanced"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Best open 70B text model · LoRA fine-tunable"
+      },
+      {
+        "name": "Llama 4 Maverick",
+        "id": "meta.llama-4-maverick-17b-128e-instruct-fp8",
+        "altIds": [],
+        "provider": "meta",
+        "callType": "hosted",
+        "tier": "flagship",
+        "tierLabel": "Flagship MoE",
+        "parameters": "~400B",
+        "activeParameters": "17B",
+        "architecture": "MoE · 128 Experts",
+        "contextWindowLabel": "512K",
+        "contextWindowK": 512,
+        "contextClass": "xl",
+        "multimodal": true,
+        "multimodalDetail": "Text + Image",
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": true,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "active",
+        "statusLabel": "GA (2025)",
+        "bestFor": "Multimodal understanding, multilingual, coding, agentic systems, large-scale inference",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "both",
+          "us-chicago-1": "both",
+          "sa-saopaulo-1": "dedicated",
+          "uk-london-1": "dedicated",
+          "me-riyadh-1": "dedicated",
+          "me-abudhabi-1": "dedicated",
+          "ap-hyderabad-1": "dedicated",
+          "ap-osaka-1": "dedicated"
+        },
+        "wizardTasks": [
+          "code",
+          "vision",
+          "chat"
+        ],
+        "wizardTier": [
+          "flagship"
+        ],
+        "wizardCtx": "large",
+        "wizardWhy": "Open MoE flagship · text + image · 512K context · multilingual"
+      },
+      {
+        "name": "Llama 4 Scout",
+        "id": "meta.llama-4-scout-17b-16e-instruct",
+        "altIds": [],
+        "provider": "meta",
+        "callType": "hosted",
+        "tier": "balanced",
+        "tierLabel": "Efficient MoE",
+        "parameters": "~109B",
+        "activeParameters": "17B",
+        "architecture": "MoE · 16 Experts",
+        "contextWindowLabel": "192K",
+        "contextWindowK": 192,
+        "contextClass": "xl",
+        "multimodal": true,
+        "multimodalDetail": "Text + Image",
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": false,
+        "reasoningDetail": null,
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": true,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "active",
+        "statusLabel": "GA (2025)",
+        "bestFor": "Smaller GPU deployments, efficient multimodal, multilingual, coding",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "both",
+          "us-chicago-1": "both",
+          "sa-saopaulo-1": "dedicated",
+          "uk-london-1": "dedicated",
+          "me-riyadh-1": "dedicated",
+          "me-abudhabi-1": "dedicated",
+          "ap-hyderabad-1": "dedicated",
+          "ap-osaka-1": "dedicated"
+        },
+        "wizardTasks": [
+          "code",
+          "vision",
+          "chat"
+        ],
+        "wizardTier": [
+          "balanced"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Efficient open MoE · multimodal · 192K context"
+      },
+      {
+        "name": "gpt-oss-120b",
+        "id": "openai.gpt-oss-120b",
+        "altIds": [],
+        "provider": "openai",
+        "callType": "hosted",
+        "tier": "flagship",
+        "tierLabel": "Flagship OSS",
+        "parameters": "120B",
+        "activeParameters": "120B",
+        "architecture": null,
+        "contextWindowLabel": "128K",
+        "contextWindowK": 128,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": "Advanced Tool Use",
+        "reasoning": true,
+        "reasoningDetail": "Advanced Reasoning + Agentic",
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": true,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "active",
+        "statusLabel": "GA",
+        "bestFor": "Reasoning, agentic tasks; outperforms similar-size open models; OpenAI-compatible API",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "dedicated",
+          "us-chicago-1": "both",
+          "us-phoenix-1": "dedicated",
+          "sa-saopaulo-1": "dedicated",
+          "eu-frankfurt-1": "both",
+          "uk-london-1": "dedicated",
+          "me-riyadh-1": "dedicated",
+          "me-dubai-1": "dedicated",
+          "ap-hyderabad-1": "dedicated",
+          "ap-osaka-1": "both"
+        },
+        "wizardTasks": [
+          "code",
+          "chat",
+          "rag"
+        ],
+        "wizardTier": [
+          "flagship"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Advanced reasoning + agentic · OpenAI-compatible API"
+      },
+      {
+        "name": "gpt-oss-20b",
+        "id": "openai.gpt-oss-20b",
+        "altIds": [],
+        "provider": "openai",
+        "callType": "hosted",
+        "tier": "fast",
+        "tierLabel": "Efficient OSS",
+        "parameters": "20B",
+        "activeParameters": "20B",
+        "architecture": null,
+        "contextWindowLabel": "128K",
+        "contextWindowK": 128,
+        "contextClass": "lg",
+        "multimodal": false,
+        "multimodalDetail": null,
+        "multimodalNote": null,
+        "fineTunable": false,
+        "fineTunableDetail": null,
+        "toolUse": true,
+        "toolUseDetail": null,
+        "reasoning": true,
+        "reasoningDetail": "Reasoning + Agentic",
+        "ragOptimized": false,
+        "ragOptimizedDetail": null,
+        "openWeights": true,
+        "speedProfile": null,
+        "speedProfileClass": null,
+        "thinking": false,
+        "thinkingDetail": null,
+        "codingFocus": false,
+        "codingFocusDetail": null,
+        "domainKnowledge": null,
+        "domainKnowledgeDetail": null,
+        "agentic": false,
+        "agenticDetail": null,
+        "status": "active",
+        "statusLabel": "GA",
+        "bestFor": "Efficient consumer-hardware-optimized reasoning; agentic tasks at lower cost",
+        "tags": [],
+        "regions": {
+          "us-ashburn-1": "dedicated",
+          "us-chicago-1": "both",
+          "us-phoenix-1": "dedicated",
+          "sa-saopaulo-1": "dedicated",
+          "eu-frankfurt-1": "both",
+          "uk-london-1": "dedicated",
+          "me-riyadh-1": "dedicated",
+          "me-dubai-1": "dedicated",
+          "ap-hyderabad-1": "dedicated",
+          "ap-osaka-1": "both"
+        },
+        "wizardTasks": [
+          "code",
+          "chat"
+        ],
+        "wizardTier": [
+          "fast"
+        ],
+        "wizardCtx": "standard",
+        "wizardWhy": "Consumer-hardware optimized · efficient agentic reasoning"
       }
     ],
     "embeddingModels": [
@@ -5265,7 +5277,8 @@
           },
           "me-dubai-1": {
             "offeringIds": [
-              "ocid1.generativeaimodel.oc1.me-dubai-1.amaaaaaask7dceyaawnsfv4nev2gzvh5tksxcz5bewvxiattoyzrfqelixsa"
+              "ocid1.generativeaimodel.oc1.me-dubai-1.amaaaaaask7dceyaawnsfv4nev2gzvh5tksxcz5bewvxiattoyzrfqelixsa",
+              "ocid1.generativeaimodel.oc1.me-dubai-1.amaaaaaask7dceyaop5roksmlwmadxvnc6efhmjgs43qrr2awt53qur5m6cq"
             ],
             "capabilities": [
               "CHAT"
@@ -5277,14 +5290,13 @@
               "Creating Base Model"
             ],
             "timeCreated": [
-              "2026-01-22T01:26:33.329000+00:00"
+              "2026-01-22T01:26:33.329000+00:00",
+              "2026-09-15T03:05:02.831000+00:00"
             ],
             "timeDeprecated": [
               "2025-12-10T00:00:00+00:00"
             ],
-            "timeOnDemandRetired": [
-              "2025-12-10T00:00:00+00:00"
-            ],
+            "timeOnDemandRetired": [],
             "timeDedicatedRetired": []
           },
           "me-riyadh-1": {
@@ -5450,9 +5462,15 @@
             "timeCreated": [
               "2025-07-02T04:57:24.432000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-31T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "eu-frankfurt-1": {
             "offeringIds": [
@@ -5470,9 +5488,15 @@
             "timeCreated": [
               "2025-07-02T16:45:37.198000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-31T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "uk-london-1": {
             "offeringIds": [
@@ -5490,9 +5514,15 @@
             "timeCreated": [
               "2025-07-02T16:24:02.398000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-31T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "us-chicago-1": {
             "offeringIds": [
@@ -5510,9 +5540,15 @@
             "timeCreated": [
               "2025-07-02T17:50:29.440000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-31T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           }
         },
         "dedicatedClusterMapping": {
@@ -5625,9 +5661,15 @@
             "timeCreated": [
               "2025-07-02T04:57:24.372000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-31T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "eu-frankfurt-1": {
             "offeringIds": [
@@ -5645,9 +5687,15 @@
             "timeCreated": [
               "2025-07-02T16:45:37.171000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-31T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "uk-london-1": {
             "offeringIds": [
@@ -5665,9 +5713,15 @@
             "timeCreated": [
               "2025-07-02T16:24:02.347000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-31T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "us-chicago-1": {
             "offeringIds": [
@@ -5685,9 +5739,15 @@
             "timeCreated": [
               "2025-07-02T17:50:29.414000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-31T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           }
         },
         "dedicatedClusterMapping": {
@@ -5749,7 +5809,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-31T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -5781,7 +5841,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-31T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -5839,7 +5899,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-31T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -5893,7 +5953,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-31T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -6265,7 +6325,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-31T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -6293,7 +6353,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-31T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -6349,7 +6409,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-31T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -6405,7 +6465,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-31T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -7932,12 +7992,8 @@
             "timeCreated": [
               "2025-07-01T19:00:37.205000+00:00"
             ],
-            "timeDeprecated": [
-              "2025-07-02T00:00:00+00:00"
-            ],
-            "timeOnDemandRetired": [
-              "2025-07-02T00:00:00+00:00"
-            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
             "timeDedicatedRetired": []
           },
           "me-riyadh-1": {
@@ -8866,7 +8922,6 @@
       {
         "id": "content-moderator",
         "providers": [
-          "content-moderation",
           "olm"
         ],
         "types": [
@@ -8880,7 +8935,6 @@
         "observedRegions": [
           "ap-hyderabad-1",
           "ap-osaka-1",
-          "ap-tokyo-1",
           "eu-frankfurt-1",
           "me-riyadh-1",
           "us-chicago-1"
@@ -8924,26 +8978,6 @@
             ],
             "timeCreated": [
               "2025-05-08T02:09:58.001000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          },
-          "ap-tokyo-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-tokyo-1.amaaaaaask7dceyayobdvrljxoflbxkg6ddtq27o6rkpcj7m7k5vzivyw27q"
-            ],
-            "capabilities": [
-              "UNKNOWN_ENUM_VALUE"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Creating Base Model"
-            ],
-            "timeCreated": [
-              "2026-07-13T16:00:02.963000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -9033,7 +9067,10 @@
         "observedRegions": [
           "ap-hyderabad-1",
           "ap-osaka-1",
+          "ap-singapore-1",
+          "ap-sydney-1",
           "eu-frankfurt-1",
+          "mx-queretaro-1",
           "us-ashburn-1",
           "us-chicago-1",
           "us-phoenix-1"
@@ -9082,6 +9119,46 @@
             "timeOnDemandRetired": [],
             "timeDedicatedRetired": []
           },
+          "ap-singapore-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-singapore-1.amaaaaaask7dceya7acwfp6qtvgoc6p5pvgbtkkfamx2z5ybzruf7at6hk3q"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-18T09:47:28.564000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
+          "ap-sydney-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-sydney-1.amaaaaaalqj567aahloqbocjwytdsnkamdilbq526l2kware7ifc33mpmwdq"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-18T19:47:37.616000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
           "eu-frankfurt-1": {
             "offeringIds": [
               "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyacn5rezarysrnds7bjsu6iy5nrxdvq6hyqcygode5o5xq"
@@ -9097,6 +9174,26 @@
             ],
             "timeCreated": [
               "2026-01-22T01:22:14.738000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
+          "mx-queretaro-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.mx-queretaro-1.amaaaaaalqj567aaqvmbay2txbyzo2yw3qcj6hox2gjnap3fcsxghzz4njca"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-19T13:57:26.634000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -9184,7 +9281,9 @@
         "longTermSupported": true,
         "imageTextToTextSupported": false,
         "observedRegions": [
+          "ap-singapore-1",
           "eu-frankfurt-1",
+          "mx-queretaro-1",
           "us-ashburn-1",
           "us-chicago-1",
           "us-phoenix-1"
@@ -9193,6 +9292,26 @@
           "ACTIVE"
         ],
         "regionalInventory": {
+          "ap-singapore-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-singapore-1.amaaaaaask7dceya24ud5u3qhb27kll7rkkgddyrt25sk3ogdx22pcndievq"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-18T09:47:28.450000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
           "eu-frankfurt-1": {
             "offeringIds": [
               "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyayeovsqpicqbnijjwtsimjtjonxtoaometmpqnohxknaq"
@@ -9208,6 +9327,26 @@
             ],
             "timeCreated": [
               "2026-01-22T01:22:14.559000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
+          "mx-queretaro-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.mx-queretaro-1.amaaaaaalqj567aaoszlohhsrgrxi7criqmx5ggm5rrtl7qhl5mtmsdqew6a"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-19T13:57:25.720000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -9296,7 +9435,9 @@
         "imageTextToTextSupported": false,
         "observedRegions": [
           "ap-osaka-1",
+          "ap-singapore-1",
           "eu-frankfurt-1",
+          "mx-queretaro-1",
           "us-ashburn-1",
           "us-chicago-1",
           "us-phoenix-1"
@@ -9325,6 +9466,26 @@
             "timeOnDemandRetired": [],
             "timeDedicatedRetired": []
           },
+          "ap-singapore-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.ap-singapore-1.amaaaaaask7dceyauyprc47kuiscwkkjfkm75wwtuonjpkrr57c3e47gsnua"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-18T09:47:28.509000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
           "eu-frankfurt-1": {
             "offeringIds": [
               "ocid1.generativeaimodel.oc1.eu-frankfurt-1.amaaaaaask7dceyan6gecfjovk7wtgl3r65b5tmpuegfxojbp2mebjgtvhra"
@@ -9340,6 +9501,26 @@
             ],
             "timeCreated": [
               "2026-01-22T01:22:14.655000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
+          "mx-queretaro-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.mx-queretaro-1.amaaaaaalqj567aaqdyrciwvw3i5hcbooukwcyipokvhieqoqlgnxtgfmuza"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-19T13:57:26.548000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -9400,102 +9581,6 @@
             ],
             "timeCreated": [
               "2025-09-26T01:22:05.158000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          }
-        },
-        "dedicatedClusterMapping": {
-          "status": "not_exposed_by_cli",
-          "unitShapes": null,
-          "gpuCount": null,
-          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
-        }
-      },
-      {
-        "id": "google.gemini-3.1-flash-lite",
-        "providers": [
-          "google"
-        ],
-        "types": [
-          "BASE"
-        ],
-        "capabilities": [
-          "CHAT"
-        ],
-        "longTermSupported": true,
-        "imageTextToTextSupported": false,
-        "observedRegions": [
-          "ap-osaka-1"
-        ],
-        "lifecycleStates": [
-          "ACTIVE"
-        ],
-        "regionalInventory": {
-          "ap-osaka-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyaycbihkpgg6t7ayidewdxnz7i44ev6vplhubccjldrfcq"
-            ],
-            "capabilities": [
-              "CHAT"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Base Model created"
-            ],
-            "timeCreated": [
-              "2026-07-25T02:51:26.067000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          }
-        },
-        "dedicatedClusterMapping": {
-          "status": "not_exposed_by_cli",
-          "unitShapes": null,
-          "gpuCount": null,
-          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
-        }
-      },
-      {
-        "id": "google.gemini-3.5-flash",
-        "providers": [
-          "google"
-        ],
-        "types": [
-          "BASE"
-        ],
-        "capabilities": [
-          "CHAT"
-        ],
-        "longTermSupported": true,
-        "imageTextToTextSupported": false,
-        "observedRegions": [
-          "ap-osaka-1"
-        ],
-        "lifecycleStates": [
-          "ACTIVE"
-        ],
-        "regionalInventory": {
-          "ap-osaka-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-osaka-1.amaaaaaask7dceyascfvxhtypm7thv4cocyooqtai42d3ffiai6pg2xnn6lq"
-            ],
-            "capabilities": [
-              "CHAT"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Base Model created"
-            ],
-            "timeCreated": [
-              "2026-07-25T02:51:26.026000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -9809,7 +9894,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-03T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -10017,6 +10102,7 @@
         "imageTextToTextSupported": false,
         "observedRegions": [
           "ap-osaka-1",
+          "me-dubai-1",
           "uk-london-1",
           "us-chicago-1",
           "us-phoenix-1"
@@ -10051,6 +10137,32 @@
               "2026-09-30T00:00:00+00:00"
             ]
           },
+          "me-dubai-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.me-dubai-1.amaaaaaask7dceyajj3i2p3w5kacwx3sm23wqivegcu577v45fdttrth67wa"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Creating Base Model"
+            ],
+            "timeCreated": [
+              "2026-09-08T14:49:03.153000+00:00"
+            ],
+            "timeDeprecated": [
+              "2024-11-21T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2024-11-21T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
+          },
           "uk-london-1": {
             "offeringIds": [
               "ocid1.generativeaimodel.oc1.uk-london-1.amaaaaaask7dceyar33p5i3sgsr4qhmtezlx3l5djcbf4vqmzfj2tcnki7gq"
@@ -10067,9 +10179,15 @@
             "timeCreated": [
               "2024-11-13T20:02:36.361000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2024-11-21T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2024-11-21T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "us-chicago-1": {
             "offeringIds": [
@@ -10174,7 +10292,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-03T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -10222,9 +10340,15 @@
             "timeCreated": [
               "2024-11-13T20:05:31.709000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
+            "timeDeprecated": [
+              "2026-05-15T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "2026-08-03T00:00:00+00:00"
+            ],
+            "timeDedicatedRetired": [
+              "2026-09-30T00:00:00+00:00"
+            ]
           },
           "us-chicago-1": {
             "offeringIds": [
@@ -10246,7 +10370,7 @@
               "2026-05-15T00:00:00+00:00"
             ],
             "timeOnDemandRetired": [
-              "2026-09-30T00:00:00+00:00"
+              "2026-08-03T00:00:00+00:00"
             ],
             "timeDedicatedRetired": [
               "2026-09-30T00:00:00+00:00"
@@ -10278,6 +10402,7 @@
           "ap-hyderabad-1",
           "ap-osaka-1",
           "eu-frankfurt-1",
+          "me-dubai-1",
           "me-riyadh-1",
           "uk-london-1",
           "us-chicago-1",
@@ -10357,6 +10482,26 @@
             "timeCreated": [
               "2025-01-31T20:11:24.570000+00:00",
               "2025-03-07T01:59:29.324000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
+          "me-dubai-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.me-dubai-1.amaaaaaask7dceyag4mzijosuxzmwuy2qp4gmgxja3inh3ngui5vnijqyska"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Creating Base Model"
+            ],
+            "timeCreated": [
+              "2025-04-09T11:50:45.811000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -10485,7 +10630,6 @@
         "imageTextToTextSupported": false,
         "observedRegions": [
           "ap-hyderabad-1",
-          "ap-tokyo-1",
           "me-abudhabi-1",
           "me-dubai-1"
         ],
@@ -10515,26 +10659,6 @@
             "timeOnDemandRetired": [
               "2025-05-01T00:00:00+00:00"
             ],
-            "timeDedicatedRetired": []
-          },
-          "ap-tokyo-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-tokyo-1.amaaaaaask7dceyamillstcqy3zmkmk66dcq2u5n44a76bjcjhg2jrcjzyza"
-            ],
-            "capabilities": [
-              "CHAT"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Creating Base Model"
-            ],
-            "timeCreated": [
-              "2026-07-13T16:04:51.499000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
             "timeDedicatedRetired": []
           },
           "me-abudhabi-1": {
@@ -10803,7 +10927,6 @@
         "observedRegions": [
           "ap-hyderabad-1",
           "ap-osaka-1",
-          "ap-tokyo-1",
           "me-abudhabi-1",
           "me-riyadh-1",
           "uk-london-1",
@@ -10853,26 +10976,6 @@
             ],
             "timeCreated": [
               "2025-05-08T02:26:52.111000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          },
-          "ap-tokyo-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-tokyo-1.amaaaaaask7dceyapv2aqqvatet2dafhzinlksrkcdgw6jgjujobiylff3ja"
-            ],
-            "capabilities": [
-              "CHAT"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Creating Base Model"
-            ],
-            "timeCreated": [
-              "2026-07-13T16:09:57.204000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -11267,7 +11370,6 @@
         "observedRegions": [
           "ap-hyderabad-1",
           "ap-osaka-1",
-          "ap-tokyo-1",
           "eu-frankfurt-1",
           "me-abudhabi-1",
           "me-dubai-1",
@@ -11297,8 +11399,12 @@
             "timeCreated": [
               "2025-11-21T19:08:49.893000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
+            "timeDeprecated": [
+              "1970-01-01T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "1970-01-01T00:00:00+00:00"
+            ],
             "timeDedicatedRetired": []
           },
           "ap-osaka-1": {
@@ -11316,26 +11422,6 @@
             ],
             "timeCreated": [
               "2025-08-28T00:56:11.988000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          },
-          "ap-tokyo-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-tokyo-1.amaaaaaask7dceyakwdmvzp5uag6ro4hnlwq5jlnksftr4br2kvptj3mhcvq"
-            ],
-            "capabilities": [
-              "CHAT"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Base Model created"
-            ],
-            "timeCreated": [
-              "2026-07-13T16:03:53.939000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -11425,8 +11511,12 @@
             "timeCreated": [
               "2026-02-25T22:34:52.204000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
+            "timeDeprecated": [
+              "1970-01-01T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "1970-01-01T00:00:00+00:00"
+            ],
             "timeDedicatedRetired": []
           },
           "uk-london-1": {
@@ -11445,8 +11535,12 @@
             "timeCreated": [
               "2025-11-21T19:31:59.094000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
+            "timeDeprecated": [
+              "1970-01-01T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "1970-01-01T00:00:00+00:00"
+            ],
             "timeDedicatedRetired": []
           },
           "us-ashburn-1": {
@@ -11570,8 +11664,12 @@
             "timeCreated": [
               "2025-11-21T19:07:53.146000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
+            "timeDeprecated": [
+              "1970-01-01T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "1970-01-01T00:00:00+00:00"
+            ],
             "timeDedicatedRetired": []
           },
           "ap-osaka-1": {
@@ -11678,8 +11776,12 @@
             "timeCreated": [
               "2026-02-25T22:33:55.851000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
+            "timeDeprecated": [
+              "1970-01-01T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "1970-01-01T00:00:00+00:00"
+            ],
             "timeDedicatedRetired": []
           },
           "uk-london-1": {
@@ -11698,8 +11800,12 @@
             "timeCreated": [
               "2025-11-21T19:31:00.778000+00:00"
             ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
+            "timeDeprecated": [
+              "1970-01-01T00:00:00+00:00"
+            ],
+            "timeOnDemandRetired": [
+              "1970-01-01T00:00:00+00:00"
+            ],
             "timeDedicatedRetired": []
           },
           "us-ashburn-1": {
@@ -11794,7 +11900,6 @@
         "observedRegions": [
           "ap-hyderabad-1",
           "ap-osaka-1",
-          "ap-tokyo-1",
           "eu-frankfurt-1",
           "me-dubai-1",
           "me-riyadh-1",
@@ -11842,26 +11947,6 @@
             ],
             "timeCreated": [
               "2024-12-04T04:02:10.017000+00:00"
-            ],
-            "timeDeprecated": [],
-            "timeOnDemandRetired": [],
-            "timeDedicatedRetired": []
-          },
-          "ap-tokyo-1": {
-            "offeringIds": [
-              "ocid1.generativeaimodel.oc1.ap-tokyo-1.amaaaaaask7dceyaohws6ny7nhplmpekrhgkr3h6tgsyrbhri3rz76f3ry3q"
-            ],
-            "capabilities": [
-              "UNKNOWN_ENUM_VALUE"
-            ],
-            "lifecycleStates": [
-              "ACTIVE"
-            ],
-            "lifecycleDetails": [
-              "Creating Base Model"
-            ],
-            "timeCreated": [
-              "2026-07-13T16:00:03.114000+00:00"
             ],
             "timeDeprecated": [],
             "timeOnDemandRetired": [],
@@ -13675,6 +13760,96 @@
         }
       },
       {
+        "id": "xai.grok-4.6",
+        "providers": [
+          "xai"
+        ],
+        "types": [
+          "BASE"
+        ],
+        "capabilities": [
+          "CHAT"
+        ],
+        "longTermSupported": true,
+        "imageTextToTextSupported": false,
+        "observedRegions": [
+          "us-ashburn-1",
+          "us-chicago-1",
+          "us-phoenix-1"
+        ],
+        "lifecycleStates": [
+          "ACTIVE"
+        ],
+        "regionalInventory": {
+          "us-ashburn-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.iad.amaaaaaask7dceyarfa6fn3uxb2aqnvcl3tud5ltylsl3aysopxghnneqmyq"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-09T22:41:37.963000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
+          "us-chicago-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyacfsjzbtggpnl7sofenqwrmcyuqycqvpobahlkmzbliva"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-09T23:02:25.066000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          },
+          "us-phoenix-1": {
+            "offeringIds": [
+              "ocid1.generativeaimodel.oc1.phx.amaaaaaask7dceyal3a65uayrndlskb3atfb3juhkveeg4qkujuzcnl2jfna"
+            ],
+            "capabilities": [
+              "CHAT"
+            ],
+            "lifecycleStates": [
+              "ACTIVE"
+            ],
+            "lifecycleDetails": [
+              "Base Model created"
+            ],
+            "timeCreated": [
+              "2026-09-09T22:59:11.785000+00:00"
+            ],
+            "timeDeprecated": [],
+            "timeOnDemandRetired": [],
+            "timeDedicatedRetired": []
+          }
+        },
+        "dedicatedClusterMapping": {
+          "status": "not_exposed_by_cli",
+          "unitShapes": null,
+          "gpuCount": null,
+          "note": "OCI CLI model listings and Limits data do not expose a model-to-unit-shape or model-to-GPU mapping."
+        }
+      },
+      {
         "id": "xai.grok-code-fast-1",
         "providers": [
           "xai"
@@ -13973,7 +14148,7 @@
     ],
     "clusterSizingByRegion": {
       "af-casablanca-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -13996,6 +14171,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14044,7 +14225,7 @@
         ]
       },
       "af-johannesburg-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14067,6 +14248,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14115,7 +14302,7 @@
         ]
       },
       "ap-hyderabad-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14138,6 +14325,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14186,7 +14379,7 @@
         ]
       },
       "ap-melbourne-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14209,6 +14402,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14257,7 +14456,7 @@
         ]
       },
       "ap-mumbai-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14280,6 +14479,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14328,7 +14533,7 @@
         ]
       },
       "ap-osaka-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14351,6 +14556,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14399,7 +14610,7 @@
         ]
       },
       "ap-singapore-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14422,6 +14633,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14470,7 +14687,7 @@
         ]
       },
       "ap-singapore-2": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14493,6 +14710,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14541,7 +14764,7 @@
         ]
       },
       "ap-sydney-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14564,6 +14787,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14612,7 +14841,7 @@
         ]
       },
       "ap-tokyo-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14635,6 +14864,89 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-embed-cohere-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-h100-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-h200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-large-cohere-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-llama2-70-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-rerank-cohere-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-small-cohere-count",
+            "scope-type": "REGION",
+            "value": 0
+          }
+        ]
+      },
+      "ca-toronto-1": {
+        "limitCount": 12,
+        "items": [
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-a10-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-a100-40g-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-a100-80g-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14683,7 +14995,7 @@
         ]
       },
       "eu-amsterdam-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14706,6 +15018,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14754,7 +15072,7 @@
         ]
       },
       "eu-dublin-3": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14777,6 +15095,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14825,7 +15149,7 @@
         ]
       },
       "eu-frankfurt-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14848,6 +15172,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14896,7 +15226,7 @@
         ]
       },
       "eu-madrid-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14919,6 +15249,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -14967,7 +15303,7 @@
         ]
       },
       "eu-madrid-3": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -14990,6 +15326,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15038,7 +15380,7 @@
         ]
       },
       "eu-marseille-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15061,6 +15403,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15109,7 +15457,7 @@
         ]
       },
       "eu-milan-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15132,6 +15480,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15180,7 +15534,7 @@
         ]
       },
       "eu-paris-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15203,6 +15557,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15251,7 +15611,7 @@
         ]
       },
       "eu-stockholm-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15274,6 +15634,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15322,7 +15688,7 @@
         ]
       },
       "eu-turin-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15345,6 +15711,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15393,7 +15765,7 @@
         ]
       },
       "eu-zurich-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15416,6 +15788,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15464,7 +15842,7 @@
         ]
       },
       "il-jerusalem-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15487,6 +15865,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15535,7 +15919,7 @@
         ]
       },
       "me-abudhabi-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15558,6 +15942,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15606,7 +15996,7 @@
         ]
       },
       "me-dubai-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15629,6 +16019,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15677,7 +16073,7 @@
         ]
       },
       "me-jeddah-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15700,6 +16096,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15748,7 +16150,7 @@
         ]
       },
       "me-riyadh-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15771,6 +16173,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15819,7 +16227,7 @@
         ]
       },
       "mx-monterrey-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15842,6 +16250,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15890,7 +16304,7 @@
         ]
       },
       "mx-queretaro-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15913,6 +16327,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -15961,7 +16381,7 @@
         ]
       },
       "sa-santiago-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -15984,6 +16404,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16032,7 +16458,7 @@
         ]
       },
       "uk-cardiff-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16055,6 +16481,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16103,7 +16535,7 @@
         ]
       },
       "uk-london-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16126,6 +16558,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16174,7 +16612,7 @@
         ]
       },
       "us-abilene-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16197,6 +16635,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16245,7 +16689,7 @@
         ]
       },
       "us-ashburn-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16268,6 +16712,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16316,7 +16766,7 @@
         ]
       },
       "us-chicago-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16339,6 +16789,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16387,7 +16843,7 @@
         ]
       },
       "us-dallas-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16410,6 +16866,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16458,7 +16920,7 @@
         ]
       },
       "us-phoenix-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16481,6 +16943,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16529,7 +16997,7 @@
         ]
       },
       "us-saltlake-2": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16552,6 +17020,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16600,7 +17074,7 @@
         ]
       },
       "us-sanjose-1": {
-        "limitCount": 11,
+        "limitCount": 12,
         "items": [
           {
             "availability-domain": null,
@@ -16623,6 +17097,12 @@
           {
             "availability-domain": null,
             "name": "dedicated-unit-b200-count",
+            "scope-type": "REGION",
+            "value": 0
+          },
+          {
+            "availability-domain": null,
+            "name": "dedicated-unit-b300-count",
             "scope-type": "REGION",
             "value": 0
           },
@@ -16673,149 +17153,94 @@
     },
     "scanFailures": [
       {
-        "region": "af-casablanca-1",
-        "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"0A8EC8EFF24F4A3D90BDB57E96F7B20A/CF5AAB6ECD1A3D6022256A6A4C454A2A/64E75E424BECCA8FBEE299D2CA52B1E6\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.af-casablanca-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:06:58.109795+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
         "region": "af-johannesburg-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"34913FAF6AEB45EC8067B77A676BF17A/DC69811AAFC7123C22256A6A4A4E42D0/E1A8851903A2FB97A2BE0D8D4FC6EFC3\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.af-johannesburg-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:06:58.820729+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"007C4881E94E4ED2A0B5D8BA0E1C1671/EA1259E2C4B3C0D340F7B06A4A4E42B8/4C98883B0C43E83370BF0B4980ACDD6F\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.af-johannesburg-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:08.983458+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
-        "region": "ap-melbourne-1",
+        "region": "ca-toronto-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"FB3858EAB2204A21A79C4F707B088688/5C4433C1BB264BA123256A6A4D454CBA/D695E65C47CC75195EF18B607EF54C9D\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-melbourne-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:06:59.395378+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "ap-mumbai-1",
-        "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:06:57.931825\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "ap-singapore-1",
-        "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"D9B3F367582349B883575DF89BF834C4/E967357BC199EF2B23256A6A53494E67/89A0A2E40FB27D4992B5557C46463F40\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-singapore-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:06:59.929165+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "ap-sydney-1",
-        "query": "models",
-        "error": "TransientServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"InternalError\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Bad Gateway\",\n    \"opc-request-id\": \"F60DB10F28294535A71734401AE2DADC/8845A712BCB00B0825256A6A53594495/85DE4442EA5B1EF066531AF36FEA031C\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ap-sydney-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 502,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:19.515505+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "eu-amsterdam-1",
-        "query": "models",
-        "error": "TransientServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"InternalError\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Bad Gateway\",\n    \"opc-request-id\": \"1270E9B463D34DBBA7ED6510DADC8687/744BF38733739B5A25256A6A414D536C/DE7D8834EC7ACACB9298551729D01090\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-amsterdam-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 502,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:19.433845+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "TransientServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"InternalError\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Bad Gateway\",\n    \"opc-request-id\": \"99D8BFA904D7426885B0E9284FD7FD0D/915887CD815FB8C243F7B06A59595A79/028E1B8C8B76094000E4BE0E01572044\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.ca-toronto-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 502,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:29.599504+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-dublin-3",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"9FEDFF5DEA2B478994992E24D2EC33D5/24813577AA7B023425256A6A5A514FD1/915BBF3B18A177915A8D6FBD65E97331\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-dublin-3.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:01.776488+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "eu-madrid-1",
-        "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"049C0DDBC2754F3D9CBA5EA7B69322F4/0511F467B244640126256A6A4D4144AF/AADBB7D464435F79255B7445682CC4EF\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-madrid-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:02.273830+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"39135A84969A49409EE4F6109790ADBB/E86E9D254A72358044F7B06A5A514FBC/4DAA978D8D53C0C7057681F5E60E8EF6\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-dublin-3.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:12.150556+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-madrid-3",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"B0E861CC6C414BB0A439AE666C4E0C00/FB7AA9DDEB7770D527256A6A4F5246D4/9F1188BBB4837C857D394DD7703E319C\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-madrid-3.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:03.030874+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"257AE418144E4887916259B77C4299C3/C0786DD01AAF359845F7B06A4F5246C3/DAAE56F680BC25580363137FFBC53E10\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-madrid-3.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:13.668830+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-marseille-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"D6DD9125DE9D4FACBA5ABA6A94C4FA8E/C4F080BC7298F0EB27256A6A4D52537E/7596D87DA7DF80BE3406231125C6E8AF\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-marseille-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:03.053927+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "eu-milan-1",
-        "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"023C6750BC7A4C63BDD67BDF6F48A71A/2D55C5B5379F1E6427256A6A4C494E9F/486254DB34AD16DC3AD5090404277B4D\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-milan-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:03.384906+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "eu-paris-1",
-        "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:04.094788\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "eu-stockholm-1",
-        "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"72A164290EB54F3A9B81FD15EB663BB5/19E15E0D3CCD75B528256A6A41524E41/F22BB3998EC0852AE5977E2DE206AA72\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-stockholm-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:04.432239+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"5C29428988374C89A3AA723F9EDEB8E6/747F769EB2C1C19F45F7B06A4D525368/FAA45360DA95DE13E513A746DE68A02A\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-marseille-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:13.767068+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-turin-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"A867D414826F49CBAEFE43BF90B4DA22/315A34EBDAAE823A28256A6A4E52517A/399D13174D88384C851797931B2E8C6E\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-turin-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:04.353200+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"F2B414EFD8DF49C19516F7D54FFE3E34/F4922FDA50414FA546F7B06A4E525111/1506291B59682E7CDCA3333CBD82F007\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-turin-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:15.001216+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "eu-zurich-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"F2CA3EB4AF7641479C3E1A16CDC155C0/7141FE7B2E6FA5CA28256A6A5A5248CB/E5930A55D05C129C1FE7376C642484AA\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-zurich-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:04.321783+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"30102CCD9F8448689E83E08C6F266EAB/6D8455B534CEFE2B47F7B06A5A5248A9/B14F7685D0C558C53F9C92B62761AFE2\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.eu-zurich-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:15.010012+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "il-jerusalem-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"5CE6652B7660447CB128DA2ACD02CBBD/D780C31D1C9842A129256A6A4D545A8F/8794DF07D767F8D73DB67B8989C5AA32\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.il-jerusalem-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:05.536816+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"A612F160238C424385EFD99AD39E081C/DB9410E1AB0CEDF347F7B06A4D545AD4/736D3CFFD72725E82B2C0FA67B71C57F\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.il-jerusalem-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:15.848549+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "me-jeddah-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"E3B01C407F3941FFBA358316395FA996/8639F2CE9562D3AF29256A6A4A4544C7/9145335DFD4CE86F5E31640A4EAB2FF0\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.me-jeddah-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:05.810035+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"10D834CC1C40432DA00B1C9667389357/E80FDB338A4C91CA48F7B06A4A4544CD/FDE702B8B62375051B3B0444EDB01E3C\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.me-jeddah-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:16.773948+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "me-neom-1",
         "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:06.758730\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-09-21T09:22:16.577417\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "me-neom-1",
         "query": "clusterSizing",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:07.166846\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-09-21T09:22:17.132691\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "mx-monterrey-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"5326057F2E6848378E305D298A8D28E2/4B988F3D4052268C2C256A6A4D545914/A2F7CBD06B2C97B64876C380CBD3E18F\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.mx-monterrey-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:08.211551+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "mx-queretaro-1",
-        "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"7BA23002271C4F8E9223C231BCDF2A9D/E0424B63C2D0295C2C256A6A51524FD9/8E6DB51B4A67E2FB0D324530F9E51A08\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.mx-queretaro-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:08.270787+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
-      },
-      {
-        "region": "sa-santiago-1",
-        "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:07.828428\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"7472E9A0858C4C9D96B019B9F95C0FB6/BAA287BE9AD71CDC49F7B06A4D5459F6/9DD934A423A1077C0FFAA47BD0F3AF06\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.mx-monterrey-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:18.028413+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "uk-cardiff-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"F37B8CD6FC034D2D8F1434AB89F2715F/658CBA44B568EBFF2D256A6A43574C41/77ED8835F2114B0DEC44B235879365BD\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.uk-cardiff-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:09.031197+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"7FDE9BAC17A748D0BA052047545883D4/2C7087F69479F27F4AF7B06A43574C2D/714B4618221138BC81FA7DE455B8997A\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.uk-cardiff-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:18.402750+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-abilene-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"C803E4A1EDD4464D8F62E4F79AA79D06/8199A22E5DFF8F862E256A6A41424C0A/3CC81C022DE0E93B872405E132153630\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-abilene-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:10.490936+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"BD81EEDB25134173BD22CB73058623FD/4145D0E3CAE21C004BF7B06A41424CCB/BE1A5FEBF09D7801432376A0B1DED2CF\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-abilene-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:19.781250+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-dallas-1",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"30ED592EDB6E4AC5997F4EC9CF5DE978/0185EF76E19582762F256A6A44465729/FA496BEFD0EB3D00F294EB397CC5F0BB\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-dallas-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:11.813082+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"490011527F504B959176D3934FD262C3/CFE1A91BD09863714CF7B06A44465794/41C373664A08FD07EE53F1B7C6AD38C8\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-dallas-1.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:20.848273+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-saltlake-1",
         "query": "models",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:12.264877\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-09-21T09:22:21.452033\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-saltlake-1",
         "query": "clusterSizing",
-        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-07-29T16:07:12.592606\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "RequestException:\n{\n    \"client_version\": \"Oracle-PythonCLI/3.82.0\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"The connection to endpoint timed out.\",\n    \"request_endpoint\": null,\n    \"target_service\": \"CLI\",\n    \"timestamp\": \"2026-09-21T09:22:21.840559\",\n    \"troubleshooting_tips\": \" See [https://docs.oracle.com/iaas/Content/API/SDKDocs/clitroubleshooting.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       },
       {
         "region": "us-saltlake-2",
         "query": "models",
-        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"DE37D7CFF2EE49568B10DDD1ADAE192D/8DA874E1B85232FC30256A6A41474100/8C0CFFCA593B4BE16098551E6C6556D5\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-saltlake-2.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-07-29T16:07:12.951577+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
+        "error": "ServiceError:\n{\n    \"client_version\": \"Oracle-PythonSDK/2.174.0, Oracle-PythonCLI/3.82.0\",\n    \"code\": \"NotAuthorizedOrNotFound\",\n    \"logging_tips\": \"Please run the OCI CLI command using --debug flag to find more debug information.\",\n    \"message\": \"Authorization failed or requested resource not found.\",\n    \"opc-request-id\": \"4900334EBDD5476A9E4F1A818A972F40/FC7CF4E8E47B85CA4EF7B06A414741FB/43160984E9AFA6AE9A5E8C93E5A3218C\",\n    \"operation_name\": \"list_models\",\n    \"request_endpoint\": \"GET https://generativeai.us-saltlake-2.oci.oraclecloud.com/20231130/models\",\n    \"status\": 404,\n    \"target_service\": \"generative_ai\",\n    \"timestamp\": \"2026-09-21T09:22:22.253242+00:00\",\n    \"troubleshooting_tips\": \"See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message.\"\n}"
       }
     ]
   }

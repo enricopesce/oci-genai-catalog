@@ -2,6 +2,12 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-09-21
+
+- Refreshed the CLI-authoritative pretrained inventory from an authenticated scan of every subscribed `READY` region: 65 offerings across 25 successful model queries, 39 dedicated-unit Limits observations, and 18 failed queries retained as evidence.
+- Added `xai.grok-4.6` to both the operational inventory and the documentation-enriched chat view. Removed `google.gemini-3.1-flash-lite` and `google.gemini-3.5-flash`, which were not observed by the refreshed OCI CLI scan.
+- Re-verified Oracle's current pretrained, regional availability, and Model Import documentation. The refreshed documentation identifies Grok 4.6 as an on-demand, external-call model with a 500K context window; presentation-only fields remain explicitly secondary to CLI evidence.
+
 ## 2026-07-29
 
 - Refreshed the catalog from an authenticated OCI CLI scan across every subscribed `READY` region: 66 pretrained offerings across 13 queryable model regions, 38 dedicated-unit Limits observations, and 29 failed regional queries preserved.
