@@ -117,19 +117,30 @@ def audit(repo: Path) -> int:
 
     ok.append(f"catalog.json dataDate is {catalog_date}")
 
-    primary_source = catalog["metadata"]["sources"]["pretrained"]["primary"]
-    scan_date = primary_source["generatedAt"].split("T", maxsplit=1)[0]
-    if scan_date == catalog_date:
-        ok.append("catalog dataDate matches the authenticated OCI CLI scan date")
+    sources = catalog["metadata"]["sources"]
+    expected_official_urls = {
+        "imported": "https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm",
+        "pretrained": "https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm",
+    }
+    actual_official_urls = {
+        "imported": sources["imported"].get("officialUrl"),
+        "pretrained": sources["pretrained"]["primary"].get("officialUrl"),
+    }
+    if actual_official_urls == expected_official_urls:
+        ok.append("official primary sources are the two required Oracle documentation pages")
     else:
-        errors.append(f"catalog dataDate {catalog_date} differs from CLI scan date {scan_date}")
+        errors.append(f"official primary source URLs differ: {actual_official_urls}")
 
-    if primary_source["observedUniqueModels"] == len(operational_models):
+    cli_validation = sources["pretrained"]["cliValidation"]
+    scan_date = cli_validation["generatedAt"].split("T", maxsplit=1)[0]
+    ok.append(f"authenticated OCI CLI validation scan dated {scan_date}")
+
+    if cli_validation["observedUniqueModels"] == len(operational_models):
         ok.append(f"operational inventory contains {len(operational_models)} CLI-observed model ids")
     else:
         errors.append(
             "pretrained source metadata reports "
-            f"{primary_source['observedUniqueModels']} models, found {len(operational_models)}"
+            f"{cli_validation['observedUniqueModels']} models, found {len(operational_models)}"
         )
 
     duplicate_operational_ids = sorted(
@@ -142,17 +153,17 @@ def audit(repo: Path) -> int:
 
     missing_operational_ids = sorted(set(presentation_ids) - set(operational_ids))
     if missing_operational_ids:
-        errors.append(
-            "documentation-enriched pretrained rows not observed by OCI CLI: "
+        warnings.append(
+            "pretrained presentation rows not observed by OCI CLI validation scan: "
             + ", ".join(missing_operational_ids)
         )
     else:
-        ok.append("all documentation-enriched pretrained rows are backed by OCI CLI observations")
+        ok.append("all pretrained presentation rows appear in the CLI validation scan")
 
     if "renderOperational(catalog.pretrained)" in html and "operationalInventoryBody" in html:
-        ok.append("page renders the canonical OCI CLI operational inventory")
+        ok.append("page renders the CLI-observed operational inventory")
     else:
-        errors.append("page does not render the canonical OCI CLI operational inventory")
+        errors.append("page does not render the CLI-observed operational inventory")
 
     if header_date == expected_header_date:
         ok.append(f'header updated date matches "{expected_header_date}"')

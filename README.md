@@ -2,14 +2,14 @@
 
 > **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference cataloguing the current **Oracle Cloud Infrastructure (OCI) Generative AI** lineup for commercial OCI regions (OC1), including active models and deprecated models still listed by Oracle, verified 29 July 2026. The site loads one published runtime data file: `catalog.json`.
+A single-page reference cataloguing **Oracle Cloud Infrastructure (OCI) Generative AI** models for commercial OCI regions (OC1), including active and deprecated entries. The published `catalog.json` snapshot is dated 21 September 2026.
 
 ## What's inside
 
 | Section | Details |
 |---------|---------|
-| **OCI CLI operational inventory** | 66 unique pretrained offering IDs observed across 13 queryable subscribed regions, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
-| **Chat models** | 27 pretrained chat models across Cohere, Google, Meta, OpenAI, and xAI; 14 active and 13 deprecated |
+| **OCI CLI validation inventory** | 65 unique pretrained offering IDs observed in the September scan, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
+| **Chat models** | 28 pretrained chat models across Cohere, Google, Meta, OpenAI, and xAI |
 | **Embedding models** | 9 Cohere Embed models; Embed 4 active and Embed v3 variants deprecated |
 | **Rerank models** | 3 Cohere rerank models: Rerank 4.0 Fast and Pro active; Rerank 3.5 deprecated |
 | **Imported models** | 97 compatible/importable models across 12 OCI Model Import families |
@@ -20,8 +20,8 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 
 ## Features
 
-- Canonical pretrained inventory records all 66 OCI CLI-observed model IDs, their capabilities, lifecycle states, regional observations, dedicated-unit Limits data, and failed regional queries
-- Documentation-enriched comparison views cover 27 chat models, 9 embedding models, and 3 rerank models with descriptive fields unavailable from OCI CLI
+- CLI validation inventory records the observed pretrained model IDs, their capabilities, lifecycle states, regional observations, dedicated-unit Limits data, and failed regional queries
+- Comparison views cover 28 chat models, 9 embedding models, and 3 rerank models with descriptive fields unavailable from OCI CLI
 - Every imported model has structured dedicated-cluster alternatives with `unitShape`, `gpuType`, `gpuCount`, required limit units, limit name, and AI unit count
 - 97 imported models across 12 Model Import families, including Qwen, DeepSeek, Gemma, Llama, MiniMax, Mistral, Kimi, Nemotron, Whisper, gpt-oss, and GLM entries
 - Commercial OCI regions (OC1) covered in the UI, including UAE Central (Abu Dhabi); sovereign and government regions are not yet modeled
@@ -36,7 +36,7 @@ A single-page reference cataloguing the current **Oracle Cloud Infrastructure (O
 
 ## Data sources
 
-Authenticated OCI CLI responses are the primary source for pretrained offering inventory, capabilities, lifecycle, regional observations, and dedicated-unit Limits data. [OCI official documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/) is used as the source for imported-model compatibility, recommended unit shapes, explicit GPU counts, and other fields the CLI model listing does not expose.
+The official primary sources are Oracle's [Compatible Models for Import](https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm) and [Generative AI Models by Region](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm) pages. Start with these for imported-model compatibility and pretrained regional and serving-mode availability. Authenticated OCI CLI/API/SDK scans follow as validation and extra operational evidence for offering IDs, capabilities, lifecycle, regional observations, and dedicated-unit Limits data. Preserve disagreements and failed queries rather than treating one tenancy's scan as the official catalog.
 
 ## Development
 

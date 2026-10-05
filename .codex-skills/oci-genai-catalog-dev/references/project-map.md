@@ -3,7 +3,7 @@
 ## Repo shape
 
 - `index.html`: only app shell; contains all CSS, markup, the technical catalog, the separate Use Cases view, wizard UI, filter UI, and inline JS.
-- `catalog.json`: single runtime snapshot consumed by the site. `pretrained.operationalModels` is the CLI-authoritative inventory of OCI-offered pretrained models; `clusterSizingByRegion` and `scanFailures` preserve sizing observations and failed queries; chat/embed/rerank arrays provide documentation-enriched comparison views; `imported` contains open-weight data and structured GPU shape options.
+- `catalog.json`: single runtime snapshot consumed by the site. `pretrained.operationalModels` preserves the CLI-observed inventory as validation evidence; `clusterSizingByRegion` and `scanFailures` preserve sizing observations and failed queries; chat/embed/rerank arrays provide comparison views; `imported` contains open-weight data and structured GPU shape options.
 - `sw.js`: small navigation-only service worker.
 - `scripts/export-pretrained-model-matrix.sh`: local OCI CLI exporter for pretrained model offerings and `ai-generative` dedicated-unit Limits data across active subscribed regions; it queries canonical region names with bounded concurrency and can also produce a CLI-only comparison snapshot.
 - `README.md`: public-facing project description.
@@ -24,9 +24,9 @@
 
 ## Data-source hierarchy
 
-1. Authenticated OCI CLI/API responses for pretrained offerings are the operational authority. Scan every subscribed `READY` region and retain both successes and failures.
-2. Rebuild `catalog.json.pretrained.operationalModels`, `clusterSizingByRegion`, scan metadata, and `scanFailures` from CLI-observed IDs, vendors, capabilities, lifecycle fields, regional inventory, and `ai-generative` Limits data.
-3. Use Oracle documentation only for verification or extension fields unavailable from native commands. Label documentation-derived fields and never use documentation to override contradictory CLI observations.
+1. Read the official Oracle [Compatible Models for Import](https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm) and [Generative AI Models by Region](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm) pages first. They are the primary sources for imported compatibility and pretrained regional and serving-mode availability.
+2. Then scan every subscribed `READY` region with OCI CLI/API/SDK. Rebuild `catalog.json.pretrained.operationalModels`, `clusterSizingByRegion`, scan metadata, and `scanFailures` as validation and extra operational evidence. Retain successes, failures, and differences from the documentation.
+3. Use other Oracle pages for details the two primary pages do not cover. Label each field's source and date; do not present account-specific scan results as Oracle's published availability.
 4. Do not interpret a successful empty response, an authorization failure, a missing endpoint, and a transient error as the same state.
 
 ## Fields that matter for behavior
@@ -52,7 +52,7 @@
 - Region filtering remains hosted-only because the imported-model snapshot does not contain regional availability. The catalog selector lists only exact OCI region names and identifiers; the wizard retains broad geographic groups for its simplified recommendation step and does not transfer that coarse answer into the exact-region filter.
 - Facet options remain cascading: zero-result choices disappear, but result counts are intentionally not shown in option labels. Dedicated-cluster shapes are displayed as Oracle's documented recommendations, not offered as a compatibility filter: a model listed for `A10_X1` must not be inferred incompatible with a larger A10 shape merely because that larger shape is absent from the documentation.
 - Pretrained row metadata retains exact region access for filtering, but the comparison tables intentionally omit the verbose Regions badge column. Empty table headings are hidden with their tables, and the entire results block is hidden when no model matches.
-- The CLI-authoritative operational inventory is not filterable presentation data. It remains visible only in the unfiltered default on-demand catalog and is hidden whenever a catalog filter or the dedicated-cluster path is active.
+- The CLI-observed operational inventory is not filterable presentation data. It remains visible only in the unfiltered default on-demand catalog and is hidden whenever a catalog filter or the dedicated-cluster path is active.
 - Embedding recommendations ignore tier, deployment, and region filtering even though the wizard still asks those questions.
 - In managed Codex workspaces, `.codex/` and `.agents/` may be mounted read-only. Use root `AGENTS.md` as the durable integration point unless the environment allows project-local `.codex/config.toml` or `.agents/skills`.
 

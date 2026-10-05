@@ -7,14 +7,12 @@ description: "Maintain the OCI GenAI Catalog project. Use when Codex needs to co
 
 ## Overview
 
-Treat `catalog.json` as the single published local snapshot, with `pretrained` and `imported` sections, and treat `index.html` as the UI shell plus all client-side rendering logic. `pretrained.operationalModels` is the canonical complete inventory of OCI-offered pretrained models; the chat, embedding, and rerank arrays are documentation-enriched presentation views. Derive operational pretrained data primarily from authenticated OCI CLI/API responses. Run `scripts/export-pretrained-model-matrix.sh` across all subscribed regions to observe model IDs, capabilities, lifecycle, regional inventory, and `ai-generative` dedicated-unit Limits data.
+Treat `catalog.json` as the single published local snapshot, with `pretrained` and `imported` sections, and treat `index.html` as the UI shell plus all client-side rendering logic. `pretrained.operationalModels` preserves the complete CLI-observed inventory as validation evidence; the chat, embedding, and rerank arrays are presentation views. Start every catalog data refresh with the two official Oracle pages below, then run `scripts/export-pretrained-model-matrix.sh` across all subscribed regions for additional operational observations.
 
-- Use Oracle documentation only to extend fields that native commands do not expose and to cross-check surprising results. Never let documentation override contradictory CLI output. Mark documentation-only fields explicitly in provenance or limitations.
-- Secondary Oracle references:
-  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm`
-  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm`
-  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm`
-  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm`
+- Official primary sources, always checked first:
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm` — compatible imported models.
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm` — pretrained regional and serving-mode availability.
+- Use authenticated OCI CLI/API/SDK as the second step for validation and extra observations. Preserve differences and failed queries; do not let one tenancy's scan silently replace Oracle's published catalog. Other Oracle pages may supply details outside the two primary pages, with explicit field provenance.
 
 From the repository root, start by running `python3 .codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo .` unless the task is a very small copy-only change.
 
@@ -26,14 +24,14 @@ From the repository root, start by running `python3 .codex-skills/oci-genai-cata
 - Read `.codex-skills/oci-genai-catalog-dev/references/project-map.md` when the task touches data sync, rendering, filters, wizard behavior, service-worker behavior, or stale docs.
 - Check the worktree before editing so you do not overwrite user changes.
 
-### Refresh primary evidence first
+### Refresh official sources first
 
-- For any data refresh, run `scripts/export-pretrained-model-matrix.sh --compartment-id 'COMPARTMENT_OCID' --output genai-offering-cli.json --catalog-output models-cli.json` first. Preserve failed regional queries and do not silently interpret a failed query as an empty region.
-- Reconcile pretrained model fields from CLI output before consulting documentation. Prefer CLI-observed model IDs, vendors, capabilities, lifecycle timestamps, regional inventories, and Limits dimensions when sources disagree.
-- Use documentation afterward only for verification or to add fields absent from CLI, such as explanatory descriptions or compatibility guidance. Record those additions as documentation-derived and do not infer operational availability from them.
-- Rebuild `catalog.json.pretrained.operationalModels`, `clusterSizingByRegion`, and `scanFailures` from each authenticated CLI scan before reconciling the documentation-enriched chat, embedding, and rerank views.
+- Read the two official primary pages above and record their findings and review date before changing catalog data.
+- Next run `scripts/export-pretrained-model-matrix.sh --compartment-id 'COMPARTMENT_OCID' --output genai-offering-cli.json --catalog-output models-cli.json`. Preserve failed regional queries and do not silently interpret a failed query as an empty region.
+- Use CLI/API/SDK output to validate offering IDs and capture account-specific capabilities, lifecycle timestamps, regional observations, and Limits dimensions. Record discrepancies with the official pages for review rather than silently overriding them.
+- Rebuild `catalog.json.pretrained.operationalModels`, `clusterSizingByRegion`, and `scanFailures` from each authenticated CLI scan as validation evidence, then reconcile the chat, embedding, and rerank views against the primary pages and other clearly attributed Oracle detail pages.
 - Edit `catalog.json.imported` for imported/open-weight families and models.
-- Keep JSON metadata aligned with actual provenance: identify the CLI commands and scan timestamp as primary sources, and list documentation separately when it contributes extension fields.
+- Keep JSON metadata aligned with actual provenance: name the two official pages as primary sources, and identify CLI commands and scan timestamps as validation and extra evidence.
 - Only edit the imported-model HTML rows in `index.html` when the page structure itself changes. Runtime rendering clears and replaces those rows from JSON on load.
 
 ### Keep `index.html` in sync with JSON-backed data
@@ -67,20 +65,18 @@ From the repository root, start by running `python3 .codex-skills/oci-genai-cata
 ### Keep supporting docs honest
 
 - Update `README.md` and `.codex-skills/oci-genai-catalog-dev/references/project-map.md` when architecture or workflow changes materially.
-- Treat the code and JSON files as the implementation truth when helper docs drift; use OCI CLI/API as the upstream data authority.
+- Treat the code and JSON files as the implementation truth when helper docs drift; use the two official Oracle pages above as the published source authority for the fields they cover.
 
 ## References
 
 - Read `.codex-skills/oci-genai-catalog-dev/references/project-map.md` for the repo layout, hardcoded sync points, and recurring maintenance traps.
-- Primary pretrained extraction:
+- Secondary pretrained validation and extra extraction:
   - `scripts/export-pretrained-model-matrix.sh`
   - `oci generative-ai model-collection list-models`
   - `oci limits value list --service-name ai-generative`
-- Secondary Oracle verification and extension pages:
+- Other Oracle detail pages:
   - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm`
-  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm`
   - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm`
-  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm`
 
 ## Bundled helper
 

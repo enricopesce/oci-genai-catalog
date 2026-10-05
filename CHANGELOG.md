@@ -2,6 +2,11 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-10-05
+
+- Set Oracle's Compatible Models for Import and Generative AI Models by Region pages as the official primary catalog sources across the site, metadata, README, and maintenance instructions. OCI CLI/API/SDK scans are now documented as secondary validation and extra operational evidence.
+- Updated the audit to verify both official source URLs and report CLI scan provenance separately. Existing model records and their September snapshot date were not refreshed.
+
 ## 2026-09-21
 
 - Refreshed the CLI-authoritative pretrained inventory from an authenticated scan of every subscribed `READY` region: 65 offerings across 25 successful model queries, 39 dedicated-unit Limits observations, and 18 failed queries retained as evidence.
