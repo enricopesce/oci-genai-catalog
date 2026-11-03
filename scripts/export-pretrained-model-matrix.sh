@@ -6,7 +6,7 @@ usage() {
   cat <<'EOF'
 Usage: scripts/export-pretrained-model-matrix.sh --compartment-id OCID [options]
 
-Export the OCI Generative AI model collection and dedicated-unit service limits
+Export OCI Model Discovery, the legacy model collection, and dedicated-unit limits
 for every active region subscribed to the configured tenancy. Regions without
 the service or access are recorded in "failures"; the export still completes.
 
@@ -97,8 +97,9 @@ cluster_successes="$tmp_dir/cluster-successes.jsonl"
 failures="$tmp_dir/failures.jsonl"
 success_dir="$tmp_dir/successes"
 cluster_success_dir="$tmp_dir/cluster-successes"
+discovery_success_dir="$tmp_dir/discovery-successes"
 failure_dir="$tmp_dir/failures"
-mkdir -p "$success_dir" "$cluster_success_dir" "$failure_dir"
+mkdir -p "$success_dir" "$cluster_success_dir" "$discovery_success_dir" "$failure_dir"
 : > "$successes"
 : > "$cluster_successes"
 : > "$failures"
@@ -112,7 +113,10 @@ else
     "${oci_auth[@]}" \
     --tenancy-id "$tenancy_id" \
     --output json > "$regions_json"
-  mapfile -t regions < <(
+  regions=()
+  while IFS= read -r region; do
+    regions+=("$region")
+  done < <(
     jq -r '(.data // .items // [])[]
       | select(.status == "READY")
       | (."region-name" // .regionName // ."region-key" // .regionKey)' "$regions_json" | sort -u
@@ -129,12 +133,41 @@ fetch_region() {
   local region=$1
   local response="$tmp_dir/$region.json"
   printf 'Fetching %s...\n' "$region" >&2
+  # --region selects the endpoint; the distinct parameter filters deployment
+  # availability. Without it discovery returns models across ALL regions.
+  if oci generative-ai model-discovery-collection list-model-discovery \
+      "${oci_auth[@]}" \
+      --region "$region" \
+      --region-parameterconflict "$region" \
+      --compartment-id "$compartment_id" \
+      --all --no-retry --connection-timeout 10 --read-timeout 30 --output json \
+      > "$tmp_dir/$region-discovery.json" 2> "$tmp_dir/$region-discovery.err"; then
+    if jq -ce --arg region "$region" '
+        (.data.items // .items) as $items
+        | if ($items | type) != "array" then error("Expected discovery items array")
+          else {region: $region, modelCount: ($items | length), items: $items} end
+      ' "$tmp_dir/$region-discovery.json" > "$discovery_success_dir/$region.json" \
+      2> "$tmp_dir/$region-discovery.err"; then
+      :
+    else
+      rm -f "$discovery_success_dir/$region.json"
+      jq -cn --arg region "$region" --rawfile error "$tmp_dir/$region-discovery.err" \
+        '{region: $region, query: "modelDiscovery", error: ($error | rtrimstr("\n"))}' \
+        > "$failure_dir/$region-discovery.json"
+    fi
+  else
+    jq -cn --arg region "$region" --rawfile error "$tmp_dir/$region-discovery.err" \
+      '{region: $region, query: "modelDiscovery", error: ($error | rtrimstr("\n"))}' \
+      > "$failure_dir/$region-discovery.json"
+  fi
+
   if oci generative-ai model-collection list-models \
       "${oci_auth[@]}" \
       --region "$region" \
       --compartment-id "$compartment_id" \
       --all \
       --no-retry \
+      --connection-timeout 10 --read-timeout 30 \
       --output json > "$response" 2> "$tmp_dir/$region.err"; then
     jq -c --arg region "$region" '
       (.data.items // .items // []) as $items
@@ -154,6 +187,7 @@ fetch_region() {
       --service-name ai-generative \
       --all \
       --no-retry \
+      --connection-timeout 10 --read-timeout 30 \
       --output json > "$limits_response" 2> "$tmp_dir/$region-limits.err"; then
     jq -c --arg region "$region" '
       [(.data // [])[] | select(.name | startswith("dedicated-unit-"))] as $items
@@ -171,8 +205,9 @@ for region in "${regions[@]}"; do
   fetch_region "$region" &
   ((running += 1))
   if ((running >= parallel)); then
-    wait -n || true
-    running=$((running - 1))
+    # Batch waits also work with the Bash 3.2 shipped on macOS.
+    wait || true
+    running=0
   fi
 done
 wait || true
@@ -187,6 +222,9 @@ for region in "${regions[@]}"; do
   if [[ -f "$failure_dir/$region-models.json" ]]; then
     cat "$failure_dir/$region-models.json" >> "$failures"
   fi
+  if [[ -f "$failure_dir/$region-discovery.json" ]]; then
+    cat "$failure_dir/$region-discovery.json" >> "$failures"
+  fi
   if [[ -f "$failure_dir/$region-cluster-sizing.json" ]]; then
     cat "$failure_dir/$region-cluster-sizing.json" >> "$failures"
   fi
@@ -200,11 +238,21 @@ jq -s 'map({key: .region, value: {modelCount: .modelCount, items: .items}}) | fr
 jq -s 'map({key: .region, value: {limitCount: .limitCount, items: .items}}) | from_entries' \
   "$cluster_successes" > "$cluster_sizing_object"
 jq -s '.' "$failures" > "$failures_array"
+discovery_object="$tmp_dir/discovery.json"
+discovery_files=("$discovery_success_dir"/*.json)
+if [[ -f "${discovery_files[0]}" ]]; then
+  jq -s 'map({key: .region, value: {modelCount, items}}) | from_entries' \
+    "${discovery_files[@]}" > "$discovery_object"
+else
+  printf '{}\n' > "$discovery_object"
+fi
 
 jq -n \
   --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
   --arg profile "$profile" \
   --arg region_discovery "$region_discovery" \
+  --argjson requested_regions "$(printf '%s\n' "${regions[@]}" | jq -Rsc 'split("\n") | map(select(length > 0))')" \
+  --slurpfile discovery "$discovery_object" \
   --slurpfile regions "$regions_object" \
   --slurpfile cluster_sizing "$cluster_sizing_object" \
   --slurpfile failures "$failures_array" \
@@ -212,13 +260,16 @@ jq -n \
     metadata: {
       generatedAt: $generated_at,
       sources: [
+        "OCI CLI generative-ai model-discovery-collection list-model-discovery",
         "OCI CLI generative-ai model-collection list-models",
         "OCI CLI limits value list --service-name ai-generative"
       ],
       profile: $profile,
       scope: "active OCI regions queryable by the configured profile",
-      regionDiscovery: $region_discovery
+      regionDiscovery: $region_discovery,
+      requestedRegions: $requested_regions
     },
+    modelDiscoveryByRegion: $discovery[0],
     regions: $regions[0],
     clusterSizingByRegion: $cluster_sizing[0],
     failures: $failures[0]
@@ -263,7 +314,7 @@ if [[ -n "$catalog_output" ]]; then
           scope: .metadata.scope,
           limitations: [
             "CLI output is the sole source for this snapshot.",
-            "OCI CLI does not expose context windows, model tiers, use-case descriptions, or a definitive per-region on-demand access mode.",
+            "Legacy ListModels does not expose context windows, model tiers, use-case descriptions, or definitive regional serving modes. Model Discovery provides explicit serving modes separately in modelDiscoveryByRegion.",
             "regionalInventory records observed lifecycle; it must not be treated as catalog.json pretrained regions access map.",
             "clusterSizingByRegion contains tenancy service-limit names and values, not model-to-shape compatibility or proof that capacity is available."
           ],
@@ -272,6 +323,7 @@ if [[ -n "$catalog_output" ]]; then
           failedQueries: [.failures[] | {region, query}]
         },
         clusterSizingByRegion: .clusterSizingByRegion,
+        modelDiscoveryByRegion: .modelDiscoveryByRegion,
         chatModels: [$all[] | select(.capabilities | index("CHAT"))],
         embeddingModels: [$all[] | select(.capabilities | index("TEXT_EMBEDDINGS"))],
         rerankModels: [$all[] | select(.capabilities | index("TEXT_RERANK"))],

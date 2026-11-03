@@ -135,6 +135,27 @@ def audit(repo: Path) -> int:
     scan_date = cli_validation["generatedAt"].split("T", maxsplit=1)[0]
     ok.append(f"authenticated OCI CLI validation scan dated {scan_date}")
 
+    discovery_source = sources["pretrained"].get("modelDiscovery", {})
+    discovery_models = models.get("discoveryModels", [])
+    if discovery_source.get("status") == "observed":
+        discovery_ids = [m["id"] for m in discovery_models]
+        if len(discovery_ids) != len(set(discovery_ids)):
+            errors.append("duplicate Model Discovery ids")
+        if discovery_source.get("observedUniqueModels") != len(discovery_models):
+            errors.append("Model Discovery count differs from its source metadata")
+        else:
+            ok.append(f"Model Discovery preserves {len(discovery_models)} model ids")
+        successful = set(discovery_source["successfulRegions"])
+        failed = {f["region"] for f in discovery_source["failedQueries"]}
+        requested = set(discovery_source["requestedRegions"])
+        if successful & failed or successful | failed != requested:
+            errors.append("Model Discovery scan coverage does not reconcile with requested regions")
+        else:
+            ok.append(f"Model Discovery accounts for all {len(requested)} requested regions")
+        disagreements = discovery_source.get("discrepancies", [])
+        if disagreements:
+            warnings.append(f"{len(disagreements)} Model Discovery/documentation serving-mode disagreements retained")
+
     if cli_validation["observedUniqueModels"] == len(operational_models):
         ok.append(f"operational inventory contains {len(operational_models)} CLI-observed model ids")
     else:

@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="69017cd">
+<meta name="build-version" content="b0e03a6">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -36,7 +36,7 @@
   "name": "OCI GenAI Catalog",
   "description": "Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models including chat, embedding, and rerank models from 5 providers.",
   "url": "https://enricopesce.github.io/oci-genai-catalog/",
-  "dateModified": "2026-09-21",
+  "dateModified": "2026-11-03",
   "author": { "@type": "Person", "name": "Enrico Pesce" },
   "about": {
     "@type": "Thing",
@@ -630,6 +630,16 @@
   }
   .filter-reset:hover { color: var(--on-surface); }
 
+  .catalog-load-status {
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .catalog-load-status[hidden] { display: none; }
+  .catalog-load-status a { color: var(--link); }
+
   .no-results {
     display: none;
     font-family: 'IBM Plex Mono', monospace;
@@ -771,7 +781,7 @@
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
     <h1>OCI GenAI Catalog</h1>
   </div>
-  <p>Primary sources: Oracle model documentation &nbsp;|&nbsp; Updated 21 Sep 2026 &nbsp;|&nbsp; <a href="catalog.json" target="_blank" rel="noopener">{ } catalog.json</a></p>
+  <p>Primary sources: Oracle model documentation &nbsp;|&nbsp; Updated 3 Nov 2026 &nbsp;|&nbsp; <a href="catalog.json" target="_blank" rel="noopener">{ } catalog.json</a></p>
   
   <nav class="view-switcher" aria-label="Catalog sections">
     <button class="view-btn active" id="btnReference" type="button" aria-pressed="true">Technical Tables</button>
@@ -985,6 +995,7 @@
       <button class="filter-reset" id="filterReset" type="button">Clear all</button>
     </div>
   </div>
+  <div class="catalog-load-status" id="catalogLoadStatus" role="status">Loading model data…</div>
   <div class="no-results" id="noResults">No models match the selected filters.</div>
   <div id="catalogResults">
 
@@ -1636,7 +1647,7 @@
   <!-- ══════════════════════════════════════════════════════════ -->
 
   <h2 class="section-title" id="operationalInventoryTitle">OCI Pretrained Operational Inventory</h2>
-  <p id="operationalInventoryIntro" style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Secondary validation inventory observed through authenticated OCI CLI queries across all subscribed regions. It records operational IDs, capabilities, lifecycle, and regional observations without inferring inferencing modes.</p>
+  <p id="operationalInventoryIntro" style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Secondary validation inventory from authenticated ListModels queries across subscribed regions. Model Discovery separately records regional serving modes, supported APIs, modalities, and parameters in catalog.json. Differences from the official regional table and failed queries remain recorded there.</p>
   <div class="table-wrap operational-inventory-table">
   <table>
     <thead>
@@ -2556,7 +2567,7 @@
     <p>⁵ Official primary sources:
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Compatible Models for Import</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:var(--link);">Generative AI Models by Region</a>.
-      Authenticated OCI CLI/API/SDK scans provide secondary validation and extra operational observations; catalog snapshot last updated 21 September 2026. Additional Oracle detail pages:
+      Authenticated <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-discovery.htm" target="_blank" rel="noopener" style="color:var(--link);">Model Discovery</a>, ListModels, and Limits scans provide secondary validation and extra operational observations; catalog snapshot last updated 3 November 2026. Imported compatibility data retains its separate source date in catalog.json. Additional Oracle detail pages:
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Pretrained Models</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:var(--link);">Inferencing Modes</a>
     </p>
@@ -2579,14 +2590,17 @@
   // ── THEME TOGGLE ──────────────────────────────────────────────────
   var btn = document.getElementById('themeToggle');
   var html = document.documentElement;
-  if (localStorage.getItem('theme') === 'light') {
+  var savedTheme = null;
+  // Sandboxed previews can deny storage; that must not stop catalog loading.
+  try { savedTheme = localStorage.getItem('theme'); } catch (err) {}
+  if (savedTheme === 'light') {
     html.classList.add('light');
     btn.textContent = '☾ Dark Mode';
   }
   btn.addEventListener('click', function() {
     var isLight = html.classList.toggle('light');
     btn.textContent = isLight ? '☾ Dark Mode' : '☀ Light Mode';
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (err) {}
   });
 
   // ── VIEW SWITCHER ─────────────────────────────────────────────────
@@ -3433,16 +3447,30 @@
 
   // ── FETCH CATALOG.JSON AND RENDER ─────────────────────────────────
   // One published runtime snapshot contains pretrained and imported inventories.
-  fetch('catalog.json').then(function(r) { return r.json(); }).then(function(catalog) {
+  fetch('catalog.json').then(function(r) {
+    if (!r.ok) throw new Error('catalog.json returned HTTP ' + r.status);
+    return r.json();
+  }).then(function(catalog) {
     renderAll(catalog.pretrained);
     renderOperational(catalog.pretrained);
     renderImported(catalog.imported);
     enhanceTableAccessibility();
     initFilters();
+    document.getElementById('catalogLoadStatus').hidden = true;
   }).catch(function(err) {
     console.error('Failed to load model data:', err);
-    enhanceTableAccessibility();
-    initFilters();
+    var status = document.getElementById('catalogLoadStatus');
+    status.hidden = false;
+    status.setAttribute('role', 'alert');
+    status.innerHTML = '<strong>Model data could not be loaded.</strong> ' +
+      (location.protocol === 'file:'
+        ? 'This page needs a local web server to read catalog.json. Run <code>python3 -m http.server 8080</code> in the project folder, then open <a href="http://localhost:8080/">the local catalog</a>.'
+        : 'Check that <a href="catalog.json" target="_blank" rel="noopener">catalog.json</a> is available alongside this page, then reload. ' + escapeAttr(err.message));
+    document.getElementById('catalogResults').hidden = true;
+    document.getElementById('noResults').style.display = 'none';
+    document.getElementById('catalogFilters').hidden = true;
+    btnWiz.disabled = true;
+    showView('reference');
   });
 
   // ── WIZARD REGION MAP ─────────────────────────────────────────────

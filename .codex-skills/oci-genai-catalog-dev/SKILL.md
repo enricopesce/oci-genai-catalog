@@ -28,6 +28,8 @@ From the repository root, start by running `python3 .codex-skills/oci-genai-cata
 
 - Read the two official primary pages above and record their findings and review date before changing catalog data.
 - Next run `scripts/export-pretrained-model-matrix.sh --compartment-id 'COMPARTMENT_OCID' --output genai-offering-cli.json --catalog-output models-cli.json`. Preserve failed regional queries and do not silently interpret a failed query as an empty region.
+- Model Discovery is the regional discovery method: the exporter uses `--region` for the endpoint and `--region-parameterconflict` for the deployment-region filter. Keep discovery availability, API capabilities, modalities, parameters, retirement dates, and failures separate from legacy offering/lifecycle observations.
+- Run `python3 scripts/sync-discovery-catalog.py genai-offering-cli.json --output /tmp/catalog-candidate.json` to prepare a candidate; review its discovery discrepancies, unreviewed IDs (which may include custom models), and documentation before publication. Discovery does not silently replace the official regional table. See the project map for pipeline details.
 - Use CLI/API/SDK output to validate offering IDs and capture account-specific capabilities, lifecycle timestamps, regional observations, and Limits dimensions. Record discrepancies with the official pages for review rather than silently overriding them.
 - Rebuild `catalog.json.pretrained.operationalModels`, `clusterSizingByRegion`, and `scanFailures` from each authenticated CLI scan as validation evidence, then reconcile the chat, embedding, and rerank views against the primary pages and other clearly attributed Oracle detail pages.
 - Edit `catalog.json.imported` for imported/open-weight families and models.
@@ -54,12 +56,13 @@ From the repository root, start by running `python3 .codex-skills/oci-genai-cata
 - Keep status, deployment, exact regional access, capability, context, workload task, imported family, and GPU metadata aligned when renderer fields change.
 - Wizard ranking depends on JSON fields such as `wizardTasks`, `wizardTier`, `wizardCtx`, `wizardWhy`, `regions`, `callType`, and `fineTunable`.
 - The embedding wizard path is intentionally special-cased and ignores tier, deployment, and region filtering.
-- The page clears all table bodies before fetching JSON; fetch failures leave empty tables. Be careful when changing fetch paths or startup order.
+- The page loads catalog.json before initializing filters. Loading failures show a visible error and hide empty controls/results; preserve that distinction from an empty filtered result. Sandboxed previews may deny localStorage, so storage errors must not stop catalog loading.
 
 ### Validate before finishing
 
 - Run `python3 .codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo .` after non-trivial changes.
-- If you modify this skill, run `python3 /home/opc/.codex/skills/.system/skill-creator/scripts/quick_validate.py .codex-skills/oci-genai-catalog-dev`.
+- If you modify this skill, run `python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" .codex-skills/oci-genai-catalog-dev`.
+- When changing discovery export or reconciliation, run `python3 scripts/test-model-discovery.py`.
 - For UI or behavior changes, serve the repo locally with `python3 -m http.server 8080` from the repository root and exercise the reference view, wizard view, filters, and theme toggle.
 
 ### Keep supporting docs honest
@@ -72,6 +75,8 @@ From the repository root, start by running `python3 .codex-skills/oci-genai-cata
 - Read `.codex-skills/oci-genai-catalog-dev/references/project-map.md` for the repo layout, hardcoded sync points, and recurring maintenance traps.
 - Secondary pretrained validation and extra extraction:
   - `scripts/export-pretrained-model-matrix.sh`
+  - `scripts/sync-discovery-catalog.py`
+  - `oci generative-ai model-discovery-collection list-model-discovery`
   - `oci generative-ai model-collection list-models`
   - `oci limits value list --service-name ai-generative`
 - Other Oracle detail pages:

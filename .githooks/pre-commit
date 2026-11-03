@@ -5,6 +5,15 @@
 HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "dev")
 
 # Replace whatever is in content="..." for the build-version meta tag
-sed -i "s|<meta name=\"build-version\" content=\"[^\"]*\">|<meta name=\"build-version\" content=\"$HASH\">|" index.html
+python3 - "$HASH" <<'PY' || exit 1
+from pathlib import Path
+import re
+import sys
+
+page = Path('index.html')
+page.write_text(re.sub(r'<meta name="build-version" content="[^"]*">',
+                       f'<meta name="build-version" content="{sys.argv[1]}">',
+                       page.read_text()))
+PY
 
 git add index.html

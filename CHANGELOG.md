@@ -2,6 +2,19 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-11-03
+
+- Made the pre-commit build-version stamp portable across macOS and Linux.
+
+- Prevented blocked browser storage in sandboxed previews from aborting model loading; the theme toggle remains usable without persistence.
+- Made catalog loading failures visible in the page, checked HTTP status before parsing JSON, and added recovery instructions for file-based previews. Failed loads no longer appear as empty model search results.
+
+- Added Oracle Model Discovery to the regional exporter using the distinct endpoint and availability-region CLI parameters. Discovery responses preserve serving modes, API capabilities, modalities, parameters, and retirement dates alongside the legacy offering inventory and Limits observations.
+- Added a catalog reconciliation script and offline regression checks. The reconciler preserves documentation-backed regions, resolves presentation aliases, records API/documentation disagreements, and keeps failed queries distinct from successful empty responses. Export concurrency now works on macOS Bash 3.2 and uses bounded request timeouts.
+- Refreshed all 41 subscribed regions with the default OCI profile: 22 discovery model IDs across 34 successful queries, 66 legacy model IDs across 35 successful queries, and 39 Limits responses. Retained 15 failed queries and three serving-mode disagreements (Command A Vision in Abu Dhabi; Embed 4 in Frankfurt and Abu Dhabi).
+- Reconciled the current official regional table, added Grok 4.7 with its documented 500K context, and updated page dates. Imported data retains its July snapshot date; current documentation's additional imported families are flagged for a separate compatibility refresh.
+- Updated README and maintenance guidance for discovery exports, candidate reconciliation, and field provenance.
+
 ## 2026-10-05
 
 - Set Oracle's Compatible Models for Import and Generative AI Models by Region pages as the official primary catalog sources across the site, metadata, README, and maintenance instructions. OCI CLI/API/SDK scans are now documented as secondary validation and extra operational evidence.

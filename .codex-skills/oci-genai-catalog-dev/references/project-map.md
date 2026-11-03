@@ -3,9 +3,11 @@
 ## Repo shape
 
 - `index.html`: only app shell; contains all CSS, markup, the technical catalog, the separate Use Cases view, wizard UI, filter UI, and inline JS.
-- `catalog.json`: single runtime snapshot consumed by the site. `pretrained.operationalModels` preserves the CLI-observed inventory as validation evidence; `clusterSizingByRegion` and `scanFailures` preserve sizing observations and failed queries; chat/embed/rerank arrays provide comparison views; `imported` contains open-weight data and structured GPU shape options.
+- `catalog.json`: single runtime snapshot consumed by the site. `pretrained.operationalModels` preserves the CLI-observed inventory as validation evidence; `discoveryModels` preserves Model Discovery responses with regional serving modes, API support, modalities, and configurable parameters; `clusterSizingByRegion` and `scanFailures` preserve dated sizing observations and failed queries; chat/embed/rerank arrays provide comparison views; `imported` contains open-weight data and structured GPU shape options.
 - `sw.js`: small navigation-only service worker.
-- `scripts/export-pretrained-model-matrix.sh`: local OCI CLI exporter for pretrained model offerings and `ai-generative` dedicated-unit Limits data across active subscribed regions; it queries canonical region names with bounded concurrency and can also produce a CLI-only comparison snapshot.
+- `scripts/export-pretrained-model-matrix.sh`: local OCI CLI exporter for Model Discovery, legacy pretrained model offerings and `ai-generative` dedicated-unit Limits data across active subscribed regions; it queries canonical region names with bounded concurrency and can also produce a CLI-only comparison snapshot.
+- `scripts/sync-discovery-catalog.py`: reconcile an authenticated export into a reviewable catalog candidate, preserving documentation-backed presentation regions, discovery discrepancies, aliases, and failures.
+- `scripts/test-model-discovery.py`: offline exporter and reconciliation regression checks using a fake CLI.
 - `README.md`: public-facing project description.
 - `AGENTS.md`: repository-level Codex guidance loaded automatically at session start.
 - `.codex-skills/oci-genai-catalog-dev/`: local maintenance skill, references, and audit helper.
@@ -26,8 +28,10 @@
 
 1. Read the official Oracle [Compatible Models for Import](https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm) and [Generative AI Models by Region](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm) pages first. They are the primary sources for imported compatibility and pretrained regional and serving-mode availability.
 2. Then scan every subscribed `READY` region with OCI CLI/API/SDK. Rebuild `catalog.json.pretrained.operationalModels`, `clusterSizingByRegion`, scan metadata, and `scanFailures` as validation and extra operational evidence. Retain successes, failures, and differences from the documentation.
-3. Use other Oracle pages for details the two primary pages do not cover. Label each field's source and date; do not present account-specific scan results as Oracle's published availability.
-4. Do not interpret a successful empty response, an authorization failure, a missing endpoint, and a transient error as the same state.
+3. The exporter queries Model Discovery with `--region` for the endpoint and `--region-parameterconflict` for the availability filter. Its response availability arrays may still list other deployment regions. Retain these arrays, retirement dates, and raw model details; successful empty queries and failed queries are separate states. Legacy ListModels supplies offering OCIDs and lifecycle states. Discovery can include fine-tuned models: review new IDs before publishing them.
+4. Run `python3 scripts/sync-discovery-catalog.py genai-offering-cli.json --output /tmp/catalog-candidate.json`. It records discovery serving-mode differences against the official regional map without overwriting that map, resolves presentation aliases, and lists unreviewed and unobserved IDs. Review the candidate and documentation before updating `catalog.json` and page dates. Run `python3 scripts/test-model-discovery.py` when changing this pipeline.
+5. Use other Oracle pages for details the two primary pages do not cover. Label each field's source and date; do not present account-specific scan results as Oracle's published availability.
+6. Do not interpret a successful empty response, an authorization failure, a missing endpoint, and a transient error as the same state.
 
 ## Fields that matter for behavior
 
@@ -45,7 +49,7 @@
 
 ## Known traps
 
-- Fetch failure leaves the page with empty tables because the script clears table bodies before loading data.
+- Fetch, HTTP, JSON, or rendering failures show an explicit catalog loading error and hide the empty filters/results. File-based previews explain how to start the local HTTP server.
 - Imported-model HTML rows are duplicated fallback content. Runtime replaces them, so JSON edits are the real data changes.
 - Catalog filters depend on `filterRowAttrs()` metadata emitted by every runtime row renderer. Keep primary roles separate from overlapping capabilities in row metadata even though the UI combines both in one Capability selector; role options use `role:`-prefixed values. Use workload task metadata for wizard-to-catalog handoff.
 - Hosted and importable models expose different infrastructure facets: hosted models have lifecycle, deployment, and region metadata; importable models have family and recommended GPU hardware. The deployment-path selector owns the on-demand/dedicated distinction. Dedicated activates the combined cluster scope, which includes dedicated-capable hosted rows plus all Model Import rows; one GPU model facet lists and filters exact model/count combinations.

@@ -2,14 +2,15 @@
 
 > **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference cataloguing **Oracle Cloud Infrastructure (OCI) Generative AI** models for commercial OCI regions (OC1), including active and deprecated entries. The published `catalog.json` snapshot is dated 21 September 2026.
+A single-page reference cataloguing **Oracle Cloud Infrastructure (OCI) Generative AI** models for commercial OCI regions (OC1), including active and deprecated entries. The published `catalog.json` snapshot is dated 3 November 2026.
 
 ## What's inside
 
 | Section | Details |
 |---------|---------|
-| **OCI CLI validation inventory** | 65 unique pretrained offering IDs observed in the September scan, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
-| **Chat models** | 28 pretrained chat models across Cohere, Google, Meta, OpenAI, and xAI |
+| **OCI CLI validation inventory** | 66 unique pretrained model IDs observed in the November scan, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
+| **Model Discovery** | 22 discovered IDs from 34 successful region queries across 41 subscribed regions; explicit serving modes, supported APIs, modalities, and parameters |
+| **Chat models** | 29 pretrained chat models across Cohere, Google, Meta, OpenAI, and xAI |
 | **Embedding models** | 9 Cohere Embed models; Embed 4 active and Embed v3 variants deprecated |
 | **Rerank models** | 3 Cohere rerank models: Rerank 4.0 Fast and Pro active; Rerank 3.5 deprecated |
 | **Imported models** | 97 compatible/importable models across 12 OCI Model Import families |
@@ -21,7 +22,7 @@ A single-page reference cataloguing **Oracle Cloud Infrastructure (OCI) Generati
 ## Features
 
 - CLI validation inventory records the observed pretrained model IDs, their capabilities, lifecycle states, regional observations, dedicated-unit Limits data, and failed regional queries
-- Comparison views cover 28 chat models, 9 embedding models, and 3 rerank models with descriptive fields unavailable from OCI CLI
+- Comparison views cover 29 chat models, 9 embedding models, and 3 rerank models with descriptive fields unavailable from OCI CLI
 - Every imported model has structured dedicated-cluster alternatives with `unitShape`, `gpuType`, `gpuCount`, required limit units, limit name, and AI unit count
 - 97 imported models across 12 Model Import families, including Qwen, DeepSeek, Gemma, Llama, MiniMax, Mistral, Kimi, Nemotron, Whisper, gpt-oss, and GLM entries
 - Commercial OCI regions (OC1) covered in the UI, including UAE Central (Abu Dhabi); sovereign and government regions are not yet modeled
@@ -46,6 +47,8 @@ This is a fully static site. Serve it locally from the repository root with:
 python3 -m http.server 8080
 ```
 
+Open the HTTP URL (for example, `http://localhost:8080/`) rather than opening `index.html` directly: browsers restrict fetching the adjacent JSON from `file://` pages. Catalog request failures now show an explicit error and recovery instructions. Browser storage can be disabled in a sandboxed preview without interrupting model loading.
+
 Codex project guidance lives in `AGENTS.md`. The local catalog-maintenance workflow, reference map, and audit helper live under `.codex-skills/oci-genai-catalog-dev/`.
 
 Run the catalog audit after non-trivial data, UI, or documentation changes:
@@ -64,9 +67,28 @@ scripts/export-pretrained-model-matrix.sh \
   --catalog-output models-cli.json
 ```
 
-The generated `genai-offering-cli.json` is ignored by Git. It combines the raw model offering returned by `list-models` with regional `dedicated-unit-*` values from the `ai-generative` Limits service; failed or unsupported queries are retained in `failures`. Region queries run with bounded concurrency, configurable through `--parallel`, and skip OCI CLI retries so unavailable endpoints do not stall a full scan. Limits describe the tenancy's regional quota dimensions and values; they do not prove capacity or provide model-to-shape compatibility.
+The exporter uses [Model Discovery](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-discovery.htm) as the regional discovery method, querying `oci generative-ai model-discovery-collection list-model-discovery --all` for every subscribed `READY` region. Use a current OCI CLI that exposes this command (verified with 3.95.1). `--region` selects the service endpoint; **`--region-parameterconflict` filters the model's deployment region**. Omitting the latter returns models across all regions. Returned availability arrays can still contain other deployment regions, so the exporter preserves the complete response. No retirement filter is applied.
 
-To also produce a CLI-only pretrained-inventory snapshot, add `--catalog-output models-cli.json`. It is a local verification input, not a published site asset; `catalog.json` is the one runtime catalog file. The CLI-only snapshot deliberately records unavailable fields as limitations rather than inferring them from documentation.
+`genai-offering-cli.json` is ignored by Git. It stores discovery responses under `modelDiscoveryByRegion`, legacy `list-models` observations under `regions`, dedicated-unit Limits under `clusterSizingByRegion`, and all failed queries under `failures`. Successful empty responses remain separate from failures. Queries use bounded concurrency and connection/read timeouts; the script supports macOS Bash 3.2. Legacy ListModels remains necessary for offering OCIDs and lifecycle states; Limits describe quota rather than capacity or model-to-shape compatibility.
+
+To reconcile the export into a reviewable runtime catalog candidate:
+
+```bash
+python3 scripts/sync-discovery-catalog.py genai-offering-cli.json \
+  --output /tmp/catalog-candidate.json
+```
+
+The reconciler rebuilds the legacy operational inventory, updates successful Limits observations with their dates, retains failures, and stores discovery records in `pretrained.discoveryModels`. Identical model responses are stored once with their endpoint regions. It annotates known presentation models (including their aliases) with observed serving modes, records disagreements with documentation in `metadata.sources.pretrained.modelDiscovery.discrepancies`, and lists unreviewed IDs and presentation IDs not observed by discovery. It preserves documentation-backed presentation regions and never infers retirement from an absent model. Review custom/fine-tuned IDs before publishing a candidate; discovery can return both pretrained and fine-tuned models. Review descriptive fields and synchronize the page dates before replacing `catalog.json`.
+
+The November scan contains 66 legacy model IDs and 22 discovery IDs; these APIs expose different inventories. It retains 15 failures: seven discovery, six legacy model, and two Limits queries. Three serving-mode disagreements remain explicit (Command A Vision in Abu Dhabi; Embed 4 in Frankfurt and Abu Dhabi). The imported snapshot retains its July date; Oracle's current landing page lists SEA-LION, OmniVoice, and MiMo families requiring a separate imported-compatibility refresh. Voice is recorded in the operational/discovery data and regional coverage notes; the presentation views remain chat, embedding, and rerank.
+
+Run offline regression checks for the exporter and reconciler with:
+
+```bash
+python3 scripts/test-model-discovery.py
+```
+
+`--catalog-output models-cli.json` additionally writes a CLI-only verification snapshot, including raw discovery results. Neither export is a runtime site asset; `catalog.json` remains the single runtime snapshot.
 
 ## Pretrained Model Providers
 
@@ -76,7 +98,7 @@ To also produce a CLI-only pretrained-inventory snapshot, add `--catalog-output 
 | [Google](https://deepmind.google/gemini) | Gemini 2.5 Pro, Flash, Flash-Lite |
 | [Meta](https://ai.meta.com/llama/) | Llama 4 Maverick, Llama 4 Scout, Llama 3.3 70B; deprecated Llama 3.2 Vision and Llama 3.1 405B |
 | [OpenAI](https://openai.com) | gpt-oss-120b, gpt-oss-20b |
-| [xAI](https://x.ai) | Grok 4.3, Grok 4.20, Grok 4.20 Multi-Agent; deprecated Grok 4, Grok 4 Fast, Grok 4.1 Fast, Grok 3 family, Grok Code Fast 1 |
+| [xAI](https://x.ai) | Grok 4.7, Grok 4.6, Grok 4.3, Grok 4.20, Grok 4.20 Multi-Agent; deprecated Grok 4, Grok 4 Fast, Grok 4.1 Fast, Grok 3 family, Grok Code Fast 1 |
 
 ## Imported Models
 
