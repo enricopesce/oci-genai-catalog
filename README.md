@@ -2,18 +2,19 @@
 
 > **Live site → [enricopesce.github.io/oci-genai-catalog](https://enricopesce.github.io/oci-genai-catalog/)**
 
-A single-page reference cataloguing **Oracle Cloud Infrastructure (OCI) Generative AI** models for commercial OCI regions (OC1), including active and deprecated entries. The published `catalog.json` snapshot is dated 3 November 2026.
+A single-page reference cataloguing **Oracle Cloud Infrastructure (OCI) Generative AI** models for commercial OCI regions (OC1), including active and deprecated entries. The published `catalog.json` snapshot is dated 27 November 2026.
 
 ## What's inside
 
 | Section | Details |
 |---------|---------|
-| **OCI CLI validation inventory** | 66 unique pretrained model IDs observed in the November scan, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
-| **Model Discovery** | 22 discovered IDs from 34 successful region queries across 41 subscribed regions; explicit serving modes, supported APIs, modalities, and parameters |
-| **Chat models** | 29 pretrained chat models across Cohere, Google, Meta, OpenAI, and xAI |
+| **OCI CLI validation inventory** | 68 unique pretrained model IDs observed in the November scan, including chat, embedding, rerank, voice, video, generation, and safeguard capabilities |
+| **Model Discovery** | 22 discovered IDs from 36 successful region queries across 42 subscribed regions; explicit serving modes, supported APIs, modalities, and parameters |
+| **Chat models** | 30 pretrained chat models across Cohere, Google, Meta, OpenAI, and xAI |
 | **Embedding models** | 9 Cohere Embed models; Embed 4 active and Embed v3 variants deprecated |
 | **Rerank models** | 3 Cohere rerank models: Rerank 4.0 Fast and Pro active; Rerank 3.5 deprecated |
-| **Imported models** | 97 compatible/importable models across 12 OCI Model Import families |
+| **Audio models** | xAI Voice text-to-speech via the OCI Audio Speech API or WebSocket |
+| **Imported models** | 120 importable models across 15 OCI Model Import families |
 | **Selection wizard** | Guided 4-step model picker with a handoff to all matching catalog rows |
 | **Use cases** | Separate decision guide for workload, deployment, and regional scenarios |
 
@@ -22,9 +23,9 @@ A single-page reference cataloguing **Oracle Cloud Infrastructure (OCI) Generati
 ## Features
 
 - CLI validation inventory records the observed pretrained model IDs, their capabilities, lifecycle states, regional observations, dedicated-unit Limits data, and failed regional queries
-- Comparison views cover 29 chat models, 9 embedding models, and 3 rerank models with descriptive fields unavailable from OCI CLI
-- Every imported model has structured dedicated-cluster alternatives with `unitShape`, `gpuType`, `gpuCount`, required limit units, limit name, and AI unit count
-- 97 imported models across 12 Model Import families, including Qwen, DeepSeek, Gemma, Llama, MiniMax, Mistral, Kimi, Nemotron, Whisper, gpt-oss, and GLM entries
+- Comparison views cover 30 chat models, 9 embedding models, 3 rerank models, and 1 audio model with descriptive fields unavailable from OCI CLI
+- Every imported model has structured dedicated-cluster alternatives with `unitShape`, `gpuType`, `gpuCount`, required limit units, limit name, and AI unit count where Oracle publishes one for the shape
+- 120 imported models across 15 Model Import families, including SEA-LION, OmniVoice, and Xiaomi MiMo
 - Commercial OCI regions (OC1) covered in the UI, including UAE Central (Abu Dhabi); sovereign and government regions are not yet modeled
 - Dark / Light mode toggle (preference saved in `localStorage`)
 - Guided model selection wizard with a one-click handoff to the matching catalog scope and workload filters

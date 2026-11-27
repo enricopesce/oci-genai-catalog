@@ -78,7 +78,7 @@ def audit(repo: Path) -> int:
     operational_models = models["operationalModels"]
     operational_ids = [model["id"] for model in operational_models]
     presentation_ids = [
-        model["id"] for model in chat_models + embedding_models + rerank_models
+        model["id"] for model in chat_models + embedding_models + rerank_models + models.get("audioModels", [])
     ]
     providers = sorted({model["provider"] for model in chat_models})
     imported_families = imported["families"]

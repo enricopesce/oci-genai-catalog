@@ -2,6 +2,13 @@
 
 All notable updates to this repository are tracked here.
 
+## 2026-11-27
+
+- Reconciled Oracle's commercial-region availability and added Llama 3.3 70B Dynamic FP8 and xAI Voice to the comparison views. Audio models are selectable with the Audio capability filter.
+- Refreshed import compatibility and minimum dedicated hardware from all 15 Oracle family pages, bringing the catalog to 120 models. Added SEA-LION, OmniVoice, and Xiaomi MiMo, corrected the Gemma 4 31B ID, and removed two MiniMax entries absent from the current compatibility table.
+- Updated hardware units and service-limit mappings, including A100 40 GB and B300 shapes. The exact AI unit counts for `B200_X16`, `B300_X8`, and `H100_X32` are absent from the Oracle billing table.
+- Scanned all 42 subscribed OCI regions. Recorded 68 legacy model IDs and 22 Discovery IDs from 36 successful region queries per API, plus 40 Limits responses. Preserved 14 failed queries and three serving-mode disagreements with the regional documentation.
+
 ## 2026-11-03
 
 - Made the pre-commit build-version stamp portable across macOS and Linux.

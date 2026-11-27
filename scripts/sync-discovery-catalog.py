@@ -43,8 +43,8 @@ def merge_discovery(catalog, matrix):
                 model['observations'].append(observation)
             observation['endpointRegions'].append(endpoint)
     disagreements = []
-    presentation = [m for key in ('chatModels', 'embeddingModels', 'rerankModels')
-                    for m in result['pretrained'][key]]
+    presentation = [m for key in ('chatModels', 'embeddingModels', 'rerankModels', 'audioModels')
+                    for m in result['pretrained'].get(key, [])]
     known_ids = {model_id for m in presentation for model_id in [m['id']] + m.get('altIds', [])}
     not_observed = []
     for model in presentation:
@@ -52,6 +52,7 @@ def merge_discovery(catalog, matrix):
                     if model_id in models]
         if not observed:
             not_observed.append(model['id'])
+            model.pop('discovery', None)
             continue  # Absence is not proof of retirement or unavailability.
         region_modes = {}
         for observation in [o for m in observed for o in m['observations']]:

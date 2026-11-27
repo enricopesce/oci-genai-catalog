@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="b0e03a6">
+<meta name="build-version" content="a5be60d">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -36,7 +36,7 @@
   "name": "OCI GenAI Catalog",
   "description": "Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models including chat, embedding, and rerank models from 5 providers.",
   "url": "https://enricopesce.github.io/oci-genai-catalog/",
-  "dateModified": "2026-11-03",
+  "dateModified": "2026-11-27",
   "author": { "@type": "Person", "name": "Enrico Pesce" },
   "about": {
     "@type": "Thing",
@@ -781,7 +781,7 @@
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
     <h1>OCI GenAI Catalog</h1>
   </div>
-  <p>Primary sources: Oracle model documentation &nbsp;|&nbsp; Updated 3 Nov 2026 &nbsp;|&nbsp; <a href="catalog.json" target="_blank" rel="noopener">{ } catalog.json</a></p>
+  <p>Primary sources: Oracle model documentation &nbsp;|&nbsp; Updated 27 Nov 2026 &nbsp;|&nbsp; <a href="catalog.json" target="_blank" rel="noopener">{ } catalog.json</a></p>
   
   <nav class="view-switcher" aria-label="Catalog sections">
     <button class="view-btn active" id="btnReference" type="button" aria-pressed="true">Technical Tables</button>
@@ -1646,6 +1646,14 @@
   <!--  OCI CLI OPERATIONAL INVENTORY                            -->
   <!-- ══════════════════════════════════════════════════════════ -->
 
+  <h2 class="section-title">Audio Models</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model</th><th>Model ID</th><th>Capability</th><th>Status</th><th>Best For</th></tr></thead>
+    <tbody id="audioModelsBody"></tbody>
+  </table>
+  </div>
+
   <h2 class="section-title" id="operationalInventoryTitle">OCI Pretrained Operational Inventory</h2>
   <p id="operationalInventoryIntro" style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Secondary validation inventory from authenticated ListModels queries across subscribed regions. Model Discovery separately records regional serving modes, supported APIs, modalities, and parameters in catalog.json. Differences from the official regional table and failed queries remain recorded there.</p>
   <div class="table-wrap operational-inventory-table">
@@ -1670,7 +1678,15 @@
   <!-- ══════════════════════════════════════════════════════════ -->
 
   <h2 class="section-title" id="importedSectionTitle">Imported Models</h2>
-  <p id="importedSectionIntro" style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Available via <strong style="color:var(--text);">OCI Generative AI Model Import</strong> — import open-weights and third-party models from HuggingFace into your own dedicated GPU cluster endpoint. 12 provider families · 97 models · supports fine-tuned variants within ±10% parameter count.</p>
+  <p id="importedSectionIntro" style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Available via <strong style="color:var(--text);">OCI Generative AI Model Import</strong> — import open-weights and third-party models from HuggingFace into your own dedicated GPU cluster endpoint. 15 provider families · 120 models · supports fine-tuned variants within ±10% parameter count.</p>
+
+  <h3 class="import-family-title" data-family="sea-lion">AI Singapore SEA-LION Family</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
 
   <!-- ALIBABA QWEN -->
   <h3 class="import-family-title" data-family="alibaba">Alibaba Qwen Family</h3>
@@ -2086,6 +2102,14 @@
   </table>
   </div>
 
+  <h3 class="import-family-title" data-family="omnivoice">K2-FSA OmniVoice Family</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
+
   <!-- META LLAMA -->
   <h3 class="import-family-title" data-family="meta">Meta Llama Family</h3>
   <div class="table-wrap">
@@ -2428,6 +2452,14 @@
   </table>
   </div>
 
+  <h3 class="import-family-title" data-family="mimo">Xiaomi MiMo Family</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Dedicated shape · GPUs</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
+
   <!-- Z.AI GLM -->
   <h3 class="import-family-title" data-family="zai">Z.ai GLM Family</h3>
   <div class="table-wrap">
@@ -2567,7 +2599,7 @@
     <p>⁵ Official primary sources:
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Compatible Models for Import</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:var(--link);">Generative AI Models by Region</a>.
-      Authenticated <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-discovery.htm" target="_blank" rel="noopener" style="color:var(--link);">Model Discovery</a>, ListModels, and Limits scans provide secondary validation and extra operational observations; catalog snapshot last updated 3 November 2026. Imported compatibility data retains its separate source date in catalog.json. Additional Oracle detail pages:
+      Authenticated <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-discovery.htm" target="_blank" rel="noopener" style="color:var(--link);">Model Discovery</a>, ListModels, and Limits scans provide secondary validation and extra operational observations; catalog snapshot last updated 27 November 2026. Imported compatibility data retains its separate source date in catalog.json. Additional Oracle detail pages:
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Pretrained Models</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:var(--link);">Inferencing Modes</a>
     </p>
@@ -2692,16 +2724,8 @@
     return family.badge || family.id;
   }
 
-  function gpuTypeKey(gpuType) {
-    // Catalog GPU types can include a memory suffix (A100_80G), while the
-    // display label uses the GPU generation.
-    var match = String(gpuType || '').toUpperCase().match(/^(A10|A100|H100|H200|B200)(?:_|$)/);
-    return match ? match[1] : '';
-  }
-
   function gpuTypeLabel(gpuType) {
-    return String(gpuType || '').toUpperCase() === 'A100_80G'
-      ? 'A100 80 GB' : gpuTypeKey(gpuType);
+    return gpuType.replace(/_(\d+)G$/, ' $1 GB');
   }
 
   function regionMetadata(regions) {
@@ -2888,6 +2912,18 @@
     '</tr>';
   }
 
+  function rowAudio(m) {
+    var regionMeta = regionMetadata(m.regions);
+    var attrs = filterRowAttrs({
+      scope: 'hosted', roles: ['audio'], provider: m.provider,
+      providerLabel: PROVIDER_LABELS[m.provider], status: m.status,
+      search: [m.name, m.id, m.capability, m.bestFor].join(' '),
+      deployments: regionMeta.deployments, regions: regionMeta.ids, regionAccess: regionMeta.access
+    });
+    return '<tr' + attrs + '>' + mkModelCell(m) + mkModelId(m) +
+      '<td>' + escapeAttr(m.capability) + '</td>' + mkStatus(m) + mkBestFor(m) + '</tr>';
+  }
+
   function renderOperational(data) {
     var body = document.getElementById('operationalInventoryBody');
     var title = document.getElementById('operationalInventoryTitle');
@@ -2933,6 +2969,8 @@
 
   function renderAll(data) {
     var chat = data.chatModels;
+    var audioBody = document.getElementById('audioModelsBody');
+    if (audioBody) audioBody.innerHTML = (data.audioModels || []).map(rowAudio).join('');
     var tb = {
       cohere: getTbody('cohere'),
       google: getTbody('google'),
@@ -3004,7 +3042,7 @@
     var clusterHtml = clusterOptions.map(function(option) {
       var title = option.gpuCount + ' GPU ' + option.gpuType +
         ' · ' + option.requiredUnits + ' required limit unit(s)' +
-        ' · ' + option.aiUnitCount + ' AI units' +
+        (option.aiUnitCount == null ? ' · AI unit count unpublished' : ' · ' + option.aiUnitCount + ' AI units') +
         ' · ' + option.limitName;
       return '<span class="tag cluster-option' + clsCls + '" title="' + escapeAttr(title) + '">' +
         option.gpuCount + ' × ' + escapeAttr(gpuTypeLabel(option.gpuType)) +

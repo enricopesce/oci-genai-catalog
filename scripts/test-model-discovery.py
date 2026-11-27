@@ -70,9 +70,13 @@ class DiscoveryTests(unittest.TestCase):
         self.assertEqual(inventory[0]['lifecycleStates'], ['ACTIVE'])
 
     def test_empty_success_and_total_failure_are_distinct(self):
+        model = self.catalog['pretrained']['chatModels'][0]
+        model['discovery'] = {'generatedAt': '2026-11-02T12:00:00Z'}
         self.matrix['modelDiscoveryByRegion']['us-ashburn-1']['items'] = []
         result = sync.merge_discovery(self.catalog, self.matrix)
         self.assertEqual(result['pretrained']['discoveryModels'], [])
+        self.assertNotIn('discovery', result['pretrained']['chatModels'][0])
+        self.assertEqual(result['pretrained']['chatModels'][0]['regions'], model['regions'])
         self.matrix['modelDiscoveryByRegion'] = {}
         with self.assertRaises(ValueError):
             sync.merge_discovery(self.catalog, self.matrix)

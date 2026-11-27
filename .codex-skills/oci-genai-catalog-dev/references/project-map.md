@@ -3,7 +3,7 @@
 ## Repo shape
 
 - `index.html`: only app shell; contains all CSS, markup, the technical catalog, the separate Use Cases view, wizard UI, filter UI, and inline JS.
-- `catalog.json`: single runtime snapshot consumed by the site. `pretrained.operationalModels` preserves the CLI-observed inventory as validation evidence; `discoveryModels` preserves Model Discovery responses with regional serving modes, API support, modalities, and configurable parameters; `clusterSizingByRegion` and `scanFailures` preserve dated sizing observations and failed queries; chat/embed/rerank arrays provide comparison views; `imported` contains open-weight data and structured GPU shape options.
+- `catalog.json`: single runtime snapshot consumed by the site. `pretrained.operationalModels` preserves the CLI-observed inventory as validation evidence; `discoveryModels` preserves Model Discovery responses with regional serving modes, API support, modalities, and configurable parameters; `clusterSizingByRegion` and `scanFailures` preserve dated sizing observations and failed queries; chat/embed/rerank/audio arrays provide comparison views; `imported` contains open-weight data and structured GPU shape options.
 - `sw.js`: small navigation-only service worker.
 - `scripts/export-pretrained-model-matrix.sh`: local OCI CLI exporter for Model Discovery, legacy pretrained model offerings and `ai-generative` dedicated-unit Limits data across active subscribed regions; it queries canonical region names with bounded concurrency and can also produce a CLI-only comparison snapshot.
 - `scripts/sync-discovery-catalog.py`: reconcile an authenticated export into a reviewable catalog candidate, preserving documentation-backed presentation regions, discovery discrepancies, aliases, and failures.
@@ -16,7 +16,7 @@
 
 1. `index.html` clears all `tbody` elements inside `#referenceView`.
 2. It fetches `catalog.json`.
-3. `renderAll()` fills documentation-enriched pretrained chat/embed/rerank sections from `catalog.json.pretrained`.
+3. `renderAll()` fills documentation-enriched pretrained chat/embed/rerank/audio sections from `catalog.json.pretrained`.
 4. `renderOperational()` fills the complete OCI CLI operational inventory from `catalog.json.pretrained.operationalModels`.
 5. `renderImported()` fills imported family tables from `catalog.json.imported`, including structured shape and GPU options.
 6. The row renderers attach normalized role, capability, workload, availability, and hardware filter metadata derived from JSON fields.
@@ -37,7 +37,8 @@
 
 - Pretrained wizard behavior depends on `wizardTasks`, `wizardTier`, `wizardCtx`, `wizardWhy`, `regions`, `callType`, and `fineTunable`.
 - Pretrained row rendering normalizes `reasoning || thinking` and `toolUse || agentic`.
-- Imported rows depend on `family.id`, `badge`, `label`, and each model's `type`, `params`, `activeParams`, `contextWindowLabel`, `contextClass`, `clusterShape`, `clusterClass`, and structured `dedicatedClusterOptions`; their type also supplies workload metadata for cluster-scope wizard handoff.
+- Hosted audio rows use the Audio capability filter and documentation-backed serving regions. The wizard continues to rank chat and embedding models.
+- Imported rows depend on `family.id`, `badge`, `label`, and each model's `type`, `params`, `activeParams`, `contextWindowLabel`, `contextClass`, `clusterShape`, `clusterClass`, and structured `dedicatedClusterOptions`. An AI unit count can be null when Oracle lists the shape for a model without a matching entry in its hardware billing table. Their type also supplies workload metadata for cluster-scope wizard handoff.
 
 ## Hardcoded sync points in `index.html`
 
